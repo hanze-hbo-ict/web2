@@ -1,0 +1,45 @@
+# Book settings
+title: Webtechnologie II
+author: Bart Barnard & Ralf van den Broek
+logo: images/logo-hanze.png
+copyright: ""
+exclude_patterns: ["LICENSE.md", "README.md"]
+only_build_toc_files: true
+jupyter_execute_notebooks: force
+
+latex:
+  latex_engine: xelatex
+  latex_documents:
+    targetname: book.tex
+html:
+  home_page_in_navbar: true
+  use_repository_button: false
+  use_issues_button: false
+  use_edit_page_button: false
+  navbar_number_sections: false
+
+repository:
+  url: https://github.com/hanze-hbo-ict/web2
+  path_to_book: ""
+  branch: main
+
+sphinx:
+  config:
+    language: nl
+    html_show_copyright: false
+    mathjax_path: https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+    html_extra_path: ["build"]
+
+parse:
+  myst_enable_extensions:
+    - colon_fence
+    - deflist
+    - dollarmath
+    - amsmath
+    - linkify
+
+bibtex_bibfiles:
+  - about/references.bib
+
+launch_buttons:
+   notebook_interface: "jupyterlab"

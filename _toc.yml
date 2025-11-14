@@ -1,0 +1,77 @@
+format: jb-book
+root: about/syllabus
+
+parts:
+- caption: Over deze cursus
+  chapters:
+  - file: about/literatuur
+
+- caption: 1.1 PHP
+  chapters:
+    - file: 1.1-php/intro
+    - file: 1.1-php/opgave
+
+- caption: 1.2 PHP
+  chapters:
+    - file: 1.2-php/intro
+    - file: 1.2-php/opgave
+
+- caption: 2.1 HTML en CSS
+  chapters:
+    - file: 2.1-html/intro
+    - file: 2.1-html/opgave
+
+- caption: 2.2 Kernel
+  chapters:
+    - file: 2.2-kernel/intro
+    - file: 2.2-kernel/opgave
+
+- caption: 3.1 Request
+  chapters:
+    - file: 3.1-request/intro
+    - file: 3.1-request/opgave
+
+- caption: 3.2 Response
+  chapters:
+    - file: 3.2-response/intro
+    - file: 3.2-response/opgave
+
+- caption: 4.1 Templating
+  chapters:
+    - file: 4.1-templating/intro
+    - file: 4.1-templating/opgave
+
+- caption: 4.2 Routing
+  chapters:
+    - file: 4.2-routing/intro
+    - file: 4.2-routing/opgave
+
+- caption: 5.1 Dependency injection
+  chapters:
+    - file: 5.1-di/intro
+    - file: 5.1-di/opgave
+
+- caption: 5.2 Reflectie
+  chapters:
+    - file: 5.2-reflectie/intro
+    - file: 5.2-reflectie/opgave
+
+- caption: 6.1 Database
+  chapters:
+    - file: 6.1-database/intro
+    - file: 6.1-database/opgave
+
+- caption: 6.2 Entities
+  chapters:
+    - file: 6.2-entities/intro
+    - file: 6.2-entities/opgave
+
+- caption: 7.1 Authenticatie
+  chapters:
+    - file: 7.1-authenticatie/intro
+    - file: 7.1-authenticatie/opgave
+
+- caption: 7.2 Autorisatie
+  chapters:
+    - file: 7.2-autorisatie/intro
+    - file: 7.2-autorisatie/opgave
