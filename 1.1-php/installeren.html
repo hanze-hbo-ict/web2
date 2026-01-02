@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Opgave &#8212; Webtechnologie II</title>
+    <title>PHP installeren &#8212; Webtechnologie II</title>
   
   
   
@@ -62,10 +62,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '4.2-routing/opgave';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1.1-php/installeren';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Intro" href="../5.1-di/intro.html" />
+    <link rel="next" title="Opgave" href="opgave.html" />
     <link rel="prev" title="Intro" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
@@ -175,14 +175,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../1.1-php/intro.html">Intro</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="../1.1-php/installeren.html">PHP installeren</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">PHP installeren</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../1.1-php/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
 
 
 
@@ -218,9 +218,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Opgave</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opgave.html">Opgave</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
 <ul class="nav bd-sidenav">
@@ -305,7 +305,7 @@
       
       
       
-      <li><a href="../_sources/4.2-routing/opgave.md" target="_blank"
+      <li><a href="../_sources/1.1-php/installeren.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -368,7 +368,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -379,11 +381,26 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Opgave</h1>
+    <h1>PHP installeren</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PHP installeren</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installeren-met-een-package-manager">Installeren met een package manager</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installatie-controleren">Installatie controleren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installatie-testen">Installatie testen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ide-installeren">IDE installeren</a></li>
+</ul>
+</li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -393,8 +410,100 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="opgave">
-<h1>Opgave<a class="headerlink" href="#opgave" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="php-installeren">
+<h1>PHP installeren<a class="headerlink" href="#php-installeren" title="Link to this heading">#</a></h1>
+<p>Om PHP te kunnen gebruiken moet dit natuurlijk geïnstalleerd worden. Het is
+handig om dit op een gestandaardiseerde manier te doen, zodat eventuele
+fouten in de installatie makkelijk opgespoord kunnen worden.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="installeren-met-een-package-manager">
+<h1>Installeren met een package manager<a class="headerlink" href="#installeren-met-een-package-manager" title="Link to this heading">#</a></h1>
+<p>De eenvoudigste manier om PHP te installeren is om gebruik te maken van een
+package manager. Hierdoor worden de noodzakelijke dependency’s goed
+geïnstalleerd en kan PHP later ook makkelijker verwijderd worden. Bovendien
+zal de executable van PHP beschikbaar gemaakt worden in het zoekpad. Voor elk
+besturingssysteem is wel een package manager te vinden.</p>
+<p>Let erop dat een
+up-to-dateversie van PHP geïnstalleerd wordt; op het moment van schrijven
+is PHOP 8.5 de meest recente PHP-versie en in het hiernavolgende zal ervan
+uitgegaan worden dat deze versie gebruikt wordt.</p>
+<p>Windows-gebruikers kunnen gebruikmaken van <a class="reference external" href="https://scoop.sh">Scoop</a>. Indien
+nodig kan Scoop geïnstalleerd worden via de instructies op de website, en
+vervolgens kan PHP met onderstaand commando geïnstalleerd worden.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>scoop<span class="w"> </span>install<span class="w"> </span>php
+</pre></div>
+</div>
+<p>Voor macOS (en overigens ook Linux) is <a class="reference external" href="https://brew.sh">Homebrew</a>
+beschikbaar. Na installatie kan PHP via onderstaand commando geïnstalleerd
+worden.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>brew<span class="w"> </span>install<span class="w"> </span>php
+</pre></div>
+</div>
+<p>Linux-distributies bieden in het algemeen hun eigen package manager aan;
+Debian en Debian-achtigen (zoals Ubuntu) bieden bijvoorbeeld APT aan. Zeker
+LTS-versies hebben vaak echter wat verouderde PHP-versies. Het kan dan nodig
+zijn om een extra repository toe te voegen. PHP.Watch heeft hier een
+<a class="reference external" href="https://php.watch/articles/php-8-5-installation-upgrade-guide-debian-ubuntu">artikel</a>
+aan gewijd.</p>
+<section id="installatie-controleren">
+<h2>Installatie controleren<a class="headerlink" href="#installatie-controleren" title="Link to this heading">#</a></h2>
+<p>Om te controleren dat PHP goed geïnstalleerd is, kunnen onderstaande commando’s
+worden gebruikt.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>php<span class="w"> </span>-v
+php<span class="w"> </span>-i
+</pre></div>
+</div>
+<p>Het eerste commando toont de versieinformatie van PHP, en geeft ongeveer
+onderstaande uitvoer.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PHP</span> <span class="mf">8.5.1</span> <span class="p">(</span><span class="n">cli</span><span class="p">)</span> <span class="p">(</span><span class="n">built</span><span class="p">:</span> <span class="n">Dec</span> <span class="mi">16</span> <span class="mi">2025</span> <span class="mi">15</span><span class="p">:</span><span class="mi">59</span><span class="p">:</span><span class="mi">07</span><span class="p">)</span> <span class="p">(</span><span class="n">NTS</span><span class="p">)</span>
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">The</span> <span class="n">PHP</span> <span class="n">Group</span>
+<span class="n">Built</span> <span class="n">by</span> <span class="n">Homebrew</span>
+<span class="n">Zend</span> <span class="n">Engine</span> <span class="n">v4</span><span class="mf">.5.1</span><span class="p">,</span> <span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="n">Zend</span> <span class="n">Technologies</span>
+    <span class="k">with</span> <span class="n">Zend</span> <span class="n">OPcache</span> <span class="n">v8</span><span class="mf">.5.1</span><span class="p">,</span> <span class="n">Copyright</span> <span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="n">by</span> <span class="n">Zend</span> <span class="n">Technologies</span>
+</pre></div>
+</div>
+<p>Let er met name op dat op de eerste regel de versie van PHP staat, hier 8.5.1.
+Dit zou dus in ieder geval ten minste 8.5.0 moeten zijn.</p>
+<p>Het tweede commando toont de uitvoer van het commando <code class="docutils literal notranslate"><span class="pre">phpinfo()</span></code>, dat alle
+configuratieinformatie van de PHP-installatie toont. Relevant hier is dat
+het ook laat zien waar het configuratiebestand van PHP staat. Vrij vroeg in
+de uitvoer is dit te vinden; dit lijkt op onderstaande snippet.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">...</span>
+<span class="n">Configuration</span> <span class="n">File</span> <span class="p">(</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span><span class="p">)</span> <span class="n">Path</span> <span class="o">=&gt;</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="mf">8.5</span>
+<span class="n">Loaded</span> <span class="n">Configuration</span> <span class="n">File</span> <span class="o">=&gt;</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="mf">8.5</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span>
+<span class="n">Scan</span> <span class="n">this</span> <span class="nb">dir</span> <span class="k">for</span> <span class="n">additional</span> <span class="o">.</span><span class="n">ini</span> <span class="n">files</span> <span class="o">=&gt;</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">homebrew</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="mf">8.5</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span>
+<span class="n">Additional</span> <span class="o">.</span><span class="n">ini</span> <span class="n">files</span> <span class="n">parsed</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="n">none</span><span class="p">)</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Hier is te zien dat in deze configuratie het configuratiebestand <code class="docutils literal notranslate"><span class="pre">php.ini</span></code>
+te vinden is in <code class="docutils literal notranslate"><span class="pre">/opt/homebrew/etc/php/8.5/php.ini</span></code>.</p>
+</section>
+<section id="installatie-testen">
+<h2>Installatie testen<a class="headerlink" href="#installatie-testen" title="Link to this heading">#</a></h2>
+<p>Ten slotte kan een kort “hello-world”-programma gebruikt worden om te zien
+of PHP werkt.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&lt;?php echo &quot;Hello world!\n&quot;;&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>php
+</pre></div>
+</div>
+<p>Dit zou onderstaande uitvoer moeten geven; later zal nog uitgelegd worden
+hoe de hierbij gebruikte PHP-taalconstructen werken.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Hello world!
+</pre></div>
+</div>
+<p>Als dit commando zichtbaar is, is PHP waarschijnlijk juist geïnstalleerd.</p>
+</section>
+<section id="ide-installeren">
+<h2>IDE installeren<a class="headerlink" href="#ide-installeren" title="Link to this heading">#</a></h2>
+<p>PHP-code zou in principe met een tool als Notepad bewerkt kunnen worden. Dit
+heeft echter twee nadelen ten opzichte van het gebruik van een IDE. In de
+eerste plaats zal er geen syntax  highlighting aanwezig zijn. Belangrijker
+echter is dat een IDE ondersteuning  zal bieden voor het zoeken naar
+functies en het navigeren door een project. Daarom is het aan te bevelen een
+IDE te gebruiken. Hierbij kan gedacht worden aan
+<a class="reference external" href="https://www.jetbrains.com/phpstorm/">PHPStorm</a> of
+<a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -410,7 +519,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./4.2-routing"
+            path: "./1.1-php"
         },
         predefinedOutput: true
     }
@@ -437,11 +546,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../5.1-di/intro.html"
+       href="opgave.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">Opgave</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -451,6 +560,29 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">PHP installeren</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#installeren-met-een-package-manager">Installeren met een package manager</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installatie-controleren">Installatie controleren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#installatie-testen">Installatie testen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ide-installeren">IDE installeren</a></li>
+</ul>
+</li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
