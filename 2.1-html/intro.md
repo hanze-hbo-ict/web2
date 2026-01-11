@@ -83,7 +83,7 @@ Gelukkig zijn de meeste hedendaagse ontwikkelomgevingen zó ingericht dat ze de 
 
 ![De output van de w3c-html-validator op de HTML van deze pagina](../images/html-validator.jpeg)
 
-```{admonition}Andere problemen
+```{admonition} Andere problemen
 :class: warning
 
 Die vergevingsgezindheid van de browser komen we op nog wel meer plekken in de ontwikkeling voor het web tegen. Soms kan dat echt leiden tot onverwachte en op het eerste gezicht onverklaarbare resultaten. Het is daarom van belang dat je als webontwikkelaar altijd in de gaten houdt wat je aan het doen bent en hoe je werk binnen de verschillende lagen tot uiting komt.
