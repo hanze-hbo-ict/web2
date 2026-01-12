@@ -64,3 +64,5 @@ slash `/` begint.
 Bedenk ten slotte dat je de informatie over het request uit het meegegeven 
 argument moet halen, het is niet de bedoeling dat je in de router nog kijkt 
 naar de superglobals.
+
+[TODO koppelen aan kernel]
