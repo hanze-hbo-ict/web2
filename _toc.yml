@@ -24,8 +24,12 @@ parts:
 
 - caption: 2.2 Kernel
   chapters:
-    - file: 2.2-kernel/intro
-    - file: 2.2-kernel/opgave
+    - file: 2.2-kernel/http
+    - file: 2.2-kernel/kernel
+    - file: 2.2-kernel/autoloader
+    - file: 2.2-kernel/composer
+    - file: 4.2-routing/oefening
+    - file: 4.2-routing/opdracht
 
 - caption: 3.1 Request
   chapters:
@@ -48,7 +52,7 @@ parts:
     - file: 4.2-routing/router
     - file: 4.2-routing/callable
     - file: 4.2-routing/regex
-    - file: 4.2-routing/oefeningen
+    - file: 4.2-routing/oefening
     - file: 4.2-routing/opdracht
 
 - caption: 5.1 Dependency injection
