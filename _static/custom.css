@@ -2,3 +2,7 @@ a[href$='.zip'] {
     background: transparent url(https://upload.wikimedia.org/wikipedia/commons/f/f6/.zip_OneDrive_icon.svg) center right no-repeat;
     padding-right: 20px;
 }
+
+img { width: 40vw; cursor:pointer; }
+p:has(> img) { display:flex; justify-content:center; }
+div.admonition { width: 80vw; }

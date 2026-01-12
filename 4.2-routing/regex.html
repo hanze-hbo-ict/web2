@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Intro &#8212; Webtechnologie II</title>
+    <title>Reguliere expressies &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '1.1-php/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4.2-routing/regex';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="PHP installeren" href="installeren.html" />
-    <link rel="prev" title="Literatuur" href="../about/literatuur.html" />
+    <link rel="next" title="Oefeningen" href="oefening.html" />
+    <link rel="prev" title="Verwijzingen naar functies" href="callable.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -175,14 +175,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/intro.html">Intro</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="installeren.html">PHP installeren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/installeren.html">PHP installeren</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/opgave.html">Opgave</a></li>
 
 
 
@@ -220,13 +220,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/frontcontroller.html">De front controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/router.html">De router</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/callable.html">Verwijzingen naar functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/regex.html">Reguliere expressies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opdracht.html">Opdracht</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
 <ul class="nav bd-sidenav">
@@ -311,7 +311,7 @@
       
       
       
-      <li><a href="../_sources/1.1-php/intro.md" target="_blank"
+      <li><a href="../_sources/4.2-routing/regex.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -387,7 +387,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Intro</h1>
+    <h1>Reguliere expressies</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -397,18 +397,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Intro</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applicatie-maken">Applicatie maken</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">???</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#speciale-tekens">Speciale tekens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regexes-in-php">Regexes in PHP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capturing-groups">Capturing groups</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webpagina-s">Dynamische webpagina’s</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabelen">Variabelen</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gebruikersinvoer">Gebruikersinvoer</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -419,120 +411,154 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Drielaagsarchitectuur</p></li>
-<li><p>Backend</p></li>
-<li><p>Plaatsbepaling/welke programmeertaal</p></li>
-<li><p>Geschiedenis PHP</p></li>
-</ul>
+  <section class="tex2jax_ignore mathjax_ignore" id="reguliere-expressies">
+<h1>Reguliere expressies<a class="headerlink" href="#reguliere-expressies" title="Link to this heading">#</a></h1>
+<p>Een manier om het formaat van URL’s kernachtig uit te drukken is door
+gebruik te maken van
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Reguliere_expressie">reguliere expressies</a>,
+ook wel <em>regexes</em> genoemd.
+Een reguliere expressie is een patroon van tekens die een verzameling
+strings beschrijven die gematcht moeten worden door de reguliere expressie.
+Anders gezegd, we kunnen een string laten doorzoeken aan de hand van de
+reguliere expressie, en deze kan wel of geen match zijn. Als bijvoorbeeld
+alle blogposts te vinden moeten zijn onder het pad <code class="docutils literal notranslate"><span class="pre">/blog/</span></code>, gevolgd door de
+id van de blogpost, kan dit pad als de reguliere expressie <code class="docutils literal notranslate"><span class="pre">^/blog/\d+</span></code>
+uitgedrukt worden.</p>
+<section id="speciale-tekens">
+<h2>Speciale tekens<a class="headerlink" href="#speciale-tekens" title="Link to this heading">#</a></h2>
+<p>De meeste tekens komen letterlijk overeen met het gezochte pad, maar er zijn
+enkele uitzonderingen hierop.</p>
+<p>Zo staat <code class="docutils literal notranslate"><span class="pre">\d+</span></code> voor één of meer cijfers; <code class="docutils literal notranslate"><span class="pre">\d</span></code> kan worden gematcht door de
+cijfers 0 tot en met 9, en het plusteken betekent dat het voorgaande teken,
+hier dus <code class="docutils literal notranslate"><span class="pre">\d</span></code>, één of meer keer voor mag komen. Niet alleen een enkel cijfer
+is dus toegestaan, maar ook meerdere cijfers.</p>
+<p>Daarnaast geeft het teken <code class="docutils literal notranslate"><span class="pre">^</span></code> aan dat een match van de reguliere expressie
+alleen gevonden mag worden aan het begin van de string waarin gezocht wordt;
+concreet betekent het hier dus dat <code class="docutils literal notranslate"><span class="pre">/blog/5</span></code> wel voldoet aan het patroon,
+maar bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">/test/blog/5</span></code> niet.</p>
+<p>Enkele andere speciale tekens zijn de punt <code class="docutils literal notranslate"><span class="pre">.</span></code>, die voor elk willekeurig
+teken staat en de blokhaken <code class="docutils literal notranslate"><span class="pre">[</span></code> en <code class="docutils literal notranslate"><span class="pre">]</span></code> die gebruikt kunnen worden om een paar
+specifiek tekens te accepteren. Zo zal <code class="docutils literal notranslate"><span class="pre">h[eu]lp</span></code> matchen op zowel de string
+<code class="docutils literal notranslate"><span class="pre">help</span></code> als de string <code class="docutils literal notranslate"><span class="pre">hulp</span></code>. Ook kan <code class="docutils literal notranslate"><span class="pre">\w</span></code> gebruikt worden om een willekeurig
+<em>word character</em> te matchen; dit zijn letters, cijfers en de underscore.</p>
+<p>Naast het plusteken dat één of meer betekent, kan ook de asterisk <code class="docutils literal notranslate"><span class="pre">*</span></code>
+gebruikt worden om aan te geven dat het vorige teken nul of meer keer voor
+mag komen, en het vraagteken <code class="docutils literal notranslate"><span class="pre">?</span></code> om aan te geven dat het vorige teken nul of
+één keer voor mag komen.</p>
+<p>Ten slotte kan naast <code class="docutils literal notranslate"><span class="pre">^</span></code>, dat aangeeft dat een match alleen gevonden mag
+worden aan het begin van de string, het dollarteken <code class="docutils literal notranslate"><span class="pre">$</span></code> gebruikt worden om
+aan te geven dat een match alleen gevonden mag worden aan het eind van de
+string. Zo zou de reguliere expressie <code class="docutils literal notranslate"><span class="pre">a</span></code> matchen op de string <code class="docutils literal notranslate"><span class="pre">van</span></code>,
+aangezien in die string de substring <code class="docutils literal notranslate"><span class="pre">a</span></code> te vinden is die overeenkomt met de
+reguliere expressie, maar zal de regex <code class="docutils literal notranslate"><span class="pre">^a$</span></code> niet matchen op <code class="docutils literal notranslate"><span class="pre">van</span></code>, maar ook
+niet op <code class="docutils literal notranslate"><span class="pre">va</span></code> of <code class="docutils literal notranslate"><span class="pre">an</span></code>, omdat in alle gevallen er nog tekens voor of na de
+match staan.</p>
+<p>In alle gevallen kan een speciaal teken voorafgegaan worden door een
+backslash om de letterlijke betekenis te gebruiken; zo matcht <code class="docutils literal notranslate"><span class="pre">.</span></code> op alle
+tekens, maar <code class="docutils literal notranslate"><span class="pre">\.</span></code> alleen op de punt.</p>
+<p>De scherpe lezer zal opmerken dat in het eerstgenoemde voorbeeld de
+reguliere expressie <code class="docutils literal notranslate"><span class="pre">^/blog/\d+</span></code> inderdaad niet op <code class="docutils literal notranslate"><span class="pre">/test/blog/5</span></code> zal
+matchen, aangezien er nog tekens voor de match staan en het teken <code class="docutils literal notranslate"><span class="pre">^</span></code> is
+gebruikt in de regex. Echter, deze regex zal wel matchen op bijvoorbeeld
+<code class="docutils literal notranslate"><span class="pre">/blog/5-php-8.5-is-nu-beschikbaar</span></code>, omdat geen dollarteken wordt
+gebruikt. Dit is in dit geval bewust;
+<a class="reference external" href="https://developers.google.com/search/docs/crawling-indexing/url-structure">Google</a>
+raadt bijvoorbeeld het opnemen van een beschrijving van de pagina aan voor het
+optimaliseren van zoekresultaten: <em>“When possible, use readable words
+rather than long ID numbers in your URLs.”</em> Een voorbeeld van een dergelijke
+URL-structuur in de praktijk is te vinden op <a class="reference external" href="http://nu.nl">nu.nl</a>: de URL
+<a class="reference external" href="https://www.nu.nl/binnenland/6381848/live-sneeuw-vanaf-middernacht-code-oranje-in-het-noorden-vanwege-gladheid.html">https://www.nu.nl/binnenland/6381848/live-sneeuw-vanaf-middernacht-code-oranje-in-het-noorden-vanwege-gladheid.html</a>
+is de “officiële” URL waar naar gelinkt worden, maar alleen het getal is
+relevant. De URL <a class="reference external" href="https://www.nu.nl/test/6381848/test">https://www.nu.nl/test/6381848/test</a> kan bijvoorbeeld ook
+gebruikt worden om dezelfde pagina te vinden.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="applicatie-maken">
-<h1>Applicatie maken<a class="headerlink" href="#applicatie-maken" title="Link to this heading">#</a></h1>
-<p>Een PHP-applicatie bevindt zich in een directorystructuur die als project in de
-IDE geopend wordt. [TODO]</p>
-<p>Zoals eerder genoemd hebben webapplicaties in beginsel een
-client-serverarchitectuur. De browser van de gebruiker dient als client die
-verzoeken doet aan de applicatie die als server dient. Dit betekent dat deze
-applicatie niet, zoals bijvoorbeeld reguliere Python-programma’s, eenmalig
-draaien en dan stoppen, maar steeds beschikbaar moeten zijn voor
-verzoeken van clients. Dit is vergelijkbaar met Python-programma’s die Flask
-gebruiken.</p>
-<p>Er is echter een relevant verschil waardoor we PHP-programma’s toch als
-eenmalig draaiende programma’s kunnen schrijven. Een Python Flask-applicatie
-moet zelf zorgdragen voor het afhandelen van meerdere verzoeken, en gebruikt
-in het algemeen een functie als aanspreekpunt hiervoor. Alle verzoeken
-worden dus door dezelfde instantie van de applicatie uitgevoerd. Bij PHP is
-het daarentegen gebruikelijk dat er een webserver is die zorgt voor het
-afhandelen van verzoeken en deze doorstuurt naar een PHP-applicatie die een
-enkel verzoek afhandelt. Elke instantie van de PHP-applicatie hoeft dus
-slechts een enkel verzoek af te handelen.</p>
-<p>[TODO routing obv directorystructuur]</p>
-<p>Dit alles laat zich samenvatten in het onderstaande sequentiediagram.</p>
-<p>[TODO sequentiediagram]</p>
-<p>Zoals hierboven vermeld scheidt PHP de webserver van de applicatie. In een
-productieomgeving wordt vaak een webserver als Apache of Nginx gebruikt. In
-een ontwikkelomgeving is dit echter overkill. Vandaar dat er een eenvoudige
-webserver ingebouwd is in PHP, die voor ontwikkelomgevingen gebruikt kan
-worden. Deze kan gestart worden door onderstaand commando.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>php<span class="w"> </span>-S<span class="w"> </span>localhost:8000
+<section id="regexes-in-php">
+<h2>Regexes in PHP<a class="headerlink" href="#regexes-in-php" title="Link to this heading">#</a></h2>
+<p>In PHP is de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.preg-match.php"><code class="docutils literal notranslate"><span class="pre">preg_match</span></code></a>
+beschikbaar om strings te doorzoeken op reguliere expressies. De eerste
+parameter van deze functie is de te gebruiken reguliere expressie en de
+tweede parameter is de string die doorzocht moet worden. Als de regex
+gevonden wordt, geeft de functie de waarde 1 terug, anders de waarde 0.</p>
+<p>Let er hierbij op dat de reguliere expressie omsloten moet worden door twee
+niet-alfanumerieke tekens, de zogeheten <em>delimiters</em>. Het is gebruikelijk om
+hier slashes voor te gebruiken, zoals in het onderstaande voorbeeld. Dit is
+bijvoorbeeld ook het gebruik in talen als Perl en JavaScript.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$match = preg_match(&#39;/h[eu]lp/&#39;, &#39;helpen&#39;);</span>
 </pre></div>
 </div>
-<p>Na het uitvoeren van dit commando wordt de huidige directory, van waaruit
-het commando was uitgevoerd, gepubliceerd op <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code>. De
-huidige directory wordt nu de <em>document root</em> van de server genoemd. Dit
-zal in principe de hoofdddirectory van het project zijn. Omdat we later
-allerlei configuratiebestanden zullen toevoegen aan de applicatie die niet
-aan de eindgebruiker getoond mogen worden, is het gebruik van de
-hoofddirectory als document root ongewenst vanuit securityperspectief.</p>
-<p>Het is daarom gebruikelijk een directory <code class="docutils literal notranslate"><span class="pre">public</span></code> te maken die gebruikt wordt
-als document root. Op die manier kunnen statische bestanden en PHP-scripts die
-door de gebruiker aangeroepen mogen worden in die directory worden gezet
-maar kan de gebruiker niet bij andere bestanden. Om PHP te vertellen dat
-<code class="docutils literal notranslate"><span class="pre">public</span></code> als document root gebruikt moet worden, wordt bovenstaand commando als
-volgt aangepast.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>php<span class="w"> </span>-S<span class="w"> </span>localhost:8000<span class="w"> </span>-t<span class="w"> </span>public
+<p>In dit voorbeeld zal de waarde van <code class="docutils literal notranslate"><span class="pre">$match</span></code> 1 zijn, aangezien de regex
+gevonden kan worden in de string <code class="docutils literal notranslate"><span class="pre">helpen</span></code>.</p>
+<p>Als je de delimiters wilt gebruiken binnen de regex, moeten deze
+voorafgegaan worden door een backslash. De eerdergenoemde regex <code class="docutils literal notranslate"><span class="pre">/blog/\d+</span></code>
+zou dus, als slashes als delimiters worden gebruikt, als <code class="docutils literal notranslate"><span class="pre">/\/blog\/\d+/</span></code>
+geformatteerd moeten worden. Dit is duidelijk niet ideaal; het is daarom aan
+te bevelen om andere delimiters te gebruiken. Als bijvoorbeeld uitroeptekens
+worden gebruikt kan de regex als <code class="docutils literal notranslate"><span class="pre">!/blog/\d+!</span></code> worden geformatteerd.</p>
+</section>
+<section id="capturing-groups">
+<h2>Capturing groups<a class="headerlink" href="#capturing-groups" title="Link to this heading">#</a></h2>
+<p>Het matchen van URL’s is een begin, maar in vrijwel alle gevallen zullen we
+een onderdeel van de URL nodig hebben om het request goed af te handelen. In
+het voorbeeld <code class="docutils literal notranslate"><span class="pre">^/blog/\d+</span></code>, willen we onderscheid kunnen maken tussen
+bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">/blog/1</span></code> en <code class="docutils literal notranslate"><span class="pre">/blog/5</span></code>. Nu is het natuurlijk mogelijk om in de
+controller het pad opnieuw op te halen en daar, met bijvoorbeeld de functie
+<code class="docutils literal notranslate"><span class="pre">explode</span></code>, het tweede gedeelte van het pad op te halen en dat te gebruiken.
+Dat is echter niet ideaal: als we zouden besluiten om in plaats van <code class="docutils literal notranslate"><span class="pre">/blog/</span></code>
+de prefix <code class="docutils literal notranslate"><span class="pre">/nl/blog/</span></code> te gaan gebruiken moet dan niet alleen het pad in de
+router worden aangepast, maar ook de logica die het getal uit het pad haalt.</p>
+<p>Het zou daarom de voorkeur hebben als de id meteen bij het matchen van de
+reguliere expressie verkregen kan worden. Dit is ook mogelijk; het is
+mogelijk om haakjes <code class="docutils literal notranslate"><span class="pre">(</span></code> en <code class="docutils literal notranslate"><span class="pre">)</span></code> te gebruiken om een deel van de reguliere
+expressie als <em>capturing group</em> aan te merken. Als we bijvoorbeeld het id
+willen verkrijgen, kunnen we de regex <code class="docutils literal notranslate"><span class="pre">^/blog/(\d+)</span></code> gebruiken. Het is dan
+in PHP mogelijk om een derde parameter mee te geven aan <code class="docutils literal notranslate"><span class="pre">preg_match</span></code>. Deze
+parameter is <em>by reference</em>, dus dit moet een verwijzing naar een variabele
+zijn. In deze variabele wordt een array gezet met de hele gevonden match en
+alle capturing groups, zoals in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$has_match = preg_match(&#39;!^/blog/(\d+)!&#39;, &#39;/blog/5-php-8.5-is-nu-beschikbaar&#39;, $matches);</span>
+<span class="x">var_dump($has_match, $matches);</span>
 </pre></div>
 </div>
-<section id="id1">
-<h2>???<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>directorystructuur</p></li>
-<li><p>php -S localhost</p></li>
-<li><p>sequentiediagram</p></li>
-<li><p>php-tags</p></li>
-<li><p>echo</p></li>
-<li><p>assets</p></li>
-<li><p>HTML (a)</p></li>
-</ul>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="dynamische-webpagina-s">
-<h1>Dynamische webpagina’s<a class="headerlink" href="#dynamische-webpagina-s" title="Link to this heading">#</a></h1>
-<p>Op dit moment kunnen we met PHP-programma’s alleen nog maar statische
-content genereren; het heeft nu dus nog geen toegevoegde waarde ten opzichte
-van ‘kale’ HTML-bestanden.</p>
-<p>PHP heeft echter natuurlijk genoeg functionaliteiten om wel degelijk een
-meerwaarde te hebben. In dit hoofdstuk zullen we zien dat PHP variabelen
-heeft, en zoals elke imperatieve taal commando’s sequentieel kan
-uitvoeren en conditionele statements en lusconstructies kent.</p>
-<section id="variabelen">
-<h2>Variabelen<a class="headerlink" href="#variabelen" title="Link to this heading">#</a></h2>
-<p>Variabelen worden in PHP altijd voorafgegaan door het teken <code class="docutils literal notranslate"><span class="pre">$</span></code>. Daarnaast
-hebben variabelen in PHP in principe geen vastgesteld type; PHP is een
-dynamisch getypeerde taal, net als bijvoorbeeld Python. Dit betekent dat een
-variabele bijvoorbeeld eerst een getal en daarna een string kan bevatten.
-Ook kent PHP de gangbare wiskunde operatoren <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code> voor
-machtsverheffen en <code class="docutils literal notranslate"><span class="pre">%</span></code> als modulo-operator.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = 5;</span>
-<span class="x">$b = 2.5;</span>
-<span class="x">$c = $a * $b;</span>
-<span class="x">echo($c);</span>
+<p>Bovenstaande code zal onderstaande uitvoer geven.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">array</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=&gt;</span>
+  <span class="n">string</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="s2">&quot;/blog/5&quot;</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=&gt;</span>
+  <span class="n">string</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="s2">&quot;5&quot;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Bovenstaande code zal het getal <code class="docutils literal notranslate"><span class="pre">12.5</span></code> afdrukken.</p>
-<p>Net als Python kunnen <code class="docutils literal notranslate"><span class="pre">+=</span></code>, <code class="docutils literal notranslate"><span class="pre">-=</span></code> en zo verder gebruikt worden als gecombineerde
-berekening en toekenning. <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">+=</span> <span class="pre">5</span></code> is functioneel gelijk aan <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">=</span> <span class="pre">$a</span> <span class="pre">+</span> <span class="pre">5</span></code>.
-Daarnaast bestaan de operatoren <code class="docutils literal notranslate"><span class="pre">++</span></code> en <code class="docutils literal notranslate"><span class="pre">--</span></code> op dezelfde</p>
-<p>[TODO strings]</p>
-<ul class="simple">
-<li><p>variabelen</p></li>
-<li><p>strings en strings interpoleren</p></li>
-<li><p>Operators</p></li>
-<li><p>if</p></li>
-<li><p>for/while</p></li>
-</ul>
+<p>Te zien is dat de hele match, <code class="docutils literal notranslate"><span class="pre">/blog/5</span></code>, te vinden is op index 0 van de
+array. Daarnaast is de capturing group <code class="docutils literal notranslate"><span class="pre">(\d+)</span></code> terug te vinden op index 1;
+als er meerdere capturing groups zijn worden ze van links naar rechts genummerd
+aan de hand van de positie van het openingshaakje.</p>
+<p>Bij een capturing group kunnen we ook een naam meegeven; de capturing group
+zal dan ook onder die naam in de array terugkomen. Dit kan door <code class="docutils literal notranslate"><span class="pre">?P&lt;id&gt;</span></code> aan
+het begin van de capturing group te zetten, waarbij <code class="docutils literal notranslate"><span class="pre">id</span></code> de sleutel in de
+array wordt en dus vervangen kan worden door een andere naam. Als we
+bovenstaande voorbeeld hiermee aanpassen, zoals hieronder staat, zal ook de
+sleutel <code class="docutils literal notranslate"><span class="pre">id</span></code> verschijnen in de array <code class="docutils literal notranslate"><span class="pre">$matches</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$has_match = preg_match(&#39;!^/blog/(?P&lt;id&gt;\d+)!&#39;, &#39;/blog/5-php-8.5-is-nu-beschikbaar&#39;, $matches);</span>
+<span class="x">var_dump($has_match, $matches);</span>
+</pre></div>
+</div>
+<p>De uitvoer wordt nu als volgt.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">int</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">array</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="p">{</span>
+  <span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=&gt;</span>
+  <span class="n">string</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span> <span class="s2">&quot;/blog/5&quot;</span>
+  <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]</span><span class="o">=&gt;</span>
+  <span class="n">string</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="s2">&quot;5&quot;</span>
+  <span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">=&gt;</span>
+  <span class="n">string</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="s2">&quot;5&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Te zien is dat de id nu zowel beschikbaar is onder de index 1 als onder de
+sleutel <code class="docutils literal notranslate"><span class="pre">id</span></code>.</p>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="gebruikersinvoer">
-<h1>Gebruikersinvoer<a class="headerlink" href="#gebruikersinvoer" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>Statelessness</p></li>
-<li><p>_GET, _SERVER</p></li>
-<li><p>arrays, associatieve arrays</p></li>
-<li><p>foreach</p></li>
-</ul>
 </section>
 
     <script type="text/x-thebe-config">
@@ -548,7 +574,7 @@ Daarnaast bestaan de operatoren <code class="docutils literal notranslate"><span
         },
         kernelOptions: {
             name: "python3",
-            path: "./1.1-php"
+            path: "./4.2-routing"
         },
         predefinedOutput: true
     }
@@ -566,20 +592,20 @@ Daarnaast bestaan de operatoren <code class="docutils literal notranslate"><span
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../about/literatuur.html"
+       href="callable.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Literatuur</p>
+        <p class="prev-next-title">Verwijzingen naar functies</p>
       </div>
     </a>
     <a class="right-next"
-       href="installeren.html"
+       href="oefening.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">PHP installeren</p>
+        <p class="prev-next-title">Oefeningen</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -600,18 +626,10 @@ Daarnaast bestaan de operatoren <code class="docutils literal notranslate"><span
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Intro</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applicatie-maken">Applicatie maken</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">???</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#speciale-tekens">Speciale tekens</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regexes-in-php">Regexes in PHP</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#capturing-groups">Capturing groups</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webpagina-s">Dynamische webpagina’s</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabelen">Variabelen</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gebruikersinvoer">Gebruikersinvoer</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>

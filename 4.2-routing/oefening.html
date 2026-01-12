@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Opgave &#8212; Webtechnologie II</title>
+    <title>Oefeningen &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '5.2-reflectie/opgave';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4.2-routing/oefening';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Intro" href="../6.1-database/intro.html" />
-    <link rel="prev" title="Intro" href="intro.html" />
+    <link rel="next" title="Opdracht" href="opdracht.html" />
+    <link rel="prev" title="Reguliere expressies" href="regex.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -220,13 +220,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/frontcontroller.html">De front controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/router.html">De router</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/callable.html">Verwijzingen naar functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/regex.html">Reguliere expressies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opdracht.html">Opdracht</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
 <ul class="nav bd-sidenav">
@@ -234,9 +234,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../5.1-di/opgave.html">Opgave</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 Reflectie</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Opgave</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.2-reflectie/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-reflectie/opgave.html">Opgave</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
 <ul class="nav bd-sidenav">
@@ -311,7 +311,7 @@
       
       
       
-      <li><a href="../_sources/5.2-reflectie/opgave.md" target="_blank"
+      <li><a href="../_sources/4.2-routing/oefening.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -374,7 +374,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -385,11 +387,20 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Opgave</h1>
+    <h1>Oefeningen</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#callables">Callables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reguliere-expressies">Reguliere expressies</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -399,8 +410,54 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="opgave">
-<h1>Opgave<a class="headerlink" href="#opgave" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="oefeningen">
+<h1>Oefeningen<a class="headerlink" href="#oefeningen" title="Link to this heading">#</a></h1>
+<section id="callables">
+<h2>Callables<a class="headerlink" href="#callables" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Sorteer een array van strings aan de hand van de lengte van de strings.
+Gebruik hiervoor de functie <code class="docutils literal notranslate"><span class="pre">usort</span></code> en een callable. Je kan in de
+callable ook gebruik maken van de
+<a class="reference external" href="https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.spaceship-op">spaceshipoperator</a>
+<code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code>, maar dat hoeft niet.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = [&#39;Foo&#39;, &#39;Woord&#39;, &#39;Test&#39;];</span>
+<span class="x">usort($array, /* ... */);</span>
+<span class="x">assert($array == [&#39;Foo&#39;, &#39;Test&#39;, &#39;Woord&#39;]);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Tel het aantal elementen van een array. Gebruik hierbij de functie
+<code class="docutils literal notranslate"><span class="pre">array_map</span></code> en een anonieme functie, waarbij de anonieme functie een lokale
+variabele <em>by reference</em> bindt zodat deze variabele in de callable steeds
+opgehoogd kan worden om zo het aantal te tellen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$array = [&#39;Foo&#39;, &#39;Woord&#39;, &#39;Test&#39;];
+$k = 0;
+array_map(/* ... */, $array);
+assert($k == 3);
+</pre></div>
+</div>
+</li>
+<li><p>Maak een klasse AddN die een instantievariabele heeft die een integer
+bevat, en een methode die een closure teruggeeft waarmee je dat getal bij
+je eigen getal kan tellen.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class AddN {</span>
+<span class="x">   public function __construct(public int $n) {}</span>
+<span class="x">   public function getCalculation(): callable { /* ... */ }</span>
+<span class="x">}</span>
+<span class="x">$add5 = new AddN(5)-&gt;getCalculation();</span>
+<span class="x">assert($add5(3) == 8);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</section>
+<section id="reguliere-expressies">
+<h2>Reguliere expressies<a class="headerlink" href="#reguliere-expressies" title="Link to this heading">#</a></h2>
+<p>Reguliere expressies zijn een uitgebreid onderwerp, waarbij oefening
+essentieel is om een begrip te krijgen van de mogelijkheden. Op de site
+<a class="reference external" href="https://regexone.com">RegexOne</a> staan ruim twintig oefeningen om je kennis
+van reguliere expressies op te bouwen.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -416,7 +473,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./5.2-reflectie"
+            path: "./4.2-routing"
         },
         predefinedOutput: true
     }
@@ -434,20 +491,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="regex.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">Reguliere expressies</p>
       </div>
     </a>
     <a class="right-next"
-       href="../6.1-database/intro.html"
+       href="opdracht.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">Opdracht</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -457,6 +514,23 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#callables">Callables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reguliere-expressies">Reguliere expressies</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

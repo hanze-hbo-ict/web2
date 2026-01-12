@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Opgave &#8212; Webtechnologie II</title>
+    <title>2.1 HTML: Opgaven &#8212; Webtechnologie II</title>
   
   
   
@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=2d50fd4e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=94e65080" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -65,8 +65,8 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '2.1-html/opgave';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Intro" href="../2.2-kernel/intro.html" />
-    <link rel="prev" title="Intro" href="intro.html" />
+    <link rel="next" title="HTTP" href="../2.2-kernel/http.html" />
+    <link rel="prev" title="2.1 HTML: Introductie" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -166,7 +166,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../about/syllabus.html">
-                    Welkom
+                    Webtechnologie 2
                 </a>
             </li>
         </ul>
@@ -194,13 +194,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="intro.html">2.1 HTML: Introductie</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2.1 HTML: Opgaven</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.2 Kernel</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/http.html">HTTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/kernel.html">Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/autoloader.html">Autoloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/composer.html">Composer</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
 <ul class="nav bd-sidenav">
@@ -219,8 +221,12 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
 <ul class="nav bd-sidenav">
@@ -379,7 +385,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Opgave</h1>
+    <h1>2.1 HTML: Opgaven</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -393,8 +399,11 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="opgave">
-<h1>Opgave<a class="headerlink" href="#opgave" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="html-opgaven">
+<h1>2.1 HTML: Opgaven<a class="headerlink" href="#html-opgaven" title="Link to this heading">#</a></h1>
+<p>Hoewel we ons bij de eindopdracht meer met de backend dan met de frontend bezighouden, is het natuurlijk wel van belang dat je weet <em>wat</em> je met die backend op moet leveren.</p>
+<p>Doen we hier nog gewoon die oefening die we eerder hadden, met de twee beste docenten van HBO-ICT?</p>
+<p><img alt="Dit zou dan de uiteindelijke uitwerking worden" src="../_images/2.1-opgave.jpeg" /></p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -433,15 +442,15 @@
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">2.1 HTML: Introductie</p>
       </div>
     </a>
     <a class="right-next"
-       href="../2.2-kernel/intro.html"
+       href="../2.2-kernel/http.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">HTTP</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

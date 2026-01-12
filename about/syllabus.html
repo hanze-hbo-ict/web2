@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Welkom &#8212; Webtechnologie II</title>
+    <title>Webtechnologie 2 &#8212; Webtechnologie II</title>
   
   
   
@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=2d50fd4e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=94e65080" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -167,7 +167,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1 current active">
                 <a class="reference internal" href="#">
-                    Welkom
+                    Webtechnologie 2
                 </a>
             </li>
         </ul>
@@ -195,13 +195,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/intro.html">2.1 HTML: Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/opgave.html">2.1 HTML: Opgaven</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.2 Kernel</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/http.html">HTTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/kernel.html">Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/autoloader.html">Autoloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/composer.html">Composer</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
 <ul class="nav bd-sidenav">
@@ -220,8 +222,12 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
 <ul class="nav bd-sidenav">
@@ -369,7 +375,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -380,11 +388,19 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Welkom</h1>
+    <h1>Webtechnologie 2</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welkom">Welkom</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -394,16 +410,18 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <p><img alt="Hanze logo" src="../_images/logo-hanze.png" /></p>
-<section class="tex2jax_ignore mathjax_ignore" id="welkom">
-<h1>Welkom<a class="headerlink" href="#welkom" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="webtechnologie-2">
+<h1>Webtechnologie 2<a class="headerlink" href="#webtechnologie-2" title="Link to this heading">#</a></h1>
+<section id="welkom">
+<h2>Welkom<a class="headerlink" href="#welkom" title="Link to this heading">#</a></h2>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">echo</span> <span class="s2">&quot;hello, world!&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
 <p>Welkom bij Webtechnologie II (WEB2)</p>
-<p>Dit werkboek bevat de onderwerpen voor zowel <em>Objectgeoriënteerd Programmeren I</em> als <em>Objectgeoriënteerd Programmeren II</em>. Je kan hier het materiaal terugvinden dat tijdens de hoorcollege wordt gebruikt, alsmede practicum-, huiswerk- en oefenopgaven.</p>
+<p>Dit werkboek bevat het onderwijsmateriaal van de module <em>webtechnologie 2</em>. Je vindt hierin de onderwerpen per week, voorzien van een korte theoretische introductie en concrete opdrachten die voor die week bedoeld zijn.</p>
+</section>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -481,6 +499,22 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#welkom">Welkom</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

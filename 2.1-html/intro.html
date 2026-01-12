@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Intro &#8212; Webtechnologie II</title>
+    <title>2.1 HTML: Introductie &#8212; Webtechnologie II</title>
   
   
   
@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=2d50fd4e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=94e65080" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '2.1-html/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Opgave" href="opgave.html" />
+    <link rel="next" title="2.1 HTML: Opgaven" href="opgave.html" />
     <link rel="prev" title="Opgave" href="../1.2-php/opgave.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
@@ -166,7 +166,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../about/syllabus.html">
-                    Welkom
+                    Webtechnologie 2
                 </a>
             </li>
         </ul>
@@ -194,13 +194,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2.1 HTML: Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opgave.html">2.1 HTML: Opgaven</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.2 Kernel</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/http.html">HTTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/kernel.html">Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/autoloader.html">Autoloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/composer.html">Composer</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
 <ul class="nav bd-sidenav">
@@ -219,8 +221,12 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
 <ul class="nav bd-sidenav">
@@ -368,7 +374,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -379,11 +387,23 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Intro</h1>
+    <h1>2.1 HTML: Introductie</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html">HTML</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tags-en-nodes"><em>Tags</em> en <em>Nodes</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-vergevingsgezinde-browser">De vergevingsgezinde browser</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -393,8 +413,77 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="html-introductie">
+<h1>2.1 HTML: Introductie<a class="headerlink" href="#html-introductie" title="Link to this heading">#</a></h1>
+<section id="html">
+<h2>HTML<a class="headerlink" href="#html" title="Link to this heading">#</a></h2>
+<section id="tags-en-nodes">
+<h3><em>Tags</em> en <em>Nodes</em><a class="headerlink" href="#tags-en-nodes" title="Link to this heading">#</a></h3>
+<p>Wanneer we werk maken voor het web, dan hebben we onvermijdelijk te maken met HTML: <em>Hypertext Markup Language</em> (en met JavaScript, maar dat parkeren we tot webtechnologie 3). HTML is de standaardtaal waarin documenten worden geschreven waarvan het de bedoeling is dat ze in een <em>webbrowser</em> worden getoond. Een browser ontvangt HTML (meestal, maar niet per se, van een <em>webserver</em> – hoe dit proces exact verloopt valt buiten deze module), maakt aan de hand hiervan een <em>Document Object Model tree</em> (DOM-tree), bepaalt aan de hand van deze DOM-tree en andere informatie (afbeeldingen, stijling, grootte van het scherm, …) hoe de onderdelen uit deze tree op het scherm moeten komen en tekent uiteindelijk de informatie op het scherm. Dit hele proces staat bekend onder de term <em>rendering</em>.</p>
+<p>De basis van HTML is de <em>informatie</em> die je uiteindelijk op het scherm wilt hebben. Meestal is dat tekst, maar het kan natuurlijk ook een plaatje of een filmpje of iets dergelijks zijn. Deze tekst kunt je door middel van HTML-tags voorzien van meta-informatie, en die meta-informatie op zijn beurt weer van meta-informatie – en dat recursief zodat je een boomstructuur krijgt.</p>
+<p>De onderste delen van deze boom is de <em>tekst</em>, de bovenste node is de <em>root-node</em> is de html-node:</p>
+<p>HTML-tags beginnen met een <em>groter dan teken</em> (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>), gevolgd door de <em>naam</em> van de tag die weer gevolgd wordt door nul of meer <em>attributen</em> van die tag. Een tag sluit je af met een <em>kleiner dan teken</em> (<code class="docutils literal notranslate"><span class="pre">&gt;</span></code>): <code class="docutils literal notranslate"><span class="pre">&lt;tag</span> <span class="pre">attribuut1=&quot;value&quot;</span> <span class="pre">attribuut2=&quot;value1</span> <span class="pre">value2&quot;&gt;</span></code>. Na deze tag zet je dan datgene wat je binnen die tag wilt hebben, waarna je de tag afsluit door dezelfde naam vooraf te doen gaan door een <em>slash</em> (<code class="docutils literal notranslate"><span class="pre">/</span></code>): <code class="docutils literal notranslate"><span class="pre">&lt;/tag&gt;</span></code>:</p>
+<p><img alt="de algemene opbouw van een html-tag" src="../_images/html-tags.jpeg" /></p>
+<p>Zoals gemeld maakt de browser op basis van de gegeven HTML een DOM-tree. Deze boom bestaat uit <em>nodes</em> die uiteindelijk door dezelfde browser <em>gerenderd</em> worden. Er is dus een verschil tussen <em>tags</em> en <em>nodes</em>: de <em>tag</em> is het stuk HTML op basis waarvan de browser een instantie van de corresponderende <em>node</em> maakt. De HTML is gewoon platte tekst die je kunt intypen of genereren, de DOM is een tree structuur die op basis hiervan gemaakt is. Elke <em>node</em> in deze DOM is een instantie van een klasse die <a class="reference external" href="https://dom.spec.whatwg.org/#interface-node"><code class="docutils literal notranslate"><span class="pre">de</span> <span class="pre">Node-interface</span></code></a> implementeert. Bekijk <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/API/Node#specifications">eventueel de documentatie op MDN</a>.</p>
+<div class="tip admonition">
+<p class="admonition-title">Documentatie</p>
+<p>Om documentatie over webtechnieken te vinden wordt in de regel gebruik gemaakt van <a class="reference external" href="https://developer.mozilla.org/en-US/">het Mozilla Developer Network (MDN)</a>. Hierin staat alles wat met het web te maken heeft zeer uitgebreid beschreven. Behalve het MDN is er ook nog <a class="reference external" href="https://www.w3.org/">het World Wide Web Consortium (W3C)</a> (onder auspicieën van niemand minder dan <a class="reference external" href="https://www.w3.org/People/Berners-Lee/">Tim Berners-Lee (TBL)</a>) dat de standaarden webstandaarden definieert en publiceert.</p>
+</div>
+<p>Er zijn vele tientallen tags gedefinieerd (en je kunt ze ook zelf maken), allemaal met hun eigen rol en eigenaardigheden. <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements">Op MDN</a> vind je een compleet overzicht, maar het belangrijkste dat je moet onthouden is de algemene structuur van een HTML-document:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+</div>
+<p><img alt="Een html-document (links) en de corresponderende DOM-tree (rechts)" src="../_images/html-tags-nodes.jpeg" /></p>
+<p>Verder is het van belang je te realiseren dat niet elke tag zomaar direct binnen de <code class="docutils literal notranslate"><span class="pre">body</span></code>-tag gezet kan worden. Alleen de zogenaamde <a class="reference external" href="https://devdoc.net/web/developer.mozilla.org/en-US/docs/HTML/Block-level_elements.html"><em>block-level elements</em></a> kunnen als direct <em>child</em> van de body-tag optreden. De belangrijkste <em>block-level elements</em> zetten we hieronder:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>div
+fieldset
+footer
+form
+nav
+ol
+p
+section
+table
+ul
+</pre></div>
+</div>
+</section>
+<section id="de-vergevingsgezinde-browser">
+<h3>De vergevingsgezinde browser<a class="headerlink" href="#de-vergevingsgezinde-browser" title="Link to this heading">#</a></h3>
+<p>De achterliggende structuur voor het renderen van een webpagina is dus een boom. Deze boom wordt gegenereerd op basis van de tags in de gegeven HTML. Het is dus van belang dat die gegeven HTML eenvoudig in een valide boomstructuur omgezet kan worden, wat inhoudt dat alle tags correct gebalanceerd zijn:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;div&gt;&lt;span&gt;
+    incorrect gebalaceerde tags (de span wordt afgesloten *na* de div)
+&lt;/div&gt;&lt;/span&gt;
+</pre></div>
+</div>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>&lt;div&gt;&lt;span&gt;
+    correct gebalaceerde tags (de span wordt afgesloten *voor* de div)
+&lt;/span&gt;&lt;/div&gt;
+</pre></div>
+</div>
+<p>Het probleem waar we als webontwikkelaars tegenaan lopen is dat browsers behoorlijk <em>vergevingsgezind</em> zijn. Als de browser in de HTML een verkeerde tag tegenkomt, probeert -ie daar binnen de huidige context wel iets van te maken. Zo is het waarschijnlijk dat de bovengenoemde weergegeven verkeerd gebalanceerde HTML toch wel op een goeie wijze wordt gerenderd en dus goed wordt weergegeven: vanuit de historie en ontstaansgeschiedenis van het web en browsers, gaan browsers erg ver in het laten zien van de uiteindelijke informatie.</p>
+<p>Op zich is dit prettig, omdat dit de ontwikkelaars ontslaat van de verplichting erg netjes te werken. Maar aan de andere kant is dit erg onhandig, omdat het de ontwikkelaars ontslaat van de verplichting om erg netjes te werken.</p>
+<p>Als je rommelige HTML aan de browser oplevert, heeft die drie consequenties (hieronder weergegeven in afnemende mate van zorgelijkheid):</p>
+<ol class="arabic simple">
+<li><p>Het <em>renderen</em> van de html neemt (aanzienlijk) meer tijd in beslag, omdat de browser meer werk moet uitvoeren.</p></li>
+<li><p>Het is <em>onvoorspelbaar</em> hoe de webpagina er in verschillende browsers uit komt te zien, omdat verschillende browsers verschillende manieren hebben om met slecht gebalanceerde HTML om te gaan.</p></li>
+<li><p>Het komt <em>onprofessioneel</em> over, dus als je onzorgvuldig bent met je HTML zul je door de industrie en door je collega’s minder serieus genomen worden.</p></li>
+</ol>
+<p>Gelukkig zijn de meeste hedendaagse ontwikkelomgevingen zó ingericht dat ze de ontwikkelaar helpen met het maken (of genereren) van valide HTML. En in het ergste geval kun je natuurlijk <a class="reference internal" href="#"><span class="xref myst">een HTML-validator</span></a> gebruiken om je werk te checken</p>
+<p><img alt="De output van de w3c-html-validator op de HTML van deze pagina" src="../_images/html-validator.jpeg" /></p>
+<div class="warning admonition">
+<p class="admonition-title">Andere problemen</p>
+<p>Die vergevingsgezindheid van de browser komen we op nog wel meer plekken in de ontwikkeling voor het web tegen. Soms kan dat echt leiden tot onverwachte en op het eerste gezicht onverklaarbare resultaten. Het is daarom van belang dat je als webontwikkelaar altijd in de gaten houdt wat je aan het doen bent en hoe je werk binnen de verschillende lagen tot uiting komt.</p>
+</div>
+<p>Binnen webtechnologie is er nog veel meer te vertellen over browsers en is er behalve HTML nog een aantal technieken die van belang zijn. Voor de huidige module is het evenwel voldoende om een zekere <em>working knowledge</em> van HTML te hebben. In webtechnologie3 gaan we veel dieper in op de technieken van de front-end.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -441,7 +530,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Opgave</p>
+        <p class="prev-next-title">2.1 HTML: Opgaven</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -451,6 +540,26 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html">HTML</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tags-en-nodes"><em>Tags</em> en <em>Nodes</em></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-vergevingsgezinde-browser">De vergevingsgezinde browser</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

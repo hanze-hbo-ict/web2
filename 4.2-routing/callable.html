@@ -1,0 +1,740 @@
+
+<!DOCTYPE html>
+
+
+<html lang="nl" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Verwijzingen naar functies &#8212; Webtechnologie II</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=94e65080" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=b028fc25"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=5ce3cdba"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4.2-routing/callable';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Zoeken" href="../search.html" />
+    <link rel="next" title="Reguliere expressies" href="regex.html" />
+    <link rel="prev" title="De router" href="router.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="nl"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../about/syllabus.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-hanze.png" class="logo__image only-light" alt="Webtechnologie II - Home"/>
+    <img src="../_static/logo-hanze.png" class="logo__image only-dark pst-js-only" alt="Webtechnologie II - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Zoeken</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../about/syllabus.html">
+                    Webtechnologie 2
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Over deze cursus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/intro.html">Intro</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/installeren.html">PHP installeren</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/opgave.html">Opgave</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/intro.html">2.1 HTML: Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/opgave.html">2.1 HTML: Opgaven</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2.2 Kernel</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/http.html">HTTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/kernel.html">Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/autoloader.html">Autoloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/composer.html">Composer</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Response</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router.html">De router</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 Reflectie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.2-reflectie/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-reflectie/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 Entities</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.2-entities/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.2-entities/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7.1 Authenticatie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7.2 Autorisatie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7.2-autorisatie/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.2-autorisatie/opgave.html">Opgave</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download deze pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/4.2-routing/callable.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download het bronbestand"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Afdrukken naar pdf"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Volledig scherm"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Verwijzingen naar functies</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#callables">Callables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anonieme-functies">Anonieme functies</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="verwijzingen-naar-functies">
+<h1>Verwijzingen naar functies<a class="headerlink" href="#verwijzingen-naar-functies" title="Link to this heading">#</a></h1>
+<p>Voor een router kan het handig zijn om per route aan te geven welke functie
+deze route afhandelt. Hiertoe zou bijvoorbeeld een associatieve array
+gebruikt kunnen worden met URL-patronen als sleutels en een verwijzing naar
+de bijbehorende functie als waardes. Dit is overigens zeker niet de enige
+mogelijke, of zelfs maar beste, implementatie. De vraag hierbij is op welke
+manier je verwijzingen naar functies kan opslaan. Daarnaast is het bij
+functionele programmeerstijlen vaak handig om met
+verwijzingen naar funties te werken. In PHP bestaan hiervoor twee types.</p>
+<section id="callables">
+<h2>Callables<a class="headerlink" href="#callables" title="Link to this heading">#</a></h2>
+<p>Het eerste type is een
+<a class="reference external" href="https://www.php.net/manual/en/language.types.callable.php">callable</a>. Dit is
+een generiek type dat een functieverwijzing beschrijft. Als een variabele
+<code class="docutils literal notranslate"><span class="pre">$a</span></code> van het type <code class="docutils literal notranslate"><span class="pre">callable</span></code> is, kan de functie waarnaar <code class="docutils literal notranslate"><span class="pre">$a</span></code> verwijst
+aangeroepen worden met <code class="docutils literal notranslate"><span class="pre">$a()</span></code>, waarbij eventuele argumenten net als bij een
+normale aanroep tussen de haakjes worden gezet.</p>
+<p>Een callable kan op een aantal manieren gemaakt worden. In de eerste plaats
+is de naam van een functie, als string, een callable, die je vervolgens
+zoals hierboven beschreven kan aanroepen. Dit wordt toegepast in het
+onderstaande voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = &#39;strlen&#39;;</span>
+<span class="x">var_dump($a(&#39;text&#39;));</span>
+</pre></div>
+</div>
+<p>Deze code zal <code class="docutils literal notranslate"><span class="pre">int(4)</span></code>, de lengte van de string <code class="docutils literal notranslate"><span class="pre">text</span></code>, afdrukken.</p>
+<p>In veel standaardfuncties van PHP is het mogelijk om een callable mee te
+geven die bepaalt hoe de functie werkt. Soms hebben deze functies iets
+andere namen dan de functie met standaardgedrag. Zo zal de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.sort.php"><code class="docutils literal notranslate"><span class="pre">sort</span></code></a> een array sorteren
+door gebruik te maken van de ingebouwde volgorde van waardes die ook
+gebruikt wordt als je vergelijkt met <code class="docutils literal notranslate"><span class="pre">&gt;</span></code> of <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>. Als je echter een andere
+volgorde wil hebben, kan je gebruik maken van de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.usort.php"><code class="docutils literal notranslate"><span class="pre">usort</span></code></a>, waarbij je als
+tweede parameter een callable kan opgeven. In dit specifieke geval heeft die
+callable twee parameters, de waardes waartussen vergeleken moet worden, en
+moet de functie -1, 0 of 1 teruggeven als het eerste argument respectievelijke
+kleiner dan, gelijk aan of groter dan het tweede argument.</p>
+<p>Een tweede manier om een callable te maken is door een array met twee
+elementen te gebruiken. Het element met index 0 is dan een object, en het
+element met index 1 is een string met de naam van een methode op dat object.
+Deze callable representeert een verwijzing naar een methode op een specifiek
+object. Merk op dat index 0 een object en geen klassenaam bevat; een methode
+kan immers altijd alleen worden aangeroepen op een specifieke instantie van
+een klasse. Stel bijvoorbeeld dat we een variabele <code class="docutils literal notranslate"><span class="pre">$kernel</span></code> hebben
+die <code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code> implementeert. Deze interface heeft een methode
+<code class="docutils literal notranslate"><span class="pre">handle</span></code>. Om een callable te maken die naar deze methode verwijst, kunnen we
+een array met twee elementen <code class="docutils literal notranslate"><span class="pre">[$kernel,</span> <span class="pre">'handle']</span></code> gebruiken.</p>
+<p>Daarnaast is elke anonieme functie, die we hierna nog zullen bespreken, ook een
+callable en is elk object dat een methode <code class="docutils literal notranslate"><span class="pre">__invoke</span></code> heeft ook een callable.
+In dat laatste geval wordt door het aanroepen van het object als callable
+die methode <code class="docutils literal notranslate"><span class="pre">__invoke</span></code> aangeroepen; <code class="docutils literal notranslate"><span class="pre">$obj()</span></code> is dan dus feitelijk gelijk aan
+<code class="docutils literal notranslate"><span class="pre">$obj-&gt;__invoke()</span></code>.</p>
+<p>Sinds PHP 8.1 is er bovendien de mogelijkheid om rechtstreeks een callable
+te verkrijgen door een
+<a class="reference external" href="https://www.php.net/manual/en/functions.first_class_callable_syntax.php">pseudo-functieaanroep</a>,
+waardoor het in beginsel niet meer noodzakelijk is om de eerdergenoemde
+callable-syntaxen met strings en arrays te gebruiken. Door de functie of
+methode aan te roepen met het beletselteken <code class="docutils literal notranslate"><span class="pre">...</span></code> als parameterlijst, wordt
+de functie niet aangeroepen, maar wordt er een callable van gemaakt. Waar
+hierboven bijvoorbeeld de string <code class="docutils literal notranslate"><span class="pre">'strlen'</span></code> werd gebruikt om een callable
+naar de functie <code class="docutils literal notranslate"><span class="pre">strlen</span></code> te maken, kan dit ook met de pseudo-aanroep
+<code class="docutils literal notranslate"><span class="pre">strlen(...)</span></code>, zoals in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = strlen(...);</span>
+<span class="x">var_dump($a(&#39;text&#39;));</span>
+</pre></div>
+</div>
+<p>Op dezelfde manier kan dit gedaan worden met methode-aanroepen. Waar we
+eerder <code class="docutils literal notranslate"><span class="pre">[$kernel,</span> <span class="pre">'handle']</span></code> gebruikten om een callable te verkrijgen naar
+de methode <code class="docutils literal notranslate"><span class="pre">handle</span></code> van het object <code class="docutils literal notranslate"><span class="pre">$kernel</span></code>, kan dat dus ook met de syntax
+<code class="docutils literal notranslate"><span class="pre">$kernel-&gt;handle(...)</span></code>.</p>
+<p>Deze syntax is qua gedrag niet geheel identiek aan de eerdergenoemde
+syntaxen met strings of arrays. In de eerste plaats wordt de controle of een
+methode bereikbaar is, als deze bijvoorbeeld private is, gedaan op de plek
+waar de callable gemaakt wordt, en niet op de plek waar deze gebruikt wordt.
+Zo is het dus met deze syntax mogelijk om een verwijzing naar een <code class="docutils literal notranslate"><span class="pre">private</span></code>
+functie terug te geven vanuit een andere methode van dat object. Als je dat
+zou proberen met de oude syntax, zou het gebruik van de callable buiten het
+object tot een foutmelding leiden, omdat op die plek de <code class="docutils literal notranslate"><span class="pre">private</span></code> functie
+niet beschikbaar is.</p>
+<p>Daarnaast zijn callables die op deze manier worden gemaakt een instantie van
+een subtype van callable, de klasse
+<a class="reference external" href="https://www.php.net/manual/en/class.closure.php"><code class="docutils literal notranslate"><span class="pre">Closure</span></code></a>. Dit biedt
+enkele mogelijkheden die verder gaan dan het generieke type <code class="docutils literal notranslate"><span class="pre">callable</span></code>, maar
+die voeren te ver om hier uit te werken. In het algemeen is het aan te raden
+om bij typehinting het type <code class="docutils literal notranslate"><span class="pre">callable</span></code> te gebruiken, zodat ook de hier
+genoemde syntaxen met strings en arrays gebruikt kunnen worden.</p>
+</section>
+<section id="anonieme-functies">
+<h2>Anonieme functies<a class="headerlink" href="#anonieme-functies" title="Link to this heading">#</a></h2>
+<p>Het kan, afhankelijk van de gekozen programmeerstijl, voorkomen dat je veel
+callbacks nodig hebt die zeer kort zijn en vaak slechts één keer gebruikt
+worden. Dit zal met name voorkomen bij een meer functionele programmeerstijl.
+Als je bijvoorbeeld de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.array-map.php"><code class="docutils literal notranslate"><span class="pre">array_map</span></code></a>
+gebruikt heb je een callable nodig die op elk element van een array
+toegepast zal worden; een constructie die te vergelijken is met list
+comprehensions in Python. Zo kan je bijvoorbeeld op onderstaande manier een
+array krijgen met de lengtes van alle strings in een array.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = [&#39;dit&#39;, &#39;is&#39;, &#39;een&#39;, &#39;array&#39;, &#39;met&#39;, &#39;strings&#39;];</span>
+<span class="x">var_dump(array_map(&#39;strlen&#39;, $array));</span>
+</pre></div>
+</div>
+<p>Hierbij kan je gebruik maken van een callable die verwijst naar de
+ingebouwde functie <code class="docutils literal notranslate"><span class="pre">strlen</span></code>. Zou je echter de getallen in een array willen
+verdubbelen, dan is daar geen ingebouwde functie voor beschikbaar en moet je
+die dus zelf schrijven, zoals hieronder.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function dbl($x) {</span>
+<span class="x">    return $x * 2;</span>
+<span class="x">}</span>
+
+<span class="x">$array = [1, 2, 3, 4];</span>
+<span class="x">var_dump(array_map(&#39;dbl&#39;, $array));</span>
+</pre></div>
+</div>
+<p>Dit is niet ideaal, omdat hiermee een functie in de global namespace gezet
+wordt die eigenlijk alleen maar lokaal nodig is en bovendien de definitie
+van de functie mogelijk vrij ver verwijderd staat van het gebruik in
+<code class="docutils literal notranslate"><span class="pre">array_map</span></code>, waardoor de flow van de code moeilijker te volgen is.</p>
+<p>Een alternatief is het gebruik van
+<a class="reference external" href="https://www.php.net/manual/en/functions.anonymous.php">anonieme functies</a>.
+Anonieme functies krijgen geen naam en zijn, net als callables die de
+<code class="docutils literal notranslate"><span class="pre">(...)</span></code>-syntax gebruiken, instanties van <code class="docutils literal notranslate"><span class="pre">Closure</span></code>.</p>
+<p>Anonieme functies zijn bovendien expressies., Dit betekent dat je ze niet als
+apart statement hoeft te schrijven, maar je ze meteen waar ze nodig zijn kan
+gebruiken, zoals in een toekenning of bijvoorbeeld als argument in de
+functie <code class="docutils literal notranslate"><span class="pre">array_map</span></code>. De syntax hierbij is dat het keyword <code class="docutils literal notranslate"><span class="pre">function</span></code>
+gebruikt wordt, net als bij een reguliere functie, maar dat daarna meteen de
+lijst met parameters volgt; de functie krijgt dus geen naam. Dit ziet er als
+volgt uit.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = [1, 2, 3, 4];</span>
+<span class="x">var_dump(array_map(function ($x) {</span>
+<span class="x">    return $x * 2;</span>
+<span class="x">}, $array));</span>
+</pre></div>
+</div>
+<p>Op deze manier wordt meteen bij het lezen van de aanroep van <code class="docutils literal notranslate"><span class="pre">array_map</span></code>
+duidelijk wat de operatie is die uitgevoerd wordt.</p>
+<p>Een tweede mogelijkheid van anonieme functies is dat je ze kan <em>binden</em> aan
+lokale variabelen in de scope waarbinnen de anonieme functie wordt
+aangemaakt. In principe kunnen anonieme functies dergelijke variabelen niet
+lezen; onderstaande code zal dus een waarschuwing over een ongedefinieerde
+variabele geven.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$number = 2;</span>
+<span class="x">$mul = function ($a) { return $a * $number; }</span>
+<span class="x">var_dump($mul(5));</span>
+</pre></div>
+</div>
+<p>Om een lokale variabele toch binnen een anonieme functie te kunnen gebruiken,
+moet deze hieraan gebonden worden met het keyword <code class="docutils literal notranslate"><span class="pre">use</span></code>. Daardoor wordt de
+waarde van die variabele op het moment dat de anonieme functie gedefinieerd
+wordt vastgelegd en zal die anonieme functie altijd die waarde blijven
+gebruiken, ook als de variabele later een andere waarde krijgt.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$number = 2;</span>
+<span class="x">$mul = function ($a) use ($number) { return $a * $number; }</span>
+<span class="x">$number = 3;</span>
+<span class="x">var_dump($mul(5));</span>
+</pre></div>
+</div>
+<p>Bovenstaande code zal dus <code class="docutils literal notranslate"><span class="pre">int(10)</span></code> afdrukken, omdat op het moment dat de
+functie in de tweede regel gedefinieerd wordt, de waarde 2 hieraan gebonden
+wordt en het dus niet meer uitmaakt dat de variabele in regel 3 een andere
+waarde krijgt. Het is wel mogelijk om de anonieme functie rechtstreeks aan
+de variabele te binden, zodanig dat de actuele waarde van de variabele
+gebruikt wordt. Dit kan door de variabele <em>by reference</em> te binden. Net als
+bij parameters die <em>by reference</em> zijn, gebeurt dit door een ampersand <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>
+voor de variabele te zetten, zoals in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$number = 2;</span>
+<span class="x">$mul = function ($a) use (&amp;$number) { return $a * $number; }</span>
+<span class="x">$number = 3;</span>
+<span class="x">var_dump($mul(5));</span>
+</pre></div>
+</div>
+<p>Deze code zal wel <code class="docutils literal notranslate"><span class="pre">int(15)</span></code> afdrukken, omdat de variabele <code class="docutils literal notranslate"><span class="pre">$number</span></code> <em>by
+reference</em> gebonden is en dus steeds de actuele waarde van <code class="docutils literal notranslate"><span class="pre">$number</span></code> gebruikt.</p>
+<p>Merk op dat het in het algemeen niet nodig is om variabelen <em>by reference</em>
+te binden. Vaak is het juist logisch om <em>by value</em> te binden, dus zonder
+ampersand. Zo kan je bijvoorbeeld een callable teruggeven als
+functieresultaat die gebind is aan variabelen die beschikbaar waren in het
+object op het moment van de functieaanroep die de callable teruggeeft, en
+kan je daarmee relevante toestand bewaren. Denk hierbij bijvoorbeeld aan een
+callable die door de router wordt teruggegeven en moet weten welke
+parameters in de URL zaten.</p>
+<p>Daarnaast is, als een anonieme functie binnen een object wordt gedefinieerd,
+de referentie naar het actuele object, <code class="docutils literal notranslate"><span class="pre">$this</span></code>, altijd gebonden aan de
+anonieme functie en dus beschikbaar.</p>
+<p>Omdat in veel gevallen anonieme functies alleen een return-statement
+bevatten, dus feitelijk simpele berekeningen zijn, zoals in het hierboven
+aangehaald voorbeeld met <code class="docutils literal notranslate"><span class="pre">array_map</span></code>, is hier een kortere syntax voor
+beschikbaar. Dit heet een
+<a class="reference external" href="https://www.php.net/manual/en/functions.arrow.php">arrow-functie</a>.
+In deze syntax wordt in plaats van het keyword <code class="docutils literal notranslate"><span class="pre">function</span></code> het keyword <code class="docutils literal notranslate"><span class="pre">fn</span></code>
+gebruikt en volgt na de parameterlijst een pijl <code class="docutils literal notranslate"><span class="pre">=&gt;</span></code> en een expressie die
+als functieresultaat gebruikt wordt. In plaats van <code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">($x)</span> <span class="pre">{</span> <span class="pre">return</span>&#160; <span class="pre">$x</span> <span class="pre">*</span> <span class="pre">2;</span> <span class="pre">}</span></code> kan je dus <code class="docutils literal notranslate"><span class="pre">fn($x)</span> <span class="pre">=&gt;</span> <span class="pre">$x</span> <span class="pre">*</span> <span class="pre">2</span></code> schrijven. Als we dit toepassen op
+het voorbeeld met <code class="docutils literal notranslate"><span class="pre">array_map</span></code> ziet dat er als volgt uit.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = [1, 2, 3, 4];</span>
+<span class="x">var_dump(array_map(fn($x) =&gt; $x * 2, $array));</span>
+</pre></div>
+</div>
+<p>Bijzonder aan deze arrow-syntax is dat alle lokale variabelen automatisch
+<em>by value</em> gebonden zijn; zo zal onderstaande code <code class="docutils literal notranslate"><span class="pre">int(10)</span></code> afdrukken omdat de
+variabele <code class="docutils literal notranslate"><span class="pre">$number</span></code> gebonden wordt. Sterker, het gebruik van een
+<code class="docutils literal notranslate"><span class="pre">use</span></code>-clausule is bij deze syntax niet toegestaan.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$number = 2;</span>
+<span class="x">$mul = fn($a) =&gt; $a * $number;</span>
+<span class="x">$number = 3;</span>
+<span class="x">var_dump($mul(5));</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./4.2-routing"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="router.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">vorige</p>
+        <p class="prev-next-title">De router</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="regex.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">volgende</p>
+        <p class="prev-next-title">Reguliere expressies</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#callables">Callables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#anonieme-functies">Anonieme functies</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Door Bart Barnard & Ralf van den Broek
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
