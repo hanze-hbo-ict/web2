@@ -24,7 +24,7 @@ jobs:
       with:
         python-version: "3.12.x"
     - name: Install system dependencies
-      run: sudo apt-get install -y libxml2-dev libxslt-dev
+      run: sudo apt-get update && sudo apt-get install -y libxml2-dev libxslt-dev
     - name: Install Python dependencies
       run: |
         sudo pip install --ignore-installed -r requirements.txt
