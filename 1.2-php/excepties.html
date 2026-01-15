@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Opgave &#8212; Webtechnologie II</title>
+    <title>Excepties en errors &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '5.1-di/opgave';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1.2-php/excepties';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Intro" href="../5.2-container/intro.html" />
-    <link rel="prev" title="Intro" href="intro.html" />
+    <link rel="next" title="Oefening" href="oefening.html" />
+    <link rel="prev" title="Object-georiënteerd programmeren" href="oop.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -188,11 +188,11 @@
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../1.2-php/functies.html">Functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oop.html">Object-georiënteerd programmeren</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1.2-php/excepties.html">Excepties en errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oefening.html">Oefening</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="functies.html">Functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oop.html">Object-georiënteerd programmeren</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Excepties en errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefening</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="nav bd-sidenav">
@@ -233,9 +233,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Opgave</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/opgave.html">Opgave</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 DI Container</span></p>
 <ul class="nav bd-sidenav">
@@ -315,7 +315,7 @@
       
       
       
-      <li><a href="../_sources/5.1-di/opgave.md" target="_blank"
+      <li><a href="../_sources/1.2-php/excepties.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -378,7 +378,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -389,11 +391,20 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Opgave</h1>
+    <h1>Excepties en errors</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling">Error handling</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -403,8 +414,14 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="opgave">
-<h1>Opgave<a class="headerlink" href="#opgave" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="excepties-en-errors">
+<h1>Excepties en errors<a class="headerlink" href="#excepties-en-errors" title="Link to this heading">#</a></h1>
+<section id="exceptions">
+<h2>Exceptions<a class="headerlink" href="#exceptions" title="Link to this heading">#</a></h2>
+</section>
+<section id="error-handling">
+<h2>Error handling<a class="headerlink" href="#error-handling" title="Link to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -420,7 +437,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./5.1-di"
+            path: "./1.2-php"
         },
         predefinedOutput: true
     }
@@ -438,20 +455,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="oop.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">Object-georiënteerd programmeren</p>
       </div>
     </a>
     <a class="right-next"
-       href="../5.2-container/intro.html"
+       href="oefening.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">Oefening</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -461,6 +478,23 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exceptions">Exceptions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#error-handling">Error handling</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

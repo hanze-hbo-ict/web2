@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Opgave &#8212; Webtechnologie II</title>
+    <title>Object-georiënteerd programmeren &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '1.1-php/opgave';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1.2-php/oop';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Functies" href="../1.2-php/functies.html" />
-    <link rel="prev" title="PHP installeren" href="installeren.html" />
+    <link rel="next" title="Excepties en errors" href="excepties.html" />
+    <link rel="prev" title="Functies" href="functies.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -175,24 +175,24 @@
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/intro.html">Intro</a></li>
 
 
 
-<li class="toctree-l1"><a class="reference internal" href="installeren.html">PHP installeren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/installeren.html">PHP installeren</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/opgave.html">Opgave</a></li>
 
 
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../1.2-php/functies.html">Functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oop.html">Object-georiënteerd programmeren</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1.2-php/excepties.html">Excepties en errors</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oefening.html">Oefening</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="functies.html">Functies</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Object-georiënteerd programmeren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="excepties.html">Excepties en errors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefening</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="nav bd-sidenav">
@@ -315,7 +315,7 @@
       
       
       
-      <li><a href="../_sources/1.1-php/opgave.md" target="_blank"
+      <li><a href="../_sources/1.2-php/oop.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -391,7 +391,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Opgave</h1>
+    <h1>Object-georiënteerd programmeren</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -401,12 +401,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Opgave</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maak-een-statische-pagina-homepage">1. Maak een statische pagina (homepage)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maak-een-dynamische-pagina-boekpagina">2. Maak een dynamische pagina (boekpagina)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#namespaces">Namespaces</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -417,17 +413,207 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="opgave">
-<h1>Opgave<a class="headerlink" href="#opgave" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="object-georienteerd-programmeren">
+<h1>Object-georiënteerd programmeren<a class="headerlink" href="#object-georienteerd-programmeren" title="Link to this heading">#</a></h1>
+<p>PHP biedt sinds versie 5 de mogelijkheid om
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.php">object-georiënteerd</a>
+te programmeren. De implementatie hiervan is door Java geïnspireerd; veel van
+de keywords zullen de Java-programmeur dan ook bekend voorkomen.</p>
+<p>In PHP worden klassen gemaakt met het keyword <code class="docutils literal notranslate"><span class="pre">class</span></code>. Objecten worden
+gemaakt door gebruik te maken van het keyword <code class="docutils literal notranslate"><span class="pre">new</span></code>. Hierbij wordt een
+constructor aangeroepen; dit is de methode met de naam <code class="docutils literal notranslate"><span class="pre">__construct</span></code>.
+Aangezien in PHP functies en methodes niet overloaded kunnen worden, kan
+er maar één constructor zijn. Net als in Java kunnen instantievariabelen en
+methodes <code class="docutils literal notranslate"><span class="pre">public</span></code>, <code class="docutils literal notranslate"><span class="pre">protected</span></code> en <code class="docutils literal notranslate"><span class="pre">private</span></code> zijn en kunnen klassen andere
+klassen uitbreiden met het keyword <code class="docutils literal notranslate"><span class="pre">extends</span></code>. PHP kent ook interfaces en
+abstracte klassen en gebruikt hiervoor dezelfde keywords als Java. Dit zijn
+<code class="docutils literal notranslate"><span class="pre">interface</span></code>, <code class="docutils literal notranslate"><span class="pre">implements</span></code> en <code class="docutils literal notranslate"><span class="pre">abstract</span></code>.</p>
+<p>Een belangrijk verschil is dat PHP geen punt gebruikt om methodes en
+instantievariabelen aan te roepen zoals Java en Python dat doen. Deze operator
+wordt in PHP immers gebruikt voor stringconcatenatie. In plaats daarvan
+wordt de pijl <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> gebruikt, hetgeen doet denken aan de syntax van C++.
+Bovendien staat het dollarteken dat normaal voor een variabelenaam staat
+alleen voor de verwijzing naar het object, en wordt deze niet herhaald na
+de pijl. Een instantievariabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> van een object <code class="docutils literal notranslate"><span class="pre">$this</span></code> wordt dus
+aangesproken als <code class="docutils literal notranslate"><span class="pre">$this-&gt;var</span></code>. Enkele voorbeelden zijn hieronder
+te zien.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">interface TestInterface {</span>
+<span class="x">    function test(): void;</span>
+<span class="x">}</span>
+
+<span class="x">abstract class AbstractTest {</span>
+<span class="x">    protected abstract function abstractTest(): void;</span>
+<span class="x">}</span>
+
+<span class="x">class Test extends AbstractTest implements Test {</span>
+<span class="x">    private string $property;</span>
+<span class="x">    </span>
+<span class="x">    public function __construct()</span>
+<span class="x">    {</span>
+<span class="x">        $this-&gt;property = 5;</span>
+<span class="x">    }</span>
+<span class="x">    </span>
+<span class="x">    public function test()</span>
+<span class="x">    {</span>
+<span class="x">        $other = nww Test();</span>
+<span class="x">        $other-&gt;abstactTest();</span>
+<span class="x">    }</span>
+
+<span class="x">    protected function abstractTest()</span>
+<span class="x">    {</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Aangezien, anders dan in Java,
+variabelen dynamisch gemaakt kunnen worden, is het in PHP altijd
+noodzakelijk om instantievariabelen aan te spreken via de variabele <code class="docutils literal notranslate"><span class="pre">$this</span></code>,
+de verwijzing naar het huidige object. In onderstaand voorbeeld is dit niet
+gedaan. Het effect hiervan is dat in de constructor de lokale variabele
+<code class="docutils literal notranslate"><span class="pre">$var</span></code> wordt gemaakt, terwijl bedoeld is dat de instantievariabele
+<code class="docutils literal notranslate"><span class="pre">$this-&gt;var</span></code> wordt gevuld. Dit laatste wordt bereikt door de toekenning te
+vervangen door <code class="docutils literal notranslate"><span class="pre">$this-&gt;var</span> <span class="pre">=</span> <span class="pre">$v</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class Test {</span>
+<span class="x">    protected string $var;</span>
+<span class="x">    </span>
+<span class="x">    public function __construct(string $v)</span>
+<span class="x">    {</span>
+<span class="x">        $var = $v;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Zoals gezegd hoeven lokale variabelen in PHP niet gedeclareerd te worden.
+Strikt genomen geldt dit ook voor instantievariabelen; onderstaande code
+geeft geen foutmelding en zal de waarde van <code class="docutils literal notranslate"><span class="pre">$v</span></code> toekennen aan de
+instantievariabele <code class="docutils literal notranslate"><span class="pre">$this-&gt;var</span></code>. Dergelijke instantievariabelen worden
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.dynamic-properties"><em>dynamic properties</em></a>
+genoemd; deze zijn echter sinds versie 8.2 <em>deprecated</em> en zullen vanaf PHP 9
+niet meer ondersteund worden. Het is daarom verstandig om alle gebruikte
+instantievariabelen te declareren, zoals in het voorbeeld hierboven.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class Test {</span>
+<span class="x">    public function __construct(string $v)</span>
+<span class="x">    {</span>
+<span class="x">        $this-&gt;var = $v;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>De constructorstructuur zoals hierboven getoond is erg gangbaar. Vaak is het
+immers zo dat een constructor wordt gebruikt om een aantal waardes van het
+object op te slaan in instantievariabelen. PHP heeft hiervoor een kortere
+syntax die
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.decon.php#language.oop5.decon.constructor.promotion"><em>constructor promotion</em></a>
+wordt genoemd. In deze syntax wordt een parameter in de constructor vooraf
+gegaan door <code class="docutils literal notranslate"><span class="pre">private</span></code>, <code class="docutils literal notranslate"><span class="pre">protected</span></code> of <code class="docutils literal notranslate"><span class="pre">public</span></code>. Een parameter die op die
+manier wordt gemarkeerd zal automatisch worden opgeslagen als
+instantievariabele; de instantievariabele hoeft bovendien niet apart
+gedefinieerd te worden. In onderstaand voorbeeld wordt de eerste parameter
+van de constructor dus automatisch opgeslagen als een instantievariabele, en
+zal de methode <code class="docutils literal notranslate"><span class="pre">test</span></code> deze waarde dus ook afdrukken.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class Test {</span>
+<span class="x">    public function __construct(private string $var)</span>
+<span class="x">    {</span>
+<span class="x">    }</span>
+<span class="x">    </span>
+<span class="x">    public function test(): void</span>
+<span class="x">    {</span>
+<span class="x">        echo $this-&gt;var;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>[TODO __toString]
+[TODO static]
+[TODO? const, anonieme klasses, final]</p>
+<section id="namespaces">
+<h2>Namespaces<a class="headerlink" href="#namespaces" title="Link to this heading">#</a></h2>
+<p>In Java is het gebruikelijk om klassen in te delen in <em>packages</em>. Zo is de
+klasse <code class="docutils literal notranslate"><span class="pre">ArrayList</span></code> te vinden in de package <code class="docutils literal notranslate"><span class="pre">java.util</span></code>. Door in Java het
+statement <code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">java.util.ArrayList</span></code> te gebruiken, kan in de rest van het
+bestand de korte naam <code class="docutils literal notranslate"><span class="pre">ArrayList</span></code> gebruikt worden in plaats van de volledige
+naam <code class="docutils literal notranslate"><span class="pre">java.util.ArrayList</span></code>. Een klasse kan in Java in een package gezet
+worden met het keyword <code class="docutils literal notranslate"><span class="pre">package</span></code>.</p>
+<p>PHP biedt een vergelijkbaar systeem. Hierbij wordt in PHP niet gesproken
+van packages, maar van
+<a class="reference external" href="https://www.php.net/manual/en/language.namespaces.php"><em>namespaces</em></a>.
+Hiertoe wordt als eerste statement in
+een PHP-bestand het keyword <code class="docutils literal notranslate"><span class="pre">namespace</span></code> gebruikt, gevolgd door de naam van
+de namespace waarin dit bestand moet werken. In Java worden punten gebruikt
+om packagenamen hiërarchisch te ordenen; aangezien de punt in PHP als
+operator voor stringconcatenatie wordt gebruikt, wordt in PHP hiervoor de
+backslash <code class="docutils literal notranslate"><span class="pre">\</span></code> gebruikt.</p>
+<p>Als een bestand in een bepaalde namespace staat, verandert dit de betekenis
+van klasse- en functienamen. In beide gevallen kan de klasse of functie uit
+de globale namespace gebruikt worden door hier een enkele backslash voor te
+zetten, vergelijkbaar met absolute paden op een bestandssysteem. Zo
+verwijst de klasse <code class="docutils literal notranslate"><span class="pre">\Test</span></code> altijd naar de klasse <code class="docutils literal notranslate"><span class="pre">Test</span></code> in de globale
+namespace. Het is op deze manier ook mogelijk om naar een willekeurige
+namespace te verwijzen; de klassenaam <code class="docutils literal notranslate"><span class="pre">\Foo\Bar\Test</span></code> verwijst altijd naar
+de klasse <code class="docutils literal notranslate"><span class="pre">Test</span></code> in de namespace <code class="docutils literal notranslate"><span class="pre">Foo\Bar</span></code>, ongeacht de huidige namespace.</p>
+<p>Als er echter geen backslash voor staat, wordt de klassenaam
+relatief gezien ten opzichte van de huidige namespace. Als een bestand
+begint met het statement <code class="docutils literal notranslate"><span class="pre">namespace</span> <span class="pre">Foo</span></code>, dan wordt de klasse <code class="docutils literal notranslate"><span class="pre">Test</span></code> gelezen
+als de klasse <code class="docutils literal notranslate"><span class="pre">Test</span></code> binnen de namespace <code class="docutils literal notranslate"><span class="pre">Foo</span></code>, oftewel als de klasse
+<code class="docutils literal notranslate"><span class="pre">Foo\Test</span></code>. Ook als de klasse begint met een namespace, maar zonder
+backslash, wordt de verwijzing relatief gelezen. Als de huidige namespace
+<code class="docutils literal notranslate"><span class="pre">Foo</span></code> is, verwijst <code class="docutils literal notranslate"><span class="pre">Bar\Test</span></code> naar de klasse <code class="docutils literal notranslate"><span class="pre">Foo\Bar\Test</span></code>.</p>
+<p>Het bovenstaande geldt ook voor functienamen; ook functies kunnen in een
+namespace zitten. Het verschil is wel dat als de relatieve naam <code class="docutils literal notranslate"><span class="pre">Test</span></code>
+gebruikt wordt als klassenaam en deze niet bestaat in de huidige namespace,
+hier een foutmelding voor wordt gegeven. Dit is niet zo bij functienamen;
+als een functienaam niet begint met een backslash, wordt, als de functie
+niet bestaat in de huidige namespace, de functie uit de globale namespace
+gebruikt. Het is dus niet nodig om <code class="docutils literal notranslate"><span class="pre">\strlen</span></code> te schrijven om de globale
+functie <code class="docutils literal notranslate"><span class="pre">strlen</span></code> te gebruiken, ook niet als een namespace actief is. Alleen
+als in de huidige namespace ook een functie <code class="docutils literal notranslate"><span class="pre">strlen</span></code> zou bestaan moet
+<code class="docutils literal notranslate"><span class="pre">\strlen</span></code> gebruikt worden om aan te geven dat de functie uit de globale
+namespace bedoelt wordt. Bij klassenamen is dit dus niet zo; als we de
+standaardklasse <code class="docutils literal notranslate"><span class="pre">Exception</span></code>, die hieronder besproken wordt, willen gebruiken
+terwijl er een namespace actief is, moet altijd <code class="docutils literal notranslate"><span class="pre">\Exception</span></code> geschreven worden.</p>
+<p>In het onderstaande voorbeeld worden enkele voorbeelden getoond.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">namespace Foo;</span>
+
+<span class="x">function strlen($x) { return $x; }</span>
+<span class="x">class Exception {}</span>
+
+<span class="x">var_dump(strlen(&#39;abc&#39;)); // drukt &#39;abc&#39; af; de functie Foo\strlen wordt gebruikt</span>
+<span class="x">var_dump(\strlen(&#39;abc&#39;)); // absolute verwijzing, drukt 3 af</span>
+
+<span class="x">var_dump(strtoupper(&#39;abc&#39;)); // drukt &#39;ABC&#39; af; gebruikt de globale functie</span>
+
+<span class="x">var_dump(get_class(new Exception())); // relatieve verwijzing, drukt `Exception` af</span>
+<span class="x">var_dump(get_class(new \Exception())); // absolute verwijzing, drukt `Foo\Exception` af</span>
+</pre></div>
+</div>
+<p>Door het gebruik van namespaces kunnen klassenamen erg lang worden. Het is
+mogelijk om alleen de korte naam, het gedeelte na de laatste backslash, te
+gebruiken door PHP te vertellen welke klasse daarmee bedoelt wordt. Hiervoor
+wordt het statement <code class="docutils literal notranslate"><span class="pre">use</span></code> gebruikt. Dit is vergelijkbaar met <code class="docutils literal notranslate"><span class="pre">import</span></code> in Java.
+Als bijvoorbeeld het statement <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">Foo\Bar\Test</span></code> gebruikt wordt, zal de
+klassenaam <code class="docutils literal notranslate"><span class="pre">Test</span></code> in de rest van dat bestand verwijzen naar de klasse
+<code class="docutils literal notranslate"><span class="pre">Foo\Bar\Test</span></code>. Als in de huidige namespace ook een klasse <code class="docutils literal notranslate"><span class="pre">Test</span></code> bestaat,
+is deze dus niet meer te bereiken via de verwijzing <code class="docutils literal notranslate"><span class="pre">Test</span></code>. Hiervoor kan wel
+de verwijzing <code class="docutils literal notranslate"><span class="pre">namespace\Test</span></code> worden gebruikt; hierdoor wordt verwezen naar
+de klasse <code class="docutils literal notranslate"><span class="pre">Test</span></code> in de huidige namespace. Het is bovendien met het statement
+<code class="docutils literal notranslate"><span class="pre">use</span></code> mogelijk om een alias te gebruiken voor een klasse; dit kan bijvoorbeeld
+nodig zijn als twee klassen met dezelfde namespace geïmporteerd moeten
+worden. Dit kan door de syntax <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">Foo\Bar\Test</span> <span class="pre">as</span> <span class="pre">Alias</span></code> te gebruiken;
+hiermee wordt de klasse <code class="docutils literal notranslate"><span class="pre">Foo\Bar\Test</span></code> bekend onder de lokale naam <code class="docutils literal notranslate"><span class="pre">Alias</span></code>,
+zoals ook te zien in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">namespace Foo;</span>
+
+<span class="x">use Bar\Test;</span>
+<span class="x">use Baz\Test as Alias;</span>
+
+<span class="x">$a = new Test(); # verwijst naar Bar\Test</span>
+<span class="x">$b = new Alias(); # verwijst naar Baz\Test</span>
+<span class="x">$c = new namespace\Foo(); # verwijst naar Foo\Test</span>
+<span class="x">$d = new namespace\Alias(); # verwijst naar Foo\Alias</span>
+<span class="x">$e = new \Foo(); # verwijst naar Foo (uit de globale namespace)</span>
+</pre></div>
+</div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="maak-een-statische-pagina-homepage">
-<h1>1. Maak een statische pagina (homepage)<a class="headerlink" href="#maak-een-statische-pagina-homepage" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="maak-een-dynamische-pagina-boekpagina">
-<h1>2. Maak een dynamische pagina (boekpagina)<a class="headerlink" href="#maak-een-dynamische-pagina-boekpagina" title="Link to this heading">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>3.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -443,7 +629,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./1.1-php"
+            path: "./1.2-php"
         },
         predefinedOutput: true
     }
@@ -461,20 +647,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="installeren.html"
+       href="functies.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">PHP installeren</p>
+        <p class="prev-next-title">Functies</p>
       </div>
     </a>
     <a class="right-next"
-       href="../1.2-php/functies.html"
+       href="excepties.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Functies</p>
+        <p class="prev-next-title">Excepties en errors</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -495,12 +681,8 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Opgave</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maak-een-statische-pagina-homepage">1. Maak een statische pagina (homepage)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maak-een-dynamische-pagina-boekpagina">2. Maak een dynamische pagina (boekpagina)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#namespaces">Namespaces</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>
