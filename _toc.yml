@@ -14,8 +14,10 @@ parts:
 
 - caption: 1.2 PHP
   chapters:
-    - file: 1.2-php/intro
-    - file: 1.2-php/opgave
+    - file: 1.2-php/functies
+    - file: 1.2-php/oop
+    - file: 1.2-php/excepties
+    - file: 1.2-php/oefening
 
 - caption: 2.1 HTML en CSS
   chapters:
@@ -60,20 +62,20 @@ parts:
     - file: 5.1-di/intro
     - file: 5.1-di/opgave
 
-- caption: 5.2 Reflectie
+- caption: 5.2 DI Container
   chapters:
-    - file: 5.2-reflectie/intro
-    - file: 5.2-reflectie/opgave
+    - file: 5.2-container/intro
+    - file: 5.2-container/opgave
 
 - caption: 6.1 Database
   chapters:
     - file: 6.1-database/intro
     - file: 6.1-database/opgave
 
-- caption: 6.2 Entities
+- caption: 6.2 ORM
   chapters:
-    - file: 6.2-entities/intro
-    - file: 6.2-entities/opgave
+    - file: 6.2-orm/intro
+    - file: 6.2-orm/opgave
 
 - caption: 7.1 Authenticatie
   chapters:
