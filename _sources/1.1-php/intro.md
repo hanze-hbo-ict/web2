@@ -124,7 +124,8 @@ Daarnaast bestaan de operatoren `++` en `--` op dezelfde
 
 # Gebruikersinvoer
 
-* Statelessness
 * _GET, _SERVER
 * arrays, associatieve arrays
 * foreach
+
+* var_dump
