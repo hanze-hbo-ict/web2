@@ -129,3 +129,4 @@ Daarnaast bestaan de operatoren `++` en `--` op dezelfde
 * foreach
 
 * var_dump
+* variabele variabelen?

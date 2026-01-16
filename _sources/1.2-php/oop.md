@@ -13,7 +13,7 @@ er maar één constructor zijn. Net als in Java kunnen instantievariabelen en
 methodes `public`, `protected` en `private` zijn en kunnen klassen andere 
 klassen uitbreiden met het keyword `extends`. PHP kent ook interfaces en 
 abstracte klassen en gebruikt hiervoor dezelfde keywords als Java. Dit zijn 
-`interface`, `implements` en `abstract`.
+`interface`, `implements` en `abstract`. 
 
 Een belangrijk verschil is dat PHP geen punt gebruikt om methodes en 
 instantievariabelen aan te roepen zoals Java en Python dat doen. Deze operator
@@ -119,7 +119,7 @@ class Test {
 ```
 
 [TODO __toString]
-[TODO static]
+[TODO static, parent, ::]
 [TODO? const, anonieme klasses, final]
 
 ## Namespaces
