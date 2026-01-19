@@ -21,7 +21,9 @@ parts:
 
 - caption: 2.1 HTML en CSS
   chapters:
-    - file: 2.1-html/intro
+    - file: 2.1-html/html
+    - file: 2.1-html/css
+    - file: 2.1-html/oefening
     - file: 2.1-html/opgave
 
 - caption: 2.2 Kernel
