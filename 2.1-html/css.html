@@ -406,7 +406,9 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cssom">CSSOM</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selectors-en-style-rules">Selectors en Style-rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#media-queries">Media-queries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-rules">Style-rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locatie-van-de-stylesheets">Locatie van de stylesheets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specificiteit">Specificiteit</a></li>
 </ul>
             </nav>
         </div>
@@ -423,7 +425,7 @@
 <section id="cssom">
 <h2>CSSOM<a class="headerlink" href="#cssom" title="Link to this heading">#</a></h2>
 <p>Waar HTML feitelijk de <em>data</em> van onze website is, wordt de <em>vormgeving</em> bepaald door de <em>Cascading Style Sheets</em> (<em>CSS</em>). Om dit voor elkaar te krijgen, maakt de browser behalve een DOM-tree ook een <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/Performance/Guides/How_browsers_work#parsing"><em>CSS-Object-Model</em></a> die voor het renderen van de HTML gebruikt wordt. Let op dat <em>alles</em> wat je op het scherm ziet uiteindelijke gestileerd wordt aan de hand van een stylesheet: wanneer je een element niet zelf van een stijl voorziet, wordt de interne stylesheet van de browser gebruikt (zoals te zien is in onderstaande schermafbeelding):</p>
-<p><img alt="Wanneer je geen expliciete stijl geeft, wordt de interne stylesheet gebruikt" src="../_images/2.1-opgave.jpeg" /></p>
+<p><img alt="Wanneer je geen expliciete stijl geeft, wordt de interne stylesheet gebruikt" src="../_images/user-agent-stylesheet.jpeg" /></p>
 <p>Het proces van laden van de HTML tot het weergeven van de pagina op het scherm doorloopt de onderstaande stappen:</p>
 <p><img alt="Het volledige render-proces zoals dat door de browser wordt doorlopen" src="../_images/render-process.jpeg" />.</p>
 <div class="tip admonition">
@@ -492,12 +494,78 @@
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">h1[lang='NL-nl']</span></code></p></td>
 <td><p>Selecteert <em>elke</em> <code class="docutils literal notranslate"><span class="pre">h1</span></code> waarvan het attribuut <code class="docutils literal notranslate"><span class="pre">lang</span></code> de waarde<code class="docutils literal notranslate"><span class="pre">NL-nl</span></code> heeft.</p></td>
 </tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">#main</span></code></p></td>
+<td><p>Selecteert het element waarvan het attribuut <code class="docutils literal notranslate"><span class="pre">id</span></code> gelijk is aan <code class="docutils literal notranslate"><span class="pre">main</span></code> (die div op regel 7 in dit geval).</p></td>
+</tr>
 </tbody>
 </table>
 </div>
+<div class="tip admonition">
+<p class="admonition-title">Meer uitleg over <em>selectors</em></p>
+<p>Je kunt heel veel meer doen met die selectors; bekijk <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Selectors">de documentatie op MDN</a> voor een volledig overzicht.</p>
+</div>
 </section>
-<section id="media-queries">
-<h2>Media-queries<a class="headerlink" href="#media-queries" title="Link to this heading">#</a></h2>
+<section id="style-rules">
+<h2>Style-rules<a class="headerlink" href="#style-rules" title="Link to this heading">#</a></h2>
+<p>Wanneer je een node in de DOM-tree hebt gematcht, kunt je door middel van één of meer <em>style-rules</em> aangeven hoe die node moet worden weergegeven. De algemene syntax van zo’n <em>style-rule</em> is <code class="docutils literal notranslate"><span class="pre">attribute:</span> <span class="pre">value;</span></code> (let op: die spatie tussen het attribuut en de waarde is optioneel, de puntkomma na de waarde is dat <em>niet</em>). De *style-rules die bij een specifieke node horen, worden gegroepeerd door middel van <em>accolades</em>. De volledige vorm van het stileren van een node wordt dus als volgt:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">selector</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="n">attribute1</span><span class="p">:</span><span class="w"> </span><span class="n">value1</span><span class="p">;</span>
+<span class="w">    </span><span class="n">attribute2</span><span class="p">:</span><span class="w"> </span><span class="n">value2</span><span class="p">;</span>
+<span class="w">    </span><span class="err">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Er zijn – letterlijk – honderden verschillende attributen die je kunt instellen, met some tientallen opties per attribuut. Het is niet praktisch (en niet echt nuttig) om ál die verschillende opties uit het hoofd te leren, maar de meest voor de hand liggende en de meest gebruikte moet je als professional (ook als je met name op de backend werkt) toch wel beheersen. Bekijk verder <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">de documentatie op MDN</a> om hier een beeld van te krijgen.</p>
+</section>
+<section id="locatie-van-de-stylesheets">
+<h2>Locatie van de stylesheets<a class="headerlink" href="#locatie-van-de-stylesheets" title="Link to this heading">#</a></h2>
+<p>Je kunt de stilering van je webpagina op drie verschillende locaties definiëren:</p>
+<ol class="arabic simple">
+<li><p>in separate bestanden</p></li>
+<li><p>binnen de <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;&lt;/style&gt;</span></code>-tags</p></li>
+<li><p>in het <code class="docutils literal notranslate"><span class="pre">style=&quot;&quot;</span></code>-attribuut van de tag in kwestie</p></li>
+</ol>
+<p>Het meest gebruikelijke van deze opties is de eerste: separate bestanden. Dit heeft als voordeel dat dezelfde stilering over verschillende html-bestanden gedeeld kan worden, én dat je de stijl radicaal scheidt van de data.</p>
+<p>Een dergelijk bestand bevat eenvoudig de stilering zoals die hierboven is beschreven: er is geen noodzaak van speciale code of <em>headers</em> om duidelijk te maken dat het om een <em>stylesheet</em> gaat. De enige eis is dat het bestand <code class="docutils literal notranslate"><span class="pre">.css</span></code> als extensie heeft, zodat de browser weet dat dit om een <em>stylesheet</em> gaat (en niet, bijvoorbeeld, om een tekst-bestand).</p>
+<p>Om een dergelijk bestand aan je HTML-bestand te koppelen, maar je gebruik van de <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/link"><code class="docutils literal notranslate"><span class="pre">link</span></code>-tag</a>, waarbij je het <code class="docutils literal notranslate"><span class="pre">rel</span></code>-attribuut zet op <code class="docutils literal notranslate"><span class="pre">stylesheet</span></code>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">&quot;stylesheet&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;styles/style.css&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Je kun meerdere <em>stylesheets</em> aan één HTML-document koppelen; hiervoor herhaal je eenvoudig de bovenstaande regel voor elke <em>stylesheet</em>.</p>
+<p>Om de stilering binnen het HTML-document zelf te definiëren, gebruik je dus de <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/style"><code class="docutils literal notranslate"><span class="pre">style</span></code>-tag</a>:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span><span class="p">&gt;</span>
+<span class="w">    </span><span class="nt">body</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="k">background-color</span><span class="p">:</span><span class="kc">red</span><span class="p">;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Net als de <code class="docutils literal notranslate"><span class="pre">link</span></code>-tag, kun je de <code class="docutils literal notranslate"><span class="pre">style</span></code>-tag in principe overal in je HTML-document neerzetten. Het is echter goed gebruik om beide tags in de <code class="docutils literal notranslate"><span class="pre">header</span></code>-tag van je document te plaatsen. Binnen deze tag wordt informatie <em>over</em> het HTML-document gezet en de stilering is iets waar dit zeker voor geldt.</p>
+<p>De laatste optie, om de stilering direct aan de betreffende tag te koppelen, ziet er als volgt uit:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">p</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;background-color:blue;font-size:30px;&quot;</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Hoewel dit werkt en je het in het wild best wel regelmatig tegenkomt, is dit van de drie opties verreweg de slechtste. Allereerst is de data en vormgeving veel te sterk gekoppeld (weten we nog van <a class="reference external" href="https://www.geeksforgeeks.org/system-design/solid-principle-in-programming-understand-with-real-life-examples/">de SOLID-principles</a>? – die gelden ook hier), en het onderhouden van de stilering is daardoor een stuk moeilijker: als je een heel groot HTML-document hebt, en je een stilering hebt die je wilt aanpassen, kan het best een zoektocht zijn om te onderzoeken waar die stilering exact vandaan komt.</p>
+</section>
+<section id="specificiteit">
+<h2>Specificiteit<a class="headerlink" href="#specificiteit" title="Link to this heading">#</a></h2>
+<p>Hoe specifieker selector een node matcht, hoe belangrijker. Dit betekent dat als twee selectors dezelfde node matchen, en deze beide selectors conflicterende stilering definiëren, de stijl die gedefinieerd is in de meest specifieke selector wordt gebruikt. Zie het onderstaande voorbeeld, waarbij we uitgaan van het voorbeeld HTML-document dat we hierboven hebben weergegeven:</p>
+<div class="highlight-css notranslate"><div class="highlight"><pre><span></span><span class="nt">div</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="kc">green</span><span class="p">;</span><span class="w"> </span><span class="k">font-size</span><span class="p">:</span><span class="mi">20</span><span class="kt">px</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="nt">div</span><span class="p">.</span><span class="nc">container</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="kc">red</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">#</span><span class="nn">main</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">background-color</span><span class="p">:</span><span class="kc">blue</span><span class="p">;</span><span class="w"> </span><span class="p">}</span>
+</pre></div>
+</div>
+<p>In dat geval wordt de achtergrond van de <code class="docutils literal notranslate"><span class="pre">&lt;div</span> <span class="pre">id=&quot;main&quot;&gt;</span></code> <em>blauw</em> weergegeven (de laatste regel in de bovenstaande css ‘wint’). Merk op dat de letters nog steeds twintig pixels groot worden gerenderd, omdat die regel niet door de ‘winnende’ selector wordt overschreven – dit is exact het <em>cascading</em>-effect van CSS.</p>
+<p>Wanneer de specificiteit geen uitsluitsel geeft, is de algemene volgorde van rendering eigenlijk van onder naar boven:</p>
+<ol class="arabic simple">
+<li><p>Eerst ‘wint’ de stilering die gedefinieerd is in het <code class="docutils literal notranslate"><span class="pre">style=&quot;&quot;</span></code>-attribuut van de betreffende tag.</p></li>
+<li><p>Vervolgens wordt gekeken naar de stilering in de <code class="docutils literal notranslate"><span class="pre">&lt;style&gt;</span></code>-tag in het HTML-document zelf en naar de externe <em>stylesheets</em>.</p></li>
+</ol>
+<p>Mocht het zo zijn dat er dan nog meerdere selectors zijn die dezelfde node selecteren, dan gaat het op volgorde van <em>laden</em>: een eerder geladen selector kan door een later geladen worden overschreven.</p>
+<div class="tip admonition">
+<p class="admonition-title">specificiteit</p>
+<p>Dit specificiteit kan een behoorlijk complexe puzzel worden. Zie <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity">dit document op MDN</a> voor een nadere beschrijving. Onthoud dat het van belang is dat je het de browser ‘zo eenvoudig mogelijk maakt’: heel complexe en ingewikkelde <em>stylesheets</em> zorgen ervoor dat de browser behoorlijk wat werk moet verrichten, wat de rendertijd niet ten goede komt.</p>
+</div>
 </section>
 </section>
 
@@ -568,7 +636,9 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cssom">CSSOM</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#selectors-en-style-rules">Selectors en Style-rules</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#media-queries">Media-queries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#style-rules">Style-rules</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#locatie-van-de-stylesheets">Locatie van de stylesheets</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#specificiteit">Specificiteit</a></li>
 </ul>
   </nav></div>
 
