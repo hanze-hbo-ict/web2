@@ -2,18 +2,15 @@
 
 ## *Tags* en *Nodes*
 
-Wanneer we werk maken voor het web, dan hebben we onvermijdelijk te maken met HTML: *Hypertext Markup Language* (en met JavaScript, maar dat parkeren we tot webtechnologie 3). HTML is de standaardtaal waarin documenten worden geschreven waarvan het de bedoeling is dat ze in een *webbrowser* worden getoond. Een browser ontvangt HTML (meestal, maar niet per se, van een *webserver* – hoe dit proces exact verloopt valt buiten deze module), maakt aan de hand hiervan een *Document Object Model tree* (DOM-tree), bepaalt aan de hand van deze DOM-tree en andere informatie (afbeeldingen, stijling, grootte van het scherm, ...) hoe de onderdelen uit deze tree op het scherm moeten komen en tekent uiteindelijk de informatie op het scherm. Dit hele proces staat bekend onder de term *rendering*.
+Wanneer we werk maken voor het web, dan hebben we onvermijdelijk te maken met HTML: *Hypertext Markup Language* (en met JavaScript, maar dat parkeren we tot webtechnologie 3). HTML is de standaardtaal waarin documenten worden geschreven waarvan het de bedoeling is dat ze in een *webbrowser* worden getoond. 
+
+Een browser ontvangt HTML (meestal, maar niet per se, van een *webserver* – hoe dit proces exact verloopt valt buiten deze module), maakt aan de hand hiervan een *Document Object Model tree* (DOM-tree), bepaalt aan de hand van deze DOM-tree en andere informatie (afbeeldingen, stijling, grootte van het scherm, ...) hoe de onderdelen uit deze tree op het scherm moeten komen en tekent uiteindelijk de informatie op het scherm. Dit hele proces staat bekend onder de term *rendering*.
 
 De basis van HTML is de *informatie* die je uiteindelijk op het scherm wilt hebben. Meestal is dat tekst, maar het kan natuurlijk ook een plaatje of een filmpje of iets dergelijks zijn. Deze tekst kunt je door middel van HTML-tags voorzien van meta-informatie, en die meta-informatie op zijn beurt weer van meta-informatie – en dat recursief zodat je een boomstructuur krijgt. 
 
-De onderste delen van deze boom is de *tekst*, de bovenste node is de *root-node* is de html-node:
+HTML-tags beginnen met een *kleiner-dan teken* (`<`), gevolgd door de *naam* van de tag die weer gevolgd wordt door nul of meer *attributen* van die tag. Een tag sluit je af met een *groter-dan teken* (`>`): `<tag attribuut1="value" attribuut2="value1 value2">`. Na deze tag zet je dan datgene wat je binnen die tag wilt hebben, waarna je de tag afsluit door dezelfde naam vooraf te doen gaan door een *slash* (`/`): `</tag>`.
 
-HTML-tags beginnen met een *groter dan teken* (`>`), gevolgd door de *naam* van de tag die weer gevolgd wordt door nul of meer *attributen* van die tag. Een tag sluit je af met een *kleiner dan teken* (`>`): `<tag attribuut1="value" attribuut2="value1 value2">`. Na deze tag zet je dan datgene wat je binnen die tag wilt hebben, waarna je de tag afsluit door dezelfde naam vooraf te doen gaan door een *slash* (`/`): `</tag>`:
-
-![de algemene opbouw van een html-tag](../images/html-tags.jpeg)
-
-
-Zoals gemeld maakt de browser op basis van de gegeven HTML een DOM-tree. Deze boom bestaat uit *nodes* die uiteindelijk door dezelfde browser *gerenderd* worden. Er is dus een verschil tussen *tags* en *nodes*: de *tag* is het stuk HTML op basis waarvan de browser een instantie van de corresponderende *node* maakt. De HTML is gewoon platte tekst die je kunt intypen of genereren, de DOM is een tree structuur die op basis hiervan gemaakt is. Elke *node* in deze DOM is een instantie van een klasse die [`de Node-interface`](https://dom.spec.whatwg.org/#interface-node) implementeert. Bekijk [eventueel de documentatie op MDN](https://developer.mozilla.org/en-US/docs/Web/API/Node#specifications).
+Er zijn – letterlijk – tientallen van dergelijke tags / nodes gedefinieerd (en je kunt ze ook zelf maken), allemaal met hun eigen betekenis en (daaraan gekoppelde) gedrag en vormgeving. Het is nuttig om de meest voorkomende uit het hoofd te kennen, maar een volledig overzicht [is, vanzelfsprekend, te vinden op MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements).
 
 ```{admonition} Documentatie
 :class: tip
@@ -22,9 +19,13 @@ Om documentatie over webtechnieken te vinden wordt in de regel gebruik gemaakt v
 
 ```
 
-Er zijn vele tientallen tags gedefinieerd (en je kunt ze ook zelf maken), allemaal met hun eigen rol en eigenaardigheden. [Op MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements) vind je een compleet overzicht, maar het belangrijkste dat je moet onthouden is de algemene structuur van een HTML-document:
+Zoals gemeld maakt de browser op basis van de gegeven HTML een DOM-tree. Deze boom bestaat uit *nodes* die uiteindelijk door dezelfde browser *gerenderd* worden. Er is dus een verschil tussen *tags* en *nodes*: de *tag* is het stuk HTML op basis waarvan de browser een instantie van de corresponderende *node* maakt. 
 
-```text
+De HTML is gewoon platte tekst die je kunt intypen of genereren, de DOM is een tree structuur die op basis hiervan gemaakt is. Elke *node* in deze DOM is een instantie van een klasse die [`de Node-interface`](https://dom.spec.whatwg.org/#interface-node) implementeert. Bekijk [eventueel de documentatie op MDN](https://developer.mozilla.org/en-US/docs/Web/API/Node#specifications).
+
+De algemene structuur van een HTML-document is dan als volgt:
+
+```html
 <html>
   <head>
     <title></title>
