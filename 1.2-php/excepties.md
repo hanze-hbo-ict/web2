@@ -230,7 +230,7 @@ afhandelt. Een andere manier om dit te bewerkstelligen is door het
 registreren van een *exception handler*. Dit is een functie die wordt 
 aangeroepen als een exceptie nergens anders is afgehandeld. Nadat deze 
 functie is uitgevoerd, wordt de applicatie gestopt. Als dit niet wenselijk 
-is, moet een `try`-`catch`-blok gebruikt worden.Om PHP te vertellen welke
+is, moet een `try`-`catch`-blok gebruikt worden. Om PHP te vertellen welke
 functie hiervoor gebruikt wordt, moet de functie 
 [`set_exception_handler`](https://www.php.net/manual/en/function.set-exception-handler.php)
 aangroepen worden met een string met de naam van de te gebruiken functie als

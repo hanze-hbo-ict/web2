@@ -114,9 +114,14 @@ Daarnaast bestaan de operatoren `++` en `--` op dezelfde
 
 [TODO strings]
 
+## Strings
+
+## Arrays
 
 
 * variabelen
+* types: int, float, bool
+* null
 * strings en strings interpoleren
 * Operators
 * if
@@ -130,3 +135,7 @@ Daarnaast bestaan de operatoren `++` en `--` op dezelfde
 
 * var_dump
 * variabele variabelen?
+* define
+* string/arrayfuncties
+
+* php mode, short tags
