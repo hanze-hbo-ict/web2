@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '1.2-php/functies';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Object-georiënteerd programmeren" href="oop.html" />
+    <link rel="next" title="Typeconversie" href="typeconversie.html" />
     <link rel="prev" title="Opgave" href="../1.1-php/opgave.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
@@ -190,6 +190,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typeconversie.html">Typeconversie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="oop.html">Object-georiënteerd programmeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="excepties.html">Foutafhandeling</a></li>
 
@@ -197,8 +198,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/html.html">2.1 HTML: Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/css.html">2.1 CSS: Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/html.html">HTML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/css.html">CSS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2.1-html/oefening.html">Oefeningen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2.1-html/opgave.html">2.1 HTML: Opgaven</a></li>
 </ul>
@@ -404,9 +405,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variadische-functies">Variadische functies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typedeclaraties">Typedeclaraties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#require-include">Require/include</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variadische-functies">Variadische functies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-verdelen-over-meerdere-bestanden">Code verdelen over meerdere bestanden</a></li>
 </ul>
             </nav>
         </div>
@@ -420,40 +421,37 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="functies">
 <h1>Functies<a class="headerlink" href="#functies" title="Link to this heading">#</a></h1>
-<p>PHP biedt natuurlijk de mogelijkheid om zelf functies te schrijven. De
-syntax hiervan zal de gemiddelde programmeur bekend voorkomen. Functies
-worden in PHP gedefinieerd door middel van het keyword <code class="docutils literal notranslate"><span class="pre">function</span></code>, gevolgd
-door de naam van de functie, de lijst van parameters tussen haakjes en ten
-slotte de code van de functie tussen accolades.</p>
+<p>PHP biedt natuurlijk de mogelijkheid om zelf
+<a class="reference external" href="https://www.php.net/manual/en/functions.user-defined.php">functies</a> te
+schrijven. De syntax hiervan zal de gemiddelde programmeur bekend voorkomen.
+Functies worden in PHP gedefinieerd door middel van het keyword <code class="docutils literal notranslate"><span class="pre">function</span></code>,
+gevolgd door de naam van de functie, de lijst van parameters tussen haakjes
+en ten slotte de code van de functie tussen accolades.</p>
 <p>Parameternamen worden geschreven als variabelen, ze beginnen dus met een
 dollarteken <code class="docutils literal notranslate"><span class="pre">$</span></code>. Het is toegestaan en zeer aan te bevelen om een typenaam zoals
 <code class="docutils literal notranslate"><span class="pre">int</span></code>, <code class="docutils literal notranslate"><span class="pre">string</span></code> of de naam van een klasse voor de parameternaam te zetten.
 Als je dit doet, moet het argument dat je meegeeft van dit type zijn. Dit
 zal hieronder nog in meer detail worden besproken. Het is bovendien
-mogelijk om een  defaultwaarde mee te geven door <code class="docutils literal notranslate"><span class="pre">=</span></code> en de defaultwaarde na
+mogelijk om een defaultwaarde mee te geven door <code class="docutils literal notranslate"><span class="pre">=</span></code> en de defaultwaarde na
 de parameternaam op te nemen. Als de betreffende parameter dan niet wordt
 meegegeven, wordt de defaultwaarde ingevuld. Zie bijvoorbeeld de
-voorbeeldfunctie hieronder.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function test(int $a, $b, string $c = &#39;default&#39;)</span>
+voorbeeldfunctie hieronder. In de tweede aanroep zal <code class="docutils literal notranslate"><span class="pre">$c</span></code> de waarde
+<code class="docutils literal notranslate"><span class="pre">'default'</span></code> krijgen omdat die niet expliciet is meegegeven.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function test($a, $b, $c = &#39;default&#39;)</span>
 <span class="x">{</span>
 <span class="x">    var_dump($a, $b, $c);</span>
 <span class="x">}</span>
 
 <span class="x">test(1, &#39;a&#39;, &#39;b&#39;);</span>
 <span class="x">test(5, &#39;test&#39;);</span>
-<span class="x">test(&#39;a&#39;, &#39;b&#39;, &#39;c&#39;);</span>
 </pre></div>
 </div>
-<p>In dit voorbeeld zijn de eerste twee aanroepen correct; in de tweede aanroep
-zal <code class="docutils literal notranslate"><span class="pre">$c</span></code> de waarde <code class="docutils literal notranslate"><span class="pre">'default'</span></code> krijgen omdat die niet expliciet is
-meegegeven. De derde aanroep zal een foutmelding geven omdat <code class="docutils literal notranslate"><span class="pre">'a'</span></code> geen
-<code class="docutils literal notranslate"><span class="pre">int</span></code> is.</p>
 <p>Het is ook mogelijk om argumenten op naam mee te geven door voor de waarde
 van het argument de naam van de parameter op te nemen, zonder dollarteken,
-gevolgd door een dubbele punt. Als een functie een
-veelvoud aan parameters heeft, kan hiermee duidelijk gemaakt worden welke
-parameter bedoelt wordt. Ook is het hiermee mogelijk om parameters over te
-slaan, zodat voor die parameters de defaultwaarde gebruikt wordt. De functie
+gevolgd door een dubbele punt. Als een functie een veelvoud aan parameters
+heeft, kan hiermee duidelijk gemaakt worden welke parameter bedoelt wordt.
+Ook is het hiermee mogelijk om parameters over te slaan, zodat voor die
+parameters de defaultwaarde gebruikt wordt. De functie
 <a class="reference external" href="https://www.php.net/manual/en/function.htmlentities.php"><code class="docutils literal notranslate"><span class="pre">htmlentities</span></code></a>
 heeft bijvoorbeeld vier parameters, waarbij alleen de eerste geen
 defaultwaarde heeft. Onderstaande aanroep gebruikt de defaultwaardes voor de
@@ -478,9 +476,9 @@ object wel aanpassen. Objecten zijn dus <em>mutable</em>.</p>
 <p>Het is mogelijk om deze default aan te passen. Door een ampersand <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> te
 zetten voor het dollarteken van de parameternaam, wordt de parameter <em>by
 reference</em>. Dit betekent dat de functie een verwijzing krijgt naar de
-oorspronkelijke variabele en deze ook kan aanpassen. Dit is voor alle types
-mogelijk, zoals te zien in onderstaand voorbeeld.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function byref(int &amp;$count)</span>
+oorspronkelijke variabele en deze ook kan aanpassen, zoals te zien in
+onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function byref(&amp;$count)</span>
 <span class="x">{</span>
 <span class="x">    $count += 1;</span>
 <span class="x">}</span>
@@ -491,29 +489,144 @@ mogelijk, zoals te zien in onderstaand voorbeeld.</p>
 </pre></div>
 </div>
 <p>In dit voorbeeld zal <code class="docutils literal notranslate"><span class="pre">$count</span></code> na de aanroep van <code class="docutils literal notranslate"><span class="pre">byref</span></code> de waarde 6 bevatten.</p>
-<p>Functies kunnen ook, net als in de meeste programmeertalen, waardes
-teruggeven. Hiervoor wordt zoals gebruikelijk het keyword <code class="docutils literal notranslate"><span class="pre">return</span></code> gebruikt
-binnen de functie. Het is in principe niet verplicht om bij de functie te
-vermelden wat het returntype zal zijn, aangezien PHP een dynamische taal is,
-maar dit is wel zeer aan te bevelen. Dit kan je doen door na de
-parameterlijst een dubbele punt te zetten, gevolgd door het type dat de
-functie zal teruggeven. Hierbij kan ook het type <code class="docutils literal notranslate"><span class="pre">void</span></code> gebruikt worden, dat
-aangeeft dat de functie geen returnwaarde mag geven. Het is dan wel
-toegestaan om het statement <code class="docutils literal notranslate"><span class="pre">return</span></code> zonder waarde te gebruike om de
-functieaanroep eerder te beëindigen, maar niet om hier een waarde aan mee te
-geven. Hieronder is van deze varianten een voorbeeld te zien.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function double(int $x): int</span>
+<p>Functies kunnen ook, net als in de meeste programmeertalen,
+<a class="reference external" href="https://www.php.net/manual/en/functions.returning-values.php">waardes teruggeven</a>.
+Hiervoor wordt zoals gebruikelijk het keyword <code class="docutils literal notranslate"><span class="pre">return</span></code> gebruikt binnen de
+functie. Het keyword <code class="docutils literal notranslate"><span class="pre">return</span></code> kan ook zonder waarde worden gebruikt om een
+functie voortijdig te beëindigen, zoals te zien in onderstaande
+voorbeelden.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function double($x)</span>
 <span class="x">{</span>
 <span class="x">    return 2*$x;</span>
 <span class="x">}</span>
 
-<span class="x">function hello(string $name): void</span>
+<span class="x">function hello($name)</span>
 <span class="x">{</span>
+<span class="x">    if (!$name) {</span>
+<span class="x">        echo &quot;Hello, nameless person!\n&quot;</span>
+<span class="x">        return;</span>
+<span class="x">    }</span>
 <span class="x">    echo &quot;Hello, $name!\n&quot;;</span>
-<span class="x">    return; // dit is optioneel maar mag wel</span>
 <span class="x">}</span>
 </pre></div>
 </div>
+<section id="typedeclaraties">
+<h2>Typedeclaraties<a class="headerlink" href="#typedeclaraties" title="Link to this heading">#</a></h2>
+<p>In beginsel is PHP een dynamisch getypeerde taal. Dit betekent dat, net als
+in Python, je niet hoeft aan te geven wat het type van een variabele is. Het
+kan echter heel nuttig zijn om bij een functie aan te geven welk type de
+argumenten moeten hebben. De signatuur van een functie wordt immers vaak los
+getoond van de code, bijvoorbeeld in documentatie of IDE’s, en het tonen van
+een type kan dan erg informatief zijn. Het is in PHP dan ook mogelijk om bij
+een functie aan te geven van welk type elke parameter is, en welk type
+teruggegeven wordt uit de functie. Aangezien PHP dit ook zal afdwingen en
+een foutmelding zal geven als een verkeerd type wordt meegegeven, kan
+hierdoor de kwaliteit van de code verhoogd worden. Het is dan ook ten
+zeerste aan te bevelen om elke functie die je schrijft te voorzien van
+dergelijke
+<a class="reference external" href="https://www.php.net/manual/en/language.types.declarations.php">typedeclaraties</a>.
+In het voorbeeld hieronder zal de vierde aanroep een foutmelding geven, omdat
+het meegegeven type voor <code class="docutils literal notranslate"><span class="pre">$count</span></code> niet klopt met het vereiste type in de
+parameterlijst. Merk op dat de tweede aanroep wel werkt; PHP zal de int <code class="docutils literal notranslate"><span class="pre">1</span></code>
+omzetten in de string <code class="docutils literal notranslate"><span class="pre">'1'</span></code>. Ook de derde aanroep werkt; de string <code class="docutils literal notranslate"><span class="pre">'5'</span></code>
+bevat alleen een getal, en kan daarom door PHP omgezet worden in de int <code class="docutils literal notranslate"><span class="pre">5</span></code>.
+Deze omstreden faciliteit wordt <em>type juggling</em> genoemd en zal hieronder nog
+besproken worden.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function repeat(string $s, int $count)</span>
+<span class="x">{</span>
+<span class="x">    for ($i = 0; $i &lt; $count; $i++) {</span>
+<span class="x">        echo($s);</span>
+<span class="x">   }</span>
+<span class="x">}</span>
+
+<span class="x">repeat(&#39;a&#39;, 5);</span>
+<span class="x">repeat(1, 5);</span>
+<span class="x">repeat(&#39;a&#39;, &#39;5&#39;);</span>
+<span class="x">repeat(&#39;a&#39;, &#39;b&#39;);</span>
+</pre></div>
+</div>
+<p>Om aan te geven welk type een parameter heeft, zet je dit type simpelweg
+voor de variabelenaam. Het returntype kan aangegeven worden door na de
+parameterlijst een dubbele punt te zetten, gevolgd door het type dat de
+functie zal teruggeven. Hierbij kan ook het type
+<a class="reference external" href="https://www.php.net/manual/en/language.types.void.php"><code class="docutils literal notranslate"><span class="pre">void</span></code></a> gebruikt
+worden, dat aangeeft dat de functie geen returnwaarde mag geven. Het is dan wel
+toegestaan om het statement <code class="docutils literal notranslate"><span class="pre">return</span></code> zonder waarde te gebruiken om de
+functieaanroep eerder te beëindigen, maar niet om hier een waarde aan mee te
+geven. Ook kan je het type
+<a class="reference external" href="https://www.php.net/manual/en/language.types.never.php"><code class="docutils literal notranslate"><span class="pre">never</span></code></a> gebruiken
+om aan te geven dat de functie nooit regulier zal terugkeren naar de
+aanroepende functie; oftewel, dat er geen <code class="docutils literal notranslate"><span class="pre">return</span></code>-statement zal worden
+uitgevoerd en dat ook het einde van de functie niet bereikt zal worden. Dit
+kan alleen als de functie een eindeloze lus is, de applicatie zal beëindigen
+met de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.exit.php"><code class="docutils literal notranslate"><span class="pre">exit</span></code></a>
+of alleen maar via excepties, die nog besproken zullen worden, de functie
+zal beëindigen.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function print_number(int $a): void {</span>
+<span class="x">    echo $a;</span>
+<span class="x">    return; // deze return is toegestaan maar hoeft niet</span>
+<span class="x">}</span>
+
+<span class="x">function fibonacci(): never {</span>
+<span class="x">    $a = 1;</span>
+<span class="x">    $b = 1;</span>
+<span class="x">    while (true) {</span>
+<span class="x">        $c = $a + $b;</span>
+<span class="x">        $a = $b;</span>
+<span class="x">        $b = $c;</span>
+<span class="x">        echo(&quot;$c\n&quot;);</span>
+<span class="x">        usleep(100_000); // wacht 100.000 microseconden (0,1 seconde)</span>
+<span class="x">    }</span>
+<span class="x">    // deze functie eindigt nooit</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Soms wil je juist wel elk type accepteren, bijvoorbeeld in een functie die een
+array maakt met aantal kopieën van een gegeven waarde toevoegt aan een array.
+Het maakt immers niet uit wat het type is van de waarde die in de array
+gezet moet worden. In dat geval kan je het type
+<a class="reference external" href="https://www.php.net/manual/en/language.types.mixed.php"><code class="docutils literal notranslate"><span class="pre">mixed</span></code></a> gebruiken.
+In andere gevallen mag een variabele van meerdere types zijn. Het zou
+bijvoorbeeld zo kunnen zijn dat we een gebruiker expliciet kunnen meegeven
+als gegevens in een <code class="docutils literal notranslate"><span class="pre">array</span></code> of als id van het type <code class="docutils literal notranslate"><span class="pre">int</span></code>. De typedeclaratie
+zal dan <code class="docutils literal notranslate"><span class="pre">array|int</span></code> zijn, dus beide types gescheiden door een pipe <code class="docutils literal notranslate"><span class="pre">|</span></code>. Dit
+heet een
+<a class="reference external" href="https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.composite.union"><em>union type</em></a>.
+Een veelvoorkomende situatie die hieraan verwant is, is dat een bepaalde
+parameter optioneel is. Vaak wordt dit geïmplementeerd door de parameter
+<code class="docutils literal notranslate"><span class="pre">null</span></code> te laten zijn als deze ontbreekt. Als echter een typedeclaratie
+wordt gebruikt, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">string</span></code>, zal dit een foutmelding geven omdat
+<code class="docutils literal notranslate"><span class="pre">null</span></code> geen string is. Het type <code class="docutils literal notranslate"><span class="pre">string|null</span></code> kan dan gebruikt worden, dat
+type laat immers zowel strings als <code class="docutils literal notranslate"><span class="pre">null</span></code> toe. Omdat deze constructie vaak
+voorkomt, is hier een kortere versie voor, het type <code class="docutils literal notranslate"><span class="pre">?string</span></code>. Dit wordt een
+<a class="reference external" href="https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.nullable"><em>nullable</em></a>
+string genoemd. Hieronder zijn enkele voorbeelden hiervan te zien.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function repeat_array(mixed $value, int $count): array</span>
+<span class="x">{</span>
+<span class="x">    $result = [];</span>
+<span class="x">    for ($i = 0; $i &lt; $count; $i++) {</span>
+<span class="x">        $result[] = $value;</span>
+<span class="x">    }</span>
+<span class="x">    return $result;</span>
+<span class="x">}</span>
+
+<span class="x">function echo_user_name(array|int $user): void</span>
+<span class="x">{</span>
+<span class="x">    if (is_int($user)) {</span>
+<span class="x">        $user = get_user_by_id($user);</span>
+<span class="x">    }</span>
+<span class="x">    echo $user[&#39;name&#39;];</span>
+<span class="x">}</span>
+
+<span class="x">function hello(?string $name = null): void</span>
+<span class="x">{</span>
+<span class="x">    $name ??= &#39;anonymous user&#39;;</span>
+<span class="x">    echo &quot;Hello, $name!&quot;;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</section>
 <section id="variadische-functies">
 <h2>Variadische functies<a class="headerlink" href="#variadische-functies" title="Link to this heading">#</a></h2>
 <p>Soms is het niet mogelijk om van te voren te definiëren hoeveel parameters
@@ -555,18 +668,109 @@ dezelfde naam te vullen. Hieronder staan enkele voorbeelden, waarbij de functie
 <p>De eerste aanroep zal 1 teruggeven, omdat <code class="docutils literal notranslate"><span class="pre">b</span></code> op de tweede positie van de
 string <code class="docutils literal notranslate"><span class="pre">abc</span></code> staat; de tweede aanroep zal 2 teruggeven.</p>
 </section>
-<section id="typedeclaraties">
-<h2>Typedeclaraties<a class="headerlink" href="#typedeclaraties" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>nullable types</p></li>
-<li><p>union/intersect types</p></li>
-<li><p>mixed, void, never</p></li>
-<li><p>type coercion</p></li>
-<li><p>declare strict types</p></li>
-</ul>
-</section>
-<section id="require-include">
-<h2>Require/include<a class="headerlink" href="#require-include" title="Link to this heading">#</a></h2>
+<section id="code-verdelen-over-meerdere-bestanden">
+<h2>Code verdelen over meerdere bestanden<a class="headerlink" href="#code-verdelen-over-meerdere-bestanden" title="Link to this heading">#</a></h2>
+<p>Tot nog toe heeft alle code steeds in een enkel bestand gestaan. Dit is
+natuurlijk geen schaalbare aanpak. Als een applicatie groter wordt, is het
+wenselijk en zelfs noodzakelijk om de code over verschillende bestanden te
+verdelen. De primaire manier waarop dit in PHP gebeurt is met een viertal
+keywords. Dit zijn
+<a class="reference external" href="https://www.php.net/manual/en/function.require.php"><code class="docutils literal notranslate"><span class="pre">require</span></code></a>,
+<a class="reference external" href="https://www.php.net/manual/en/function.require-once.php"><code class="docutils literal notranslate"><span class="pre">require_once</span></code></a>,
+<a class="reference external" href="https://www.php.net/manual/en/function.include.php"><code class="docutils literal notranslate"><span class="pre">include</span></code></a> en
+<a class="reference external" href="https://www.php.net/manual/en/function.include-once.php"><code class="docutils literal notranslate"><span class="pre">include_once</span></code></a>.
+Ze werken alle vier op een grotendeels gelijkende manier, maar hebben enkele
+relevante verschillen.</p>
+<p>Wat alle vier de keywords gemeen hebben is dat ze alle vier een expressie
+zijn die als effect heeft dat ze virtueel vervangen worden door de inhoud van
+een bepaald bestand; de bestandsnaam staat als string achter het keyword.
+Dit betekent dat als bijvoorbeeld functies of variabelen gedeclareerd worden
+in het ingevoegde bestand, deze vervolgens beschikbaar zijn in het
+invoegende bestand. Omgekeerd kan het ingevoegde bestand gebruik maken van
+variabelen en functies die al bestonden in het invoegende bestand. Wel is
+het zo dat het ingevoegde bestand altijd in HTML-modus begint; om PHP-code
+uit te voeren, moet een PHP-tag gebruikt worden.</p>
+<p>In het volgende voorbeeld wordt getoond hoe functies en variabelen
+uitgewisseld kunnen worden van en naar het ingevoegde bestand.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">// a.php</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
+<span class="k">include</span> <span class="s1">&#39;b.php&#39;</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span> <span class="c1">// 10, want $a is aangepast in b.php</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nx">dbl</span><span class="p">(</span><span class="nv">$b</span><span class="p">));</span> <span class="c1">// 6, want dbl en $b zijn gedeclareerd in b.php</span>
+
+<span class="c1">// b.php</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span> <span class="c1">// 5, want $a komt mee uit de scope waarin dit bestand is ingevoegd</span>
+<span class="nv">$a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
+<span class="nv">$b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="k">function</span> <span class="nf">dbl</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$x</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span>
+<span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Een ingevoegd bestand kan naast functies en variabelen declareren ook een
+waarde teruggeven met het keyword <code class="docutils literal notranslate"><span class="pre">return</span></code>, vergelijkbaar met een functie.
+Deze waarde kan in het invoegende bestand toegekend worden aan een variabele,
+zoals in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">// a.php</span>
+<span class="cp">&lt;?php</span>
+<span class="nv">$val</span> <span class="o">=</span> <span class="k">include</span> <span class="s1">&#39;b.php&#39;</span><span class="p">;</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$val</span><span class="p">);</span> <span class="c1">// $val heeft hier de waarde 5.</span>
+
+<span class="c1">// b.php</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">return</span> <span class="mi">5</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Het is belangrijk om te begrijpen op welke manier PHP naar een ingevoegd
+bestand zoekt; in beginsel kan hier een absoluut pad worden gebruikt, dat
+begint met een slash of op Windows met een drive-letter, maar dat is vaak
+niet wenselijk omdat het daarmee lastig wordt om de applicatie naar een
+andere omgeving te verplaatsen. Daarom zal in principe een relatief pad
+worden gebruikt. Dit pad wordt geëvalueerd vanuit de directory waar het
+oorspronkelijke PHP-bestand, waarmee de applicatie gestart is, wordt
+uitgevoerd. Als de applicatie dus gestart wordt vanuit <code class="docutils literal notranslate"><span class="pre">a.php</span></code>, en deze een
+bestand <code class="docutils literal notranslate"><span class="pre">b.php</span></code> invoegt die op zijn beurt weer een
+bestand <code class="docutils literal notranslate"><span class="pre">c.php</span></code> invoegt, dan wordt <code class="docutils literal notranslate"><span class="pre">c.php</span></code> in principe gezocht vanuit de
+directory waar <code class="docutils literal notranslate"><span class="pre">a.php</span></code> staat. Dit betekent dat als <code class="docutils literal notranslate"><span class="pre">b.php</span></code> in een andere
+directory staat dan <code class="docutils literal notranslate"><span class="pre">a.php</span></code>, het voor het evalueren van het pad naar <code class="docutils literal notranslate"><span class="pre">c.php</span></code>
+uitmaakt of <code class="docutils literal notranslate"><span class="pre">b.php</span></code> vanuit <code class="docutils literal notranslate"><span class="pre">a.php</span></code> ingevoegd wordt, of dat deze rechtstreeks
+wordt gestart. Dit is natuurlijk verwarrend, zoals in onderstaand voorbeeld
+duidelijk wordt gemaakt.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">// /web/src/a.php</span>
+<span class="cp">&lt;?php</span>
+<span class="k">include</span> <span class="s1">&#39;includes/b.php&#39;</span> <span class="c1"># voeg het bestand /web/src/includes/b.php in</span>
+
+<span class="c1">// /web/src/includes/b.php</span>
+<span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">include</span> <span class="s1">&#39;c.php&#39;</span> <span class="c1"># voeg het bestand /web/src/c.php in</span>
+</pre></div>
+</div>
+<p>Merk op dat in bovenstaand voorbeeld het bestand <code class="docutils literal notranslate"><span class="pre">c.php</span></code> gezocht wordt in
+<code class="docutils literal notranslate"><span class="pre">/web/src</span></code>, omdat dat de directory is waar <code class="docutils literal notranslate"><span class="pre">a.php</span></code> staat. Je zou kunnen
+verwachten dat in <code class="docutils literal notranslate"><span class="pre">/web/src/includes</span></code> gezocht wordt, omdat <code class="docutils literal notranslate"><span class="pre">b.php</span></code> daar
+staat. Als <code class="docutils literal notranslate"><span class="pre">b.php</span></code> het script is waarmee de webapplicatie gestart wordt, zou
+dat ook zo zijn, maar omdat hier de applicatie vanuit <code class="docutils literal notranslate"><span class="pre">a.php</span></code> gestart wordt,
+wordt dat het beginpunt voor alle relatieve paden.</p>
+<p>Het is dan ook goed gebruik dat een pad voor het invoegen van een bestand
+altijd absoluut gemaakt wordt door de constante <code class="docutils literal notranslate"><span class="pre">__DIR__</span></code> te gebruiken.
+Deze constante bevat de directory waarin het bestand waarin deze constante
+gebruikt wordt zich bevind. Door vanaf deze directory te navigeren kunnen
+bestanden op een eenduidige manier worden aangeduid; gebruik dus liever
+<code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">__DIR__.'/../includes/inc.php'</span></code> in plaats van <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">'../includes/inc.php'</span></code>.</p>
+<p>Het verschil tussen de vier keywords is dat de varianten met <code class="docutils literal notranslate"><span class="pre">include</span></code> een
+waarschuwing geven als het in te voegen bestand niet bestaat, terwijl de
+varianten met <code class="docutils literal notranslate"><span class="pre">require</span></code> een foutmelding geven. Daarnaast zullen de varianten
+die eindigen op <code class="docutils literal notranslate"><span class="pre">once</span></code> een bestand altijd slechts één keer invoegen. Als een
+bepaald bestand al ingevoegd is, zal een aanroep met <code class="docutils literal notranslate"><span class="pre">include_once</span></code> of
+<code class="docutils literal notranslate"><span class="pre">require_once</span></code> deze niet opnieuw invoegen. Als het ingevoegde bestand
+functies definieert, is dat handig, aangezien anders de foutmelding gegeven
+zal worden dat de functie al bestond. Als echter het ingevoegde bestand een
+waarde teruggeeft met <code class="docutils literal notranslate"><span class="pre">return</span></code> zal dit alleen de eerste keer gebeuren. Als
+een dergelijk bestand daarna nog een keer met <code class="docutils literal notranslate"><span class="pre">include_once</span></code> of
+<code class="docutils literal notranslate"><span class="pre">require_once</span></code> wordt ingevoegd, zal het niet opnieuw deze waarde teruggeven.</p>
 </section>
 </section>
 
@@ -610,11 +814,11 @@ string <code class="docutils literal notranslate"><span class="pre">abc</span></
       </div>
     </a>
     <a class="right-next"
-       href="oop.html"
+       href="typeconversie.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Object-georiënteerd programmeren</p>
+        <p class="prev-next-title">Typeconversie</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -635,9 +839,9 @@ string <code class="docutils literal notranslate"><span class="pre">abc</span></
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variadische-functies">Variadische functies</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typedeclaraties">Typedeclaraties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#require-include">Require/include</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variadische-functies">Variadische functies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-verdelen-over-meerdere-bestanden">Code verdelen over meerdere bestanden</a></li>
 </ul>
   </nav></div>
 

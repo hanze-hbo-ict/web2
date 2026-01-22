@@ -190,6 +190,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/functies.html">Functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/typeconversie.html">Typeconversie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/oop.html">Object-georiënteerd programmeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/excepties.html">Foutafhandeling</a></li>
 
@@ -197,8 +198,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/html.html">2.1 HTML: Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/css.html">2.1 CSS: Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/html.html">HTML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/css.html">CSS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2.1-html/oefening.html">Oefeningen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2.1-html/opgave.html">2.1 HTML: Opgaven</a></li>
 </ul>
@@ -502,9 +503,14 @@ niet beschikbaar is.</p>
 een subtype van callable, de klasse
 <a class="reference external" href="https://www.php.net/manual/en/class.closure.php"><code class="docutils literal notranslate"><span class="pre">Closure</span></code></a>. Dit biedt
 enkele mogelijkheden die verder gaan dan het generieke type <code class="docutils literal notranslate"><span class="pre">callable</span></code>, maar
-die voeren te ver om hier uit te werken. In het algemeen is het aan te raden
-om bij typehinting het type <code class="docutils literal notranslate"><span class="pre">callable</span></code> te gebruiken, zodat ook de hier
-genoemde syntaxen met strings en arrays gebruikt kunnen worden.</p>
+die voeren te ver om hier uit te werken. In de meeste gevallen zal het niet
+veel uitmaken welke van deze twee types gebruikt wordt als typedeclaratie.
+<code class="docutils literal notranslate"><span class="pre">Closure</span></code> laat niet alle mogelijke syntaxen toe die <code class="docutils literal notranslate"><span class="pre">callable</span></code> wel toestaat,
+wat voor het gebruik van <code class="docutils literal notranslate"><span class="pre">callable</span></code> spreekt. Het is echter niet
+toegestaan om <code class="docutils literal notranslate"><span class="pre">callable</span></code> te gebruiken als typedeclaratie voor een
+instantievariabele. <code class="docutils literal notranslate"><span class="pre">Closure</span></code> is daar wel toegestaan. Als je toch een
+<code class="docutils literal notranslate"><span class="pre">callable</span></code> zou willen gebruiken kan je gebruikmaken van de factorymethode
+<code class="docutils literal notranslate"><span class="pre">Closure::fromCallable</span></code> die van een <code class="docutils literal notranslate"><span class="pre">callable</span></code> een <code class="docutils literal notranslate"><span class="pre">Closure</span></code> maakt.</p>
 </section>
 <section id="anonieme-functies">
 <h2>Anonieme functies<a class="headerlink" href="#anonieme-functies" title="Link to this heading">#</a></h2>

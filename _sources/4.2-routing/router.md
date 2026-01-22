@@ -32,7 +32,7 @@ Het type `callable` wordt hieronder nog toegelicht. Kort gezegd bevat dit
 type een verwijzing naar een functie die uitgevoerd kan worden. De router 
 heeft dus als taak om, gegeven een request, een functie te vinden die dit 
 request kan afhandelen. Het is in PHP niet mogelijk om de signatuur van een 
-callable vast te leggen in de typehint; de bedoeling is echter dat de 
+callable vast te leggen in de typedeclaratie; de bedoeling is echter dat de 
 functie die het request afhandelt geen parameters heeft en een instantie van 
 `Framework\Http\ResponseInterface` teruggeeft. Variaties hierop zijn ook 
 toegestaan; zo zou je eventueel ook het requestobject als parameter aan de 

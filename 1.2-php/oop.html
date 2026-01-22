@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
     <link rel="next" title="Foutafhandeling" href="excepties.html" />
-    <link rel="prev" title="Functies" href="functies.html" />
+    <link rel="prev" title="Typeconversie" href="typeconversie.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -190,6 +190,7 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="functies.html">Functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="typeconversie.html">Typeconversie</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Object-georiënteerd programmeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="excepties.html">Foutafhandeling</a></li>
 
@@ -197,8 +198,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/html.html">2.1 HTML: Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/css.html">2.1 CSS: Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/html.html">HTML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/css.html">CSS</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2.1-html/oefening.html">Oefeningen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../2.1-html/opgave.html">2.1 HTML: Opgaven</a></li>
 </ul>
@@ -404,6 +405,10 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klassen-en-objecten">Klassen en objecten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overerving">Overerving</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaces">Interfaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor-promotion"><em>Constructor promotion</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#namespaces">Namespaces</a></li>
 </ul>
             </nav>
@@ -422,50 +427,110 @@
 <a class="reference external" href="https://www.php.net/manual/en/language.oop5.php">object-georiënteerd</a>
 te programmeren. De implementatie hiervan is door Java geïnspireerd; veel van
 de keywords zullen de Java-programmeur dan ook bekend voorkomen.</p>
+<section id="klassen-en-objecten">
+<h2>Klassen en objecten<a class="headerlink" href="#klassen-en-objecten" title="Link to this heading">#</a></h2>
 <p>In PHP worden klassen gemaakt met het keyword <code class="docutils literal notranslate"><span class="pre">class</span></code>. Objecten worden
 gemaakt door gebruik te maken van het keyword <code class="docutils literal notranslate"><span class="pre">new</span></code>. Hierbij wordt een
-constructor aangeroepen; dit is de methode met de naam <code class="docutils literal notranslate"><span class="pre">__construct</span></code>.
-Aangezien in PHP functies en methodes niet overloaded kunnen worden, kan
-er maar één constructor zijn. Net als in Java kunnen instantievariabelen en
-methodes <code class="docutils literal notranslate"><span class="pre">public</span></code>, <code class="docutils literal notranslate"><span class="pre">protected</span></code> en <code class="docutils literal notranslate"><span class="pre">private</span></code> zijn en kunnen klassen andere
-klassen uitbreiden met het keyword <code class="docutils literal notranslate"><span class="pre">extends</span></code>. PHP kent ook interfaces en
-abstracte klassen en gebruikt hiervoor dezelfde keywords als Java. Dit zijn
-<code class="docutils literal notranslate"><span class="pre">interface</span></code>, <code class="docutils literal notranslate"><span class="pre">implements</span></code> en <code class="docutils literal notranslate"><span class="pre">abstract</span></code>.</p>
-<p>Een belangrijk verschil is dat PHP geen punt gebruikt om methodes en
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.decon.php">constructor</a>
+aangeroepen; dit is de methode met de naam <code class="docutils literal notranslate"><span class="pre">__construct</span></code>. Aangezien in PHP
+functies en methoden niet overloaded kunnen worden, kan er maar één
+constructor zijn. Daarnaast kan een klasse methoden en instantievariabelen
+bevatten. Instantievariabelen worden binnen een klasse gedeclareerd door
+de variabelenaam met dollarteken te laten voorafgaan door één van de drie
+keywords voor
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.visibility.php">zichtbaarheid</a>,
+<code class="docutils literal notranslate"><span class="pre">public</span></code>, <code class="docutils literal notranslate"><span class="pre">protected</span></code> en <code class="docutils literal notranslate"><span class="pre">private</span></code>. Een variabele die <code class="docutils literal notranslate"><span class="pre">private</span></code> is, is
+alleen toegankelijk vanuit de klasse zelf, een <code class="docutils literal notranslate"><span class="pre">protected</span></code> variabele is
+daarna ook toegankelijk vanuit subklassen van deze klasse en een <code class="docutils literal notranslate"><span class="pre">public</span></code>
+variabele is altijd toegankelijk. Het is toegestaan en aan te bevelen om na
+dit keyword een typedeclaratie op te nemen die betekent dat de variabele
+altijd een waarde van dat type moet bevatten. Een voorbeeld van een
+volledige declaratie is <code class="docutils literal notranslate"><span class="pre">protected</span> <span class="pre">string</span> <span class="pre">$value</span></code>. Methoden worden met het
+keyword <code class="docutils literal notranslate"><span class="pre">function</span></code> gedeclareerd en werken verder op dezelfde manier als
+functies. Ook methoden kunnen worden voorafgegaan door <code class="docutils literal notranslate"><span class="pre">public</span></code>, <code class="docutils literal notranslate"><span class="pre">protected</span></code>
+en <code class="docutils literal notranslate"><span class="pre">private</span></code>.</p>
+<p>Daarnaast kunnen methoden en instantievariabelen
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.static.php"><code class="docutils literal notranslate"><span class="pre">static</span></code></a> worden
+gedefinieerd en betekent dit dat de betreffende methoden en variabelen
+beschikbaar zijn op de klasse op zich, niet op specifieke objecten van die
+klassen. De huidige klasse kan hierbij worden aangegeven met het keyword
+<code class="docutils literal notranslate"><span class="pre">self</span></code>, maar mag ook gewoon worden aangegeven met zijn klassenaam.</p>
+<p>Een belangrijk verschil is dat PHP geen punt gebruikt om methoden en
 instantievariabelen aan te roepen zoals Java en Python dat doen. Deze operator
 wordt in PHP immers gebruikt voor stringconcatenatie. In plaats daarvan
 wordt de pijl <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code> gebruikt, hetgeen doet denken aan de syntax van C++.
 Bovendien staat het dollarteken dat normaal voor een variabelenaam staat
 alleen voor de verwijzing naar het object, en wordt deze niet herhaald na
 de pijl. Een instantievariabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> van een object <code class="docutils literal notranslate"><span class="pre">$this</span></code> wordt dus
-aangesproken als <code class="docutils literal notranslate"><span class="pre">$this-&gt;var</span></code>. Enkele voorbeelden zijn hieronder
-te zien.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">interface TestInterface {</span>
-<span class="x">    function test(): void;</span>
-<span class="x">}</span>
-
-<span class="x">abstract class AbstractTest {</span>
-<span class="x">    protected abstract function abstractTest(): void;</span>
-<span class="x">}</span>
-
-<span class="x">class Test extends AbstractTest implements Test {</span>
-<span class="x">    private string $property;</span>
+aangesproken als <code class="docutils literal notranslate"><span class="pre">$this-&gt;var</span></code>. Bij statische methoden en variabelen wordt in
+plaats daarvan een dubbele dubbele punt <code class="docutils literal notranslate"><span class="pre">::</span></code> gebruikt. Enkele voorbeelden zijn
+hieronder te zien.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class Test {</span>
+<span class="x">    private int $property;</span>
+<span class="x">    public static string $staticProperty = &quot;abc&quot;;</span>
 <span class="x">    </span>
 <span class="x">    public function __construct()</span>
 <span class="x">    {</span>
 <span class="x">        $this-&gt;property = 5;</span>
 <span class="x">    }</span>
 <span class="x">    </span>
+<span class="x">    private static staticTest() {</span>
+<span class="x">        echo Test::$staticProperty;</span>
+<span class="x">    }</span>
+<span class="x">    </span>
 <span class="x">    public function test()</span>
 <span class="x">    {</span>
-<span class="x">        $other = nww Test();</span>
-<span class="x">        $other-&gt;abstactTest();</span>
-<span class="x">    }</span>
-
-<span class="x">    protected function abstractTest()</span>
-<span class="x">    {</span>
+<span class="x">        echo $this-&gt;property;</span>
+<span class="x">        self::staticTest();</span>
 <span class="x">    }</span>
 <span class="x">}</span>
+</pre></div>
+</div>
+</section>
+<section id="overerving">
+<h2>Overerving<a class="headerlink" href="#overerving" title="Link to this heading">#</a></h2>
+<p>Net als in Java kunnen in PHP klassen andere klasse uitbreiden door middel van
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.inheritance.php">overerving</a>
+met het keyword <code class="docutils literal notranslate"><span class="pre">extends</span></code>. Hierbij kan, net als bij Java, een klasse slechts
+van één klasse overerven; meervoudige overerving is niet mogelijk. Een
+subklasse heeft de beschikking over de methoden en instantievariabelen van
+zijn superklasse, behalve als die <code class="docutils literal notranslate"><span class="pre">private</span></code> zijn, en kan zelf nieuwe
+methoden en instantievariabelen declareren of bestaande methoden overschrijven.</p>
+<p>In PHP is het ook mogelijk om, als een methode in een subklasse overschreven
+wordt, de methode uit de superklasse aan te roepen. Dit kan door het keyword
+<code class="docutils literal notranslate"><span class="pre">super</span></code> te gebruiken, gevolgd door een dubbele dubbele punt en de
+methodenaam. Dit is ook mogelijk in de constructor. Anders dan in Java, is
+het in PHP niet vereist, maar overigens wel verstandig, om de constructor
+van de superklasse aan te roepen. Bovendien wordt, als de constructor in een
+subklasse niet gedefinieerd is, de constructor uit de superklasse gebruikt.
+Het is dus niet nodig om een constructor te maken waarin alleen de
+constructor van de superklasse wordt aangeroepen, hetgeen in Java wel
+gebruikelijk is. In onderstaande code zijn hiervan enkele voorbeelden te zien.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class Super {</span>
+<span class="x">    public function __construct(private int $a)</span>
+<span class="x">    {</span>
+<span class="x">    }</span>
+
+<span class="x">    public function test()</span>
+<span class="x">    {</span>
+<span class="x">        echo &quot;In Super $this-&gt;a\n&quot;;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+
+<span class="x">class Sub extends Super{</span>
+<span class="x">    public function __construct(int $a, private int $b)</span>
+<span class="x">    {</span>
+<span class="x">        super::__construct($a);</span>
+<span class="x">    }</span>
+
+<span class="x">    public function test()</span>
+<span class="x">    {</span>
+<span class="x">        super::test();</span>
+<span class="x">        echo &quot;In Sub $this-&gt;b\n&quot;;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+
+<span class="x">new Sub(1, 2)-&gt;test();</span>
 </pre></div>
 </div>
 <p>Aangezien, anders dan in Java,
@@ -502,6 +567,73 @@ instantievariabelen te declareren, zoals in het voorbeeld hierboven.</p>
 <span class="x">}</span>
 </pre></div>
 </div>
+</section>
+<section id="interfaces">
+<h2>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h2>
+<p>PHP kent naast reguliere klassen ook
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.interfaces.php">interfaces</a> en
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.abstract.php">abstracte klassen</a>
+en gebruikt hiervoor dezelfde keywords als Java. Dit zijn
+<code class="docutils literal notranslate"><span class="pre">interface</span></code>, <code class="docutils literal notranslate"><span class="pre">implements</span></code> en <code class="docutils literal notranslate"><span class="pre">abstract</span></code>. Dit werkt verder in beginsel op
+dezelfde manier als Java; een klasse kan weliswaar maar van één klasse
+overerven, maar kan meerdere interfaces implementeren. Hieronder is een
+voorbeeld te zien van het gebruik van abstracte klassen en interfaces.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">interface TestInterface {</span>
+<span class="x">    function test(): void;</span>
+<span class="x">}</span>
+
+<span class="x">abstract class AbstractTest {</span>
+<span class="x">    protected abstract function abstractTest(): void;</span>
+<span class="x">}</span>
+
+<span class="x">class Test extends AbstractTest implements TestInterface {</span>
+<span class="x">    private AbstractTest $other;</span>
+<span class="x">    </span>
+<span class="x">    public function __construct(AbstractTest $other)</span>
+<span class="x">    {</span>
+<span class="x">        $this-&gt;other = $other;</span>
+<span class="x">    }</span>
+<span class="x">    </span>
+<span class="x">    public function test(): void</span>
+<span class="x">    {</span>
+<span class="x">        $this-&gt;other-&gt;abstractTest();</span>
+<span class="x">    }</span>
+
+<span class="x">    protected function abstractTest(): void</span>
+<span class="x">    {</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Zoals bekend heeft het in het algemeen de voorkeur om tegen interfaces te
+programmeren, en niet tegen implementaties. Een gevolg hiervan is dat het
+beter is om interfaces als typedeclaratie te gebruiken dan klassen. Een
+ander principe is echter dat interfaces niet meerdere taken moeten vervullen.
+Soms kan het daarom vereist zijn dat een parameter van een bepaalde functie
+aan meerdere interfaces voldoet. Zo heeft PHP bijvoorbeeld de interface
+<a class="reference external" href="https://www.php.net/manual/en/class.countable.php"><code class="docutils literal notranslate"><span class="pre">Countable</span></code></a>
+met de methode <code class="docutils literal notranslate"><span class="pre">count</span></code> en de interface
+<a class="reference external" href="https://www.php.net/manual/en/class.traversable.php"><code class="docutils literal notranslate"><span class="pre">Traversable</span></code></a>
+die markeert dat een object met <code class="docutils literal notranslate"><span class="pre">foreach</span></code> werkt. Zou je een functie willen
+schrijven die een parameter accepteert die zowel in een <code class="docutils literal notranslate"><span class="pre">foreach</span></code>-lus
+gebruikt kan worden en ook de methode <code class="docutils literal notranslate"><span class="pre">count</span></code> aanbiedt, dan kan je een
+typedeclaratie <code class="docutils literal notranslate"><span class="pre">Countable&amp;Traver</span></code></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function count_and_traverse(Countable&amp;Traversable $list): void {</span>
+<span class="x">    echo &quot;{$list-&gt;count()} elements:\n&quot;;</span>
+<span class="x">    foreach ($list as $element) {</span>
+<span class="x">        echo &quot;$element\n&quot;;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>De klasse
+<a class="reference external" href="https://www.php.net/manual/en/class.arrayiterator.php"><code class="docutils literal notranslate"><span class="pre">ArrayIterator</span></code></a>
+is een voorbeeld van een klasse die beide interfaces implementeert; de
+aanroep <code class="docutils literal notranslate"><span class="pre">count_and_traverse(new</span> <span class="pre">ArrayIterator([1,</span> <span class="pre">2,</span> <span class="pre">3])</span></code> is dus een geldige
+aanroep.</p>
+</section>
+<section id="constructor-promotion">
+<h2><em>Constructor promotion</em><a class="headerlink" href="#constructor-promotion" title="Link to this heading">#</a></h2>
 <p>De constructorstructuur zoals hierboven getoond is erg gangbaar. Vaak is het
 immers zo dat een constructor wordt gebruikt om een aantal waardes van het
 object op te slaan in instantievariabelen. PHP heeft hiervoor een kortere
@@ -526,9 +658,48 @@ zal de methode <code class="docutils literal notranslate"><span class="pre">test
 <span class="x">}</span>
 </pre></div>
 </div>
-<p>[TODO __toString]
-[TODO static, parent, ::]
-[TODO? const, anonieme klasses, final]</p>
+<p>Net als Java heeft PHP de mogelijkheid om te definiëren op welke manier een
+object als string wordt afgedrukt, bijvoorbeeld als <code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$obj;</span></code> wordt
+uitgevoerd. In Java heet deze magische methode <code class="docutils literal notranslate"><span class="pre">toString</span></code>. In PHP beginnen
+alle magische methoden met twee underscores, zoals we al zagen bij
+<code class="docutils literal notranslate"><span class="pre">__construct</span></code>. De methode om een object om te zetten in een string heet dan
+ook <code class="docutils literal notranslate"><span class="pre">__toString</span></code>. Deze methode krijgt geen parameters mee en geeft een
+string terug; hieronder zie je hoe deze methode gedefinieerd wordt.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">public function __toString(): string;</span>
+</pre></div>
+</div>
+<p>PHP heeft enkele mogelijkheden om het aanpassen en overerven van klassen te
+beperken. Methoden en klassen kunnen als
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.final.php"><code class="docutils literal notranslate"><span class="pre">final</span></code></a> worden
+gemarkeerd door dit keyword voor de methode- of klassedefinitie te zetten.
+Een <code class="docutils literal notranslate"><span class="pre">final</span></code> methode kan niet overschreven worden in een afgeleide klasse, dus
+een subklasse kan die methode niet implementeren. Een <code class="docutils literal notranslate"><span class="pre">final</span></code> klasse kan
+niet overgeërfd worden, dus een dergelijke klasse kan in het geheel geen
+subklassen hebben.</p>
+<p>Daarnaast kunnen de waardes van een klasse
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.properties.php#language.oop5.properties.readonly-properties"><code class="docutils literal notranslate"><span class="pre">readonly</span></code></a>
+gemaakt worden. Als een instantievariabele <code class="docutils literal notranslate"><span class="pre">readonly</span></code> gemarkeerd is, kan
+deze één keer geïnitialiseerd worden en daarna niet meer aangepast worden.
+Als een klasse <code class="docutils literal notranslate"><span class="pre">readonly</span></code> is, betekent dit dat alle instantievariabelen in de
+klasse <code class="docutils literal notranslate"><span class="pre">readonly</span></code> zijn. Daarnaast heeft PHP de mogelijkheid om in een klasse
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.constants.php">constanten</a> te
+definiëren. Het verschil tussen <code class="docutils literal notranslate"><span class="pre">readonly</span></code> instantievariabelen en constanten
+is dat instantievariabelen een andere waarde kunnen hebben per object en bij
+het aanmaken van een object een waarde krijgen. Een constante daarentegen
+hoort bij een klasse, vergelijkbaar met een <code class="docutils literal notranslate"><span class="pre">static</span></code> waarde, en de waarde
+is <em>hardcoded</em> in de definitie. Een constante wordt gemaakt door in een
+klasse het keyword <code class="docutils literal notranslate"><span class="pre">const</span></code> te zetten gevolgd door de naam van de constante;
+anders dan variabelen beginnen namen van constanten beginnen niet met een
+dollarteken. Eventueel kan je de zichtbaarheid instellen door <code class="docutils literal notranslate"><span class="pre">public</span></code>,
+<code class="docutils literal notranslate"><span class="pre">protected</span></code> of <code class="docutils literal notranslate"><span class="pre">private</span></code> voor het keyword <code class="docutils literal notranslate"><span class="pre">const</span></code> zetten, of een type voor
+de naam, zoals in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">private const int FOO = 1;</span>
+</pre></div>
+</div>
+<p>Constanten worden gebruikt door de klassenaam, gevolgd door een dubbele
+dubbele punt en de naam van de constante te gebruiken, zoals bijvoorbeeld
+<code class="docutils literal notranslate"><span class="pre">Test::FOO</span></code>.</p>
+</section>
 <section id="namespaces">
 <h2>Namespaces<a class="headerlink" href="#namespaces" title="Link to this heading">#</a></h2>
 <p>In Java is het gebruikelijk om klassen in te delen in <em>packages</em>. Zo is de
@@ -650,12 +821,12 @@ zoals ook te zien in onderstaand voorbeeld.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="functies.html"
+       href="typeconversie.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Functies</p>
+        <p class="prev-next-title">Typeconversie</p>
       </div>
     </a>
     <a class="right-next"
@@ -684,6 +855,10 @@ zoals ook te zien in onderstaand voorbeeld.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klassen-en-objecten">Klassen en objecten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overerving">Overerving</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaces">Interfaces</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor-promotion"><em>Constructor promotion</em></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#namespaces">Namespaces</a></li>
 </ul>
   </nav></div>

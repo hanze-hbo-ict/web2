@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Oefening &#8212; Webtechnologie II</title>
+    <title>Typeconversie &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '1.2-php/oefening';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1.2-php/typeconversie';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="HTML" href="../2.1-html/html.html" />
-    <link rel="prev" title="Foutafhandeling" href="excepties.html" />
+    <link rel="next" title="Object-georiënteerd programmeren" href="oop.html" />
+    <link rel="prev" title="Functies" href="functies.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -190,11 +190,11 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="functies.html">Functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="typeconversie.html">Typeconversie</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Typeconversie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="oop.html">Object-georiënteerd programmeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="excepties.html">Foutafhandeling</a></li>
 
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefening</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="nav bd-sidenav">
@@ -319,7 +319,7 @@
       
       
       
-      <li><a href="../_sources/1.2-php/oefening.md" target="_blank"
+      <li><a href="../_sources/1.2-php/typeconversie.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -395,7 +395,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Oefening</h1>
+    <h1>Typeconversie</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -405,8 +405,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functies">Functies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-georienteerd-programmeren">Object-georiënteerd programmeren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatische-typeconversie">Automatische typeconversie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typeconversies-bij-functies">Typeconversies bij functies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handmatige-typeconversie">Handmatige typeconversie</a></li>
 </ul>
             </nav>
         </div>
@@ -418,34 +419,94 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="oefening">
-<h1>Oefening<a class="headerlink" href="#oefening" title="Link to this heading">#</a></h1>
-<section id="functies">
-<h2>Functies<a class="headerlink" href="#functies" title="Link to this heading">#</a></h2>
-<p>Op internet is een veelvoud aan oefenmateriaal te vinden om te oefenen met
-functies in PHP. Hierbij spelen twee aspecten een rol. Aan de ene kant is
-het schrijven van functies een vaardigheid die taalonafhankelijk is, waar
-het gaat om het selecteren en toepassen van het juiste algoritme. Dit kan
-bijvoorbeeld geoefend worden op de site van
-<a class="reference external" href="https://www.w3resource.com/php-exercises/php-function-exercises.php">w3resource</a>.</p>
-<p>Aan de andere kant heeft PHP een aantal specifieke functionaliteiten en
-keywords waarmee je kan oefenen. De kata’s over PHP-functies op
-<a class="reference external" href="https://www.codewars.com/collections/php-functions">CodeWars</a> gaan met name
-over dit aspect. Kijk hierbij naar de kata’s over Default Arguments, Pass By
-Reference, Splat Operator, Type Declarations en Return Type Declarations. De
-overige kata’s op deze pagina gaan over aspecten van PHP die (nog) niet
-besproken zijn.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="typeconversie">
+<h1>Typeconversie<a class="headerlink" href="#typeconversie" title="Link to this heading">#</a></h1>
+<p>In sommige gevallen zal PHP
+<a class="reference external" href="https://www.php.net/manual/en/language.types.type-juggling.php">automatisch waardes omzetten</a>
+van het ene type naar een ander type. Zeker in het verleden waren de regels
+hiervoor vrij los waardoor dit tot vreemde resultaten kon leiden, maar in
+recente PHP versies zijn de regels hier veel strakker voor geworden
+waardoor dit maar zelden tot problemen zal leiden. De historische reden
+voor deze faciliteit is dat veel invoer voor PHP vanuit een URL zal komen,
+via de al besproken superglobal <code class="docutils literal notranslate"><span class="pre">$_GET</span></code>. Deze array bevat echter alleen
+maar stringwaardes, terwijl die strings vaak getallen zullen bevatten. Om
+het makkelijker te maken om hiermee te werken, konden deze strings op veel
+plekken als getallen gebruikt worden en werden ze dus automatisch omgezet.</p>
+<section id="automatische-typeconversie">
+<h2>Automatische typeconversie<a class="headerlink" href="#automatische-typeconversie" title="Link to this heading">#</a></h2>
+<p>In de eerste plaats zet PHP automatisch types om bij wiskundige
+operatoren. Als één van de operanden, de waardes waarop de operator werkt,
+een float is, worden beide operanden omgezet naar floats. Anders worden
+beide operanden omgezet naar ints. Zo zal <code class="docutils literal notranslate"><span class="pre">5.0</span> <span class="pre">+</span> <span class="pre">3</span></code> gelijk zijn aan 8.0,
+want de int 3 wordt omgezet naar de float 3.0, en zal <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">+</span> <span class="pre">&quot;5&quot;</span></code> gelijk zijn
+aan 8, omdat de string <code class="docutils literal notranslate"><span class="pre">&quot;5&quot;</span></code> wordt omgezet naar de int 5.</p>
+<p>Ook als een
+string en een getal worden vergeleken met bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> of <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> wordt de
+string eerst omgezet naar hetzelfde type als het getal. Dit gebeurt ook als
+twee strings die beide een getal bevatten worden vergeleken. Dit kan leiden
+tot onverwachte resultaten; zo is <code class="docutils literal notranslate"><span class="pre">&quot;1&quot;</span> <span class="pre">==</span> <span class="pre">&quot;01&quot;</span></code> waar, omdat beide strings
+een getal bevatten en wel beide het getal 1. Als dit onwenselijk is, en dat
+zal vaak zo zijn, dan is het slim om de operator <code class="docutils literal notranslate"><span class="pre">===</span></code> te gebruiken. Deze
+operator zal geen typeconversie toepassen en alleen <code class="docutils literal notranslate"><span class="pre">true</span></code> geven als beide
+types gelijk zijn. Dit betekent dan wel weer dat <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">===</span> <span class="pre">1.0</span></code> onwaar is;
+weliswaar zijn beide getallen 1, maar een int is geen float.</p>
+<p>Daarnaast worden bij het afdrukken van waarden en het samenvoegen van strings
+variabelen waar nodig omgezet naar strings. Zo zal <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">.</span> <span class="pre">&quot;5&quot;</span></code> gelijk zijn
+aan de string <code class="docutils literal notranslate"><span class="pre">&quot;35&quot;</span></code>, want de int 3 wordt voor stringconcatenatie omgezet
+naar de string <code class="docutils literal notranslate"><span class="pre">&quot;3&quot;</span></code>. Dit gedrag is minder controversieel; het is vaak zeer
+handig om bijvoorbeeld getallen rechtstreeks in strings te kunnen interpoleren.</p>
+<p>Verder worden waardes omgezet naar booleans in een <code class="docutils literal notranslate"><span class="pre">if</span></code>- of
+<code class="docutils literal notranslate"><span class="pre">while</span></code>-statement of bij gebruik van de ternaire vergelijkingsoperator <code class="docutils literal notranslate"><span class="pre">?:</span></code>.
+Ook dit is weinig controversieel; ook bijvoorbeeld C en Python hebben dit
+gedrag. Allerlei ‘lege’ waardes worden boolean als <code class="docutils literal notranslate"><span class="pre">false</span></code> gezien, zoals
+<code class="docutils literal notranslate"><span class="pre">null</span></code>, 0, 0.0, de lege string en de lege array. Ook de string <code class="docutils literal notranslate"><span class="pre">&quot;0&quot;</span></code> wordt
+als <code class="docutils literal notranslate"><span class="pre">false</span></code> gezien; dit kan mogelijk verwarrend zijn, dus het is bij een
+<code class="docutils literal notranslate"><span class="pre">if</span></code>-statement beter om expliciet met de lege string te vergelijken in
+plaats van aan te nemen dat alle niet-lege strings <code class="docutils literal notranslate"><span class="pre">true</span></code> zijn.</p>
 </section>
-<section id="object-georienteerd-programmeren">
-<h2>Object-georiënteerd programmeren<a class="headerlink" href="#object-georienteerd-programmeren" title="Link to this heading">#</a></h2>
-<p>Ook om te leren werken met objecten en klassen zijn voldoende bronnen op
-internet. Ook hier kan je kijken op de website van
-<a class="reference external" href="https://www.w3resource.com/php-exercises/oop/index.php">w3resource</a> en bij
-de kata’s over object-georiënteerd programmeren in PHP op
-<a class="reference external" href="https://www.codewars.com/collections/object-oriented-php">CodeWars</a>. De
-laatste kata in deze reeks, Objects on the Fly, gaat over anonieme klassen;
-dit is niet besproken. De overige kata’s gaan over onderwerpen die wel
-besproken zijn.</p>
+<section id="typeconversies-bij-functies">
+<h2>Typeconversies bij functies<a class="headerlink" href="#typeconversies-bij-functies" title="Link to this heading">#</a></h2>
+<p>Ook bij het gebruik van typedeclaraties in functies worden variabelen
+omgezet naar het gewenste type. Als de functie <code class="docutils literal notranslate"><span class="pre">dbl</span></code> gedeclareerd is als
+<code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">dbl(int</span> <span class="pre">$x):</span> <span class="pre">int</span></code>, dan zal <code class="docutils literal notranslate"><span class="pre">dbl(&quot;2&quot;)</span></code> bijvoorbeeld gelijk zijn aan
+<code class="docutils literal notranslate"><span class="pre">dbl(2)</span></code>. Ook <code class="docutils literal notranslate"><span class="pre">dbl(2.0)</span></code> zal gelijk zijn aan <code class="docutils literal notranslate"><span class="pre">dbl(2)</span></code>. Dit betekent ook dat
+het gebruik van typedeclaraties kan leiden tot subtiel andere antwoorden,
+zoals in onderstaande voorbeelden te zien is.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function dbl1($x) { return 2 * $x; }</span>
+<span class="x">function dbl2(int $x): int { return 2 * $x; }</span>
+<span class="x">function dbl3(int|float $x): int|float { return 2 * $x; }</span>
+
+<span class="x">var_dump(dbl1(2), dbl1(2.0), dbl1(&quot;2&quot;)); // 4, 4.0, 4 want 2.0 * 2 == 4.0</span>
+<span class="x">var_dump(dbl2(2), dbl2(2.0), dbl2(&quot;2&quot;)); // 4, 4, 4 want $x wordt altijd 2</span>
+<span class="x">var_dump(dbl3(2), dbl3(2.0), dbl3(&quot;2&quot;)); // 4, 4.0, 4 want alleen &quot;2&quot; wordt 2</span>
+</pre></div>
+</div>
+<p>Het is mogelijk om automatische typeconversies voor functies uit te zetten.
+Dit kan door het statement
+<a class="reference external" href="https://www.php.net/manual/en/language.types.declarations.php#language.types.declarations.strict"><code class="docutils literal notranslate"><span class="pre">declare(strict_types=1);</span></code></a>
+als eerste statement
+in een PHP-bestand op te nemen. Als dat gedaan wordt, worden
+functieargumenten in aanroepen naar functies in dat bestand niet meer
+automatisch omgezet. De enige uitzondering hierop is dat een <code class="docutils literal notranslate"><span class="pre">int</span></code> wel naar
+<code class="docutils literal notranslate"><span class="pre">float</span></code> omgezet kan worden. Als een onjuist type wordt meegegeven, zal er
+een foutmelding worden gegeven.</p>
+</section>
+<section id="handmatige-typeconversie">
+<h2>Handmatige typeconversie<a class="headerlink" href="#handmatige-typeconversie" title="Link to this heading">#</a></h2>
+<p>Door gebruik te maken van de
+<a class="reference external" href="https://www.php.net/manual/en/language.types.type-juggling.php#language.types.typecasting"><em>type casting</em></a>
+is het mogelijk om expliciet waardes van het ene type naar het andere type
+om te zetten. Dit kan door de naam van het gewenste type tussen haakjes voor
+de om te zetten waarde te plaatsen. Zo kan een waarde <code class="docutils literal notranslate"><span class="pre">$x</span></code> expliciet worden
+omgezet naar een int via <code class="docutils literal notranslate"><span class="pre">(int)</span> <span class="pre">$x</span></code> of naar een string via <code class="docutils literal notranslate"><span class="pre">(string)</span> <span class="pre">$x</span></code>.
+Daarnaast bestaan er een aantal functies die hetzelfde effect hebben als een
+typecast; dit zijn
+<a class="reference external" href="https://www.php.net/manual/en/function.intval.php"><code class="docutils literal notranslate"><span class="pre">intval</span></code></a>,
+<a class="reference external" href="https://www.php.net/manual/en/function.floatval.php"><code class="docutils literal notranslate"><span class="pre">floatval</span></code></a>,
+<a class="reference external" href="https://www.php.net/manual/en/function.boolval.php"><code class="docutils literal notranslate"><span class="pre">boolval</span></code></a> en
+<a class="reference external" href="https://www.php.net/manual/en/function.strval.php"><code class="docutils literal notranslate"><span class="pre">strval</span></code></a>
+die omzetten
+naar respectievelijke int, float, bool en string.</p>
 </section>
 </section>
 
@@ -480,20 +541,20 @@ besproken zijn.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="excepties.html"
+       href="functies.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Foutafhandeling</p>
+        <p class="prev-next-title">Functies</p>
       </div>
     </a>
     <a class="right-next"
-       href="../2.1-html/html.html"
+       href="oop.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">HTML</p>
+        <p class="prev-next-title">Object-georiënteerd programmeren</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -514,8 +575,9 @@ besproken zijn.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functies">Functies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-georienteerd-programmeren">Object-georiënteerd programmeren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#automatische-typeconversie">Automatische typeconversie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typeconversies-bij-functies">Typeconversies bij functies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handmatige-typeconversie">Handmatige typeconversie</a></li>
 </ul>
   </nav></div>
 
