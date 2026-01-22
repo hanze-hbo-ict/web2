@@ -39,9 +39,17 @@
    assert($add5(3) == 8);
    ```
 
+Naast deze oefeningen kan je ook kijken bij de kata's over PHP-functies op
+[CodeWars](https://www.codewars.com/collections/php-functions), met name die 
+over *Anonymous Functions (aka Closures)* en *The "Use" Keyword*.
+
 ## Reguliere expressies
 
 Reguliere expressies zijn een uitgebreid onderwerp, waarbij oefening 
 essentieel is om een begrip te krijgen van de mogelijkheden. Op de site
 [RegexOne](https://regexone.com) staan ruim twintig oefeningen om je kennis 
 van reguliere expressies op te bouwen.
+
+Daarnaast kan je op de website van
+[w3resource](https://www.w3resource.com/php-exercises/php-regular-expression-exercises.php)
+een aantal oefeningen vinden om reguliere expressies toe te passen in PHP.

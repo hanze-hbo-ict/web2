@@ -95,9 +95,14 @@ Daarnaast zijn callables die op deze manier worden gemaakt een instantie van
 een subtype van callable, de klasse
 [`Closure`](https://www.php.net/manual/en/class.closure.php). Dit biedt 
 enkele mogelijkheden die verder gaan dan het generieke type `callable`, maar 
-die voeren te ver om hier uit te werken. In het algemeen is het aan te raden 
-om bij typehinting het type `callable` te gebruiken, zodat ook de hier 
-genoemde syntaxen met strings en arrays gebruikt kunnen worden.
+die voeren te ver om hier uit te werken. In de meeste gevallen zal het niet 
+veel uitmaken welke van deze twee types gebruikt wordt als typedeclaratie. 
+`Closure` laat niet alle mogelijke syntaxen toe die `callable` wel toestaat, 
+wat voor het gebruik van `callable` spreekt. Het is echter niet 
+toegestaan om `callable` te gebruiken als typedeclaratie voor een 
+instantievariabele. `Closure` is daar wel toegestaan. Als je toch een 
+`callable` zou willen gebruiken kan je gebruikmaken van de factorymethode 
+`Closure::fromCallable` die van een `callable` een `Closure` maakt.
 
 ## Anonieme functies
 
@@ -242,4 +247,3 @@ $mul = fn($a) => $a * $number;
 $number = 3;
 var_dump($mul(5));
 ```
-
