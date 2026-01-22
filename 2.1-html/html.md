@@ -1,4 +1,4 @@
-# 2.1 HTML: Introductie
+# HTML
 
 ## *Tags* en *Nodes*
 

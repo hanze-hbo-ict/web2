@@ -15,6 +15,7 @@ parts:
 - caption: 1.2 PHP
   chapters:
     - file: 1.2-php/functies
+    - file: 1.2-php/typeconversie
     - file: 1.2-php/oop
     - file: 1.2-php/excepties
     - file: 1.2-php/oefening
