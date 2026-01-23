@@ -10,7 +10,12 @@ parts:
   chapters:
     - file: 1.1-php/intro
     - file: 1.1-php/installeren
-    - file: 1.1-php/opgave
+    - file: 1.1-php/php
+    - file: 1.1-php/variabelen
+    - file: 1.1-php/controlestatements
+    - file: 1.1-php/strings
+    - file: 1.1-php/arrays
+    - file: 1.1-php/oefening
 
 - caption: 1.2 PHP
   chapters:
@@ -18,6 +23,7 @@ parts:
     - file: 1.2-php/typeconversie
     - file: 1.2-php/oop
     - file: 1.2-php/excepties
+    - file: 1.2-php/include
     - file: 1.2-php/oefening
 
 - caption: 2.1 HTML en CSS
