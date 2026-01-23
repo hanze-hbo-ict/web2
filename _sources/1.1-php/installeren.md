@@ -4,7 +4,7 @@ Om PHP te kunnen gebruiken moet dit natuurlijk geïnstalleerd worden. Het is
 handig om dit op een gestandaardiseerde manier te doen, zodat eventuele 
 fouten in de installatie makkelijk opgespoord kunnen worden.
 
-# Installeren met een package manager
+## Package managers
 
 De eenvoudigste manier om PHP te installeren is om gebruik te maken van een 
 package manager. Hierdoor worden de noodzakelijke dependency's goed 
@@ -80,8 +80,6 @@ Additional .ini files parsed => (none)
 
 Hier is te zien dat in deze configuratie het configuratiebestand `php.ini` 
 te vinden is in `/opt/homebrew/etc/php/8.5/php.ini`.
-
-## Installatie testen
 
 Ten slotte kan een kort "hello-world"-programma gebruikt worden om te zien 
 of PHP werkt.

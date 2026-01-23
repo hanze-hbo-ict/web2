@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Intro &#8212; Webtechnologie II</title>
+    <title>Introductie &#8212; Webtechnologie II</title>
   
   
   
@@ -176,16 +176,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro</a></li>
-
-
-
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introductie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="installeren.html">PHP installeren</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
 <ul class="nav bd-sidenav">
@@ -194,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/oop.html">Object-georiënteerd programmeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/excepties.html">Foutafhandeling</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oefening.html">Oefeningen</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="nav bd-sidenav">
@@ -382,9 +374,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -395,31 +385,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Intro</h1>
+    <h1>Introductie</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Inhoud </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Intro</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applicatie-maken">Applicatie maken</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">???</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webpagina-s">Dynamische webpagina’s</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabelen">Variabelen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gebruikersinvoer">Gebruikersinvoer</a></li>
-</ul>
-
-            </nav>
         </div>
     </div>
 </div>
@@ -429,131 +399,14 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introductie">
+<h1>Introductie<a class="headerlink" href="#introductie" title="Link to this heading">#</a></h1>
+<p>[TODO]</p>
 <ul class="simple">
 <li><p>Drielaagsarchitectuur</p></li>
 <li><p>Backend</p></li>
 <li><p>Plaatsbepaling/welke programmeertaal</p></li>
 <li><p>Geschiedenis PHP</p></li>
-</ul>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="applicatie-maken">
-<h1>Applicatie maken<a class="headerlink" href="#applicatie-maken" title="Link to this heading">#</a></h1>
-<p>Een PHP-applicatie bevindt zich in een directorystructuur die als project in de
-IDE geopend wordt. [TODO]</p>
-<p>Zoals eerder genoemd hebben webapplicaties in beginsel een
-client-serverarchitectuur. De browser van de gebruiker dient als client die
-verzoeken doet aan de applicatie die als server dient. Dit betekent dat deze
-applicatie niet, zoals bijvoorbeeld reguliere Python-programma’s, eenmalig
-draaien en dan stoppen, maar steeds beschikbaar moeten zijn voor
-verzoeken van clients. Dit is vergelijkbaar met Python-programma’s die Flask
-gebruiken.</p>
-<p>Er is echter een relevant verschil waardoor we PHP-programma’s toch als
-eenmalig draaiende programma’s kunnen schrijven. Een Python Flask-applicatie
-moet zelf zorgdragen voor het afhandelen van meerdere verzoeken, en gebruikt
-in het algemeen een functie als aanspreekpunt hiervoor. Alle verzoeken
-worden dus door dezelfde instantie van de applicatie uitgevoerd. Bij PHP is
-het daarentegen gebruikelijk dat er een webserver is die zorgt voor het
-afhandelen van verzoeken en deze doorstuurt naar een PHP-applicatie die een
-enkel verzoek afhandelt. Elke instantie van de PHP-applicatie hoeft dus
-slechts een enkel verzoek af te handelen.</p>
-<p>[TODO routing obv directorystructuur]</p>
-<p>Dit alles laat zich samenvatten in het onderstaande sequentiediagram.</p>
-<p>[TODO sequentiediagram]</p>
-<p>Zoals hierboven vermeld scheidt PHP de webserver van de applicatie. In een
-productieomgeving wordt vaak een webserver als Apache of Nginx gebruikt. In
-een ontwikkelomgeving is dit echter overkill. Vandaar dat er een eenvoudige
-webserver ingebouwd is in PHP, die voor ontwikkelomgevingen gebruikt kan
-worden. Deze kan gestart worden door onderstaand commando.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>php<span class="w"> </span>-S<span class="w"> </span>localhost:8000
-</pre></div>
-</div>
-<p>Na het uitvoeren van dit commando wordt de huidige directory, van waaruit
-het commando was uitgevoerd, gepubliceerd op <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code>. De
-huidige directory wordt nu de <em>document root</em> van de server genoemd. Dit
-zal in principe de hoofdddirectory van het project zijn. Omdat we later
-allerlei configuratiebestanden zullen toevoegen aan de applicatie die niet
-aan de eindgebruiker getoond mogen worden, is het gebruik van de
-hoofddirectory als document root ongewenst vanuit securityperspectief.</p>
-<p>Het is daarom gebruikelijk een directory <code class="docutils literal notranslate"><span class="pre">public</span></code> te maken die gebruikt wordt
-als document root. Op die manier kunnen statische bestanden en PHP-scripts die
-door de gebruiker aangeroepen mogen worden in die directory worden gezet
-maar kan de gebruiker niet bij andere bestanden. Om PHP te vertellen dat
-<code class="docutils literal notranslate"><span class="pre">public</span></code> als document root gebruikt moet worden, wordt bovenstaand commando als
-volgt aangepast.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>php<span class="w"> </span>-S<span class="w"> </span>localhost:8000<span class="w"> </span>-t<span class="w"> </span>public
-</pre></div>
-</div>
-<section id="id1">
-<h2>???<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>directorystructuur</p></li>
-<li><p>php -S localhost</p></li>
-<li><p>sequentiediagram</p></li>
-<li><p>php-tags</p></li>
-<li><p>echo</p></li>
-<li><p>assets</p></li>
-<li><p>HTML (a)</p></li>
-</ul>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="dynamische-webpagina-s">
-<h1>Dynamische webpagina’s<a class="headerlink" href="#dynamische-webpagina-s" title="Link to this heading">#</a></h1>
-<p>Op dit moment kunnen we met PHP-programma’s alleen nog maar statische
-content genereren; het heeft nu dus nog geen toegevoegde waarde ten opzichte
-van ‘kale’ HTML-bestanden.</p>
-<p>PHP heeft echter natuurlijk genoeg functionaliteiten om wel degelijk een
-meerwaarde te hebben. In dit hoofdstuk zullen we zien dat PHP variabelen
-heeft, en zoals elke imperatieve taal commando’s sequentieel kan
-uitvoeren en conditionele statements en lusconstructies kent.</p>
-<section id="variabelen">
-<h2>Variabelen<a class="headerlink" href="#variabelen" title="Link to this heading">#</a></h2>
-<p>Variabelen worden in PHP altijd voorafgegaan door het teken <code class="docutils literal notranslate"><span class="pre">$</span></code>. Daarnaast
-hebben variabelen in PHP in principe geen vastgesteld type; PHP is een
-dynamisch getypeerde taal, net als bijvoorbeeld Python. Dit betekent dat een
-variabele bijvoorbeeld eerst een getal en daarna een string kan bevatten.
-Ook kent PHP de gangbare wiskunde operatoren <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code> voor
-machtsverheffen en <code class="docutils literal notranslate"><span class="pre">%</span></code> als modulo-operator.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = 5;</span>
-<span class="x">$b = 2.5;</span>
-<span class="x">$c = $a * $b;</span>
-<span class="x">echo($c);</span>
-</pre></div>
-</div>
-<p>Bovenstaande code zal het getal <code class="docutils literal notranslate"><span class="pre">12.5</span></code> afdrukken.</p>
-<p>Net als Python kunnen <code class="docutils literal notranslate"><span class="pre">+=</span></code>, <code class="docutils literal notranslate"><span class="pre">-=</span></code> en zo verder gebruikt worden als gecombineerde
-berekening en toekenning. <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">+=</span> <span class="pre">5</span></code> is functioneel gelijk aan <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">=</span> <span class="pre">$a</span> <span class="pre">+</span> <span class="pre">5</span></code>.
-Daarnaast bestaan de operatoren <code class="docutils literal notranslate"><span class="pre">++</span></code> en <code class="docutils literal notranslate"><span class="pre">--</span></code> op dezelfde</p>
-<p>[TODO strings]</p>
-</section>
-<section id="strings">
-<h2>Strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h2>
-</section>
-<section id="arrays">
-<h2>Arrays<a class="headerlink" href="#arrays" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>variabelen</p></li>
-<li><p>types: int, float, bool</p></li>
-<li><p>null</p></li>
-<li><p>strings en strings interpoleren</p></li>
-<li><p>Operators</p></li>
-<li><p>if</p></li>
-<li><p>for/while</p></li>
-</ul>
-</section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="gebruikersinvoer">
-<h1>Gebruikersinvoer<a class="headerlink" href="#gebruikersinvoer" title="Link to this heading">#</a></h1>
-<ul class="simple">
-<li><p>_GET, _SERVER</p></li>
-<li><p>arrays, associatieve arrays</p></li>
-<li><p>foreach</p></li>
-<li><p>var_dump</p></li>
-<li><p>variabele variabelen?</p></li>
-<li><p>define</p></li>
-<li><p>string/arrayfuncties</p></li>
-<li><p>php mode, short tags</p></li>
 </ul>
 </section>
 
@@ -611,34 +464,6 @@ Daarnaast bestaan de operatoren <code class="docutils literal notranslate"><span
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Inhoud
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Intro</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#applicatie-maken">Applicatie maken</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">???</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webpagina-s">Dynamische webpagina’s</a><ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabelen">Variabelen</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a></li>
-</ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#gebruikersinvoer">Gebruikersinvoer</a></li>
-</ul>
-
-  </nav></div>
-
-</div></div>
               
             
           </div>

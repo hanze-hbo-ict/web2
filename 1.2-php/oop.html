@@ -176,16 +176,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../1.1-php/intro.html">Intro</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/intro.html">Introductie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/installeren.html">PHP installeren</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../1.1-php/opgave.html">Opgave</a></li>
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
 <ul class="current nav bd-sidenav">
@@ -194,7 +186,7 @@
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Object-georiënteerd programmeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="excepties.html">Foutafhandeling</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="nav bd-sidenav">
@@ -462,9 +454,12 @@ wordt de pijl <code class="docutils literal notranslate"><span class="pre">-&gt;
 Bovendien staat het dollarteken dat normaal voor een variabelenaam staat
 alleen voor de verwijzing naar het object, en wordt deze niet herhaald na
 de pijl. Een instantievariabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> van een object <code class="docutils literal notranslate"><span class="pre">$this</span></code> wordt dus
-aangesproken als <code class="docutils literal notranslate"><span class="pre">$this-&gt;var</span></code>. Bij statische methoden en variabelen wordt in
-plaats daarvan een dubbele dubbele punt <code class="docutils literal notranslate"><span class="pre">::</span></code> gebruikt. Enkele voorbeelden zijn
-hieronder te zien.</p>
+aangesproken als <code class="docutils literal notranslate"><span class="pre">$this-&gt;var</span></code>. Als in plaats daarvan <code class="docutils literal notranslate"><span class="pre">$this-&gt;$var</span></code> gebruikt
+zou worden, wordt de waarde van de lokale variabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> gezien als naam
+van de instantievariabele die gevraagd wordt. Anders gezegd, <code class="docutils literal notranslate"><span class="pre">$test</span> <span class="pre">=</span> <span class="pre">'var';</span>&#160; <span class="pre">echo</span> <span class="pre">$this-&gt;$test;</span></code> drukt de waarde <code class="docutils literal notranslate"><span class="pre">$this-&gt;var</span></code> af. Bij statische methoden
+en variabelen wordt in plaats van een pijl een dubbele dubbele punt <code class="docutils literal notranslate"><span class="pre">::</span></code>
+gebruikt. Bovendien wordt bij statische variabelen wél een dollarteken
+gebruikt, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">Test::$var</span></code>. Enkele voorbeelden zijn hieronder te zien.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class Test {</span>
 <span class="x">    private int $property;</span>
 <span class="x">    public static string $staticProperty = &quot;abc&quot;;</span>
@@ -787,6 +782,7 @@ zoals ook te zien in onderstaand voorbeeld.</p>
 <span class="x">$e = new \Foo(); # verwijst naar Foo (uit de globale namespace)</span>
 </pre></div>
 </div>
+<p>[TODO null safe operator $a?-&gt;b?-&gt;c]</p>
 </section>
 </section>
 

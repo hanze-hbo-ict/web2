@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
     <link rel="next" title="Typeconversie" href="typeconversie.html" />
-    <link rel="prev" title="Opgave" href="../1.1-php/opgave.html" />
+    <link rel="prev" title="PHP installeren" href="../1.1-php/installeren.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -176,16 +176,8 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../1.1-php/intro.html">Intro</a></li>
-
-
-
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/intro.html">Introductie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/installeren.html">PHP installeren</a></li>
-
-<li class="toctree-l1"><a class="reference internal" href="../1.1-php/opgave.html">Opgave</a></li>
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
 <ul class="current nav bd-sidenav">
@@ -194,7 +186,7 @@
 <li class="toctree-l1"><a class="reference internal" href="oop.html">Object-georiënteerd programmeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="excepties.html">Foutafhandeling</a></li>
 
-<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
 <ul class="nav bd-sidenav">
@@ -407,7 +399,6 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typedeclaraties">Typedeclaraties</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variadische-functies">Variadische functies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-verdelen-over-meerdere-bestanden">Code verdelen over meerdere bestanden</a></li>
 </ul>
             </nav>
         </div>
@@ -668,110 +659,6 @@ dezelfde naam te vullen. Hieronder staan enkele voorbeelden, waarbij de functie
 <p>De eerste aanroep zal 1 teruggeven, omdat <code class="docutils literal notranslate"><span class="pre">b</span></code> op de tweede positie van de
 string <code class="docutils literal notranslate"><span class="pre">abc</span></code> staat; de tweede aanroep zal 2 teruggeven.</p>
 </section>
-<section id="code-verdelen-over-meerdere-bestanden">
-<h2>Code verdelen over meerdere bestanden<a class="headerlink" href="#code-verdelen-over-meerdere-bestanden" title="Link to this heading">#</a></h2>
-<p>Tot nog toe heeft alle code steeds in een enkel bestand gestaan. Dit is
-natuurlijk geen schaalbare aanpak. Als een applicatie groter wordt, is het
-wenselijk en zelfs noodzakelijk om de code over verschillende bestanden te
-verdelen. De primaire manier waarop dit in PHP gebeurt is met een viertal
-keywords. Dit zijn
-<a class="reference external" href="https://www.php.net/manual/en/function.require.php"><code class="docutils literal notranslate"><span class="pre">require</span></code></a>,
-<a class="reference external" href="https://www.php.net/manual/en/function.require-once.php"><code class="docutils literal notranslate"><span class="pre">require_once</span></code></a>,
-<a class="reference external" href="https://www.php.net/manual/en/function.include.php"><code class="docutils literal notranslate"><span class="pre">include</span></code></a> en
-<a class="reference external" href="https://www.php.net/manual/en/function.include-once.php"><code class="docutils literal notranslate"><span class="pre">include_once</span></code></a>.
-Ze werken alle vier op een grotendeels gelijkende manier, maar hebben enkele
-relevante verschillen.</p>
-<p>Wat alle vier de keywords gemeen hebben is dat ze alle vier een expressie
-zijn die als effect heeft dat ze virtueel vervangen worden door de inhoud van
-een bepaald bestand; de bestandsnaam staat als string achter het keyword.
-Dit betekent dat als bijvoorbeeld functies of variabelen gedeclareerd worden
-in het ingevoegde bestand, deze vervolgens beschikbaar zijn in het
-invoegende bestand. Omgekeerd kan het ingevoegde bestand gebruik maken van
-variabelen en functies die al bestonden in het invoegende bestand. Wel is
-het zo dat het ingevoegde bestand altijd in HTML-modus begint; om PHP-code
-uit te voeren, moet een PHP-tag gebruikt worden.</p>
-<p>In het volgende voorbeeld wordt getoond hoe functies en variabelen
-uitgewisseld kunnen worden van en naar het ingevoegde bestand.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">// a.php</span>
-<span class="cp">&lt;?php</span>
-<span class="nv">$a</span> <span class="o">=</span> <span class="mi">5</span><span class="p">;</span>
-<span class="k">include</span> <span class="s1">&#39;b.php&#39;</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span> <span class="c1">// 10, want $a is aangepast in b.php</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nx">dbl</span><span class="p">(</span><span class="nv">$b</span><span class="p">));</span> <span class="c1">// 6, want dbl en $b zijn gedeclareerd in b.php</span>
-
-<span class="c1">// b.php</span>
-<span class="o">&lt;?</span><span class="nx">php</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$a</span><span class="p">);</span> <span class="c1">// 5, want $a komt mee uit de scope waarin dit bestand is ingevoegd</span>
-<span class="nv">$a</span> <span class="o">=</span> <span class="mi">10</span><span class="p">;</span>
-<span class="nv">$b</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
-<span class="k">function</span> <span class="nf">dbl</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$x</span><span class="p">)</span><span class="o">:</span> <span class="nx">int</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="nv">$x</span> <span class="o">*</span> <span class="mi">2</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Een ingevoegd bestand kan naast functies en variabelen declareren ook een
-waarde teruggeven met het keyword <code class="docutils literal notranslate"><span class="pre">return</span></code>, vergelijkbaar met een functie.
-Deze waarde kan in het invoegende bestand toegekend worden aan een variabele,
-zoals in onderstaand voorbeeld.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">// a.php</span>
-<span class="cp">&lt;?php</span>
-<span class="nv">$val</span> <span class="o">=</span> <span class="k">include</span> <span class="s1">&#39;b.php&#39;</span><span class="p">;</span>
-<span class="nb">var_dump</span><span class="p">(</span><span class="nv">$val</span><span class="p">);</span> <span class="c1">// $val heeft hier de waarde 5.</span>
-
-<span class="c1">// b.php</span>
-<span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">return</span> <span class="mi">5</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>Het is belangrijk om te begrijpen op welke manier PHP naar een ingevoegd
-bestand zoekt; in beginsel kan hier een absoluut pad worden gebruikt, dat
-begint met een slash of op Windows met een drive-letter, maar dat is vaak
-niet wenselijk omdat het daarmee lastig wordt om de applicatie naar een
-andere omgeving te verplaatsen. Daarom zal in principe een relatief pad
-worden gebruikt. Dit pad wordt geëvalueerd vanuit de directory waar het
-oorspronkelijke PHP-bestand, waarmee de applicatie gestart is, wordt
-uitgevoerd. Als de applicatie dus gestart wordt vanuit <code class="docutils literal notranslate"><span class="pre">a.php</span></code>, en deze een
-bestand <code class="docutils literal notranslate"><span class="pre">b.php</span></code> invoegt die op zijn beurt weer een
-bestand <code class="docutils literal notranslate"><span class="pre">c.php</span></code> invoegt, dan wordt <code class="docutils literal notranslate"><span class="pre">c.php</span></code> in principe gezocht vanuit de
-directory waar <code class="docutils literal notranslate"><span class="pre">a.php</span></code> staat. Dit betekent dat als <code class="docutils literal notranslate"><span class="pre">b.php</span></code> in een andere
-directory staat dan <code class="docutils literal notranslate"><span class="pre">a.php</span></code>, het voor het evalueren van het pad naar <code class="docutils literal notranslate"><span class="pre">c.php</span></code>
-uitmaakt of <code class="docutils literal notranslate"><span class="pre">b.php</span></code> vanuit <code class="docutils literal notranslate"><span class="pre">a.php</span></code> ingevoegd wordt, of dat deze rechtstreeks
-wordt gestart. Dit is natuurlijk verwarrend, zoals in onderstaand voorbeeld
-duidelijk wordt gemaakt.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">// /web/src/a.php</span>
-<span class="cp">&lt;?php</span>
-<span class="k">include</span> <span class="s1">&#39;includes/b.php&#39;</span> <span class="c1"># voeg het bestand /web/src/includes/b.php in</span>
-
-<span class="c1">// /web/src/includes/b.php</span>
-<span class="o">&lt;?</span><span class="nx">php</span>
-<span class="k">include</span> <span class="s1">&#39;c.php&#39;</span> <span class="c1"># voeg het bestand /web/src/c.php in</span>
-</pre></div>
-</div>
-<p>Merk op dat in bovenstaand voorbeeld het bestand <code class="docutils literal notranslate"><span class="pre">c.php</span></code> gezocht wordt in
-<code class="docutils literal notranslate"><span class="pre">/web/src</span></code>, omdat dat de directory is waar <code class="docutils literal notranslate"><span class="pre">a.php</span></code> staat. Je zou kunnen
-verwachten dat in <code class="docutils literal notranslate"><span class="pre">/web/src/includes</span></code> gezocht wordt, omdat <code class="docutils literal notranslate"><span class="pre">b.php</span></code> daar
-staat. Als <code class="docutils literal notranslate"><span class="pre">b.php</span></code> het script is waarmee de webapplicatie gestart wordt, zou
-dat ook zo zijn, maar omdat hier de applicatie vanuit <code class="docutils literal notranslate"><span class="pre">a.php</span></code> gestart wordt,
-wordt dat het beginpunt voor alle relatieve paden.</p>
-<p>Het is dan ook goed gebruik dat een pad voor het invoegen van een bestand
-altijd absoluut gemaakt wordt door de constante <code class="docutils literal notranslate"><span class="pre">__DIR__</span></code> te gebruiken.
-Deze constante bevat de directory waarin het bestand waarin deze constante
-gebruikt wordt zich bevind. Door vanaf deze directory te navigeren kunnen
-bestanden op een eenduidige manier worden aangeduid; gebruik dus liever
-<code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">__DIR__.'/../includes/inc.php'</span></code> in plaats van <code class="docutils literal notranslate"><span class="pre">include</span> <span class="pre">'../includes/inc.php'</span></code>.</p>
-<p>Het verschil tussen de vier keywords is dat de varianten met <code class="docutils literal notranslate"><span class="pre">include</span></code> een
-waarschuwing geven als het in te voegen bestand niet bestaat, terwijl de
-varianten met <code class="docutils literal notranslate"><span class="pre">require</span></code> een foutmelding geven. Daarnaast zullen de varianten
-die eindigen op <code class="docutils literal notranslate"><span class="pre">once</span></code> een bestand altijd slechts één keer invoegen. Als een
-bepaald bestand al ingevoegd is, zal een aanroep met <code class="docutils literal notranslate"><span class="pre">include_once</span></code> of
-<code class="docutils literal notranslate"><span class="pre">require_once</span></code> deze niet opnieuw invoegen. Als het ingevoegde bestand
-functies definieert, is dat handig, aangezien anders de foutmelding gegeven
-zal worden dat de functie al bestond. Als echter het ingevoegde bestand een
-waarde teruggeeft met <code class="docutils literal notranslate"><span class="pre">return</span></code> zal dit alleen de eerste keer gebeuren. Als
-een dergelijk bestand daarna nog een keer met <code class="docutils literal notranslate"><span class="pre">include_once</span></code> of
-<code class="docutils literal notranslate"><span class="pre">require_once</span></code> wordt ingevoegd, zal het niet opnieuw deze waarde teruggeven.</p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -805,12 +692,12 @@ een dergelijk bestand daarna nog een keer met <code class="docutils literal notr
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../1.1-php/opgave.html"
+       href="../1.1-php/installeren.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Opgave</p>
+        <p class="prev-next-title">PHP installeren</p>
       </div>
     </a>
     <a class="right-next"
@@ -841,7 +728,6 @@ een dergelijk bestand daarna nog een keer met <code class="docutils literal notr
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#typedeclaraties">Typedeclaraties</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variadische-functies">Variadische functies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-verdelen-over-meerdere-bestanden">Code verdelen over meerdere bestanden</a></li>
 </ul>
   </nav></div>
 

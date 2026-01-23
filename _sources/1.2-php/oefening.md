@@ -1,4 +1,4 @@
-# Oefening
+# Oefeningen
 
 ## Functies
 
