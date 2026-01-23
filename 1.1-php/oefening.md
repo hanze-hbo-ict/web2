@@ -1,4 +1,6 @@
-# Opgave
+# Oefeningen
+
+[TODO]
 
 # 1. Maak een statische pagina (homepage)
 

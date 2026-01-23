@@ -42,9 +42,13 @@ wordt de pijl `->` gebruikt, hetgeen doet denken aan de syntax van C++.
 Bovendien staat het dollarteken dat normaal voor een variabelenaam staat 
 alleen voor de verwijzing naar het object, en wordt deze niet herhaald na 
 de pijl. Een instantievariabele `$var` van een object `$this` wordt dus 
-aangesproken als `$this->var`. Bij statische methoden en variabelen wordt in 
-plaats daarvan een dubbele dubbele punt `::` gebruikt. Enkele voorbeelden zijn 
-hieronder te zien.
+aangesproken als `$this->var`. Als in plaats daarvan `$this->$var` gebruikt 
+zou worden, wordt de waarde van de lokale variabele `$var` gezien als naam 
+van de instantievariabele die gevraagd wordt. Anders gezegd, `$test = 'var'; 
+echo $this->$test;` drukt de waarde `$this->var` af. Bij statische methoden 
+en variabelen wordt in plaats van een pijl een dubbele dubbele punt `::` 
+gebruikt. Bovendien wordt bij statische variabelen wél een dollarteken 
+gebruikt, bijvoorbeeld `Test::$var`. Enkele voorbeelden zijn hieronder te zien.
 
 ```php
 class Test {
@@ -393,3 +397,6 @@ $c = new namespace\Foo(); # verwijst naar Foo\Test
 $d = new namespace\Alias(); # verwijst naar Foo\Alias
 $e = new \Foo(); # verwijst naar Foo (uit de globale namespace)
 ```
+
+
+[TODO null safe operator $a?->b?->c]
