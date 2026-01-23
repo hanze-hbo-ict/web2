@@ -1,0 +1,852 @@
+
+<!DOCTYPE html>
+
+
+<html lang="nl" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Arrays &#8212; Webtechnologie II</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=91d546e9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=b028fc25"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=5ce3cdba"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '1.1-php/arrays';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Zoeken" href="../search.html" />
+    <link rel="next" title="Oefeningen" href="oefening.html" />
+    <link rel="prev" title="Strings" href="strings.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="nl"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../about/syllabus.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-hanze.png" class="logo__image only-light" alt="Webtechnologie II - Home"/>
+    <img src="../_static/logo-hanze.png" class="logo__image only-dark pst-js-only" alt="Webtechnologie II - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Zoeken</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../about/syllabus.html">
+                    Webtechnologie 2
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Over deze cursus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installeren.html">PHP installeren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="variabelen.html">Variabelen</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="controlestatements.html">Conditionele en lusstatements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="strings.html">Strings</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/functies.html">Functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/typeconversie.html">Typeconversie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oop.html">Object-georiënteerd programmeren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/excepties.html">Foutafhandeling</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/include.html">Bestanden invoegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oefening.html">Oefeningen</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/html.html">HTML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/opgave.html">2.1 HTML: Opgaven</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2.2 Kernel</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/http.html">HTTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/kernel.html">Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/autoloader.html">Autoloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/composer.html">Composer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/opdracht.html">Opdracht</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Response</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opdracht.html">Opdracht</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 DI Container</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7.1 Authenticatie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7.2 Autorisatie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7.2-autorisatie/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.2-autorisatie/opgave.html">Opgave</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download deze pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/1.1-php/arrays.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download het bronbestand"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Afdrukken naar pdf"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Volledig scherm"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Arrays</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#associatieve-arrays">Associatieve arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrayoperaties">Arrayoperaties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrayfuncties">Arrayfuncties</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="arrays">
+<h1>Arrays<a class="headerlink" href="#arrays" title="Link to this heading">#</a></h1>
+<p>PHP heeft een ingebouwd type
+<a class="reference external" href="https://www.php.net/manual/en/language.types.array.php"><code class="docutils literal notranslate"><span class="pre">array</span></code></a>
+dat vergelijkbaar is met arrays of lijsten in andere talen. Een array bevat
+een aantal andere waarden die opgezocht kunnen worden aan de hand van hun
+index. Dit is vergelijkbaar met arrays in een taal als Java. Het grote
+verschil is echter dat een array in PHP geen vaststaande lengte heeft. In
+bijvoorbeeld Java wordt de lengte van een array vastgelegd; als de wens is
+dat de array later kan worden uitgebreid zou een <code class="docutils literal notranslate"><span class="pre">ArrayList</span></code> gebruikt moeten
+worden. In PHP is het echter mogelijk om later elementen toe te voegen aan
+de array. In dat opzicht heeft de array in PHP meer gelijkenissen met het
+type <code class="docutils literal notranslate"><span class="pre">list</span></code> in Python. Ook kan een array in PHP, omdat het een dynamische
+taal is, waarden van elk willekeurig type bevatten, die bovendien niet
+allemaal hetzelfde hoeven te zijn in een enkele array. Een array kan ook
+zelf weer arrays bevatten en wordt dan een multidimensionale array genoemd.</p>
+<p>Om een array te maken kunnen de waardes die in de array moeten komen tussen
+blokhaken gezet worden. Deze elementen worden genummerd vanaf 0 en kunnen
+worden aangesproken en veranderd door de index tussen blokhaken achter de
+variabelenaam te zetten. Dit lijkt allemaal op de syntax van lijsten in
+Python, zoals ook te zien in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = [1, &#39;hallo&#39;, true];</span>
+<span class="x">var_dump($a[1]); // drukt &#39;hallo&#39; af</span>
+<span class="x">$a[1] = &#39;test&#39;;</span>
+<span class="x">var_dump($a[1]); // drukt &#39;test&#39; af</span>
+</pre></div>
+</div>
+<p>Er zijn echter ook syntax- en betekenisverschillen met Python. In de eerste
+plaats kan een element aan de array worden toegevoegd door lege blokhaken
+achter de variabelenaam te zetten; deze nieuwe waarde krijgt de
+eerstvolgende nog niet gebruikte index in de array. Bovendien wordt, als
+een array aan een andere variabele wordt toegekend, die toekenning <em>by
+value</em> gedaan. Anders gezegd, de nieuwe array bestaat onafhankelijk van de
+originele array en eventuele aanpassingen zijn niet zichtbaar in de
+oorspronkelijke array. Bij lijsten in Python is dit wel zo.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = []; // lege array</span>
+<span class="x">$a[] = 1;</span>
+<span class="x">$a[] = &#39;hallo&#39;;</span>
+<span class="x">var_dump($a); // de array is nu gelijk aan [1, &#39;hallo&#39;]</span>
+<span class="x">$b = $a;</span>
+<span class="x">$b[1] = &#39;test&#39;;</span>
+<span class="x">var_dump($a[1]); // drukt nog steeds &#39;hallo&#39; af; $a is niet veranderd</span>
+</pre></div>
+</div>
+<p>Net als Java en Python heeft PHP ook een specifieke syntax om over alle
+elementen van een array te itereren. Het hierbij behorende keyword is
+<a class="reference external" href="https://www.php.net/manual/en/control-structures.foreach.php"><code class="docutils literal notranslate"><span class="pre">foreach</span></code></a>,
+en de syntax ziet er als volgt uit.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">foreach ($array as $x) {</span>
+<span class="x">    var_dump($x);</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Hier is ook, net als bij de andere controlestatements, een alternatieve
+syntax met <code class="docutils literal notranslate"><span class="pre">endforeach</span></code> beschikbaar.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">foreach ($array as $x):</span>
+<span class="x">    var_dump($x);</span>
+<span class="x">endforeach;</span>
+</pre></div>
+</div>
+<p>Het is ook mogelijk om de lusvariabele <em>by reference</em> te verkrijgen; dit
+betekent dat deze waarde binnen de lus aangepast kan worden en dat daarmee
+de onderliggende array ook aangepast wordt. Dit kan door een ampersand <code class="docutils literal notranslate"><span class="pre">&amp;</span></code>
+voor de variabelenaam te zetten. Onderstaande code zal bijvoorbeeld alle
+elementen in de array met 1 verhogen.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = [1, 2, 3];</span>
+<span class="x">foreach ($array as &amp;$x) {</span>
+<span class="x">    $x += 1;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<section id="associatieve-arrays">
+<h2>Associatieve arrays<a class="headerlink" href="#associatieve-arrays" title="Link to this heading">#</a></h2>
+<p>Tot nog toe hebben we arrays beschouwd als lijsten: meerdere waardes die
+met opvolgende numerieke indices aangesproken kunnen worden, precies zoals
+een <code class="docutils literal notranslate"><span class="pre">list</span></code> in Python of een array of <code class="docutils literal notranslate"><span class="pre">ArrayList</span></code> in Java. Arrays in PHP zijn
+echter feitelijk beter te beschouwen als een <em>map</em>, een datastructuur die in
+Java geïmplementeerd is als de interface <code class="docutils literal notranslate"><span class="pre">Map</span></code>, zoals in een <code class="docutils literal notranslate"><span class="pre">HashMap</span></code>, en
+in Python een <code class="docutils literal notranslate"><span class="pre">dict</span></code> of <em>dictionary</em> heet. Kenmerkend aan een map is dat
+deze waardes niet associeert met numerieke indices, maar met meer algemene
+sleutelwaardes. In PHP worden arrays die van deze mogelijkheid gebruik maken
+ook wel <em>associatieve arrays</em> genoemd.</p>
+<p>Een associatieve array wordt gemaakt door bij het maken van een array voor
+de waarde die opgeslagen moet worden de sleutel te zetten, gevolgd door een
+dubbele pijl <code class="docutils literal notranslate"><span class="pre">=&gt;</span></code>. Dit hoeft niet bij elk element te gebeuren; alle
+elementen zonder pijl krijgen numerieke sleutels, waarbij steeds een getal
+wordt gekozen dat 1 groter is dan de grootste numerieke sleutel tot dan toe,
+zoals te zien in onderstaand voorbeeld, waar de sleutels van <code class="docutils literal notranslate"><span class="pre">'b'</span></code>, <code class="docutils literal notranslate"><span class="pre">'d'</span></code> en
+<code class="docutils literal notranslate"><span class="pre">'e'</span></code> gegeven zijn, <code class="docutils literal notranslate"><span class="pre">'a'</span></code> de sleutel 0 krijgt omdat er nog geen numerieke
+sleutels zijn, <code class="docutils literal notranslate"><span class="pre">'c'</span></code> de sleutel 1 krijgt omdat de grootste tot dan to 0 is
+en <code class="docutils literal notranslate"><span class="pre">f</span></code> de sleutel 9 krijgt omdat de grootste tot dan toe 8 is.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$assoc = [&#39;a&#39;, &#39;key&#39; =&gt; &#39;b&#39;, &#39;c&#39;, 8 =&gt; &#39;d&#39;, -1 =&gt; &#39;e&#39;, &#39;f&#39;]; </span>
+<span class="x">// $assoc is nu [0 =&gt; &#39;a&#39;, &#39;key&#39; =&gt; &#39;b&#39;, 1 =&gt; &#39;c&#39;, 8 =&gt; &#39;d&#39;, -1 =&gt; &#39;e&#39;, 9 =&gt; &#39;f&#39;]; </span>
+</pre></div>
+</div>
+<p>Aan bovenstaand voorbeeld is ook te zien dat de numerieke sleutels niet op
+volgorde hoeven te staan. De gegeven volgorde wordt wel bijgehouden; een
+<code class="docutils literal notranslate"><span class="pre">foreach</span></code>-lus over bovenstaande array zal de waardes altijd in volgorde van
+<code class="docutils literal notranslate"><span class="pre">'a'</span></code> tot en met <code class="docutils literal notranslate"><span class="pre">'f'</span></code> teruggeven. Bovendien is te zien dat er gaten mogen
+zitten in de numerieke sleutels; de sleutels 2 tot en met 7 zijn hier niet
+gedefinieerd. Dit betekent ook dat een arraytoekenning met een bepaalde
+index altijd werkt, ook als die index niet bestaat, zoals in onderstaand
+voorbeeld. Ook is het zoals hier te zien altijd toegestaan om een string als
+sleutel te gebruiken. Daarnaast kunnen waardes uit arrays verwijderd worden met
+<code class="docutils literal notranslate"><span class="pre">unset</span></code>; hierdoor worden de overige sleutels niet aangepast zodat er gaten
+kunnen ontstaan in de numerieke indices.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = [1, 2, 3];</span>
+<span class="x">$array[5] = 4;</span>
+<span class="x">$array[&#39;test&#39;] = 5;</span>
+<span class="x">var_dump($array); // [0 =&gt; 1, 1 =&gt; 2, 2 =&gt; 3, 5 =&gt; 4, &#39;test&#39; =&gt; 5]</span>
+<span class="x">unset($array[1]);</span>
+<span class="x">var_dump($array); // [0 =&gt; 1, 2 =&gt; 3, 5 =&gt; 4, &#39;test&#39; =&gt; 5]</span>
+</pre></div>
+</div>
+<p>Sleutels kunnen ints of strings zijn. Als een float wordt gebruikt als sleutel,
+zal deze afgerond. Bools worden omgezet naar ints en de waarde <code class="docutils literal notranslate"><span class="pre">null</span></code> wordt
+gezien als de lege string. Gebruik van andere types zullen een foutmelding
+geven. Daarnaast worden strings die een decimaal geheel getal bevatten, zoals
+bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">'8'</span></code>, omgezet naar ints. <code class="docutils literal notranslate"><span class="pre">$array['5']</span></code> en <code class="docutils literal notranslate"><span class="pre">$array[5]</span></code>
+verwijzen dus per definitie naar dezelfde waarde. <code class="docutils literal notranslate"><span class="pre">$array['3.4']</span></code> en
+<code class="docutils literal notranslate"><span class="pre">$array[3.4]</span></code> echter niet; <code class="docutils literal notranslate"><span class="pre">'3.4'</span></code> is geen decimaal geheel getal dus wordt
+deze gewoon als string gebruikt, en <code class="docutils literal notranslate"><span class="pre">3.4</span></code> wordt afgerond naar 3.</p>
+<p>Het statement <code class="docutils literal notranslate"><span class="pre">foreach</span></code> werkt ook als de array associatief is; in dat geval
+wordt geïtereerd over de waarden. Merk op dat de <code class="docutils literal notranslate"><span class="pre">for</span></code>-lus in Python bij een
+<code class="docutils literal notranslate"><span class="pre">dict</span></code> juist over de sleutels itereert en niet over de waardes; dat gedrag
+is dus anders. Het is wel mogelijk om ook de sleutels te verkrijgen, zoals
+in onderstaand voorbeeld, waarbij <code class="docutils literal notranslate"><span class="pre">$k</span></code> de sleutel wordt en <code class="docutils literal notranslate"><span class="pre">$v</span></code> de waarde.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">foreach ($assoc as $k =&gt; $v) {</span>
+<span class="x">    var_dump($k, $v);</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</section>
+<section id="arrayoperaties">
+<h2>Arrayoperaties<a class="headerlink" href="#arrayoperaties" title="Link to this heading">#</a></h2>
+<p>Twee arrays kunnen in PHP vergeleken worden met de operator <code class="docutils literal notranslate"><span class="pre">==</span></code>. Arrays
+zijn gelijk als ze dezelfde sleutels en waarden hebben; ook twee
+verschillende arrays kunnen gelijk zijn, mits hun inhoud maar gelijk is.
+Om ook te vergelijken of de arrays in dezelfde volgorde staan, kan <code class="docutils literal notranslate"><span class="pre">===</span></code>
+gebruikt worden. Zo is <code class="docutils literal notranslate"><span class="pre">[1</span> <span class="pre">=&gt;</span> <span class="pre">1,</span> <span class="pre">0</span> <span class="pre">=&gt;</span> <span class="pre">0]</span> <span class="pre">==</span> <span class="pre">[0</span> <span class="pre">=&gt;</span> <span class="pre">0,</span> <span class="pre">1</span> <span class="pre">=&gt;</span> <span class="pre">1]</span></code> wel waar, maar
+<code class="docutils literal notranslate"><span class="pre">[1</span> <span class="pre">=&gt;</span> <span class="pre">1,</span> <span class="pre">0</span> <span class="pre">=&gt;</span> <span class="pre">0]</span> <span class="pre">===</span> <span class="pre">[0</span> <span class="pre">=&gt;</span> <span class="pre">0,</span> <span class="pre">1</span> <span class="pre">=&gt;</span> <span class="pre">1]</span></code> niet. Omgekeerd kunnen <code class="docutils literal notranslate"><span class="pre">!=</span></code> en <code class="docutils literal notranslate"><span class="pre">!==</span></code>
+gebruikt worden om op dezelfde manier te kijken of twee arrays ongelijk zijn.</p>
+<p>Er zijn vaak situaties waarin je niet zeker weet welke sleutels al dan niet
+aanwezig zijn in een array; als een sleutel niet aanwezig is wil je vaak een
+defaultwaarde gebruiken. We zullen zien dat dit bijvoorbeeld gebruikt zal
+worden bij het parseren van de invoer van de gebruiker. Je zou dan de functie
+<a class="reference internal" href="#"><span class="xref myst"><code class="docutils literal notranslate"><span class="pre">isset</span></code></span></a>
+kunnen gebruiken om te kijken of de waarde bestaat en hierop te handelen,
+zoals in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">if (isset($array[$key])) {</span>
+<span class="x">    $x = $array[$key];</span>
+<span class="x">} else {</span>
+<span class="x">    $x = $default;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Dit is echter vrij lang. De ternaire conditionele operator kan gebruikt
+worden om dit korter te maken, als
+<code class="docutils literal notranslate"><span class="pre">$x</span> <span class="pre">=</span> <span class="pre">isset($array[$key])</span> <span class="pre">?</span> <span class="pre">$array[$key]</span> <span class="pre">:</span> <span class="pre">$default</span></code>, maar dit is nog steeds
+vrij lang voor een relatief veel voorkomend stukje code. Vandaar dat PHP
+sinds versie 7 de
+<a class="reference external" href="https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.null-coalesce-op"><em>null coalesce operator</em></a>
+<code class="docutils literal notranslate"><span class="pre">??</span></code> kent. Deze operator geeft de linkeroperand terug, behalve als deze
+niet bestaat of <code class="docutils literal notranslate"><span class="pre">null</span></code> is, dan wordt de rechteroperand teruggegeven.
+Bovenstaande code kan dus vervangen worden door onderstaande code.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$x = $array[$key] ?? $default;</span>
+</pre></div>
+</div>
+<p>Hiervan is ook een toekenningsvariant beschikbaar; <code class="docutils literal notranslate"><span class="pre">$array[$key]</span> <span class="pre">??=</span>&#160; <span class="pre">$default;</span></code> zal de waarde <code class="docutils literal notranslate"><span class="pre">$default</span></code> toekennen aan <code class="docutils literal notranslate"><span class="pre">$array[$key]</span></code> als die
+laatste waarde <code class="docutils literal notranslate"><span class="pre">null</span></code> was of als de sleutel <code class="docutils literal notranslate"><span class="pre">$key</span></code> nog niet bestond in
+<code class="docutils literal notranslate"><span class="pre">$array</span></code>, anders zal de waarde hetzelfde blijven.</p>
+<p>Ten slotte zijn er enkele manieren om op een kortere manier waardes uit
+arrays te lezen of om arrays samen te stellen. Vaak bevat een array een
+aantal waarden die ieder een bepaalde betekenis hebben. Dan kan het handig
+zijn om deze ieder snel toe te kennen aan een variabele. Denk hierbij
+bijvoorbeeld aan een regel uit een databestand die je kan splitsen met de
+hieronder besproken functie <code class="docutils literal notranslate"><span class="pre">explode</span></code>, zoals in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$line = &#39;Jan Klaassen;8913621;8.0&#39;;</span>
+<span class="x">[$name, $id, $grade] = explode(&#39;;&#39;, $line);</span>
+</pre></div>
+</div>
+<p>In dit voorbeeld zal <code class="docutils literal notranslate"><span class="pre">$name</span></code> de string <code class="docutils literal notranslate"><span class="pre">'Jan</span> <span class="pre">Klaassen'</span></code> bevatten, <code class="docutils literal notranslate"><span class="pre">$id</span></code> de
+string <code class="docutils literal notranslate"><span class="pre">'8913621'</span></code> en zo verder. Dit wordt
+<a class="reference external" href="https://www.php.net/manual/en/language.types.array.php#language.types.array.syntax.destructuring"><em>array destructuring</em></a>
+genoemd. Het is ook mogelijk om slechts een deel van de array toe te kennen,
+of om alleen bepaalde sleutels uit een associatieve array toe te kennen,
+zoals in onderstaande voorbeelden.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = [0, 1, 2, 3, 4];</span>
+<span class="x">[$a, $b] = $array; // $a == 0 en $b == 1</span>
+<span class="x">[, , $c, $d] = $array; // $c == 2, $d == 3</span>
+<span class="x">$assoc = [&#39;a&#39; =&gt; 0, &#39;b&#39; =&gt; 1, &#39;c&#39; =&gt; 2];</span>
+<span class="x">[&#39;a&#39; =&gt; $a, &#39;c&#39; =&gt; $c] = $assoc; // $a == 0 en $c == 2</span>
+</pre></div>
+</div>
+<p>Dit kan ook in een <code class="docutils literal notranslate"><span class="pre">foreach</span></code>-lus toegepast worden; als <code class="docutils literal notranslate"><span class="pre">$dataset</span></code> een
+multidimensionale array is kan elk element worden gedestructureerd als in
+onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">foreach ($dataset as [$name, $id, $grade]) {</span>
+<span class="x">    ...</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Het is ook mogelijk om bij het maken van een array waardes uit andere arrays
+te gebruiken. Dit kan met behulp van
+<a class="reference internal" href="#"><span class="xref myst"><em>array unpacking</em></span></a>.
+Hierbij zet je voor de naam van de array die je wilt unpacken een
+beletselteken <code class="docutils literal notranslate"><span class="pre">...</span></code>, in deze context ook wel de <em>splat operator</em> genoemd.
+Dit heeft tot gevolg dat je dit moet lezen alsof de waardes van die array
+één voor één worden opgesomd. Een voorbeeld kan dit wellicht verduidelijken.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = [2, 3];</span>
+<span class="x">$array = [0, 1, ...$a, 4];</span>
+<span class="x">var_dump($array); // [0, 1, 2, 3, 4]</span>
+</pre></div>
+</div>
+<p>Dit werkt ook voor associatieve arrays, en hiermee kunnen bijvoorbeeld twee
+arrays worden samengevoegd, zoals in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = [0, 1, 2];</span>
+<span class="x">$b = [3, 4];</span>
+<span class="x">$array = [...$a, ...$b];</span>
+<span class="x">var_dump($array); // [0, 1, 2, 3, 4]</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>array unpacking <span class="math notranslate nohighlight">\(a = [...\)</span>b, …$c]</p></li>
+</ul>
+</section>
+<section id="arrayfuncties">
+<h2>Arrayfuncties<a class="headerlink" href="#arrayfuncties" title="Link to this heading">#</a></h2>
+<p>PHP heeft een uitgebreide lijst ingebouwde
+<a class="reference external" href="https://www.php.net/manual/en/ref.array.php">arrayfuncties</a>.
+Om deze allemaal te bespreken zou te ver voeren, maar een aantal relevante
+functies zullen hier genoemd worden.</p>
+<p>Om het aantal elementen in een array te bepalen, kan je de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.count.php"><code class="docutils literal notranslate"><span class="pre">count</span></code></a>
+gebruiken. Je kan de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.array-is-list.php"><code class="docutils literal notranslate"><span class="pre">array_is_list</span></code></a>
+gebruiken om te bepalen of een gegeven array een <em>lijst</em> is, oftewel, dat de
+sleutels van de array opeenvolgende nummers vanaf 0 zijn.</p>
+<p>De functie
+<a class="reference external" href="https://www.php.net/manual/en/function.in-array.php"><code class="docutils literal notranslate"><span class="pre">in_array</span></code></a>
+kan worden gebruikt om te zoeken of een bepaalde waarde voorkomt in een
+array. Om ook de sleutel te vinden waar deze waarde te vinden is, kan
+<a class="reference external" href="https://www.php.net/manual/en/function.array-search.php"><code class="docutils literal notranslate"><span class="pre">array_search</span></code></a>
+worden gebruikt. Als je niet in een specifieke waarde bent geïnteresseerd, maar
+een wilt weten of een specifieke sleutel bestaat kan je
+<a class="reference external" href="https://www.php.net/manual/en/function.array-key-exists.php"><code class="docutils literal notranslate"><span class="pre">array_key_exists</span></code></a>
+gebruiken.</p>
+<p>Om een array te verkrijgen met alle sleutels van een associatieve array kan je
+<a class="reference external" href="https://www.php.net/manual/en/function.array-keys.php"><code class="docutils literal notranslate"><span class="pre">array_keys</span></code></a>
+gebruiken; om alleen de waardes te verkrijgen kan je
+<a class="reference external" href="https://www.php.net/manual/en/function.array-values.php"><code class="docutils literal notranslate"><span class="pre">array_values</span></code></a>
+gebruiken. Twee arrays, één met sleutels en één met waardes, kan je weer
+samenvoegen tot een associatieve array met
+<a class="reference external" href="https://www.php.net/manual/en/function.array-combine.php"><code class="docutils literal notranslate"><span class="pre">array_combine</span></code></a>.</p>
+<p>PHP kent geen <em>slice</em>-syntax zoals Python. Het is echter wel mogelijk om de
+functie
+<a class="reference external" href="https://www.php.net/manual/en/function.array-slice.php"><code class="docutils literal notranslate"><span class="pre">array_slice</span></code></a>
+te gebruiken om iets soortgelijks te verkrijgen. Met deze functie kan je een
+aaneengesloten stuk van een array krijgen, dus zoals een slice in Python met
+stapgrootte 1. Om een bepaalde slice van een array te vervangen door een
+andere array kan de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.array-splice.php"><code class="docutils literal notranslate"><span class="pre">array_splice</span></code></a>
+gebruikt worden; let op de extra P in deze functienaam.</p>
+<p>Je kan een array als
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Stack_(informatica)"><em>stack</em></a> gebruiken met
+de functies
+<a class="reference external" href="https://www.php.net/manual/en/function.array-push.php"><code class="docutils literal notranslate"><span class="pre">array_push</span></code></a>
+en
+<a class="reference external" href="https://www.php.net/manual/en/function.array-pop.php"><code class="docutils literal notranslate"><span class="pre">array_pop</span></code></a>,
+die een waarde respectievelijke toevoegen en verwijderen aan
+het einde van een array. Waardes toevoegen en verwijderen aan het begin van
+een array kan met respectievelijk de functies
+<a class="reference external" href="https://www.php.net/manual/en/function.array-unshift.php"><code class="docutils literal notranslate"><span class="pre">array_unshift</span></code></a>
+en
+<a class="reference external" href="https://www.php.net/manual/en/function.array-shift.php"><code class="docutils literal notranslate"><span class="pre">array_shift</span></code></a>.
+Door bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">array_unshift</span></code> en <code class="docutils literal notranslate"><span class="pre">array_pop</span></code> te combineren, kan een
+array dienen als
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Queue_(informatica)"><em>queue</em></a>.</p>
+<p>Om meerdere arrays samen te voegen, kan de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.array-merge.php"><code class="docutils literal notranslate"><span class="pre">array_merge</span></code></a>
+worden gebruikt. Met
+<a class="reference external" href="https://www.php.net/manual/en/function.array-unique.php"><code class="docutils literal notranslate"><span class="pre">array_unique</span></code></a>
+kunnen alle dubbele waarden uit een array verwijderd worden en met
+<a class="reference external" href="https://www.php.net/manual/en/function.array-diff.php"><code class="docutils literal notranslate"><span class="pre">array_diff</span></code></a>
+krijg je een array terug die alleen die waarden bevat die wel in het eerste
+argument aanwezig zijn maar niet in de overige argumenten.
+<a class="reference external" href="https://www.php.net/manual/en/function.array-intersect.php"><code class="docutils literal notranslate"><span class="pre">array_intersect</span></code></a>
+geeft een array terug met alleen die waarden die in alle meegegeven arrays
+voorkomen.</p>
+<p>Om een array te sorteren, kan je
+<a class="reference external" href="https://www.php.net/manual/en/function.sort.php"><code class="docutils literal notranslate"><span class="pre">sort</span></code></a>
+gebruiken. Deze functie werkt <em>in place</em>, dat wil zeggen dat de meegegeven
+array aangepast wordt. Bovendien worden alle sleutels verwijderd en is het
+resultaat een array met oplopende numerieke indices. Als de sleutels wel
+bewaard moeten blijven, kan je
+<a class="reference external" href="https://www.php.net/manual/en/function.asort.php"><code class="docutils literal notranslate"><span class="pre">asort</span></code></a>
+gebruiken; als je op de sleutels wil sorteren in plaats van de waardes,
+gebruik je <a class="reference external" href="https://www.php.net/manual/en/function.ksort.php"><code class="docutils literal notranslate"><span class="pre">ksort</span></code></a>.</p>
+<p>Ten slotte zijn er nog twee functies om een string te splitsen in onderdelen
+of om een array samen te voegen tot een string. Om een string te splitsen
+gebruik je
+<a class="reference external" href="https://www.php.net/manual/en/function.explode.php"><code class="docutils literal notranslate"><span class="pre">explode</span></code></a>;
+om een array samen te voegen gebruik je
+<a class="reference external" href="https://www.php.net/manual/en/function.implode.php"><code class="docutils literal notranslate"><span class="pre">implode</span></code></a>.
+Beide functies krijgen als eerste argument het te gebruiken scheidingsteken
+mee; <code class="docutils literal notranslate"><span class="pre">explode</span></code> krijgt als tweede argument de te splitsen string mee, en
+<code class="docutils literal notranslate"><span class="pre">implode</span></code> krijgt op die plaats de samen te voegen array mee.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./1.1-php"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="strings.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">vorige</p>
+        <p class="prev-next-title">Strings</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="oefening.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">volgende</p>
+        <p class="prev-next-title">Oefeningen</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#associatieve-arrays">Associatieve arrays</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrayoperaties">Arrayoperaties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrayfuncties">Arrayfuncties</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Door Bart Barnard & Ralf van den Broek
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
