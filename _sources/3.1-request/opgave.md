@@ -1,6 +1,6 @@
 # Opgave
 
-We zijn bezig met php, maar dat draait natuurlij in een http-omgeving. Die moeten we dus in elkaar overzetten (waarom). Hiervoor gebruiken we de klasse `ServerRequest`.
+We zijn bezig met php, maar dat draait natuurlijk in een http-omgeving. Die moeten we dus in elkaar overzetten (waarom). Hiervoor gebruiken we de klasse `ServerRequest`.
 
 Extra info: dit komt ook uit een psr, met link
 
