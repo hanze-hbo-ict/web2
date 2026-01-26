@@ -385,7 +385,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -401,6 +403,16 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stringoperaties">Stringoperaties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stringfuncties">Stringfuncties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multibyte-encodings"><em>Multibyte encodings</em></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -412,28 +424,193 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="strings">
 <h1>Strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h1>
-<p>[TODO]</p>
-<p>Net als veel andere talen kent PHP een stringtype. Een string</p>
-<ul class="simple">
-<li><p>strings</p></li>
-<li><p>enkele en dubbele quotes (newlines etc)</p></li>
-<li><p>strings interpoleren</p></li>
-<li><p>stringconcatenatie</p></li>
-<li><p>string indexeren</p></li>
-<li><p>stringfuncties</p>
-<ul>
-<li><p>strlen</p></li>
-<li><p>substr</p></li>
-<li><p>trim</p></li>
-<li><p>chr, ord</p></li>
-<li><p>strtolower, strtoupper</p></li>
-<li><p>strpos, str_replace</p></li>
-<li><p>htmlspecialchars, strip_tags</p></li>
-<li><p>str_contains, str_starts_with, str_ends_with</p></li>
-</ul>
-</li>
-<li><p>multibyte</p></li>
-</ul>
+<p>Net als veel andere talen kent PHP een
+<a class="reference external" href="https://www.php.net/manual/en/language.types.string.php">stringtype</a>.
+Een string is een
+verzameling karakters; in PHP zijn dit altijd 8-bit-karakters. Dit heeft
+invloed op de manier waarop bepaalde stringfuncties werken, zoals we nog
+kunnen zien.</p>
+<p>Strings kunnen omsloten worden door enkele aanhalingstekens <code class="docutils literal notranslate"><span class="pre">'</span></code> of door
+dubbele aanhalingstekens <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>. De keuze van aanhalingstekens bepaalt op welke
+manier de string wordt geïnterpreteerd. In een string met
+<a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.single">enkele aanhalingstekens</a>
+worden vrijwel alle tekens letterlijk geïnterpreteerd. Alleen het enkele
+aanhalingsteken zelf en de backslash <code class="docutils literal notranslate"><span class="pre">\</span></code> moeten, om op te nemen in de
+string, geëscapet worden door er een backslash voor te zetten. In een
+string met
+<a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.double">dubbele aanhalingstekens</a>
+kunnen ook andere escapesequenties gebruikt worden; zo betekent de
+combinatie <code class="docutils literal notranslate"><span class="pre">\n</span></code> in een string met dubbele aanhalingstekens een <em>newline</em>,
+terwijl dit in een string met enkele aanhalingstekens gewoon voor de
+karakters <code class="docutils literal notranslate"><span class="pre">\n</span></code> staat. Een ander voorbeeld is de combinatie <code class="docutils literal notranslate"><span class="pre">\t</span></code> die voor
+een tab staat.</p>
+<p>Daarnaast biedt PHP de mogelijkheid om strings over meerdere regels op te
+nemen met de zogeheten
+<a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc">heredoc</a>- en
+<a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.nowdoc">nowdoc</a>-syntax.
+Bij de heredoc-syntax begint de string met drie kleiner-dantekens <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;</span></code>,
+gevolgd door een identifier die normaal gesproken in hoofdletters is.
+Daarna volgt de string, die meerdere regels kan bevatten. De string wordt
+afgesloten als aan het begin van een regel de identifier staat. Hierbij
+worden ook variabelen geïnterpoleerd, dit is dus te vergelijken met een
+string met dubbele aanhalingstekens. In de nowdoc-syntax gebeurt dit niet;
+hierbij moet de identifier die na de kleiner-dantekens staat omsloten worden
+met enkele aanhalingstekens. Van beide vormen is hieronder een voorbeeld te
+zien.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$var = &#39;foo&#39;;</span>
+<span class="x">$heredoc = &lt;&lt;&lt;HERE</span>
+<span class="x">Hello $var!</span>
+<span class="x">HERE;</span>
+<span class="x">$nowdoc = &lt;&lt;&lt;&#39;NOW&#39;</span>
+<span class="x">Hello $var!</span>
+<span class="x">NOW;</span>
+</pre></div>
+</div>
+<section id="stringoperaties">
+<h2>Stringoperaties<a class="headerlink" href="#stringoperaties" title="Link to this heading">#</a></h2>
+<p>Ook bieden strings met dubbele aanhalingstekens de mogelijkheid om varabelen
+te <a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.parsing"><em>interpoleren</em></a>
+in de string. Als je de naam van een variabele opneemt in
+een string, wordt deze vervangen door de waarde daarvan, zoals in
+onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$foo = 1;</span>
+<span class="x">$bar = 2;</span>
+<span class="x">$double = &quot;foo = $foo\nbar = $bar&quot;;</span>
+<span class="x">$single = &#39;foo = $foo\nbar = $bar&#39;;</span>
+<span class="x">var_dump($double); // bevat foo = 1, newline, bar = 2</span>
+<span class="x">var_dump($single); // bevat foo = $foo\nbar = $bar</span>
+</pre></div>
+</div>
+<p>Als de varabele gevolgt moet worden door letters zal PHP denken dat deze bij
+de variabelenaam horen; als je bijvoorbeeld de variabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> wil laten
+volgen door het woord <code class="docutils literal notranslate"><span class="pre">test</span></code>, zou je <code class="docutils literal notranslate"><span class="pre">&quot;$vartest&quot;</span></code> willen gebruiken, maar dan
+zal PHP de variabele <code class="docutils literal notranslate"><span class="pre">$vartest</span></code> interpoleren. Om dit te voorkomen kan je de
+variabele omsluiten met accolades, door <code class="docutils literal notranslate"><span class="pre">&quot;{$var}test&quot;</span></code> te gebruiken.</p>
+<p>Een alternatief voor stringinterpolatie is
+<a class="reference external" href="https://www.php.net/manual/en/language.operators.string.php">stringconcatenatie</a>
+door middel van de operator <code class="docutils literal notranslate"><span class="pre">.</span></code>. Anders dan in Java en Python worden strings
+niet samengevoegd met de operator <code class="docutils literal notranslate"><span class="pre">+</span></code> maar is hier een aparte operator <code class="docutils literal notranslate"><span class="pre">.</span></code>
+voor. Hiermee kunnen variabelen ook in strings gezet worden; het bovenstaande
+voorbeeld zou ook als volgt opgebouwd kunnen worden.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$foo = 1;</span>
+<span class="x">$bar = 2;</span>
+<span class="x">$interpolate = &quot;foo = $foo\nbar = $bar&quot;;</span>
+<span class="x">$concatenate = &#39;foo = &#39;.$foo.&quot;\nbar = &quot;.$bar;</span>
+<span class="x">var_dump($interpolate === $concatenate); // beide strings zijn gelijk</span>
+</pre></div>
+</div>
+<p>Niet alleen stringvariabelen mogen geïnterpoleerd of samengevoegd worden;
+andere types variabelen zullen worden omgezet naar strings zodat ze in de
+string gezet kunnen worden.</p>
+<p>Je kan de individuele karakters van een string aanspreken door de positie,
+geteld vanaf 0, van het karakter tussen blokhaken achter de string te zetten.
+Als bijvoorbeeld de variabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> de waarde <code class="docutils literal notranslate"><span class="pre">'abc'</span></code> bevat, is <code class="docutils literal notranslate"><span class="pre">$var[0]</span></code>
+gelijk aan <code class="docutils literal notranslate"><span class="pre">'a'</span></code> en <code class="docutils literal notranslate"><span class="pre">$var[2]</span></code> gelijk aan <code class="docutils literal notranslate"><span class="pre">'b'</span></code>. PHP heeft geen apart type
+voor losse karakters zoals het type <code class="docutils literal notranslate"><span class="pre">char</span></code> in Java, dus het type van
+<code class="docutils literal notranslate"><span class="pre">$var[0]</span></code> is <code class="docutils literal notranslate"><span class="pre">string</span></code>. Anders dan in bijvoorbeeld Python is het bovendien
+mogelijk om een enkel karakter van een string aan te passen door een nieuw
+karakter toe te kennen aan <code class="docutils literal notranslate"><span class="pre">$var[0]</span></code>, zoals in onderstaand voorbeeld. Merk
+op dat het ook mogelijk is om indices te gebruiken die buiten de
+oorspronkelijke string vallen; eventuele tussenliggende karakters worden
+opgevuld met spaties.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$var = &#39;abc&#39;;</span>
+<span class="x">$var[0] = &#39;x&#39;; // $var is nu &#39;xbc&#39;;</span>
+<span class="x">$var[3] = &#39;d&#39;; // $var is nu &#39;xbcd&#39;;</span>
+<span class="x">$var[5] = &#39;e&#39;; // $var is nu &#39;xbcd e&#39;;</span>
+</pre></div>
+</div>
+</section>
+<section id="stringfuncties">
+<h2>Stringfuncties<a class="headerlink" href="#stringfuncties" title="Link to this heading">#</a></h2>
+<p>PHP heeft een grote verzameling
+<a class="reference external" href="https://www.php.net/manual/en/ref.strings.php">stringfuncties</a>.
+In de eerste plaats is het mogelijk om de lengte van de string te
+verkrijgen met de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.strlen.php"><code class="docutils literal notranslate"><span class="pre">strlen</span></code></a>.
+Daarnaast kan je een deel van de string verkrijgen met de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.substr.php"><code class="docutils literal notranslate"><span class="pre">substr</span></code></a>,
+vergelijkbaar met een string <em>slice</em> in Python.</p>
+<p>PHP heeft weliswaar geen type voor losse karakters, maar heeft wel twee
+functies om een karakter om te zetten naar zijn ASCII-waarde en omgekeerd.<br />
+Dit zijn de functies
+<a class="reference external" href="https://www.php.net/manual/en/function.ord.php"><code class="docutils literal notranslate"><span class="pre">ord</span></code></a> en
+<a class="reference external" href="https://www.php.net/manual/en/function.chr.php"><code class="docutils literal notranslate"><span class="pre">chr</span></code></a>.
+De functie <code class="docutils literal notranslate"><span class="pre">ord</span></code> kijkt specifiek alleen naar het eerste karakter van de
+meegegeven string en zal, als deze meer karakters bevat, een waarschuwing
+geven. Merk hierbij op dat deze functies, net als de andere hier genoemde
+functies, geen weet hebben van de <em>encoding</em> van een string. Als een string
+dus geëncodeerd is met UTF-8 en het eerste karakter uit meerdere bytes
+bestaat, zoals bijvoorbeeld een letter met een accent, dan wordt de waarde
+van het eerste byte van dat karakter teruggegeven, niet het
+Unicode-codepoint van het karakter als geheel.</p>
+<p>Strings kunnen met de functies
+<a class="reference external" href="https://www.php.net/manual/en/function.strtolower.php"><code class="docutils literal notranslate"><span class="pre">strtolower</span></code></a> en
+<a class="reference external" href="https://www.php.net/manual/en/function.strtoupper.php"><code class="docutils literal notranslate"><span class="pre">strtoupper</span></code></a>
+omgezet worden in respectievelijke kleine letters en hoofdletters. Als
+alleen het eerste teken moet worden omgezet kunnen in plaats daarvan
+<a class="reference external" href="https://www.php.net/manual/en/function.lcfirst.php"><code class="docutils literal notranslate"><span class="pre">lcfirst</span></code></a> en
+<a class="reference external" href="https://www.php.net/manual/en/function.ucfirst.php"><code class="docutils literal notranslate"><span class="pre">ucfirst</span></code></a>
+gebruikt worden. Bovendien kan
+<a class="reference external" href="https://www.php.net/manual/en/function.ucwords.php"><code class="docutils literal notranslate"><span class="pre">ucwords</span></code></a>
+gebruikt worden om van de eerste letter van elk woord in de string een
+hoofdletter te maken. Daarnaast kan de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.trim.php"><code class="docutils literal notranslate"><span class="pre">trim</span></code></a>
+worden gebruikt om witruimte, zoals spaties, tabs en newlines, te
+verwijderen aan het begin en einde van een string.</p>
+<p>Met de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.strpos.php"><code class="docutils literal notranslate"><span class="pre">strpos</span></code></a>
+kan de positie van een substring in een string worden gevonden. Merk op dat
+deze functie <code class="docutils literal notranslate"><span class="pre">false</span></code> teruggeeft als de substring niet gevonden wordt, maar
+ook het getal 0 kan teruggeven als de string begint met de gezochte
+substring. Daarnaast kan je met
+<a class="reference external" href="https://www.php.net/manual/en/function.str-replace.php"><code class="docutils literal notranslate"><span class="pre">str_replace</span></code></a>
+bepaalde substrings laten vervangen door andere.</p>
+<p>Het is ook mogelijk om alleen te kijken of een bepaalde string een andere
+string bevat, zonder hierbij de positie nodig te hebben. Dit kan met de
+functie <a class="reference external" href="https://www.php.net/manual/en/function.str-contains.php"><code class="docutils literal notranslate"><span class="pre">str_contains</span></code></a>.
+Daarnaast kan gekeken worden of een string begint of eindigt met een andere
+string door gebruik te maken van de functies
+<a class="reference external" href="https://www.php.net/manual/en/function.str-starts-with.php"><code class="docutils literal notranslate"><span class="pre">str_starts_with</span></code></a> en
+<a class="reference external" href="https://www.php.net/manual/en/function.str-ends-with.php"><code class="docutils literal notranslate"><span class="pre">str_ends_with</span></code></a>.</p>
+<p>Aangezien PHP met name gebruikt wordt voor webapplicaties, heeft het een
+aantal functies om tekst te kunnen gebruiken in HTML pagina’s. Belangrijke
+functies hiervoor zijn
+<a class="reference external" href="https://www.php.net/manual/en/function.htmlspecialchars.php"><code class="docutils literal notranslate"><span class="pre">htmlspecialchars</span></code></a>,
+waarmee alle karakters die een speciale betekenis hebben in HTML, zoals <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>
+en <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, omgezet worden naar HTML-entity’s, en
+<a class="reference external" href="https://www.php.net/manual/en/function.strip-tags.php"><code class="docutils literal notranslate"><span class="pre">strip_tags</span></code></a>,
+waarmee alle HTML-tags uit een string worden verwijderd. Beide functies
+kunnen gebruikt worden als onderdeel van een strategie om
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Cross-site_scripting">XSS</a>-aanvallen
+te mitigeren.</p>
+</section>
+<section id="multibyte-encodings">
+<h2><em>Multibyte encodings</em><a class="headerlink" href="#multibyte-encodings" title="Link to this heading">#</a></h2>
+<p>In het verleden gebruikten websites en andere applicaties veelal encodings
+waarbij elk karakter een enkele byte was. In Nederland werd hier met name
+ASCII, ISO 8859-1, ISO 8859-15 of Windows-1252 voor gebruikt. Deze encodings
+hebben echter allemaal als probleem dat ze alleen het Latijnse schrift met
+een zeer beperkte verrzameling accenten ondersteunen. Daarom wordt nu
+vrijwel altijd gebruik gemaakt van
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Unicode">Unicode</a>,
+met name via de encoding
+<a class="reference external" href="https://nl.wikipedia.org/wiki/UTF-8">UTF-8</a>.
+Strings in PHP, anders dan in bijvoorbeeld Python, hebben hier echter geen
+weet van. Dit brengt met zich mee dat de hierboven genoemde functies er in
+principe vanuit gaan dat elke byte in een string een karakter is, zo zal
+bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">strlen('ë')</span></code> gelijk zijn aan 2 en <code class="docutils literal notranslate"><span class="pre">strlen('🙂')</span></code> gelijk zijn
+aan 4, omdat dat het aantal bytes is dat noodzakelijk is om deze karakters
+in UTF-8 te encoden.</p>
+<p>PHP heeft een extensie met een aantal functies om hiermee om te gaan. Dit is
+de extensie <a class="reference external" href="https://www.php.net/manual/en/intro.mbstring.php">mbstring</a>.
+Deze extensie bevat functies zoals
+<a class="reference external" href="https://www.php.net/manual/en/function.mb-strlen.php"><code class="docutils literal notranslate"><span class="pre">mb_strlen</span></code></a>,
+die het aantal karakters in een string teruggeeft. De bovengenoemde
+voorbeelden geven allebei 1 terug als <code class="docutils literal notranslate"><span class="pre">mb_strlen</span></code> wordt gebruikt in plaats
+van <code class="docutils literal notranslate"><span class="pre">strlen</span></code>. De
+<a class="reference external" href="https://www.php.net/manual/en/ref.mbstring.php">meeste hierboven genoemde functies</a>
+hebben een corresponderende multibyte-versie.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -490,6 +667,24 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stringoperaties">Stringoperaties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stringfuncties">Stringfuncties</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multibyte-encodings"><em>Multibyte encodings</em></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

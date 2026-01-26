@@ -276,8 +276,11 @@ De functie
 kan worden gebruikt om te zoeken of een bepaalde waarde voorkomt in een 
 array. Om ook de sleutel te vinden waar deze waarde te vinden is, kan
 [`array_search`](https://www.php.net/manual/en/function.array-search.php)
-worden gebruikt. Als je niet in een specifieke waarde bent geïnteresseerd, maar 
-een wilt weten of een specifieke sleutel bestaat kan je
+worden gebruikt. Merk hierbij op dat deze functie zowel 0 als `false` kan 
+teruggeven en dat dat wat anders betekent; 0 betekent dat de gezochte waarde 
+op index 0 te vinden is, en `false` betekent dat de waarde niet gevonden is.
+Als je niet in een specifieke *waarde* bent geïnteresseerd, maar wilt weten 
+of een specifieke *sleutel* bestaat kan je
 [`array_key_exists`](https://www.php.net/manual/en/function.array-key-exists.php)
 gebruiken.
 

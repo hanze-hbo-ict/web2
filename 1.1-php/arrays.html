@@ -667,8 +667,11 @@ sleutels van de array opeenvolgende nummers vanaf 0 zijn.</p>
 kan worden gebruikt om te zoeken of een bepaalde waarde voorkomt in een
 array. Om ook de sleutel te vinden waar deze waarde te vinden is, kan
 <a class="reference external" href="https://www.php.net/manual/en/function.array-search.php"><code class="docutils literal notranslate"><span class="pre">array_search</span></code></a>
-worden gebruikt. Als je niet in een specifieke waarde bent geïnteresseerd, maar
-een wilt weten of een specifieke sleutel bestaat kan je
+worden gebruikt. Merk hierbij op dat deze functie zowel 0 als <code class="docutils literal notranslate"><span class="pre">false</span></code> kan
+teruggeven en dat dat wat anders betekent; 0 betekent dat de gezochte waarde
+op index 0 te vinden is, en <code class="docutils literal notranslate"><span class="pre">false</span></code> betekent dat de waarde niet gevonden is.
+Als je niet in een specifieke <em>waarde</em> bent geïnteresseerd, maar wilt weten
+of een specifieke <em>sleutel</em> bestaat kan je
 <a class="reference external" href="https://www.php.net/manual/en/function.array-key-exists.php"><code class="docutils literal notranslate"><span class="pre">array_key_exists</span></code></a>
 gebruiken.</p>
 <p>Om een array te verkrijgen met alle sleutels van een associatieve array kan je
