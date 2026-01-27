@@ -44,14 +44,15 @@ parts:
 
 - caption: 3.1 Request
   chapters:
+    - file: 3.1-request/intro.md
     - file: 3.1-request/request
-    - file: 3.1-request/respons
-    - file: 3.1-request/opgave
+    - file: 3.1-request/oefening
 
 - caption: 3.2 Response
   chapters:
-    - file: 3.2-response/intro
-    - file: 3.2-response/opgave
+    - file: 3.2-response/response
+    - file: 3.2-response/oefening
+    - file: 3.2-response/opdracht
 
 - caption: 4.1 Templating
   chapters:
