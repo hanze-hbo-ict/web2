@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Respons &#8212; Webtechnologie II</title>
+    <title>Request, Response en Message &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '3.1-request/respons';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3.1-request/intro';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Opgave" href="opgave.html" />
-    <link rel="prev" title="Request" href="request.html" />
+    <link rel="next" title="Request" href="request.html" />
+    <link rel="prev" title="Opdracht" href="../2.2-kernel/opdracht.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -217,14 +217,15 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
 <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Request, Response en Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="request.html">Request</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Respons</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Response</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3.2-response/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-response/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/response.html">Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/opdracht.html">Opgave</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
 <ul class="nav bd-sidenav">
@@ -323,7 +324,7 @@
       
       
       
-      <li><a href="../_sources/3.1-request/respons.md" target="_blank"
+      <li><a href="../_sources/3.1-request/intro.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -386,7 +387,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -397,11 +400,19 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Respons</h1>
+    <h1>Request, Response en Message</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductie">Introductie</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -411,8 +422,21 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="respons">
-<h1>Respons<a class="headerlink" href="#respons" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="request-response-en-message">
+<h1>Request, Response en Message<a class="headerlink" href="#request-response-en-message" title="Link to this heading">#</a></h1>
+<section id="introductie">
+<h2>Introductie<a class="headerlink" href="#introductie" title="Link to this heading">#</a></h2>
+<p>Zoals we <a class="reference internal" href="../2.2-kernel/kernel.html"><span class="std std-doc">hebben kunnen lezen</span></a> is het de taak van een webapplicatie om een <em>verzoek</em> van een client (in de regel de webbrowser) om te zetten in een <em>antwoord</em>: de client stuurt een <code class="docutils literal notranslate"><span class="pre">Request</span></code> en de webapplicatie (de <em>server</em>) zet die om in een <code class="docutils literal notranslate"><span class="pre">Response</span></code>. Zowel de <code class="docutils literal notranslate"><span class="pre">Request</span></code> als de <code class="docutils literal notranslate"><span class="pre">Response</span></code> zijn <em>berichten</em> (<em>messages</em>) die (met behulp van <a class="reference internal" href="../2.2-kernel/http.html"><span class="std std-doc">het http</span></a>) over de lijn verstuurd worden. Deze berichten hebben een eigen interne semantiek en payload die vrij uitgebreid <a class="reference external" href="https://datatracker.ietf.org/doc/html/rfc7230">in RFC 7230 beschreven wordt</a> (ook <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Messages">op MDN</a> kun je hier het nodige over terugvinden, overigens).</p>
+<p>Wanneer we dus een <em>request</em> in een <em>response</em> om willen zetten, dienen we ons te realiseren dat dit beide <em>messages</em> zijn. In <a class="reference external" href="https://www.php-fig.org/psr/psr-7">PSR 7 </a> staat uitgebreid beschreven wat de verhouding is tussen de <code class="docutils literal notranslate"><span class="pre">Message</span></code>, de <code class="docutils literal notranslate"><span class="pre">Request</span></code> en de <code class="docutils literal notranslate"><span class="pre">Response</span></code>: de laatste twee zijn <em>uitbreidingen</em> (<em>extentions</em>) van het eerste.</p>
+<p>Zie het onderstaande diagram. Onderin hebben we de concrete klassen <code class="docutils literal notranslate"><span class="pre">Request</span></code> en <code class="docutils literal notranslate"><span class="pre">Response</span></code>, die respectievelijk de <code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code> en de <code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code> implementeren. Deze beide interfaces implementeren op hun beurt weer de <code class="docutils literal notranslate"><span class="pre">MessageInterface</span></code>, wat, gezien de bespreking hierboven logisch is.</p>
+<p><img alt="De verhouding tussen ,  en " src="../_images/psr-7-deels.jpeg" /></p>
+<div class="warning admonition">
+<p class="admonition-title">Request en ServerRequest</p>
+<p>De <a class="reference external" href="https://www.php-fig.org/psr/psr-7">PSR in kwestie</a> maakt onderscheid tussen <a class="reference external" href="https://www.php-fig.org/psr/psr-7/#32-psrhttpmessagerequestinterface"><code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code></a> en <a class="reference external" href="https://www.php-fig.org/psr/psr-7/#321-psrhttpmessageserverrequestinterface"><code class="docutils literal notranslate"><span class="pre">ServerRequestInterface</span></code></a>. Het grote verschil tussen deze twee is dat de eerste interface een <em>uitgaand</em> bericht is (dus gezien vanuit de client), terwijl de tweede een <em>inkomend</em> bericht is (dus bezien vanuit de server). Beide berichten bevatten de meest voor de hand liggende informatie van het <em>request</em>, zoals protocol-versie en http-headers, maar alleen de <code class="docutils literal notranslate"><span class="pre">ServerRequest</span></code> bevat ook nog extra informatie vanuit de php-omgeving of de CGI.</p>
+<p>Voor de opdracht is het evenwel voldoende om je te richten op de <em>request</em> zoals deze er aan de serverkant uit ziet (dus feitelijk de <code class="docutils literal notranslate"><span class="pre">ServerRequestInterface</span></code>).</p>
+</div>
+<p>Op <a class="reference internal" href="request.html"><span class="std std-doc">de volgende pagina</span></a> bespreken we uitgebreid de <em>request</em> en de bijhorende technieken, daarna gaan we in op <a class="reference internal" href="../3.2-response/response.html"><span class="std std-doc">de <em>response</em></span></a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -446,20 +470,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="request.html"
+       href="../2.2-kernel/opdracht.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Request</p>
+        <p class="prev-next-title">Opdracht</p>
       </div>
     </a>
     <a class="right-next"
-       href="opgave.html"
+       href="request.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Opgave</p>
+        <p class="prev-next-title">Request</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -469,6 +493,22 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductie">Introductie</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
