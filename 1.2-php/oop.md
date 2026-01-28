@@ -61,12 +61,12 @@ class Test {
     }
     
     private static staticTest() {
-        echo Test::$staticProperty;
+        echo Test::$staticProperty, PHP_EOL;
     }
     
     public function test()
     {
-        echo $this->property;
+        echo $this->property, PHP_EOL;
         self::staticTest();
     }
 }
@@ -101,7 +101,7 @@ class Super {
 
     public function test()
     {
-        echo "In Super $this->a\n";
+        echo 'In Super ', $this->a, PHP_EOL;
     }
 }
 
@@ -114,7 +114,7 @@ class Sub extends Super{
     public function test()
     {
         super::test();
-        echo "In Sub $this->b\n";
+        echo 'In Sub ', $this->b, PHP_EOL;
     }
 }
 
@@ -214,9 +214,9 @@ typedeclaratie `Countable&Traver`
 
 ```php
 function count_and_traverse(Countable&Traversable $list): void {
-    echo "{$list->count()} elements:\n";
+    echo {$list->count()}, ' elements:', PHP_EOL;
     foreach ($list as $element) {
-        echo "$element\n";
+        echo $element, PHP_EOL;
     }
 }
 ```
@@ -250,7 +250,7 @@ class Test {
     
     public function test(): void
     {
-        echo $this->var;
+        echo $this->var, PHP_EOL;
     }
 }
 ```

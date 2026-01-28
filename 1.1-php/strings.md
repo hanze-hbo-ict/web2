@@ -22,6 +22,27 @@ terwijl dit in een string met enkele aanhalingstekens gewoon voor de
 karakters `\n` staat. Een ander voorbeeld is de combinatie `\t` die voor 
 een tab staat.
 
+Ook bieden strings met dubbele aanhalingstekens de mogelijkheid om varabelen 
+te [*interpoleren*](https://www.php.net/manual/en/language.types.string.php#language.types.string.parsing)
+in de string. Als je de naam van een variabele opneemt in 
+een string, wordt deze vervangen door de waarde daarvan, zoals in 
+onderstaand voorbeeld.
+
+```php
+$foo = 1;
+$bar = 2;
+$double = "foo = $foo\nbar = $bar";
+$single = 'foo = $foo\nbar = $bar';
+var_dump($double); // bevat foo = 1, newline, bar = 2
+var_dump($single); // bevat foo = $foo\nbar = $bar
+```
+
+Als de varabele gevolgt moet worden door letters zal PHP denken dat deze bij 
+de variabelenaam horen; als je bijvoorbeeld de variabele `$var` wil laten 
+volgen door het woord `test`, zou je `"$vartest"` willen gebruiken, maar dan 
+zal PHP de variabele `$vartest` interpoleren. Om dit te voorkomen kan je de 
+variabele omsluiten met accolades, door `"{$var}test"` te gebruiken.
+
 Daarnaast biedt PHP de mogelijkheid om strings over meerdere regels op te 
 nemen met de zogeheten
 [heredoc](https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc)- en
@@ -48,28 +69,7 @@ NOW;
 
 ## Stringoperaties
 
-Ook bieden strings met dubbele aanhalingstekens de mogelijkheid om varabelen 
-te [*interpoleren*](https://www.php.net/manual/en/language.types.string.php#language.types.string.parsing)
-in de string. Als je de naam van een variabele opneemt in 
-een string, wordt deze vervangen door de waarde daarvan, zoals in 
-onderstaand voorbeeld.
-
-```php
-$foo = 1;
-$bar = 2;
-$double = "foo = $foo\nbar = $bar";
-$single = 'foo = $foo\nbar = $bar';
-var_dump($double); // bevat foo = 1, newline, bar = 2
-var_dump($single); // bevat foo = $foo\nbar = $bar
-```
-
-Als de varabele gevolgt moet worden door letters zal PHP denken dat deze bij 
-de variabelenaam horen; als je bijvoorbeeld de variabele `$var` wil laten 
-volgen door het woord `test`, zou je `"$vartest"` willen gebruiken, maar dan 
-zal PHP de variabele `$vartest` interpoleren. Om dit te voorkomen kan je de 
-variabele omsluiten met accolades, door `"{$var}test"` te gebruiken.
-
-Een alternatief voor stringinterpolatie is
+Een alternatief voor de hierboven genoemde stringinterpolatie is
 [stringconcatenatie](https://www.php.net/manual/en/language.operators.string.php)
 door middel van de operator `.`. Anders dan in Java en Python worden strings 
 niet samengevoegd met de operator `+` maar is hier een aparte operator `.` 

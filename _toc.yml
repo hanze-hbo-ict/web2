@@ -6,10 +6,15 @@ parts:
   chapters:
   - file: about/literatuur
 
+- caption: Voorbereiding
+  chapters:
+    - file: voorbereiding/introductie
+    - file: voorbereiding/eindopdracht
+    - file: voorbereiding/installeren
+
 - caption: 1.1 PHP
   chapters:
     - file: 1.1-php/intro
-    - file: 1.1-php/installeren
     - file: 1.1-php/php
     - file: 1.1-php/variabelen
     - file: 1.1-php/controlestatements

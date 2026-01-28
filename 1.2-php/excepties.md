@@ -128,7 +128,7 @@ function shutdown_function(): void
 {
     $error = error_get_last();
     if ($error !== null && in_array($error['type'], [E_ERROR, E_PARSE, E_CORE_ERROR, E_COMPILE_ERROR, E_USER_ERROR, E_RECOVERABLE_ERROR])) {
-        echo "Fatal error: {$error['message']}\n";
+        echo 'Fatal error: ', $error['message'], PHP_EOL;
     }
 }
 
@@ -199,9 +199,9 @@ function divide($x, $y)
     } catch (DivisionByZeroError) {
         throw new DomainException('$y cannot be zero');
     } catch (TypeError|Exception $e) {
-        echo "Unexpected error: $e\n";
+        echo 'Unexpected error: ', $e, PHP_EOL;
     } finally {
-        echo "This code is always executed.\n";
+        echo 'This code is always executed.', PHP_EOL;
     }
 }
 ```
@@ -238,13 +238,13 @@ eerste argument, zoals in onderstaande voorbeeld.
 
 ```php
 function exception_handler(Throwable $exception): void {
-  echo "Uncaught exception: {$exception->getMessage()}\n";
+  echo 'Uncaught exception: ', $exception->getMessage()}, PHP_EOL;
 }
 
 set_exception_handler('exception_handler');
 
 $x = 1/0;
-echo "1/0 = $x";
+echo '1/0 = ', $x, PHP_EOL;
 ```
 
 Deze code zal `Uncaught exception: Division by zero` afdrukken. Het laatste 

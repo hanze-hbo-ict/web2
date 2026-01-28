@@ -93,10 +93,10 @@ function double($x)
 function hello($name)
 {
     if (!$name) {
-        echo "Hello, nameless person!\n"
+        echo 'Hello, nameless person!', PHP_EOL
         return;
     }
-    echo "Hello, $name!\n";
+    echo "Hello, $name!", PHP_EOL;
 }
 ```
 
@@ -127,8 +127,9 @@ besproken worden.
 function repeat(string $s, int $count)
 {
     for ($i = 0; $i < $count; $i++) {
-        echo($s);
+        echo $s;
    }
+   echo PHP_EOL;
 }
 
 repeat('a', 5);
@@ -159,7 +160,7 @@ zal beëindigen.
 
 ```php
 function print_number(int $a): void {
-    echo $a;
+    echo $a, PHP_EOL;
     return; // deze return is toegestaan maar hoeft niet
 }
 
@@ -170,7 +171,7 @@ function fibonacci(): never {
         $c = $a + $b;
         $a = $b;
         $b = $c;
-        echo("$c\n");
+        echo $c, PHP_EOL;
         usleep(100_000); // wacht 100.000 microseconden (0,1 seconde)
     }
     // deze functie eindigt nooit
@@ -213,13 +214,13 @@ function echo_user_name(array|int $user): void
     if (is_int($user)) {
         $user = get_user_by_id($user);
     }
-    echo $user['name'];
+    echo $user['name'], PHP_EOL;
 }
 
 function hello(?string $name = null): void
 {
     $name ??= 'anonymous user';
-    echo "Hello, $name!";
+    echo "Hello, $name!", PHP_EOL;
 }
 ```
 
