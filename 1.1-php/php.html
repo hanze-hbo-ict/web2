@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
     <link rel="next" title="Variabelen" href="variabelen.html" />
-    <link rel="prev" title="PHP installeren" href="installeren.html" />
+    <link rel="prev" title="Introductie" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -174,13 +174,17 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Voorbereiding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/eindopdracht.html">Eindopdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/installeren.html">PHP installeren</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installeren.html">PHP installeren</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variabelen.html">Variabelen</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="controlestatements.html">Conditionele en lusstatements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a></li>
@@ -410,7 +414,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">???</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#php-als-webserver">PHP als webserver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigatie">Navigatie</a></li>
 </ul>
             </nav>
         </div>
@@ -424,63 +430,95 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="php">
 <h1>PHP<a class="headerlink" href="#php" title="Link to this heading">#</a></h1>
-<p>[TODO]</p>
-<p>Een PHP-applicatie bevindt zich in een directorystructuur die als project in de
-IDE geopend wordt. [TODO]</p>
-<p>Zoals eerder genoemd hebben webapplicaties in beginsel een
-client-serverarchitectuur. De browser van de gebruiker dient als client die
-verzoeken doet aan de applicatie die als server dient. Dit betekent dat deze
-applicatie niet, zoals bijvoorbeeld reguliere Python-programma’s, eenmalig
-draaien en dan stoppen, maar steeds beschikbaar moeten zijn voor
-verzoeken van clients. Dit is vergelijkbaar met Python-programma’s die Flask
-gebruiken.</p>
-<p>Er is echter een relevant verschil waardoor we PHP-programma’s toch als
-eenmalig draaiende programma’s kunnen schrijven. Een Python Flask-applicatie
-moet zelf zorgdragen voor het afhandelen van meerdere verzoeken, en gebruikt
-in het algemeen een functie als aanspreekpunt hiervoor. Alle verzoeken
-worden dus door dezelfde instantie van de applicatie uitgevoerd. Bij PHP is
-het daarentegen gebruikelijk dat er een webserver is die zorgt voor het
-afhandelen van verzoeken en deze doorstuurt naar een PHP-applicatie die een
-enkel verzoek afhandelt. Elke instantie van de PHP-applicatie hoeft dus
-slechts een enkel verzoek af te handelen.</p>
-<p>[TODO routing obv directorystructuur]</p>
-<p>Dit alles laat zich samenvatten in het onderstaande sequentiediagram.</p>
-<p>[TODO sequentiediagram]</p>
-<p>Zoals hierboven vermeld scheidt PHP de webserver van de applicatie. In een
-productieomgeving wordt vaak een webserver als Apache of Nginx gebruikt. In
-een ontwikkelomgeving is dit echter overkill. Vandaar dat er een eenvoudige
-webserver ingebouwd is in PHP, die voor ontwikkelomgevingen gebruikt kan
-worden. Deze kan gestart worden door onderstaand commando.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>php<span class="w"> </span>-S<span class="w"> </span>localhost:8000
+<p><a class="reference external" href="https://nl.wikipedia.org/wiki/PHP">PHP</a>
+is een programmeertaal die in beginsel voor alle doeleinden gebruikt kan
+worden, maar oorspronkelijk geschreven is, en bovendien uiterst geschikt is,
+voor de ontwikkeling van websites en webapplicaties. Het is in 1994
+ontwikkeld door Rasmus Lerdorf, waarbij PHP oorspronkelijk voor stond voor
+“Personal Home Page”. Tegenwoordig staat PHP echter voor “PHP: Hypertext
+Preprocessor”.</p>
+<section id="syntax">
+<h2>Syntax<a class="headerlink" href="#syntax" title="Link to this heading">#</a></h2>
+<p>Kenmerkend aan de taal PHP is dat deze twee modussen kent. Elk willekeurig
+tekstbestand kan feitelijk als PHP-programma uitgevoerd worden, want PHP
+begint in een modus waarbij de inhoud van het bestand letterlijk als uitvoer
+gegeven wordt. Pas als een
+<a class="reference external" href="https://www.php.net/manual/en/language.basic-syntax.phptags.php">PHP-tag</a>
+<code class="docutils literal notranslate"><span class="pre">&lt;?php</span></code> gebruikt wordt, wordt de PHP-modus gestart. Vanaf dat punt wordt de
+code als PHP-code gezien en uitgevoerd, totdat een sluittag <code class="docutils literal notranslate"><span class="pre">?&gt;</span></code> gebruikt
+wordt. Vaak zullen PHP-bestanden alleen PHP-code bevatten en dan is het
+gebruikelijk om de opentag <code class="docutils literal notranslate"><span class="pre">&lt;?php</span></code> meteen aan het begin van het bestand te
+zetten; de sluittag kan dan weggelaten worden.</p>
+<p>Binnen de PHP-modus worden PHP-statements gebruikt. Deze worden afgesloten
+met een puntkomma <code class="docutils literal notranslate"><span class="pre">;</span></code>, net als in Java. Commentaar begint met <code class="docutils literal notranslate"><span class="pre">/*</span></code> en
+eindigt met <code class="docutils literal notranslate"><span class="pre">*/</span></code>, en commentaar op een enkele regel begint met <code class="docutils literal notranslate"><span class="pre">//</span></code>. Om
+tekst af te drukken kan je het statement <code class="docutils literal notranslate"><span class="pre">echo</span></code> gebruiken. Hier kan je een
+aantal waardes, gescheiden door komma’s, achter zetten die afgedrukt moeten
+worden. <code class="docutils literal notranslate"><span class="pre">echo</span></code> zal niet standaard naar een nieuwe regel gaan na het
+afdrukken van deze waardes. Als je dat wel wil, kan je de waarde <code class="docutils literal notranslate"><span class="pre">PHP_EOL</span></code>
+afdrukken, zoals in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">Dit wordt letterlijk afgedrukt.</span>
+<span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="mi">1</span><span class="p">;</span>
+<span class="k">echo</span> <span class="mi">2</span><span class="p">,</span> <span class="nx">PHP_EOL</span><span class="p">;</span>
+<span class="k">echo</span> <span class="mi">3</span><span class="p">;</span>
+<span class="cp">?&gt;</span>
+<span class="x">Dit wordt ook letterlijk afgedrukt.</span>
 </pre></div>
 </div>
-<p>Na het uitvoeren van dit commando wordt de huidige directory, van waaruit
-het commando was uitgevoerd, gepubliceerd op <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code>. De
-huidige directory wordt nu de <em>document root</em> van de server genoemd. Dit
-zal in principe de hoofdddirectory van het project zijn. Omdat we later
-allerlei configuratiebestanden zullen toevoegen aan de applicatie die niet
-aan de eindgebruiker getoond mogen worden, is het gebruik van de
-hoofddirectory als document root ongewenst vanuit securityperspectief.</p>
-<p>Het is daarom gebruikelijk een directory <code class="docutils literal notranslate"><span class="pre">public</span></code> te maken die gebruikt wordt
-als document root. Op die manier kunnen statische bestanden en PHP-scripts die
-door de gebruiker aangeroepen mogen worden in die directory worden gezet
-maar kan de gebruiker niet bij andere bestanden. Om PHP te vertellen dat
-<code class="docutils literal notranslate"><span class="pre">public</span></code> als document root gebruikt moet worden, wordt bovenstaand commando als
-volgt aangepast.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>php<span class="w"> </span>-S<span class="w"> </span>localhost:8000<span class="w"> </span>-t<span class="w"> </span>public
+<p>Je kan, als je deze code bijvoorbeeld in <code class="docutils literal notranslate"><span class="pre">test.php</span></code> hebt opgeslagen, dit
+bestand door PHP laten uitvoeren met het commando <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">test.php</span></code>. Dit geeft
+onderstaande uitvoer.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dit</span> <span class="n">wordt</span> <span class="n">letterlijk</span> <span class="n">afgedrukt</span><span class="o">.</span>
+<span class="mi">12</span>
+<span class="mi">3</span><span class="n">Dit</span> <span class="n">wordt</span> <span class="n">ook</span> <span class="n">letterlijk</span> <span class="n">afgedrukt</span><span class="o">.</span>
 </pre></div>
 </div>
-<section id="id1">
-<h2>???<a class="headerlink" href="#id1" title="Link to this heading">#</a></h2>
+<p>Je ziet dat er geen nieuwe regel wordt begonnen na het eerste en het derde
+<code class="docutils literal notranslate"><span class="pre">echo</span></code>-statement.</p>
+<p>Als je PHP en HTML, of andere tekst, combineert kan het voorkomen dat een
+PHP-blok slechts een enkel <code class="docutils literal notranslate"><span class="pre">echo</span></code>-statement bevat. Denk hierbij bijvoorbeeld
+aan de situatie dat je een CSS-klasse wil gebruiken, zoals in onderstaand
+voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;a href=&quot;/&quot; class=&quot;color-</span><span class="cp">&lt;?php</span> <span class="k">echo</span> <span class="mi">1</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&quot;&gt;</span>
+</pre></div>
+</div>
+<p>Deze situatie komt relatief veel voor. Je kan hierbij dan ook de
+onderstaande, kortere syntax gebruiken.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;a href=&quot;/&quot; class=&quot;color-</span><span class="cp">&lt;?</span><span class="o">=</span> <span class="mi">1</span> <span class="cp">?&gt;</span><span class="x">&quot;&gt;</span>
+</pre></div>
+</div>
+<p>Je ziet dat hier de kortere begintag <code class="docutils literal notranslate"><span class="pre">&lt;?=</span></code> wordt gebruikt. Deze tag betekent
+dat de inhoud van de tag als PHP-expressie moet worden uitgerekend en
+afgedrukt. Merk bovendien op dat het gebruik van PHP hier nog niets toevoegt.
+PHP heeft echter natuurlijk de mogelijkheid om variabelen te declareren en
+te gebruiken, waardoor je de waarde die afgedrukt wordt afhankelijk kan
+maken van de context.</p>
+<p>Net als vrijwel elke programmeertaal heeft PHP de mogelijkheid om functies
+aan te roepen. De argumenten van een functie worden gescheiden met
+komma’s en tussen haakjes achter de functienaam gezet. Zo kent PHP de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.pow.php"><code class="docutils literal notranslate"><span class="pre">pow</span></code></a> die een
+machtsverheffing uitvoert, om 2³ uit te rekenen kan de expressie <code class="docutils literal notranslate"><span class="pre">pow(2,</span> <span class="pre">3)</span></code>
+gebruikt worden; het resultaat kan met <code class="docutils literal notranslate"><span class="pre">echo</span></code> of <code class="docutils literal notranslate"><span class="pre">&lt;?=</span></code> afgedrukt worden.
+Sommige functies hebben geen argumenten, zoals de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.pi.php"><code class="docutils literal notranslate"><span class="pre">pi</span></code></a> die de waarde π,
+3,14159…, teruggeeft. Deze functie wordt aangeroepen met lege haakjes, dus
+als <code class="docutils literal notranslate"><span class="pre">pi()</span></code>.</p>
+</section>
+<section id="php-als-webserver">
+<h2>PHP als webserver<a class="headerlink" href="#php-als-webserver" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>directorystructuur</p></li>
 <li><p>php -S localhost</p></li>
 <li><p>sequentiediagram</p></li>
-<li><p>php-tags</p></li>
-<li><p>echo</p></li>
 <li><p>assets</p></li>
+</ul>
+</section>
+<section id="navigatie">
+<h2>Navigatie<a class="headerlink" href="#navigatie" title="Link to this heading">#</a></h2>
+<ul class="simple">
 <li><p>HTML (a)</p></li>
-<li><p>php mode, short tags</p></li>
+<li><p>superglobals</p></li>
 </ul>
 </section>
 </section>
@@ -516,12 +554,12 @@ volgt aangepast.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="installeren.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">PHP installeren</p>
+        <p class="prev-next-title">Introductie</p>
       </div>
     </a>
     <a class="right-next"
@@ -550,7 +588,9 @@ volgt aangepast.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">???</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#php-als-webserver">PHP als webserver</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigatie">Navigatie</a></li>
 </ul>
   </nav></div>
 

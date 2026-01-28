@@ -174,13 +174,17 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Voorbereiding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/eindopdracht.html">Eindopdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/installeren.html">PHP installeren</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installeren.html">PHP installeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Variabelen</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="controlestatements.html">Conditionele en lusstatements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a></li>
@@ -410,10 +414,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Variabelen</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webpagina-s">Dynamische webpagina’s</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operatoren">Operatoren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datatypes">Datatypes</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -426,42 +429,117 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="variabelen">
 <h1>Variabelen<a class="headerlink" href="#variabelen" title="Link to this heading">#</a></h1>
-<p>[TODO]</p>
-<p>Variabelen worden in PHP altijd voorafgegaan door het teken <code class="docutils literal notranslate"><span class="pre">$</span></code>. Daarnaast
-hebben variabelen in PHP in principe geen vastgesteld type; PHP is een
-dynamisch getypeerde taal, net als bijvoorbeeld Python. Dit betekent dat een
-variabele bijvoorbeeld eerst een getal en daarna een string kan bevatten.
-Ook kent PHP de gangbare wiskunde operatoren <code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code>, <code class="docutils literal notranslate"><span class="pre">**</span></code> voor
-machtsverheffen en <code class="docutils literal notranslate"><span class="pre">%</span></code> als modulo-operator.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = 5;</span>
-<span class="x">$b = 2.5;</span>
-<span class="x">$c = $a * $b;</span>
-<span class="x">echo($c);</span>
+<p>PHP heeft net als elke andere imperatieve taal de mogelijkheid om variabelen
+te gebruiken. Anders dan in Java hoeven variabelen in PHP niet gedeclareerd
+te worden voordat je ze kan gebruiken. Bovendien hebben variabelen in PHP in
+principe geen vastgesteld type; je kan zonder problemen eerst een getal
+toekennen aan een variabele en daarna een string, net zoals in Python. PHP
+is dan ook een dynamisch getypeerde taal. Daarnaast is belangrijk op te
+merken dat een variabelenaam in PHP altijd voorafgegaan wordt door het
+dollarteken <code class="docutils literal notranslate"><span class="pre">$</span></code>. Deze syntax is ontleend aan de programmeertaal Perl.
+Waardes kunnen aan variabelen worden toegekend met de toekenningsoperator
+<code class="docutils literal notranslate"><span class="pre">=</span></code>, zoals bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">=</span> <span class="pre">5;</span></code>. Later in de code kan deze variabele weer
+aangesproke worden met de naam <code class="docutils literal notranslate"><span class="pre">$a</span></code>.</p>
+<p>Een vrij unieke techniek in PHP is dat een variabele <em>indirect</em> kan worden
+aangesproken. Hierbij wordt een naam voorafgegaan door <em>twee</em> dollartekens.
+Wat dit betekent is dat eerst de waarde van de genoemde variabele wordt
+opgehaald, en dat deze naam vervolgens als variabelenaam gezien wordt.
+Hiermee kan je dus dynamisch bepalen welke variabele je wilt aanspreken.
+Hieronder is hier een voorbeeld van te zien.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = &#39;var&#39;; // strings worden nog besproken</span>
+<span class="x">$var = 5;</span>
+<span class="x">echo $var, PHP_EOL; // drukt 5 af</span>
+<span class="x">echo $a, PHP_EOL; // drukt &#39;var&#39; af</span>
+<span class="x">echo $$a, PHP_EOL; // drukt 5 af</span>
 </pre></div>
 </div>
-<p>Bovenstaande code zal het getal <code class="docutils literal notranslate"><span class="pre">12.5</span></code> afdrukken.</p>
-<p>Net als Python kunnen <code class="docutils literal notranslate"><span class="pre">+=</span></code>, <code class="docutils literal notranslate"><span class="pre">-=</span></code> en zo verder gebruikt worden als gecombineerde
-berekening en toekenning. <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">+=</span> <span class="pre">5</span></code> is functioneel gelijk aan <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">=</span> <span class="pre">$a</span> <span class="pre">+</span> <span class="pre">5</span></code>.
-Daarnaast bestaan de operatoren <code class="docutils literal notranslate"><span class="pre">++</span></code> en <code class="docutils literal notranslate"><span class="pre">--</span></code> op dezelfde</p>
-<ul class="simple">
-<li><p>variabelen</p></li>
-<li><p>types: int, float, bool</p></li>
-<li><p>null</p></li>
-<li><p>Operators</p></li>
-<li><p>var_dump</p></li>
-<li><p>variabele variabelen?</p></li>
-<li><p>define</p></li>
-</ul>
+<p>De eerste twee <code class="docutils literal notranslate"><span class="pre">echo</span></code>-statements drukken de waarden van de variabelen <code class="docutils literal notranslate"><span class="pre">$var</span></code>
+en <code class="docutils literal notranslate"><span class="pre">$a</span></code> af; ze spreken deze variabelen <em>direct</em> aan. In het laatste
+<code class="docutils literal notranslate"><span class="pre">echo</span></code>-statement wordt de waarde van <code class="docutils literal notranslate"><span class="pre">$a</span></code>, de string <code class="docutils literal notranslate"><span class="pre">'var'</span></code>, gebruikt als
+naam van de variabele die aangesproken moet worden. Hierdoor wordt de
+variabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> dus <em>indirect</em> aangesproken en wordt de waarde 5 afgedrukt.</p>
+<p>De waarde van een variabele kan op twee manieren worden afgedrukt. In de
+eerste plaats kan het al besproken <code class="docutils literal notranslate"><span class="pre">echo</span></code>-statement worden gebruikt. Dit
+drukt de waarde op zich af, zonder aan te geven welk type dit is, net als
+wanneer de waarde zelf in het statement zou staan. Daarnaast kan de
+functie <code class="docutils literal notranslate"><span class="pre">var_dump</span></code> worden gebruikt om ook het type te tonen; dit lijkt niet
+direct nuttig maar kan erg handig zijn voor het debuggen van code.
+Daarnaast wordt niet elke waarde op een nuttige manier afgedrukt met <code class="docutils literal notranslate"><span class="pre">echo</span></code>,
+maar <code class="docutils literal notranslate"><span class="pre">var_dump</span></code> zal altijd een voor het debuggen nuttig resultaat geven,
+zoals te zien in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$num = 1;</span>
+<span class="x">$array = [1, 2, 3]; // alleen ter illustratie, arrays worden nog besproken</span>
+<span class="x">echo $num, PHP_EOL, $array, PHP_EOL; // drukt &#39;1&#39; en &#39;Array&#39; af</span>
+<span class="x">var_dump($num, $array); // drukt &#39;int(1)&#39; en de inhoud van $array af</span>
+</pre></div>
+</div>
+<p>Naast variabelen kent PHP ook constanten. Een constante wordt gedefinieerd
+met de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.define.php"><code class="docutils literal notranslate"><span class="pre">define</span></code></a> en kan
+vervolgens gebruikt worden door de naam als kale string, dus zonder
+aanhalingstekens of dollartekens, te gebruiken, zoals in onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">define(&#39;FOO&#39;, 1);</span>
+<span class="x">echo FOO, PHP_EOL; // drukt 1 af</span>
+</pre></div>
+</div>
+<section id="operatoren">
+<h2>Operatoren<a class="headerlink" href="#operatoren" title="Link to this heading">#</a></h2>
+<p>PHP kent natuurlijk de gangbare
+<a class="reference external" href="https://www.php.net/manual/en/language.operators.arithmetic.php">rekenkunde operatoren</a>
+<code class="docutils literal notranslate"><span class="pre">+</span></code>, <code class="docutils literal notranslate"><span class="pre">-</span></code>, <code class="docutils literal notranslate"><span class="pre">*</span></code>, <code class="docutils literal notranslate"><span class="pre">/</span></code> en daarnaast <code class="docutils literal notranslate"><span class="pre">**</span></code> voor machtsverheffen en <code class="docutils literal notranslate"><span class="pre">%</span></code> als
+modulo-operator, zoals te zien in onderstaand voorbeeld. Daarnaast heeft PHP
+een uitgebreide verzameling ingebouwde
+<a class="reference external" href="https://www.php.net/manual/en/ref.math.php">wiskundige functies</a>
+zoals onder meer
+<a class="reference external" href="https://www.php.net/manual/en/function.abs.php"><code class="docutils literal notranslate"><span class="pre">abs</span></code></a>,
+<a class="reference external" href="https://www.php.net/manual/en/function.round.php"><code class="docutils literal notranslate"><span class="pre">round</span></code></a>
+<a class="reference external" href="https://www.php.net/manual/en/function.min.php"><code class="docutils literal notranslate"><span class="pre">min</span></code></a> en
+<a class="reference external" href="https://www.php.net/manual/en/function.max.php"><code class="docutils literal notranslate"><span class="pre">max</span></code></a>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = 9;</span>
+<span class="x">$b = 1.5;</span>
+<span class="x">$c = 2;</span>
+<span class="x">echo $a + $b, PHP_EOL; // 10.5</span>
+<span class="x">echo $a - $b, PHP_EOL; // 7.5</span>
+<span class="x">echo $a * $b, PHP_EOL; // 13.5</span>
+<span class="x">echo $a / $b, PHP_EOL; // 6</span>
+<span class="x">echo $a ** $b, PHP_EOL; // 27</span>
+<span class="x">echo $a % $c, PHP_EOL; // 1</span>
+</pre></div>
+</div>
+<p>Net als Python kunnen <code class="docutils literal notranslate"><span class="pre">+=</span></code>, <code class="docutils literal notranslate"><span class="pre">-=</span></code> en zo verder gebruikt worden als
+<a class="reference external" href="https://www.php.net/manual/en/language.operators.assignment.php#language.operators.assignment.arithmetic">gecombineerde berekening en toekenning</a>.
+<code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">+=</span> <span class="pre">5</span></code> is functioneel gelijk aan <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">=</span> <span class="pre">$a</span> <span class="pre">+</span> <span class="pre">5</span></code>. Daarnaast kent PHP net
+als Java de
+<a class="reference external" href="https://www.php.net/manual/en/language.operators.increment.php">operatoren <code class="docutils literal notranslate"><span class="pre">++</span></code> en <code class="docutils literal notranslate"><span class="pre">--</span></code></a>.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="dynamische-webpagina-s">
-<h1>Dynamische webpagina’s<a class="headerlink" href="#dynamische-webpagina-s" title="Link to this heading">#</a></h1>
-<p>Op dit moment kunnen we met PHP-programma’s alleen nog maar statische
-content genereren; het heeft nu dus nog geen toegevoegde waarde ten opzichte
-van ‘kale’ HTML-bestanden.</p>
-<p>PHP heeft echter natuurlijk genoeg functionaliteiten om wel degelijk een
-meerwaarde te hebben. In dit hoofdstuk zullen we zien dat PHP variabelen
-heeft, en zoals elke imperatieve taal commando’s sequentieel kan
-uitvoeren en conditionele statements en lusconstructies kent.</p>
+<section id="datatypes">
+<h2>Datatypes<a class="headerlink" href="#datatypes" title="Link to this heading">#</a></h2>
+<p>Zoals gezegd is PHP een dynamisch getypeerde taal. Dat betekent niet dat de
+taal geen datatypes kent, maar alleen dat een variabele niet met een
+bijbehorend type gedeclareerd hoeft te worden, maar steeds andere types mag
+bevatten. PHP kent dus wel degelijk een aantal types.</p>
+<p>PHP heeft twee getaltypes,
+<a class="reference external" href="https://www.php.net/manual/en/language.types.integer.php"><code class="docutils literal notranslate"><span class="pre">int</span></code></a> en
+<a class="reference external" href="https://www.php.net/manual/en/language.types.float.php"><code class="docutils literal notranslate"><span class="pre">float</span></code></a>.
+Het type <code class="docutils literal notranslate"><span class="pre">int</span></code> kan alleen gehele getallen, <em>integers</em>, bevatten. In principe
+geven berekeningen op integers weer integers terug, behalve als het getal
+te groot of te klein is om in een integer te passen, of als de operator <code class="docutils literal notranslate"><span class="pre">/</span></code>
+wordt gebruikt en het antwoord geen geheel getal is. In beide gevallen
+wordt een waarde van het type <code class="docutils literal notranslate"><span class="pre">float</span></code> teruggegeven. Dat type bevat
+kommagetallen, waarbij de komma niet op een vaste positie hoeft te staan,
+dus een zogeheten <em>floating-point</em>-getal. Als een getal aan een variabele
+wordt toegekend is dit een <code class="docutils literal notranslate"><span class="pre">float</span></code> als er een decimale punt instaat of als
+wetenschappelijke notatie, te herkennen aan een <code class="docutils literal notranslate"><span class="pre">e</span></code> in het getal, gebruikt
+wordt. Anders is dit een <code class="docutils literal notranslate"><span class="pre">int</span></code>. <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">=</span> <span class="pre">1</span></code> kent dus een <code class="docutils literal notranslate"><span class="pre">int</span></code> toe aan <code class="docutils literal notranslate"><span class="pre">$a</span></code>,
+maar <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">=</span> <span class="pre">1.0</span></code> of <code class="docutils literal notranslate"><span class="pre">$a</span> <span class="pre">=</span> <span class="pre">1e0</span></code> (1 · 10⁰ = 1) kennen een <code class="docutils literal notranslate"><span class="pre">float</span></code> toe aan <code class="docutils literal notranslate"><span class="pre">$a</span></code>.</p>
+<p>Daarnaast heeft PHP een <em>boolean</em> type
+<a class="reference external" href="https://www.php.net/manual/en/language.types.boolean.php"><code class="docutils literal notranslate"><span class="pre">bool</span></code></a> om een
+waarheidswaarde <code class="docutils literal notranslate"><span class="pre">true</span></code> of <code class="docutils literal notranslate"><span class="pre">false</span></code> op te slaan en het type
+<a class="reference external" href="https://www.php.net/manual/en/language.types.null.php"><code class="docutils literal notranslate"><span class="pre">null</span></code></a> dat gebruikt
+wordt voor onbekende of ongeïnitialiseerde waardes. Verder heeft PHP nog een
+aantal complexere types die later besproken worden, waaronder strings,
+arrays en objecten.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -529,10 +607,9 @@ uitvoeren en conditionele statements en lusconstructies kent.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Variabelen</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#dynamische-webpagina-s">Dynamische webpagina’s</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#operatoren">Operatoren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datatypes">Datatypes</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

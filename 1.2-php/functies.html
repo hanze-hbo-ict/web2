@@ -174,13 +174,17 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Voorbereiding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/eindopdracht.html">Eindopdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/installeren.html">PHP installeren</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/intro.html">Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1.1-php/installeren.html">PHP installeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/php.html">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/variabelen.html">Variabelen</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/controlestatements.html">Conditionele en lusstatements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/strings.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/arrays.html">Arrays</a></li>
@@ -507,10 +511,10 @@ voorbeelden.</p>
 <span class="x">function hello($name)</span>
 <span class="x">{</span>
 <span class="x">    if (!$name) {</span>
-<span class="x">        echo &quot;Hello, nameless person!\n&quot;</span>
+<span class="x">        echo &#39;Hello, nameless person!&#39;, PHP_EOL</span>
 <span class="x">        return;</span>
 <span class="x">    }</span>
-<span class="x">    echo &quot;Hello, $name!\n&quot;;</span>
+<span class="x">    echo &quot;Hello, $name!&quot;, PHP_EOL;</span>
 <span class="x">}</span>
 </pre></div>
 </div>
@@ -539,8 +543,9 @@ besproken worden.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function repeat(string $s, int $count)</span>
 <span class="x">{</span>
 <span class="x">    for ($i = 0; $i &lt; $count; $i++) {</span>
-<span class="x">        echo($s);</span>
+<span class="x">        echo $s;</span>
 <span class="x">   }</span>
+<span class="x">   echo PHP_EOL;</span>
 <span class="x">}</span>
 
 <span class="x">repeat(&#39;a&#39;, 5);</span>
@@ -568,7 +573,7 @@ met de functie
 of alleen maar via excepties, die nog besproken zullen worden, de functie
 zal beëindigen.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function print_number(int $a): void {</span>
-<span class="x">    echo $a;</span>
+<span class="x">    echo $a, PHP_EOL;</span>
 <span class="x">    return; // deze return is toegestaan maar hoeft niet</span>
 <span class="x">}</span>
 
@@ -579,7 +584,7 @@ zal beëindigen.</p>
 <span class="x">        $c = $a + $b;</span>
 <span class="x">        $a = $b;</span>
 <span class="x">        $b = $c;</span>
-<span class="x">        echo(&quot;$c\n&quot;);</span>
+<span class="x">        echo $c, PHP_EOL;</span>
 <span class="x">        usleep(100_000); // wacht 100.000 microseconden (0,1 seconde)</span>
 <span class="x">    }</span>
 <span class="x">    // deze functie eindigt nooit</span>
@@ -620,13 +625,13 @@ string genoemd. Hieronder zijn enkele voorbeelden hiervan te zien.</p>
 <span class="x">    if (is_int($user)) {</span>
 <span class="x">        $user = get_user_by_id($user);</span>
 <span class="x">    }</span>
-<span class="x">    echo $user[&#39;name&#39;];</span>
+<span class="x">    echo $user[&#39;name&#39;], PHP_EOL;</span>
 <span class="x">}</span>
 
 <span class="x">function hello(?string $name = null): void</span>
 <span class="x">{</span>
 <span class="x">    $name ??= &#39;anonymous user&#39;;</span>
-<span class="x">    echo &quot;Hello, $name!&quot;;</span>
+<span class="x">    echo &quot;Hello, $name!&quot;, PHP_EOL;</span>
 <span class="x">}</span>
 </pre></div>
 </div>

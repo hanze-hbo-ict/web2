@@ -174,13 +174,17 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Voorbereiding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/eindopdracht.html">Eindopdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/installeren.html">PHP installeren</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/intro.html">Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../1.1-php/installeren.html">PHP installeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/php.html">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/variabelen.html">Variabelen</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/controlestatements.html">Conditionele en lusstatements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/strings.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/arrays.html">Arrays</a></li>
@@ -483,12 +487,12 @@ gebruikt, bijvoorbeeld <code class="docutils literal notranslate"><span class="p
 <span class="x">    }</span>
 <span class="x">    </span>
 <span class="x">    private static staticTest() {</span>
-<span class="x">        echo Test::$staticProperty;</span>
+<span class="x">        echo Test::$staticProperty, PHP_EOL;</span>
 <span class="x">    }</span>
 <span class="x">    </span>
 <span class="x">    public function test()</span>
 <span class="x">    {</span>
-<span class="x">        echo $this-&gt;property;</span>
+<span class="x">        echo $this-&gt;property, PHP_EOL;</span>
 <span class="x">        self::staticTest();</span>
 <span class="x">    }</span>
 <span class="x">}</span>
@@ -521,7 +525,7 @@ gebruikelijk is. In onderstaande code zijn hiervan enkele voorbeelden te zien.</
 
 <span class="x">    public function test()</span>
 <span class="x">    {</span>
-<span class="x">        echo &quot;In Super $this-&gt;a\n&quot;;</span>
+<span class="x">        echo &#39;In Super &#39;, $this-&gt;a, PHP_EOL;</span>
 <span class="x">    }</span>
 <span class="x">}</span>
 
@@ -534,7 +538,7 @@ gebruikelijk is. In onderstaande code zijn hiervan enkele voorbeelden te zien.</
 <span class="x">    public function test()</span>
 <span class="x">    {</span>
 <span class="x">        super::test();</span>
-<span class="x">        echo &quot;In Sub $this-&gt;b\n&quot;;</span>
+<span class="x">        echo &#39;In Sub &#39;, $this-&gt;b, PHP_EOL;</span>
 <span class="x">    }</span>
 <span class="x">}</span>
 
@@ -627,9 +631,9 @@ schrijven die een parameter accepteert die zowel in een <code class="docutils li
 gebruikt kan worden en ook de methode <code class="docutils literal notranslate"><span class="pre">count</span></code> aanbiedt, dan kan je een
 typedeclaratie <code class="docutils literal notranslate"><span class="pre">Countable&amp;Traver</span></code></p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function count_and_traverse(Countable&amp;Traversable $list): void {</span>
-<span class="x">    echo &quot;{$list-&gt;count()} elements:\n&quot;;</span>
+<span class="x">    echo {$list-&gt;count()}, &#39; elements:&#39;, PHP_EOL;</span>
 <span class="x">    foreach ($list as $element) {</span>
-<span class="x">        echo &quot;$element\n&quot;;</span>
+<span class="x">        echo $element, PHP_EOL;</span>
 <span class="x">    }</span>
 <span class="x">}</span>
 </pre></div>
@@ -661,7 +665,7 @@ zal de methode <code class="docutils literal notranslate"><span class="pre">test
 <span class="x">    </span>
 <span class="x">    public function test(): void</span>
 <span class="x">    {</span>
-<span class="x">        echo $this-&gt;var;</span>
+<span class="x">        echo $this-&gt;var, PHP_EOL;</span>
 <span class="x">    }</span>
 <span class="x">}</span>
 </pre></div>

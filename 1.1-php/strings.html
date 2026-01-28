@@ -174,13 +174,17 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Voorbereiding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/eindopdracht.html">Eindopdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/installeren.html">PHP installeren</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installeren.html">PHP installeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variabelen.html">Variabelen</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="controlestatements.html">Conditionele en lusstatements</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a></li>
@@ -446,6 +450,24 @@ combinatie <code class="docutils literal notranslate"><span class="pre">\n</span
 terwijl dit in een string met enkele aanhalingstekens gewoon voor de
 karakters <code class="docutils literal notranslate"><span class="pre">\n</span></code> staat. Een ander voorbeeld is de combinatie <code class="docutils literal notranslate"><span class="pre">\t</span></code> die voor
 een tab staat.</p>
+<p>Ook bieden strings met dubbele aanhalingstekens de mogelijkheid om varabelen
+te <a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.parsing"><em>interpoleren</em></a>
+in de string. Als je de naam van een variabele opneemt in
+een string, wordt deze vervangen door de waarde daarvan, zoals in
+onderstaand voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$foo = 1;</span>
+<span class="x">$bar = 2;</span>
+<span class="x">$double = &quot;foo = $foo\nbar = $bar&quot;;</span>
+<span class="x">$single = &#39;foo = $foo\nbar = $bar&#39;;</span>
+<span class="x">var_dump($double); // bevat foo = 1, newline, bar = 2</span>
+<span class="x">var_dump($single); // bevat foo = $foo\nbar = $bar</span>
+</pre></div>
+</div>
+<p>Als de varabele gevolgt moet worden door letters zal PHP denken dat deze bij
+de variabelenaam horen; als je bijvoorbeeld de variabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> wil laten
+volgen door het woord <code class="docutils literal notranslate"><span class="pre">test</span></code>, zou je <code class="docutils literal notranslate"><span class="pre">&quot;$vartest&quot;</span></code> willen gebruiken, maar dan
+zal PHP de variabele <code class="docutils literal notranslate"><span class="pre">$vartest</span></code> interpoleren. Om dit te voorkomen kan je de
+variabele omsluiten met accolades, door <code class="docutils literal notranslate"><span class="pre">&quot;{$var}test&quot;</span></code> te gebruiken.</p>
 <p>Daarnaast biedt PHP de mogelijkheid om strings over meerdere regels op te
 nemen met de zogeheten
 <a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc">heredoc</a>- en
@@ -470,25 +492,7 @@ zien.</p>
 </div>
 <section id="stringoperaties">
 <h2>Stringoperaties<a class="headerlink" href="#stringoperaties" title="Link to this heading">#</a></h2>
-<p>Ook bieden strings met dubbele aanhalingstekens de mogelijkheid om varabelen
-te <a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.parsing"><em>interpoleren</em></a>
-in de string. Als je de naam van een variabele opneemt in
-een string, wordt deze vervangen door de waarde daarvan, zoals in
-onderstaand voorbeeld.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$foo = 1;</span>
-<span class="x">$bar = 2;</span>
-<span class="x">$double = &quot;foo = $foo\nbar = $bar&quot;;</span>
-<span class="x">$single = &#39;foo = $foo\nbar = $bar&#39;;</span>
-<span class="x">var_dump($double); // bevat foo = 1, newline, bar = 2</span>
-<span class="x">var_dump($single); // bevat foo = $foo\nbar = $bar</span>
-</pre></div>
-</div>
-<p>Als de varabele gevolgt moet worden door letters zal PHP denken dat deze bij
-de variabelenaam horen; als je bijvoorbeeld de variabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> wil laten
-volgen door het woord <code class="docutils literal notranslate"><span class="pre">test</span></code>, zou je <code class="docutils literal notranslate"><span class="pre">&quot;$vartest&quot;</span></code> willen gebruiken, maar dan
-zal PHP de variabele <code class="docutils literal notranslate"><span class="pre">$vartest</span></code> interpoleren. Om dit te voorkomen kan je de
-variabele omsluiten met accolades, door <code class="docutils literal notranslate"><span class="pre">&quot;{$var}test&quot;</span></code> te gebruiken.</p>
-<p>Een alternatief voor stringinterpolatie is
+<p>Een alternatief voor de hierboven genoemde stringinterpolatie is
 <a class="reference external" href="https://www.php.net/manual/en/language.operators.string.php">stringconcatenatie</a>
 door middel van de operator <code class="docutils literal notranslate"><span class="pre">.</span></code>. Anders dan in Java en Python worden strings
 niet samengevoegd met de operator <code class="docutils literal notranslate"><span class="pre">+</span></code> maar is hier een aparte operator <code class="docutils literal notranslate"><span class="pre">.</span></code>

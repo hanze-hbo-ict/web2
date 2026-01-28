@@ -27,10 +27,23 @@ Als de waarde van `$condition_1` evalueert naar `true` wordt de code na de
 `$condition_2` wel evalueert naar `true` wordt, dan wordt de code na de 
 `elseif` uitgevoerd en anders de code na de `else`.
 
-Bij het evalueren van de voorwaarden geldt dat booleans natuurlijk 
-rechtstreeks gebruikt kunnen worden, maar andere waarden ook. In grote 
-lijnen geldt dat als een getal gelijk aan 0 is of een string of array leeg 
-is, deze evalueert naar `false`. Andere waarden evalueren naar `true`.
+Bij het evalueren van de voorwaarden geldt dat booleans of variabelen die 
+booleans bevatten natuurlijk rechtstreeks gebruikt kunnen worden, maar 
+andere waarden ook. In grote lijnen geldt dat als een getal gelijk aan 0 is 
+of een string of array leeg is, deze evalueert naar `false`. Andere waarden 
+evalueren naar `true`.
+
+Daarnaast kent PHP net als Python en Java een aantal
+[vergelijkingsoperatoren](https://www.php.net/manual/en/language.operators.comparison.php).
+De operatoren `==`, `!=`, `>`, `<`, `>=` en `<=` zullen bekend zijn. 
+Daarnaast kent PHP de strikte vergelijkingsoperatoren `===` en `!==` die 
+niet alleen controleren of de waarde gelijk is, maar ook of beide operanden 
+van hetzelfde type zijn. Zo geldt dat `1 == 1.0` waar is, aangezien beide 
+operanden het getal 1 zijn, maar `1 === 1.0` is onwaar omdat `1` een int is 
+en `1.0` een float. Bovendien kent PHP de bekende
+[logische operatoren](https://www.php.net/manual/en/language.operators.logical.php)
+`&&` voor de logische AND, `||` voor de logische OR en `!` voor de logische 
+NOT die gebruikt kunnen worden om booleans te combineren en manipuleren.
 
 Merk op dat het keyword `elseif` hier gebruikt wordt; dit had ook `else if` 
 mogen zijn zoals in Java, maar PHP kent het ook als enkel keyword. Daarnaast 

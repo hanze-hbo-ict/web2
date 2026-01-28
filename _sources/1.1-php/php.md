@@ -1,75 +1,101 @@
 # PHP
 
-[TODO]
+[PHP](https://nl.wikipedia.org/wiki/PHP)
+is een programmeertaal die in beginsel voor alle doeleinden gebruikt kan 
+worden, maar oorspronkelijk geschreven is, en bovendien uiterst geschikt is, 
+voor de ontwikkeling van websites en webapplicaties. Het is in 1994 
+ontwikkeld door Rasmus Lerdorf, waarbij PHP oorspronkelijk voor stond voor 
+"Personal Home Page". Tegenwoordig staat PHP echter voor "PHP: Hypertext 
+Preprocessor".
 
-Een PHP-applicatie bevindt zich in een directorystructuur die als project in de
-IDE geopend wordt. [TODO]
+## Syntax
 
-Zoals eerder genoemd hebben webapplicaties in beginsel een 
-client-serverarchitectuur. De browser van de gebruiker dient als client die
-verzoeken doet aan de applicatie die als server dient. Dit betekent dat deze
-applicatie niet, zoals bijvoorbeeld reguliere Python-programma's, eenmalig 
-draaien en dan stoppen, maar steeds beschikbaar moeten zijn voor 
-verzoeken van clients. Dit is vergelijkbaar met Python-programma's die Flask
-gebruiken.
+Kenmerkend aan de taal PHP is dat deze twee modussen kent. Elk willekeurig 
+tekstbestand kan feitelijk als PHP-programma uitgevoerd worden, want PHP 
+begint in een modus waarbij de inhoud van het bestand letterlijk als uitvoer 
+gegeven wordt. Pas als een
+[PHP-tag](https://www.php.net/manual/en/language.basic-syntax.phptags.php)
+`<?php` gebruikt wordt, wordt de PHP-modus gestart. Vanaf dat punt wordt de 
+code als PHP-code gezien en uitgevoerd, totdat een sluittag `?>` gebruikt 
+wordt. Vaak zullen PHP-bestanden alleen PHP-code bevatten en dan is het 
+gebruikelijk om de opentag `<?php` meteen aan het begin van het bestand te 
+zetten; de sluittag kan dan weggelaten worden.
 
-Er is echter een relevant verschil waardoor we PHP-programma's toch als 
-eenmalig draaiende programma's kunnen schrijven. Een Python Flask-applicatie 
-moet zelf zorgdragen voor het afhandelen van meerdere verzoeken, en gebruikt 
-in het algemeen een functie als aanspreekpunt hiervoor. Alle verzoeken 
-worden dus door dezelfde instantie van de applicatie uitgevoerd. Bij PHP is 
-het daarentegen gebruikelijk dat er een webserver is die zorgt voor het 
-afhandelen van verzoeken en deze doorstuurt naar een PHP-applicatie die een 
-enkel verzoek afhandelt. Elke instantie van de PHP-applicatie hoeft dus 
-slechts een enkel verzoek af te handelen.
+Binnen de PHP-modus worden PHP-statements gebruikt. Deze worden afgesloten 
+met een puntkomma `;`, net als in Java. Commentaar begint met `/*` en 
+eindigt met `*/`, en commentaar op een enkele regel begint met `//`. Om 
+tekst af te drukken kan je het statement `echo` gebruiken. Hier kan je een 
+aantal waardes, gescheiden door komma's, achter zetten die afgedrukt moeten 
+worden. `echo` zal niet standaard naar een nieuwe regel gaan na het 
+afdrukken van deze waardes. Als je dat wel wil, kan je de waarde `PHP_EOL` 
+afdrukken, zoals in onderstaand voorbeeld.
 
-[TODO routing obv directorystructuur]
-
-Dit alles laat zich samenvatten in het onderstaande sequentiediagram.
-
-[TODO sequentiediagram]
-
-Zoals hierboven vermeld scheidt PHP de webserver van de applicatie. In een 
-productieomgeving wordt vaak een webserver als Apache of Nginx gebruikt. In 
-een ontwikkelomgeving is dit echter overkill. Vandaar dat er een eenvoudige 
-webserver ingebouwd is in PHP, die voor ontwikkelomgevingen gebruikt kan 
-worden. Deze kan gestart worden door onderstaand commando.
-
-```sh
-php -S localhost:8000
+```php
+Dit wordt letterlijk afgedrukt.
+<?php
+echo 1;
+echo 2, PHP_EOL;
+echo 3;
+?>
+Dit wordt ook letterlijk afgedrukt.
 ```
 
-Na het uitvoeren van dit commando wordt de huidige directory, van waaruit 
-het commando was uitgevoerd, gepubliceerd op `http://localhost:8000`. De 
-huidige directory wordt nu de _document root_ van de server genoemd. Dit 
-zal in principe de hoofdddirectory van het project zijn. Omdat we later 
-allerlei configuratiebestanden zullen toevoegen aan de applicatie die niet 
-aan de eindgebruiker getoond mogen worden, is het gebruik van de 
-hoofddirectory als document root ongewenst vanuit securityperspectief.
+Je kan, als je deze code bijvoorbeeld in `test.php` hebt opgeslagen, dit 
+bestand door PHP laten uitvoeren met het commando `php test.php`. Dit geeft 
+onderstaande uitvoer.
 
-Het is daarom gebruikelijk een directory `public` te maken die gebruikt wordt
-als document root. Op die manier kunnen statische bestanden en PHP-scripts die 
-door de gebruiker aangeroepen mogen worden in die directory worden gezet 
-maar kan de gebruiker niet bij andere bestanden. Om PHP te vertellen dat 
-`public` als document root gebruikt moet worden, wordt bovenstaand commando als
-volgt aangepast.
-
-```sh
-php -S localhost:8000 -t public
+```
+Dit wordt letterlijk afgedrukt.
+12
+3Dit wordt ook letterlijk afgedrukt.
 ```
 
-## ???
+Je ziet dat er geen nieuwe regel wordt begonnen na het eerste en het derde 
+`echo`-statement.
 
+Als je PHP en HTML, of andere tekst, combineert kan het voorkomen dat een 
+PHP-blok slechts een enkel `echo`-statement bevat. Denk hierbij bijvoorbeeld 
+aan de situatie dat je een CSS-klasse wil gebruiken, zoals in onderstaand 
+voorbeeld.
 
+```php
+<a href="/" class="color-<?php echo 1; ?>">
+```
 
+Deze situatie komt relatief veel voor. Je kan hierbij dan ook de 
+onderstaande, kortere syntax gebruiken.
 
+```php
+<a href="/" class="color-<?= 1 ?>">
+```
+
+Je ziet dat hier de kortere begintag `<?=` wordt gebruikt. Deze tag betekent 
+dat de inhoud van de tag als PHP-expressie moet worden uitgerekend en 
+afgedrukt. Merk bovendien op dat het gebruik van PHP hier nog niets toevoegt.
+PHP heeft echter natuurlijk de mogelijkheid om variabelen te declareren en 
+te gebruiken, waardoor je de waarde die afgedrukt wordt afhankelijk kan 
+maken van de context.
+
+Net als vrijwel elke programmeertaal heeft PHP de mogelijkheid om functies 
+aan te roepen. De argumenten van een functie worden gescheiden met 
+komma's en tussen haakjes achter de functienaam gezet. Zo kent PHP de functie
+[`pow`](https://www.php.net/manual/en/function.pow.php) die een 
+machtsverheffing uitvoert, om 2³ uit te rekenen kan de expressie `pow(2, 3)` 
+gebruikt worden; het resultaat kan met `echo` of `<?=` afgedrukt worden. 
+Sommige functies hebben geen argumenten, zoals de functie
+[`pi`](https://www.php.net/manual/en/function.pi.php) die de waarde π,
+3,14159..., teruggeeft. Deze functie wordt aangeroepen met lege haakjes, dus 
+als `pi()`.
+
+## PHP als webserver
 
 * directorystructuur
 * php -S localhost
 * sequentiediagram
-* php-tags
-* echo
 * assets
-* HTML (a)
 
-* php mode, short tags
+## Navigatie
+
+* HTML (a)
+* superglobals
+

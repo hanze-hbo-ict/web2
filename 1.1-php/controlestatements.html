@@ -174,13 +174,17 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Voorbereiding</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/eindopdracht.html">Eindopdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/installeren.html">PHP installeren</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="installeren.html">PHP installeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variabelen.html">Variabelen</a></li>
-
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Conditionele en lusstatements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="strings.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a></li>
@@ -451,10 +455,22 @@ ziet er als volgt uit.</p>
 <code class="docutils literal notranslate"><span class="pre">if</span></code> uitgevoerd; als die evalueert naar <code class="docutils literal notranslate"><span class="pre">false</span></code> wordt, maar de waarde van
 <code class="docutils literal notranslate"><span class="pre">$condition_2</span></code> wel evalueert naar <code class="docutils literal notranslate"><span class="pre">true</span></code> wordt, dan wordt de code na de
 <code class="docutils literal notranslate"><span class="pre">elseif</span></code> uitgevoerd en anders de code na de <code class="docutils literal notranslate"><span class="pre">else</span></code>.</p>
-<p>Bij het evalueren van de voorwaarden geldt dat booleans natuurlijk
-rechtstreeks gebruikt kunnen worden, maar andere waarden ook. In grote
-lijnen geldt dat als een getal gelijk aan 0 is of een string of array leeg
-is, deze evalueert naar <code class="docutils literal notranslate"><span class="pre">false</span></code>. Andere waarden evalueren naar <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>Bij het evalueren van de voorwaarden geldt dat booleans of variabelen die
+booleans bevatten natuurlijk rechtstreeks gebruikt kunnen worden, maar
+andere waarden ook. In grote lijnen geldt dat als een getal gelijk aan 0 is
+of een string of array leeg is, deze evalueert naar <code class="docutils literal notranslate"><span class="pre">false</span></code>. Andere waarden
+evalueren naar <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<p>Daarnaast kent PHP net als Python en Java een aantal
+<a class="reference external" href="https://www.php.net/manual/en/language.operators.comparison.php">vergelijkingsoperatoren</a>.
+De operatoren <code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code> en <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> zullen bekend zijn.
+Daarnaast kent PHP de strikte vergelijkingsoperatoren <code class="docutils literal notranslate"><span class="pre">===</span></code> en <code class="docutils literal notranslate"><span class="pre">!==</span></code> die
+niet alleen controleren of de waarde gelijk is, maar ook of beide operanden
+van hetzelfde type zijn. Zo geldt dat <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">==</span> <span class="pre">1.0</span></code> waar is, aangezien beide
+operanden het getal 1 zijn, maar <code class="docutils literal notranslate"><span class="pre">1</span> <span class="pre">===</span> <span class="pre">1.0</span></code> is onwaar omdat <code class="docutils literal notranslate"><span class="pre">1</span></code> een int is
+en <code class="docutils literal notranslate"><span class="pre">1.0</span></code> een float. Bovendien kent PHP de bekende
+<a class="reference external" href="https://www.php.net/manual/en/language.operators.logical.php">logische operatoren</a>
+<code class="docutils literal notranslate"><span class="pre">&amp;&amp;</span></code> voor de logische AND, <code class="docutils literal notranslate"><span class="pre">||</span></code> voor de logische OR en <code class="docutils literal notranslate"><span class="pre">!</span></code> voor de logische
+NOT die gebruikt kunnen worden om booleans te combineren en manipuleren.</p>
 <p>Merk op dat het keyword <code class="docutils literal notranslate"><span class="pre">elseif</span></code> hier gebruikt wordt; dit had ook <code class="docutils literal notranslate"><span class="pre">else</span> <span class="pre">if</span></code>
 mogen zijn zoals in Java, maar PHP kent het ook als enkel keyword. Daarnaast
 is een relevant verschil ten opzichte van Java dat de te testen waarde, in
