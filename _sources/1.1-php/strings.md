@@ -171,8 +171,12 @@ functies hiervoor zijn
 waarmee alle karakters die een speciale betekenis hebben in HTML, zoals `<` 
 en `>`, omgezet worden naar HTML-entity's, en
 [`strip_tags`](https://www.php.net/manual/en/function.strip-tags.php),
-waarmee alle HTML-tags uit een string worden verwijderd. Beide functies 
-kunnen gebruikt worden als onderdeel van een strategie om
+waarmee alle HTML-tags uit een string worden verwijderd. Daarnaast kan de 
+functie
+[`urlencode`](https://www.php.net/manual/en/function.urlencode.php)
+gebruikt worden om een waarde geschikt te maken om te dienen als parameter 
+in een URL. Deze functies kunnen gebruikt worden als onderdeel van een 
+strategie om
 [XSS](https://nl.wikipedia.org/wiki/Cross-site_scripting)-aanvallen
 te mitigeren.
 

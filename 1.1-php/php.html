@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
     <link rel="next" title="Variabelen" href="variabelen.html" />
-    <link rel="prev" title="Introductie" href="intro.html" />
+    <link rel="prev" title="Literatuur" href="../about/literatuur.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -172,17 +172,13 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Over deze cursus</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/eindopdracht.html">Eindopdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/installeren.html">PHP installeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Voorbereiding</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/introductie.html">Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/eindopdracht.html">Eindopdracht</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/installeren.html">PHP installeren</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introductie</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variabelen.html">Variabelen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="controlestatements.html">Conditionele en lusstatements</a></li>
@@ -199,7 +195,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/typeconversie.html">Typeconversie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/oop.html">Object-georiënteerd programmeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/excepties.html">Foutafhandeling</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/include.html">Bestanden invoegen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/oefening.html">Oefeningen</a></li>
 </ul>
@@ -416,7 +411,7 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#php-als-webserver">PHP als webserver</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigatie">Navigatie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gebruikersinvoer-en-navigatie">Gebruikersinvoer en navigatie</a></li>
 </ul>
             </nav>
         </div>
@@ -500,26 +495,102 @@ komma’s en tussen haakjes achter de functienaam gezet. Zo kent PHP de functie
 <a class="reference external" href="https://www.php.net/manual/en/function.pow.php"><code class="docutils literal notranslate"><span class="pre">pow</span></code></a> die een
 machtsverheffing uitvoert, om 2³ uit te rekenen kan de expressie <code class="docutils literal notranslate"><span class="pre">pow(2,</span> <span class="pre">3)</span></code>
 gebruikt worden; het resultaat kan met <code class="docutils literal notranslate"><span class="pre">echo</span></code> of <code class="docutils literal notranslate"><span class="pre">&lt;?=</span></code> afgedrukt worden.
-Sommige functies hebben geen argumenten, zoals de functie
+Sommige functies hebben geen parameters, zoals de functie
 <a class="reference external" href="https://www.php.net/manual/en/function.pi.php"><code class="docutils literal notranslate"><span class="pre">pi</span></code></a> die de waarde π,
 3,14159…, teruggeeft. Deze functie wordt aangeroepen met lege haakjes, dus
 als <code class="docutils literal notranslate"><span class="pre">pi()</span></code>.</p>
 </section>
 <section id="php-als-webserver">
 <h2>PHP als webserver<a class="headerlink" href="#php-als-webserver" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>directorystructuur</p></li>
-<li><p>php -S localhost</p></li>
-<li><p>sequentiediagram</p></li>
-<li><p>assets</p></li>
-</ul>
+<p>Zoals al aangehaald is PHP oorspronkelijk bedacht, en ook zeer geschikt, voor
+het schrijven van websites en webapplicaties. Dit brengt met zich mee dat
+verzoeken van browsers opgevangen moeten kunnen worden door PHP-applicaties.
+Hier zijn meerdere manieren voor, zo kan PHP gebruik maken van de
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Common_Gateway_Interface">Common Gateway Interface</a>
+(CGI) en kan PHP geïntegreerd worden in de webserver
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Apache_(webserver)">Apache</a>. Daarnaast heeft
+PHP sinds versie 5.4 een ingeboude
+<a class="reference external" href="https://www.php.net/manual/en/features.commandline.webserver.php">webserver</a>
+die geschikt is voor gebruik tijdens het ontwikkelen van een applicatie.
+Merk op dat deze websrver expliciet niet bedoeld is om te gebruiken voor een
+productie-omgeving.</p>
+<p>Deze webserver kan worden gestart met het commando <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">-S</span> <span class="pre">localhost:8000</span></code>,
+waarbij het getal 8000 de poort is waarop de webserver zal draaien. Dit
+betekent dat deze server in een browser aangesproken kan worden via de URL
+<code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code>. Als poort 8000 niet beschikbaar is, kan ook een
+andere poort, bijvoorbeeld 8080, worden gebruikt. In het hiernavolgend wordt
+echter steeds van poort 8000 uitgegaan.</p>
+<p>De webserver zal alle bestanden die in de directory van waaruit de
+server werd gestart staan, aanbieden. Deze directory wordt wel de <em>document
+root</em> genoemd. Als bijvoorbeeld de URL <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/test.php</span></code>
+wordt aangeroepen, wordt het bestand <code class="docutils literal notranslate"><span class="pre">test.php</span></code> uit de document root
+hiervoor gebruikt. De uitvoer van dit script wordt naar de browser gestuurd.</p>
+<p>Naast PHP-bestanden kan de document root ook andere bestandstypes bevatten,
+zoals afbeeldingen of CSS-bestanden. Deze bestanden worden ook door de
+server aangeboden; als de document root bijvoorbeeld een bestand <code class="docutils literal notranslate"><span class="pre">main.css</span></code>
+bevat, kan dit bestand verkregen worden via de URL
+<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/main.css</span></code>.</p>
+<p>We zullen nog zien dat een webapplicatie in PHP vaak ook bestanden bevat die
+niet door de webserver aangeboden moeten worden. Denk bijvoorbeeld aan
+een configuratiebestand waarin het wachtwoord voor een database staan. Om te
+voorkomen dat deze bestanden worden aangeboden, is het gebruikelijk om een
+subdirectory binnen het project te gebruiken als document root. Het is
+gangbaar om hiervoor de directory <code class="docutils literal notranslate"><span class="pre">public</span></code> te gebruiken. PHP kan hiervan op
+de hoogte gesteld worden door het hierboven genoemde commando aan te passen
+op onderstaande wijze.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>php<span class="w"> </span>-S<span class="w"> </span>localhost:8000<span class="w"> </span>-t<span class="w"> </span>public
+</pre></div>
+</div>
+<p>Als dit commando wordt uitgevoerd, wordt de directory <code class="docutils literal notranslate"><span class="pre">public</span></code> in de huidige
+directory de document root. Dit betekent dat bijvoorbeeld een bestand
+<code class="docutils literal notranslate"><span class="pre">public/test.php</span></code> beschikbaar is via <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/test.php</span></code>. Een
+bestand dat in een andere directory staat, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">src/secret.php</span></code>,
+kan echter niet opgevraagd worden via de webserver.</p>
 </section>
-<section id="navigatie">
-<h2>Navigatie<a class="headerlink" href="#navigatie" title="Link to this heading">#</a></h2>
-<ul class="simple">
-<li><p>HTML (a)</p></li>
-<li><p>superglobals</p></li>
-</ul>
+<section id="gebruikersinvoer-en-navigatie">
+<h2>Gebruikersinvoer en navigatie<a class="headerlink" href="#gebruikersinvoer-en-navigatie" title="Link to this heading">#</a></h2>
+<p>Een webapplicatie is natuurlijk meer dan een enkel PHP-bestand. In veel
+gevallen bestaat een applicatie uit een veelvoud aan pagina’s die naar
+elkaar verwijzen. Dit is ook de essentie van HTML. Hiervoor is in HTML dan
+ook de
+<a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a"><code class="docutils literal notranslate"><span class="pre">a</span></code>-tag</a>,
+voor anchor, beschikbaar. Als bijvoorbeeld een bestand <code class="docutils literal notranslate"><span class="pre">public/test.php</span></code>
+onderstaande tag bevat, zal de gebruiker, die deze pagina ziet op de URL
+<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/test.php</span></code>, na het klikken op de link navigeren naar
+de pagina <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/other.php</span></code>. Hiervoor zal vervolgens het
+bestand <code class="docutils literal notranslate"><span class="pre">public/other.php</span></code> worden gebruikt. Merk op dat de link in het
+onderstaande snippet een absolute URL bevat, die dus altijd rechtstreeks
+achter de domeinnaam, hier <code class="docutils literal notranslate"><span class="pre">http://localhost:8000</span></code>, gezet wordt.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;/other.php&quot;</span><span class="p">&gt;</span>Link naar andere pagina<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Door middel van URL’s en links is het dus mogelijk om te selecteren welk
+PHP-bestand gebruikt wordt. Het is echter ook mogelijk om binnen een
+PHP-bestand gebruikersinvoer te verwerken. Deze invoer zal ook onderdeel
+moeten zijn van de URL, aangezien dat het primaire mechanisme is waarmee
+gebruikers interacteren met een webserver. Na een URL kan een vraagteken
+worden gezet met daarna een aantal waarden, in het onderstaande formaat.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>http://localhost:8000/test.php?name=henk&amp;age=20
+</pre></div>
+</div>
+<p>De bovenstaande URL verwijst naar het bestand <code class="docutils literal notranslate"><span class="pre">test.php</span></code> maar heeft twee
+extra parameters, te weten <code class="docutils literal notranslate"><span class="pre">name</span></code> met waarde <code class="docutils literal notranslate"><span class="pre">henk</span></code> en <code class="docutils literal notranslate"><span class="pre">age</span></code> met waarde <code class="docutils literal notranslate"><span class="pre">20</span></code>.
+In PHP kunnen deze waarden opgevraagd worden via <code class="docutils literal notranslate"><span class="pre">$_GET['name']</span></code> en
+<code class="docutils literal notranslate"><span class="pre">$_GET['age']</span></code>. Hierbij worden een aantal PHP-constructen gebruikt die in
+dit hoofdstuk nog nader besproken worden, namelijk arrays en strings. Op dit
+moment is het voldoende om te weten dat <code class="docutils literal notranslate"><span class="pre">$_GET</span></code> één van een aantal
+<a class="reference external" href="https://www.php.net/manual/en/language.variables.superglobals.php">superglobals</a>
+in PHP is, variabelen die altijd beschikbaar zijn, en dat
+<a class="reference external" href="https://www.php.net/manual/en/reserved.variables.get.php"><code class="docutils literal notranslate"><span class="pre">$_GET</span></code></a> de
+parameters bevat die in de URL zijn meegegeven. Als voorbeeld kan
+onderstaand bestand opgeslagen worden als <code class="docutils literal notranslate"><span class="pre">public/test.php</span></code></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&lt;h1&gt;Hallo, </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x">!&lt;/h1&gt;</span>
+<span class="x">&lt;p&gt;Je bent </span><span class="cp">&lt;?</span><span class="o">=</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="cp">?&gt;</span><span class="x"> jaar oud.&lt;/p&gt;</span>
+</pre></div>
+</div>
+<p>Als dan de hierboven genoemde URL
+<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/test.php?name=henk&amp;age=20</span></code> wordt gebruikt, zullen de
+teksten <code class="docutils literal notranslate"><span class="pre">Hallo,</span> <span class="pre">henk!</span></code> en <code class="docutils literal notranslate"><span class="pre">Je</span> <span class="pre">bent</span> <span class="pre">20</span> <span class="pre">jaar</span> <span class="pre">oud.</span></code> getoond worden.</p>
 </section>
 </section>
 
@@ -554,12 +625,12 @@ als <code class="docutils literal notranslate"><span class="pre">pi()</span></co
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="../about/literatuur.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Introductie</p>
+        <p class="prev-next-title">Literatuur</p>
       </div>
     </a>
     <a class="right-next"
@@ -590,7 +661,7 @@ als <code class="docutils literal notranslate"><span class="pre">pi()</span></co
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#syntax">Syntax</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#php-als-webserver">PHP als webserver</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#navigatie">Navigatie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gebruikersinvoer-en-navigatie">Gebruikersinvoer en navigatie</a></li>
 </ul>
   </nav></div>
 

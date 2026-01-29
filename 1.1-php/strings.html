@@ -172,17 +172,13 @@
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Over deze cursus</span></p>
 <ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/eindopdracht.html">Eindopdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/installeren.html">PHP installeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
-</ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">Voorbereiding</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/introductie.html">Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/eindopdracht.html">Eindopdracht</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../voorbereiding/installeren.html">PHP installeren</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Introductie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
 <li class="toctree-l1"><a class="reference internal" href="variabelen.html">Variabelen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="controlestatements.html">Conditionele en lusstatements</a></li>
@@ -199,7 +195,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/typeconversie.html">Typeconversie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/oop.html">Object-georiënteerd programmeren</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/excepties.html">Foutafhandeling</a></li>
-
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/include.html">Bestanden invoegen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.2-php/oefening.html">Oefeningen</a></li>
 </ul>
@@ -585,8 +580,12 @@ functies hiervoor zijn
 waarmee alle karakters die een speciale betekenis hebben in HTML, zoals <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>
 en <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, omgezet worden naar HTML-entity’s, en
 <a class="reference external" href="https://www.php.net/manual/en/function.strip-tags.php"><code class="docutils literal notranslate"><span class="pre">strip_tags</span></code></a>,
-waarmee alle HTML-tags uit een string worden verwijderd. Beide functies
-kunnen gebruikt worden als onderdeel van een strategie om
+waarmee alle HTML-tags uit een string worden verwijderd. Daarnaast kan de
+functie
+<a class="reference external" href="https://www.php.net/manual/en/function.urlencode.php"><code class="docutils literal notranslate"><span class="pre">urlencode</span></code></a>
+gebruikt worden om een waarde geschikt te maken om te dienen als parameter
+in een URL. Deze functies kunnen gebruikt worden als onderdeel van een
+strategie om
 <a class="reference external" href="https://nl.wikipedia.org/wiki/Cross-site_scripting">XSS</a>-aanvallen
 te mitigeren.</p>
 </section>
