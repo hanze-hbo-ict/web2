@@ -16,7 +16,7 @@ gesproken gebruik zal maken van de vergelijkingsoperator `===` om te
 voorkomen dat een returnwaarde van 0 of een lege string gezien wordt als een 
 fout.
 
-# Errors
+## Errors
 
 Een andere methode die PHP toepast is het rapporteren van
 [errors](https://www.php.net/manual/en/language.errors.php),

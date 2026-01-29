@@ -4,17 +4,13 @@ root: about/syllabus
 parts:
 - caption: Over deze cursus
   chapters:
-  - file: about/literatuur
-
-- caption: Voorbereiding
-  chapters:
-    - file: voorbereiding/introductie
-    - file: voorbereiding/eindopdracht
-    - file: voorbereiding/installeren
+    - file: about/introductie
+    - file: about/eindopdracht
+    - file: about/installeren
+    - file: about/literatuur
 
 - caption: 1.1 PHP
   chapters:
-    - file: 1.1-php/intro
     - file: 1.1-php/php
     - file: 1.1-php/variabelen
     - file: 1.1-php/controlestatements
