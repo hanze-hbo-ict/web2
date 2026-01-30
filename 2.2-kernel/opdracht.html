@@ -175,7 +175,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../about/introductie.html">Introductie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/eindopdracht.html">Eindopdracht</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../about/installeren.html">PHP installeren</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../about/literatuur.html">Literatuur</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
 <ul class="nav bd-sidenav">
@@ -436,8 +435,19 @@ hoofdstuk over Composer.</p>
 <section id="kernel">
 <h2>Kernel<a class="headerlink" href="#kernel" title="Link to this heading">#</a></h2>
 <p>Refactor de PHP-scripts die in de document root staan zodat ze gebruik maken
-van kernelobjecten. Gebruik hiervoor een interface
-<code class="docutils literal notranslate"><span class="pre">Framework\Kernel\KernelInterface</span></code> met een enkele methode <code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">handle</span> <span class="pre">(array</span> <span class="pre">$get,</span> <span class="pre">array</span> <span class="pre">$post):</span> <span class="pre">string</span></code>.</p>
+van kernelobjecten. Gebruik hiervoor een basisklasse die de
+onderstaande interface <code class="docutils literal notranslate"><span class="pre">Framework\Kernel\KernelInterface</span></code> implementeert, en
+laat de kernels voor verschillnde pagina’s hiervan extenden.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Framework\Kernel</span><span class="p">;</span>
+
+<span class="k">interface</span> <span class="nx">KernelInterface</span>
+<span class="p">{</span>
+    <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="k">array</span> <span class="nv">$get</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$post</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
 <p>Zorg ervoor dat de kernels in het juiste bestand staan zodat de autoloader
 ze kan vinden en zorg er ook voor dat de bestanden in de document root de
 autoloader van Composer gebruiken.</p>

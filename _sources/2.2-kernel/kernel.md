@@ -126,3 +126,5 @@ echo $kernel->handle($_GET, $_POST);
 ```
 
 [TODO architectuurplaatje]
+
+[TODO basiskernel, exceptiehandling e.d.]

@@ -1,6 +1,0 @@
-# Literatuur
-
-## Bibliografie
-
-```{bibliography}
-```
