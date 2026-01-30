@@ -7,7 +7,6 @@ parts:
     - file: about/introductie
     - file: about/eindopdracht
     - file: about/installeren
-    - file: about/literatuur
 
 - caption: 1.1 PHP
   chapters:
