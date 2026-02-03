@@ -409,12 +409,12 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-favorieten-docenten">1. De favorieten docenten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voorbereiding">Voorbereiding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-favoriete-docenten">1. De favoriete docenten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#betere-stilering">2. Betere stilering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wat-fancier-vormgeving">3. Wat <em>fancier</em> vormgeving</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klikbaar">4. Klikbaar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-beste-docent">5. De <em>beste</em> docent</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verticaal-centreren">6. Verticaal centreren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verticaal-centreren">4. Verticaal centreren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klikbaar">5. Klikbaar</a></li>
 </ul>
             </nav>
         </div>
@@ -428,17 +428,26 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="oefeningen">
 <h1>Oefeningen<a class="headerlink" href="#oefeningen" title="Link to this heading">#</a></h1>
-<p>Hoewel we ons bij de eindopdracht meer met de backend dan met de frontend bezighouden, is het natuurlijk wel van belang dat je weet <em>wat</em> je met die backend op moet leveren. Gebruik de onderstaande oefenignen om een beeld te krijgen van hoe die frontend-tecnieken werken.</p>
-<section id="de-favorieten-docenten">
-<h2>1. De favorieten docenten<a class="headerlink" href="#de-favorieten-docenten" title="Link to this heading">#</a></h2>
-<p>Maak een pagina waarin je de gegevens van je favoriete Hanze-docenten weergeeft. Omdat dit een lijstje betreft, is het logisch om deze gegevens in een <code class="docutils literal notranslate"><span class="pre">ul</span></code>-tag te zetten. De gegevens van de docenten zitten dan in geneste <code class="docutils literal notranslate"><span class="pre">li</span></code>’s.</p>
-<p>Zorg ervoor dat je elke docent van een plaatje voorziet, dat dit plaatje fatsoenlijke afmetingen heeft en dat de gegevens van de docent rechts van het plaatje staan. Over het algemeen is het een goed idee om die verschillende onderdelen (het plaatje, de gegevens) in separate tags te zetten (bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">div</span></code>s).</p>
+<p>Hoewel we ons bij de eindopdracht meer met de backend dan met de frontend bezighouden, is het natuurlijk wel van belang dat je weet <em>wat</em> je met die backend op moet leveren. Gebruik de onderstaande oefenignen om een beeld te krijgen van hoe die frontend-tecnieken werken, en hoe deze met de backend samenwerken.</p>
+<section id="voorbereiding">
+<h2>Voorbereiding<a class="headerlink" href="#voorbereiding" title="Link to this heading">#</a></h2>
+<p>Download het script <a class="reference download internal" download="" href="../_downloads/a3c55401b58e793c15e31f620698f3d1/docentenpagina.php"><span class="xref download myst"><code class="docutils literal notranslate"><span class="pre">docentenpagina.php</span></code></span></a> en zet het ergens neer zodat je er makkelijk bij kunt. Start in de betreffende directory een ontwikkelserver (<code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">-S</span> <span class="pre">localhost:8000</span></code>) en navigeer met een browser naar het script.</p>
+<p>Bestudeer het script. Zoals het nu is, doet het nog niks. Er wordt alleen een variabele aangemaakt met de kernwaarden van een aantal docenten. Het is de bedoeling dat je met behulp van de volgende oefeningen het script wat interactiever maakt.</p>
+<div class="tip admonition">
+<p class="admonition-title">Hernoemen</p>
+<p>Hernoem het bestand <code class="docutils literal notranslate"><span class="pre">docentenpagina.php</span></code> naar <code class="docutils literal notranslate"><span class="pre">index.php</span></code>: op deze manier hoef je alleen maar naar <code class="docutils literal notranslate"><span class="pre">localhost:8000</span></code> te gaan om het bestand uit te voeren en het resultaat te zien: als er geen specifiek bestand gevraagd wordt, wordt door de ontwikkelserver het bestand <code class="docutils literal notranslate"><span class="pre">index.php</span></code> (of <code class="docutils literal notranslate"><span class="pre">index.html</span></code>) teruggegeven.</p>
+</div>
+</section>
+<section id="de-favoriete-docenten">
+<h2>1. De favoriete docenten<a class="headerlink" href="#de-favoriete-docenten" title="Link to this heading">#</a></h2>
+<p>Zorg ervoor dat je, wanneer je naar het bestand navigeert, de gegevens van je favoriete Hanze-docenten weergeeft. Omdat dit een lijstje betreft, is het logisch om deze gegevens in een <code class="docutils literal notranslate"><span class="pre">ul</span></code>-tag te zetten. De gegevens van de docenten zitten dan in geneste <code class="docutils literal notranslate"><span class="pre">li</span></code>’s.</p>
+<p>Pas het script aan, zodat je elke docent van een plaatje kunt voorzien (hiervoor moet je dus de gegeven array uitbreiden en zelf plaatjes vinden). Zorg ervoor dat dit plaatje fatsoenlijke afmetingen heeft en dat de gegevens van de docent rechts van het plaatje staan. Over het algemeen is het een goed idee om die verschillende onderdelen (het plaatje, de gegevens) in separate tags te zetten (bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">div</span></code>s).</p>
 <p>Zie de afbeelding hieronder voor een mogelijk resultaat tot dusver.</p>
 <p><img alt="Voorbeeld van het resultaat tot dusver" src="../_images/2.1-voorbeeld1.jpeg" /></p>
 </section>
 <section id="betere-stilering">
 <h2>2. Betere stilering<a class="headerlink" href="#betere-stilering" title="Link to this heading">#</a></h2>
-<p>De site is nu nog wel erg lelijk en onaantrekkelijk. Geeft de <code class="docutils literal notranslate"><span class="pre">div</span></code>s waarin de gegevens van de docenten staan een <code class="docutils literal notranslate"><span class="pre">class</span></code>-attribuut en gebruik vervolgens CSS om de volgende eisen te realiseren:</p>
+<p>Geeft de <code class="docutils literal notranslate"><span class="pre">div</span></code>s waarin de gegevens van de docenten staan een <code class="docutils literal notranslate"><span class="pre">class</span></code>-attribuut en gebruik vervolgens CSS om de volgende eisen te realiseren:</p>
 <ul class="simple">
 <li><p>maak het font schreefloos (bijvoorbeeld Calibri of Verdana). Zorg er daarbij voor dat wanneer de bezoeker het specifieke font dat je opgeeft niet heeft er wordt teruggevallen op het standaard schreefloze font van het OS.</p></li>
 <li><p>zorg ervoor dat de <code class="docutils literal notranslate"><span class="pre">div</span></code>s met de gegevens van de docenten wat verder van elkaar af komen te staan; geef ze wat ruimte links en boven.</p></li>
@@ -451,26 +460,22 @@
 </section>
 <section id="wat-fancier-vormgeving">
 <h2>3. Wat <em>fancier</em> vormgeving<a class="headerlink" href="#wat-fancier-vormgeving" title="Link to this heading">#</a></h2>
-<p>Het geheel kan nog wel wat fancy-er worden vormgegeven. Het is natuurlijk helemaal hip om avatars rond te maken, dus dat gaan we hier nu ook doen: gebruik het css-attribuut <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/border-radius"><code class="docutils literal notranslate"><span class="pre">border-radius</span></code></a> om dat voor elkaar te krijgen. Zorg er daarbij wel voor dat de afbeeldingen vierkant worden (dus even breed als hoog zijn).</p>
+<p>Het geheel kan nog wel wat <em>fancier</em> worden vormgegeven. Het is natuurlijk helemaal hip om avatars rond te maken, dus dat gaan we hier nu ook doen: gebruik het css-attribuut <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/border-radius"><code class="docutils literal notranslate"><span class="pre">border-radius</span></code></a> om dat voor elkaar te krijgen. Zorg er daarbij wel voor dat de afbeeldingen vierkant worden (dus even breed als hoog zijn).</p>
 <p>Verder vinden we de kaartjes van de docenten wel erg breed en <em>in your face</em>: maak deze kaartje wat smaller en geef de <code class="docutils literal notranslate"><span class="pre">border</span></code> een wat fijner kleurtje en een schaduw.</p>
 <p><img alt="Voorbeeld van het resultaat tot dusver" src="../_images/2.1-voorbeeld3.jpeg" /></p>
 </section>
-<section id="klikbaar">
-<h2>4. Klikbaar<a class="headerlink" href="#klikbaar" title="Link to this heading">#</a></h2>
-<p>Maak nu van de hele <code class="docutils literal notranslate"><span class="pre">li</span></code> (de kaart van de docent) een grote hyperlink. Als je op die kaart klikt, moet je mail-client opstarten met het adres van de betreffende docent in een nieuwe mail. Om aan de bezoeker duidelijk te maken dat je op zo’n kaart kunt klikken, moet de achtergrondkleur van de <code class="docutils literal notranslate"><span class="pre">div</span></code> veranderen op het moment dat je er met je muis overheen gaat.</p>
-<p>Mogelijk onderstreept je browser nu de gehele tekst van de <code class="docutils literal notranslate"><span class="pre">div</span></code>, omdat er een link van is gemaakt. Gebruik je stylesheet om deze understreping weer weg te halen.</p>
-<p><img alt="Voorbeeld van het resultaat tot dusver" src="../_images/2.1-voorbeeld4.jpeg" /></p>
-</section>
-<section id="de-beste-docent">
-<h2>5. De <em>beste</em> docent<a class="headerlink" href="#de-beste-docent" title="Link to this heading">#</a></h2>
-<p>Hoewel alle docenten van de HG natuurlijk goed zijn, kan er maar één de beste zijn. Voorzie de kaart van de allerbeste docent van een extra plaatje of een emoticon om dat aan de bezoekers van je site duidelijk te maken. Gebruik vervolgens je stylesheet om het lettertype van die specifiek <code class="docutils literal notranslate"><span class="pre">div</span></code> wat extra aandacht te geven.</p>
-<p><img alt="Voorbeeld van het resultaat tot dusver" src="../_images/2.1-voorbeeld5.jpeg" /></p>
-</section>
 <section id="verticaal-centreren">
-<h2>6. Verticaal centreren<a class="headerlink" href="#verticaal-centreren" title="Link to this heading">#</a></h2>
+<h2>4. Verticaal centreren<a class="headerlink" href="#verticaal-centreren" title="Link to this heading">#</a></h2>
 <p>Een lastig ding in HTML/CSS is (nog steeds, hoewel het langzaamaan beter te doen is) het <em>verticaal centreren</em> van blocklevel-elementen (wat eigenlijk absurd is wanneer je bedenkt dat <a class="reference external" href="https://en.wikipedia.org/wiki/Donald_Knuth">Donald Knuth</a> al in de jaren tachtig <a class="reference external" href="https://www.codespeedy.com/vertically-center-a-text-on-a-page-in-latex/"><code class="docutils literal notranslate"><span class="pre">\vfill</span></code></a> bedacht had, maar soit). Bestudeer <a class="reference external" href="http://phrogz.net/CSS/vertical-align/index.html">deze site</a> om een goede uitleg te krijgen van wat het probleem is en hoe het (min of meer) te omzeilen.</p>
 <p>Gelukkig is er tegenwoordig de optie om de display van een div op <code class="docutils literal notranslate"><span class="pre">flex</span></code> te zetten; dat maakt dit allemaal wat makkelijker. Bekijk <a class="reference external" href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">deze site</a> om te zien hoe dat werkt. Zorg ervoor dat de tekst van je favoriete docenten nu vertikaal in de <code class="docutils literal notranslate"><span class="pre">div</span></code> komt te staan. In module webtechnologie 3 gaan we nog wat verder in op de flexbox.</p>
 <p><img alt="Voorbeeld van het resultaat tot dusver" src="../_images/2.1-voorbeeld6.jpeg" /></p>
+</section>
+<section id="klikbaar">
+<h2>5. Klikbaar<a class="headerlink" href="#klikbaar" title="Link to this heading">#</a></h2>
+<p>Maak nu van de hele <code class="docutils literal notranslate"><span class="pre">li</span></code> (de kaart van de docent) een grote hyperlink. Wanneer je op deze kaart klikt, moet je op een pagina komen waarop je de gegevens van de betreffende docent kunt onderhouden. Zorg er bijvoorbeeld voor dat je de naam, de vierlettercode, of de vakken die de docent geeft kunt aanpassen.</p>
+<p>Je zult hiervoor de gegevens in de gegeven array moeten overschrijven. Je kunt misschien ook wel een pagina maken waarop je een <em>nieuwe</em> docent aan de gegeven array toevoegt.</p>
+<p>Zorg ervoor dat de gegevens zoals je die hebt aangepast op het scherm terugkomen. <strong>let op:</strong> omdat de array alleen maar <em>in memory</em> bestaat, worden de wijzigingen die je aanbrengt niet echt opgeslagen - als je de pagina opnieuw laadt, zul je de gegevens uit de oorspronkelijke array weer terugzien.</p>
+<p>Mocht je je geroepen voelen, dan is een extra uitdaging om de gegevens van de array <em>wel</em> daadwerkelijk op te slaan. Om dit voor elkaar te krijgen kun je gebruik maken van <code class="docutils literal notranslate"><span class="pre">require_once</span></code> en <a class="reference external" href="https://www.php.net/manual/en/function.file-put-contents.php"><code class="docutils literal notranslate"><span class="pre">file_put_contents</span></code></a>.</p>
 </section>
 </section>
 
@@ -539,12 +544,12 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-favorieten-docenten">1. De favorieten docenten</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voorbereiding">Voorbereiding</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-favoriete-docenten">1. De favoriete docenten</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#betere-stilering">2. Betere stilering</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#wat-fancier-vormgeving">3. Wat <em>fancier</em> vormgeving</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klikbaar">4. Klikbaar</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-beste-docent">5. De <em>beste</em> docent</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verticaal-centreren">6. Verticaal centreren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#verticaal-centreren">4. Verticaal centreren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#klikbaar">5. Klikbaar</a></li>
 </ul>
   </nav></div>
 
