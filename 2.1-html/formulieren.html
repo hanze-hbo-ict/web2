@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Oefeningen &#8212; Webtechnologie II</title>
+    <title>Formulieren &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '1.2-php/oefening';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '2.1-html/formulieren';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="HTML" href="../2.1-html/html.html" />
-    <link rel="prev" title="Bestanden invoegen" href="include.html" />
+    <link rel="next" title="Oefeningen" href="oefening.html" />
+    <link rel="prev" title="CSS" href="css.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -189,21 +189,21 @@
 
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="functies.html">Functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="typeconversie.html">Typeconversie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oop.html">Object-georiënteerd programmeren</a></li>
-<li class="toctree-l1"><a class="reference internal" href="excepties.html">Foutafhandeling</a></li>
-<li class="toctree-l1"><a class="reference internal" href="include.html">Bestanden invoegen</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Oefeningen</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/functies.html">Functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/typeconversie.html">Typeconversie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oop.html">Object-georiënteerd programmeren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/excepties.html">Foutafhandeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/include.html">Bestanden invoegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oefening.html">Oefeningen</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/html.html">HTML</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/css.html">CSS</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/formulieren.html">Formulieren</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../2.1-html/opgave.html">Opdracht</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="html.html">HTML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="css.html">CSS</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Formulieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">2.2 Kernel</span></p>
 <ul class="nav bd-sidenav">
@@ -323,7 +323,7 @@
       
       
       
-      <li><a href="../_sources/1.2-php/oefening.md" target="_blank"
+      <li><a href="../_sources/2.1-html/formulieren.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -399,7 +399,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Oefeningen</h1>
+    <h1>Formulieren</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -409,8 +409,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functies">Functies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-georienteerd-programmeren">Object-georiënteerd programmeren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-en-post">GET en POST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-en-form">INPUT en FORM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-uitwerkt-voorbeeld">Een uitwerkt voorbeeld</a></li>
 </ul>
             </nav>
         </div>
@@ -422,34 +423,97 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="oefeningen">
-<h1>Oefeningen<a class="headerlink" href="#oefeningen" title="Link to this heading">#</a></h1>
-<section id="functies">
-<h2>Functies<a class="headerlink" href="#functies" title="Link to this heading">#</a></h2>
-<p>Op internet is een veelvoud aan oefenmateriaal te vinden om te oefenen met
-functies in PHP. Hierbij spelen twee aspecten een rol. Aan de ene kant is
-het schrijven van functies een vaardigheid die taalonafhankelijk is, waar
-het gaat om het selecteren en toepassen van het juiste algoritme. Dit kan
-bijvoorbeeld geoefend worden op de site van
-<a class="reference external" href="https://www.w3resource.com/php-exercises/php-function-exercises.php">w3resource</a>.</p>
-<p>Aan de andere kant heeft PHP een aantal specifieke functionaliteiten en
-keywords waarmee je kan oefenen. De kata’s over PHP-functies op
-<a class="reference external" href="https://www.codewars.com/collections/php-functions">CodeWars</a> gaan met name
-over dit aspect. Kijk hierbij naar de kata’s over Default Arguments, Pass By
-Reference, Splat Operator, Type Declarations en Return Type Declarations. De
-overige kata’s op deze pagina gaan over aspecten van PHP die (nog) niet
-besproken zijn.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="formulieren">
+<h1>Formulieren<a class="headerlink" href="#formulieren" title="Link to this heading">#</a></h1>
+<p>Eén van de belangrijkste dingen die de <em>client</em> (de <em>browser</em>) moet doen, is de gebruiker de mogelijkheid bieden om data te manipuleren, op te slaan of te raadplegen. Wanneer je bijvoorbeeld een zoekterm intypt in <a class="reference external" href="https://duckduckgo.com/">DuckDuckGo</a>, het rooster van een docent opzoekt in <a class="reference external" href="https://digirooster.hanze.nl/">digirooster</a>, of je reissschema via <a class="reference external" href="https://9292.nl/">9292</a> uitzoekt, gebruik je de browser als ingang naar de achterliggende zoekmachine, het achterliggende roostersysteem, of de achterliggende planningssoftware.</p>
+<p><img alt="De algemene werking van formulieren op het web" src="../_images/form-html-werking.jpeg" /></p>
+<section id="get-en-post">
+<h2>GET en POST<a class="headerlink" href="#get-en-post" title="Link to this heading">#</a></h2>
+<p>Om dit allemaal te kunnen bewerkstelligen is het noodzakelijk dat er data van de client naar de server worden verstuurd. De server moet immers weten waar je op wilt zoeken of van welke docent je het rooster wilt raadplegen. Deze situatie is <em>iets</em> anders dan hoe je normaal een webpagina opvraagt. In de regel doet de client een verzoek voor informatie naar de server en reageert de server met die informatie. In deze situatie is het verzoek evenwel niet (of niet alleen) een verzoek om informatie te <em>krijgen</em>, maar ook (en vooral) om data te <em>verwerken</em>.</p>
+<p>We hebben iets vergelijkbaars al gezien toen we <a class="reference internal" href="../1.1-php/php.html#gebruikersinvoer-en-navigatie"><span class="std std-ref">het hadden over gebruikersinvoer en navigatie</span></a>: daar gaven we twee parameters (<code class="docutils literal notranslate"><span class="pre">name</span></code> en <code class="docutils literal notranslate"><span class="pre">age</span></code>) via de URL mee aan het <em>request</em>. Dit <em>request</em> was een <em>GET</em>-request, en de parameters werden dan ook door php in de <code class="docutils literal notranslate"><span class="pre">$_GET</span></code>-superglobal opgevangen.</p>
+<p>Een beter, gebruikelijker en veiliger manier van data naar de server sturen is om een <em>ander soort request</em> uit te voeren. In plaats van GET maken we gebruik van POST: we POST-en een stuk data naar de server, die doet daar zijn ding mee en antwoordt – eventueel – met een reponse.</p>
+<p>Een belangrijk verschil tussen GET en POST is dat deze laatste de mogelijkheid heeft om wijzigingen <em>op de server</em> aan te brengen. Wanneer ik data van de client naar de server stuur, is het natuurlijk de bedoeling van die client dat er iets met die data gebeurt – op wordt geslagen, verwerkt in een database of gebruikt voor één of andere query.</p>
+<p>POST-requests zijn om deze reden <em>niet veilig</em>: wanneer we de mogelijkheid bieden de server vanaf de buitenkant te benaderen, hebben we onmiddellijk en onvermijdelijk een lek in die server gecreëerd – een lek dat we zo snel en zo goed mogelijk willen dichten.</p>
+<p>Eén van de infrastructurele aanpassingen die voor de dichten van belang is, is dat we niet zonder meer een POST-request naar een server kunnen doen.</p>
 </section>
-<section id="object-georienteerd-programmeren">
-<h2>Object-georiënteerd programmeren<a class="headerlink" href="#object-georienteerd-programmeren" title="Link to this heading">#</a></h2>
-<p>Ook om te leren werken met objecten en klassen zijn voldoende bronnen op
-internet. Ook hier kan je kijken op de website van
-<a class="reference external" href="https://www.w3resource.com/php-exercises/oop/index.php">w3resource</a> en bij
-de kata’s over object-georiënteerd programmeren in PHP op
-<a class="reference external" href="https://www.codewars.com/collections/object-oriented-php">CodeWars</a>. De
-laatste kata in deze reeks, Objects on the Fly, gaat over anonieme klassen;
-dit is niet besproken. De overige kata’s gaan over onderwerpen die wel
-besproken zijn.</p>
+<section id="input-en-form">
+<h2>INPUT en FORM<a class="headerlink" href="#input-en-form" title="Link to this heading">#</a></h2>
+<p>De data die de client naar de server wil versturen, komen natuurlijk op hun beurt ook weer ergens vandaan: in de regel een <em>bezoeker</em> van onze website. Deze persoon vult gegevens in, klikt op een knop, de client verzamelt deze gegevens en stuurt het naar de server.</p>
+<p><img alt="Een sequence-diagram van web-formulieren" src="../_images/form-html-sequence.jpeg" /></p>
+<div class="warning admonition">
+<p class="admonition-title">Niet altijd database</p>
+<p>Let op: hoewel de server in de sequence-diagram hierboven gebruik maakt van een database, is dat natuurlijk niet noodzakelijk. De server kan ook prima werk doen zonder dat er spake is van een database of resource-layer.</p>
+</div>
+<p>De velden die onze bezoeker kan invullen, komen van de html-tag <code class="docutils literal notranslate"><span class="pre">&lt;input&gt;</span></code>, waarbij het <em>soort</em> invoerveld vastgesteld wordt aan de hand van het <code class="docutils literal notranslate"><span class="pre">type</span></code>-attribuut. Er zijn <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input#input_types">enige tientallen mogelijke waarden van dit attribuut</a>, waarvan we een aantal hieronder weergeven:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p><code class="docutils literal notranslate"><span class="pre">input</span> <span class="pre">type=&quot;&quot;</span></code></p></th>
+<th class="head"><p>soort invoerveld:</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">text</span></code></p></td>
+<td><p>Standaard tekst-invoer (één regel)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">checkbox</span></code></p></td>
+<td><p>Een select-vinkje</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">email</span></code></p></td>
+<td><p>Tekst-invoerveld met email-validatie</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">password</span></code></p></td>
+<td><p>Wachtwoord-invoerveld (laat bolletjes zien wanneer je typt)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">time</span></code></p></td>
+<td><p>Uren en minuten (zonder tijdzone, overigens)</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Behalve deze vormen van de <code class="docutils literal notranslate"><span class="pre">input</span></code>-tag, zijn er ook <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Learn_web_development/Extensions/Forms">nog andere tags die je kunt gebruiken om bezoeksinput te verzamelen</a>; denk aan dingen als knoppen, dropdowns, of bestanden.</p>
+<p>Omdat alle input-elementen van een formulier als <em>key-value</em> worden verstuurd, is het van belang dat de browser weet hoe de betreffende elementen <em>heten</em>. Hiervoor gebruik je het attribuut <code class="docutils literal notranslate"><span class="pre">name</span></code>. Let op: je hebt natuurlijk ook hier het attribuut <code class="docutils literal notranslate"><span class="pre">id</span></code>, maar daar gebeurt voor wat betreft het formulier niks mee (behalve als je het anders programmeert, vanzelfsprekend).</p>
+<p>Al deze tags worden samengevoegd in een <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/form"><code class="docutils literal notranslate"><span class="pre">form</span></code>-tag</a>: door deze structuur weet de browser welke elementen bij welk formulier horen:</p>
+<p><img alt="De positie van een html-formulier in de hele DOM-tree" src="../_images/form-html-tree.jpeg" /></p>
+<div class="admonition-een-formulier-per-pagina admonition">
+<p class="admonition-title">Eén formulier per pagina</p>
+<p>Hoewel er in principe niks mis is met meerdere formulieren op één pagina, is <a class="reference external" href="https://processwire.com/talk/topic/26006-multiple-forms-on-one-page-bad-practice/">het niet heel gebruikelijk</a>. Er zijn zelfs web-frameworks die het niet toestaan om meerdere formulieren op één pagina te hebben.</p>
+</div>
+<p>Er zijn twee belangrijke attributen die je (in de regel) aangeeft bij een <code class="docutils literal notranslate"><span class="pre">form</span></code>-tag: de <code class="docutils literal notranslate"><span class="pre">action</span></code> en het <code class="docutils literal notranslate"><span class="pre">method</span></code>. Met de <code class="docutils literal notranslate"><span class="pre">action</span></code> geef je aan waar de <em>actie</em> beschreven staat waar de verdere verwerking van het formulier plaatsvindt. In ons specifieke geval zou dat het php-script zijn dat voor deze verwerking verantwoordelijk is.</p>
+<p>Het attribuut <code class="docutils literal notranslate"><span class="pre">method</span></code> bepaalt met welk <em>http-verb</em> de verzamelde data verstuurd wordt. Dit attribuut kent slechts twee mogelijke waarden: <code class="docutils literal notranslate"><span class="pre">get</span></code> en <code class="docutils literal notranslate"><span class="pre">post</span></code>, conform de discussie hierboven.</p>
+<div class="aside admonition">
+<p class="admonition-title">Feitelijk drie</p>
+<p>Feitelijk kun je <code class="docutils literal notranslate"><span class="pre">method</span></code> ook nog de waarde <code class="docutils literal notranslate"><span class="pre">dialog</span></code> geven, maar da’s zo’n specifieke situatie dat we die hier negeren.</p>
+</div>
+<p>De superglobale parameter <code class="docutils literal notranslate"><span class="pre">$_POST</span></code> bevat, <a class="reference internal" href="../1.1-php/php.html#gebruikersinvoer-en-navigatie"><span class="std std-ref">net als de <code class="docutils literal notranslate"><span class="pre">$_GET</span></code></span></a>, de invulde waarden van het formulier.</p>
+</section>
+<section id="een-uitwerkt-voorbeeld">
+<h2>Een uitwerkt voorbeeld<a class="headerlink" href="#een-uitwerkt-voorbeeld" title="Link to this heading">#</a></h2>
+<p>De volgende html levert de onderstaande webpagina op (hierbij is slechts minimale stilering toegepast).</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">&quot;post&quot;</span> <span class="na">action</span><span class="o">=</span><span class="s">&quot;demoscript.php&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Vul hieronder uw gegevens in<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Naam:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">placeholder</span><span class="o">=</span><span class="s">&quot;Uw naam&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Leeftijd:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;number&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">b</span><span class="p">&gt;</span>Huidige tijd:<span class="p">&lt;/</span><span class="nt">b</span><span class="p">&gt;</span> <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;time&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span><span class="p">&gt;&lt;</span><span class="nt">button</span><span class="p">&gt;</span>Formulier versturen<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><img alt="Het resultaat van bovenstaande html" src="../_images/form-html.jpeg" /></p>
+<p>Als de bezoeker nu op de knop onderaan het formulier klikt, wordt de data die is ingevoerd door de browser verstuurd naar het script dat is aangegeven bij het <code class="docutils literal notranslate"><span class="pre">action</span></code>-attribuut van de <code class="docutils literal notranslate"><span class="pre">form</span></code>-tag: <code class="docutils literal notranslate"><span class="pre">demoscript.php</span></code>. Als we in dat script alleen de regel <code class="docutils literal notranslate"><span class="pre">var_dump($_POST);</span></code> zetten, krijgen we keurig wat de persoon heeft ingevuld:</p>
+<p><img alt="Het formulier eenvoudig verwerkt" src="../_images/form-html-output1.jpeg" /></p>
+<p>Maar we kunnen natuurlijk ook wat ingewikkelders doen met die data:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$check = (int)explode(&#39;:&#39;, $_POST[&#39;tijd&#39;])[0];</span>
+<span class="x">$aanhef = ($check &lt; 12) </span>
+<span class="x">    ? &#39;Goedemorgen &#39; </span>
+<span class="x">    : &#39;Goedemiddag &#39;;</span>
+
+
+<span class="x">$bericht = $aanhef . $_POST[&#39;naam&#39;] . &quot;&lt;br&gt;&quot;;</span>
+<span class="x">$bericht .= &quot;U bent &quot; .$_POST[&#39;leeftijd&#39;]. &quot; jaar oud.&quot;;</span>
+<span class="x">echo $bericht;</span>
+</pre></div>
+</div>
+<p><img alt="Een iets uitgebreider resultaat met dezelfde data" src="../_images/form-html-output2.jpeg" /></p>
 </section>
 </section>
 
@@ -466,7 +530,7 @@ besproken zijn.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./1.2-php"
+            path: "./2.1-html"
         },
         predefinedOutput: true
     }
@@ -484,20 +548,20 @@ besproken zijn.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="include.html"
+       href="css.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Bestanden invoegen</p>
+        <p class="prev-next-title">CSS</p>
       </div>
     </a>
     <a class="right-next"
-       href="../2.1-html/html.html"
+       href="oefening.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">HTML</p>
+        <p class="prev-next-title">Oefeningen</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -518,8 +582,9 @@ besproken zijn.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functies">Functies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-georienteerd-programmeren">Object-georiënteerd programmeren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#get-en-post">GET en POST</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#input-en-form">INPUT en FORM</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-uitwerkt-voorbeeld">Een uitwerkt voorbeeld</a></li>
 </ul>
   </nav></div>
 
