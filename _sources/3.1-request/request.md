@@ -44,7 +44,7 @@ class Request
 {
     public function __construct(private array $get) {}
 
-    public function getQueryParams(): string
+    public function getQueryParams(): array
     {
         return $this->get;
     }
