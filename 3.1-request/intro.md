@@ -20,7 +20,7 @@ Voor de opdracht is het evenwel voldoende om je te richten op de *request* zoals
 
 ## Headers en payload
 
-De vormen van de *request* en de *response* lijken heel erg op elkaar: in beide gevallen is er sprake van een *header* en een eventuele *payload*. In de *header* staat informatie *over* het bericht, in de *payload* staat, tja, de *data* van het bericht. Je kunt de *header* een beetje vergelijken met een *enveloppe* (van vroeger, toen we nog brieven schreven en die in enveloppen deden), terwijl de *payload* in die vergelijking de brief zelf is.
+De vorm van de *request* en van de *response* lijken heel erg op elkaar: in beide gevallen is er sprake van een *header* en een eventuele *payload*. In de *header* staat informatie *over* het bericht, in de *payload* staat, tja, de *data* van het bericht. Je kunt de *header* een beetje vergelijken met een *enveloppe* (van vroeger, toen we nog brieven schreven en die in enveloppen deden), terwijl de *payload* in die vergelijking de brief zelf is.
 
 In beide gevallen is het bericht gewoon een stuk tekst, waarin de *header* door een witregel wordt gescheiden van de *payload*. Zie het onderstaande schema (in dit specifieke geval is de *payload* van de *request* leeg):
 

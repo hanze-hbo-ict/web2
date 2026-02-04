@@ -81,7 +81,7 @@ interface KernelInterface
 ```
 
 Deze code zetten we in een bestand `KernelInterface.php` in de directory 
-`src/Framework/Kernal`. Hierdoor zal het later mogelijk worden om het 
+`src/Framework/Kernel`. Hierdoor zal het later mogelijk worden om het 
 bestand automatisch te vinden.
 
 We kunnen nu een simpele kernel maken die deze interface gebruikt. Merk op 
