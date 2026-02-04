@@ -18,6 +18,16 @@ De [PSR in kwestie](https://www.php-fig.org/psr/psr-7) maakt onderscheid tussen 
 Voor de opdracht is het evenwel voldoende om je te richten op de *request* zoals deze er aan de serverkant uit ziet (dus feitelijk de `ServerRequestInterface`).
 ```
 
+## Headers en payload
+
+De vormen van de *request* en de *response* lijken heel erg op elkaar: in beide gevallen is er sprake van een *header* en een eventuele *payload*. In de *header* staat informatie *over* het bericht, in de *payload* staat, tja, de *data* van het bericht. Je kunt de *header* een beetje vergelijken met een *enveloppe* (van vroeger, toen we nog brieven schreven en die in enveloppen deden), terwijl de *payload* in die vergelijking de brief zelf is.
+
+In beide gevallen is het bericht gewoon een stuk tekst, waarin de *header* door een witregel wordt gescheiden van de *payload*. Zie het onderstaande schema (in dit specifieke geval is de *payload* van de *request* leeg):
+
+![Overzicht van de request en de response](../images/http-messages.jpeg)
+
+Feitelijk zijn de *headers* een set van afspraken aan de hand waarvan de *client* en de *server* weten wat ze moeten doen, hoe de verhouding tussen deze beide is, en waar ze zitten in hun conversatie. Er zijn tientallen van dergelijke *headers* beschreven in [RFC7230](https://www.rfc-editor.org/rfc/rfc7230).
+
 Op [de volgende pagina](request.md) bespreken we uitgebreid de *request* en de bijhorende technieken, daarna gaan we in op [de *response*](../3.2-response/response.md).
 
 

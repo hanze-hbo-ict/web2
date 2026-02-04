@@ -410,6 +410,7 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductie">Introductie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#headers-en-payload">Headers en payload</a></li>
 </ul>
             </nav>
         </div>
@@ -434,6 +435,13 @@
 <p>De <a class="reference external" href="https://www.php-fig.org/psr/psr-7">PSR in kwestie</a> maakt onderscheid tussen <a class="reference external" href="https://www.php-fig.org/psr/psr-7/#32-psrhttpmessagerequestinterface"><code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code></a> en <a class="reference external" href="https://www.php-fig.org/psr/psr-7/#321-psrhttpmessageserverrequestinterface"><code class="docutils literal notranslate"><span class="pre">ServerRequestInterface</span></code></a>. Het grote verschil tussen deze twee is dat de eerste interface een <em>uitgaand</em> bericht is (dus gezien vanuit de client), terwijl de tweede een <em>inkomend</em> bericht is (dus bezien vanuit de server). Beide berichten bevatten de meest voor de hand liggende informatie van het <em>request</em>, zoals protocol-versie en http-headers, maar alleen de <code class="docutils literal notranslate"><span class="pre">ServerRequest</span></code> bevat ook nog extra informatie vanuit de php-omgeving of de CGI.</p>
 <p>Voor de opdracht is het evenwel voldoende om je te richten op de <em>request</em> zoals deze er aan de serverkant uit ziet (dus feitelijk de <code class="docutils literal notranslate"><span class="pre">ServerRequestInterface</span></code>).</p>
 </div>
+</section>
+<section id="headers-en-payload">
+<h2>Headers en payload<a class="headerlink" href="#headers-en-payload" title="Link to this heading">#</a></h2>
+<p>De vormen van de <em>request</em> en de <em>response</em> lijken heel erg op elkaar: in beide gevallen is er sprake van een <em>header</em> en een eventuele <em>payload</em>. In de <em>header</em> staat informatie <em>over</em> het bericht, in de <em>payload</em> staat, tja, de <em>data</em> van het bericht. Je kunt de <em>header</em> een beetje vergelijken met een <em>enveloppe</em> (van vroeger, toen we nog brieven schreven en die in enveloppen deden), terwijl de <em>payload</em> in die vergelijking de brief zelf is.</p>
+<p>In beide gevallen is het bericht gewoon een stuk tekst, waarin de <em>header</em> door een witregel wordt gescheiden van de <em>payload</em>. Zie het onderstaande schema (in dit specifieke geval is de <em>payload</em> van de <em>request</em> leeg):</p>
+<p><img alt="Overzicht van de request en de response" src="images/http-messages.jpeg" /></p>
+<p>Feitelijk zijn de <em>headers</em> een set van afspraken aan de hand waarvan de <em>client</em> en de <em>server</em> weten wat ze moeten doen, hoe de verhouding tussen deze beide is, en waar ze zitten in hun conversatie. Er zijn tientallen van dergelijke <em>headers</em> beschreven in <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc7230">RFC7230</a>.</p>
 <p>Op <a class="reference internal" href="request.html"><span class="std std-doc">de volgende pagina</span></a> bespreken we uitgebreid de <em>request</em> en de bijhorende technieken, daarna gaan we in op <a class="reference internal" href="../3.2-response/response.html"><span class="std std-doc">de <em>response</em></span></a>.</p>
 </section>
 </section>
@@ -504,6 +512,7 @@
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductie">Introductie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#headers-en-payload">Headers en payload</a></li>
 </ul>
   </nav></div>
 
