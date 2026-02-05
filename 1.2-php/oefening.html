@@ -62,6 +62,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '1.2-php/oefening';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
@@ -184,9 +186,6 @@
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/strings.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/arrays.html">Arrays</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../1.1-php/oefening.html">Oefeningen</a></li>
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
 <ul class="current nav bd-sidenav">
@@ -409,8 +408,33 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functies">Functies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-georienteerd-programmeren">Object-georiënteerd programmeren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functies-en-types">Functies en types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwadraten-berekenen">Kwadraten berekenen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwadraten-by-reference">Kwadraten by reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gemiddelde-van-meerdere-argumenten">Gemiddelde van meerdere argumenten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stringinterpolatie">Stringinterpolatie</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zoeken-in-json-formaat">Zoeken in JSON-formaat</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objecten-en-klassen">Objecten en klassen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-getallen">Rationale getallen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-klasse-rational">De klasse <code class="docutils literal notranslate"><span class="pre">Rational</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rational-gebruiken"><code class="docutils literal notranslate"><span class="pre">Rational</span></code> gebruiken</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rational-verbeteren"><code class="docutils literal notranslate"><span class="pre">Rational</span></code> verbeteren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tot-slot">Tot slot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaces-en-excepties">Interfaces en excepties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-functie-inttohex">De functie <code class="docutils literal notranslate"><span class="pre">intToHex</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-functie-hextoint">De functie <code class="docutils literal notranslate"><span class="pre">hexToInt</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excepties">Excepties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-stack">Interface <code class="docutils literal notranslate"><span class="pre">Stack</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-stack-testen">De stack testen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Excepties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling">Exception handling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-oefeningen">Extra oefeningen</a></li>
 </ul>
             </nav>
         </div>
@@ -424,30 +448,453 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="oefeningen">
 <h1>Oefeningen<a class="headerlink" href="#oefeningen" title="Link to this heading">#</a></h1>
-<section id="functies">
-<h2>Functies<a class="headerlink" href="#functies" title="Link to this heading">#</a></h2>
+<section id="functies-en-types">
+<h2>Functies en types<a class="headerlink" href="#functies-en-types" title="Link to this heading">#</a></h2>
+<section id="kwadraten-berekenen">
+<h3>Kwadraten berekenen<a class="headerlink" href="#kwadraten-berekenen" title="Link to this heading">#</a></h3>
+<p>Schrijf een functie <code class="docutils literal notranslate"><span class="pre">squares</span></code> die een array getallen accepteert en een nieuwe
+array teruggeeft waar elk getal gekwadrateerd is. Maak hierbij gebruik van
+een lege array waarin je de kwadraten zet, en gebruik een lus om de nieuwe
+array te vullen.</p>
+</section>
+<section id="kwadraten-by-reference">
+<h3>Kwadraten by reference<a class="headerlink" href="#kwadraten-by-reference" title="Link to this heading">#</a></h3>
+<p>Schrijf een functie <code class="docutils literal notranslate"><span class="pre">squaresByRef</span></code> die een array getallen accepteert, maar
+geen returnwaarde heeft. De functie moet de getallen in de meegegeven array
+kwadrateren, zodat de array die je meegeeft daarna ook daadwerkelijk
+veranderd is.</p>
+</section>
+<section id="gemiddelde-van-meerdere-argumenten">
+<h3>Gemiddelde van meerdere argumenten<a class="headerlink" href="#gemiddelde-van-meerdere-argumenten" title="Link to this heading">#</a></h3>
+<p>Schrijf een functie <code class="docutils literal notranslate"><span class="pre">averageAll</span></code> die een onbekend aantal argumenten accepteert.
+Gebruik hiervoor de spread operator. Elk van de argumenten is een array van
+getallen of een enkel getal; je kan dit onderscheid maken door gebruik te
+maken van de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.is-array.php"><code class="docutils literal notranslate"><span class="pre">is_array</span></code></a>.
+De functie moet het gemiddelde van de waarden in alle argumenten berekenen,
+zoals in onderstaande voorbeeld.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">echo averageAll([1, 2, 3], 4, [5]), PHP_EOL; // 3</span>
+</pre></div>
+</div>
+</section>
+<section id="stringinterpolatie">
+<h3>Stringinterpolatie<a class="headerlink" href="#stringinterpolatie" title="Link to this heading">#</a></h3>
+<p>Een operatie die in veel talen uitgevoerd kan worden is <em>stringinterpolatie</em>.
+In Python kan je bijvoorbeeld <em>f-strings</em> gebruiken: <code class="docutils literal notranslate"><span class="pre">f&quot;{a}</span> <span class="pre">{b}&quot;</span></code> is gelijk aan
+de waarde van de variabele <code class="docutils literal notranslate"><span class="pre">a</span></code>, gevolgd door een spatie, gevolgd door de
+waarde van de variabele <code class="docutils literal notranslate"><span class="pre">b</span></code>. In SQL kan je prepared statements op een
+vergelijkbare manier gebruiken, bijvoorbeeld als <code class="docutils literal notranslate"><span class="pre">SELECT</span> <span class="pre">*</span> <span class="pre">FROM</span> <span class="pre">users</span> <span class="pre">WHERE</span>&#160; <span class="pre">username</span> <span class="pre">=</span> <span class="pre">:username</span></code>, waarbij de parameter <code class="docutils literal notranslate"><span class="pre">username</span></code> in de <code class="docutils literal notranslate"><span class="pre">WHERE</span></code>-clause
+gezet wordt. PHP zelf kan dit met dubbele aanhalingstekens zoals in
+<code class="docutils literal notranslate"><span class="pre">&quot;$a</span> <span class="pre">$b&quot;</span></code>. Schrijf een functie <code class="docutils literal notranslate"><span class="pre">interpolate</span></code>, die een string gevolgd door een
+onbekend aantal parameters accepteert. De functie moet de waardes van de
+overige parameters in de string zetten, zoals in de onderstaande voorbeelden.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">echo interpolate(&#39;{a} en {b}&#39;, a: 3, b: 5), PHP_EOL; // 3 en 5</span>
+<span class="x">echo interpolate(&#39;{0} en {1}&#39;, 2, 3), PHP_EOL; // 2 en 3</span>
+</pre></div>
+</div>
+<p>Je kan de <em>spread operator</em> gebruiken voor argumenten met en zonder naam. Als
+ze een naam hebben, wordt die naam de sleutel in de associatieve array.
+Anders worden ze genummerd.</p>
+<p>Gebruik de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.str-replace.php"><code class="docutils literal notranslate"><span class="pre">str_replace</span></code></a>
+om de interpolatie uit te voeren.</p>
+</section>
+<section id="zoeken-in-json-formaat">
+<h3>Zoeken in JSON-formaat<a class="headerlink" href="#zoeken-in-json-formaat" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://nl.wikipedia.org/wiki/JSON">JSON</a> is een dataformaat dat veel
+gebruikt wordt om complexe structuren over HTTP te sturen. Je kan in PHP de
+functie
+<a class="reference external" href="https://www.php.net/manual/en/function.json-decode.php"><code class="docutils literal notranslate"><span class="pre">json_decode</span></code></a>
+gebruiken om dit te parsen. Schrijf een functie <code class="docutils literal notranslate"><span class="pre">getJsonValue</span></code>
+die een JSON-string en daarnaast een onbeperkt aantal keys accepteert. Als je
+bijvoorbeeld de keys <code class="docutils literal notranslate"><span class="pre">foo</span></code>, <code class="docutils literal notranslate"><span class="pre">bar</span></code> en <code class="docutils literal notranslate"><span class="pre">baz</span></code> meegeeft, moet de functie de
+JSON-string parsen en de waarde <code class="docutils literal notranslate"><span class="pre">$json['foo']['bar']['baz']</span></code> teruggeven,
+zoals in onderstaande voorbeeld. Het resultaat in dit voorbeeld moet dan 1 zijn.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="nt">&quot;foo&quot;</span><span class="p">:{</span><span class="nt">&quot;bar&quot;</span><span class="p">:{</span><span class="nt">&quot;baz&quot;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span><span class="nt">&quot;foo&quot;</span><span class="p">:</span><span class="mi">2</span><span class="p">},</span><span class="nt">&quot;baz&quot;</span><span class="p">:</span><span class="mi">3</span><span class="p">}}</span>
+</pre></div>
+</div>
+<p>Als één van de keys niet bestaat, moet de returnwaarde <code class="docutils literal notranslate"><span class="pre">null</span></code> zijn. Gebruik
+hiervoor de <em>null-coalesceoperator</em> <code class="docutils literal notranslate"><span class="pre">??</span></code>. Zie ook de onderstaande voorbeelden.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$json = &#39;{&quot;foo&quot;:{&quot;bar&quot;:{&quot;baz&quot;:1,&quot;foo&quot;:2},&quot;baz&quot;:3}}&#39;;</span>
+<span class="x">echo jsonFind($json, &#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;), PHP_EOL; // 1</span>
+<span class="x">echo jsonFind($json, &#39;foo&#39;, &#39;baz&#39;), PHP_EOL; // 3</span>
+<span class="x">echo jsonFind($json, &#39;foo&#39;, &#39;baz&#39;, &#39;bar&#39;), PHP_EOL; // null</span>
+<span class="x">echo jsonFind($json, &#39;baz&#39;), PHP_EOL; // null</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="objecten-en-klassen">
+<h2>Objecten en klassen<a class="headerlink" href="#objecten-en-klassen" title="Link to this heading">#</a></h2>
+<section id="rationale-getallen">
+<h3>Rationale getallen<a class="headerlink" href="#rationale-getallen" title="Link to this heading">#</a></h3>
+<p><a class="reference external" href="https://nl.wikipedia.org/wiki/Rationaal_getal">Rationale getallen</a>
+zijn getallen die kunnen worden weergegeven als de  verhouding van twee
+gehele getallen; dat wil zeggen, elk getal <span class="math notranslate nohighlight">\(\frac{p}{q}\)</span> waarbij
+<span class="math notranslate nohighlight">\(p\)</span> en <span class="math notranslate nohighlight">\(q\)</span> gehele getallen zijn is een rationaal getal. Je zal hier breuken
+in herkennen en breuken zijn inderdaad rationale getallen. PHP benadert
+niet-gehele rationale getallen met behulp van het type <code class="docutils literal notranslate"><span class="pre">float</span></code>, maar dit
+type biedt onvoldoende nauwkeurigheid, zeker waar het gaat om grotere
+getallen. In deze opgave ga je rationale getallen representeren met een
+klasse <code class="docutils literal notranslate"><span class="pre">Rational</span></code>.</p>
+</section>
+<section id="de-klasse-rational">
+<h3>De klasse <code class="docutils literal notranslate"><span class="pre">Rational</span></code><a class="headerlink" href="#de-klasse-rational" title="Link to this heading">#</a></h3>
+<p>De klasse <code class="docutils literal notranslate"><span class="pre">Rational</span></code> heeft de volgende constructor</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">public function __construct(private int $numerator, private int $denominator)</span>
+</pre></div>
+</div>
+<p>en de volgende methoden:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">/**</span>
+<span class="x"> * Voeg het Rational object b toe aan het object</span>
+<span class="x"> * en geef een nieuwe Rational terug met de som.</span>
+<span class="x"> */</span>
+<span class="x">public function add(Rational $b): Rational</span>
+
+<span class="x">/**</span>
+<span class="x"> * Vermenigvuldig het Rational object b met het object</span>
+<span class="x"> * en geef een nieuwe Rational terug met het product.</span>
+<span class="x"> */</span>
+<span class="x">public function multiply(Rational $b): Rational</span>
+
+<span class="x">/**</span>
+<span class="x"> * Trek het Rational object b af van het object en geef</span>
+<span class="x"> * een nieuwe Rational terug met het verschil.</span>
+<span class="x"> */</span>
+<span class="x">public function subtract(Rational $b): Rational</span>
+
+<span class="x">/**</span>
+<span class="x"> * Deel het object door het Rational object b en geef</span>
+<span class="x"> * een nieuwe Rational terug met het resultaat.</span>
+<span class="x"> */</span>
+<span class="x">public function divide(Rational $b): Rational</span>
+
+<span class="x">/**</span>
+<span class="x"> * Geeft true terug als het gelijk is aan een ander</span>
+<span class="x"> * Rational object, anders false</span>
+<span class="x"> */</span>
+<span class="x">public function equals(Rational $b): bool</span>
+
+<span class="x">/**</span>
+<span class="x"> * Geeft een string representatie terug van het rationale getal.</span>
+<span class="x"> * Als de noemer 1 is, druk dan alleen de teller af.</span>
+<span class="x"> */</span>
+<span class="x">public function __toString(): string</span>
+</pre></div>
+</div>
+<p>De klasse Rational bevat een tweetal instantievariabelen van het type <code class="docutils literal notranslate"><span class="pre">int</span></code>
+(<code class="docutils literal notranslate"><span class="pre">$numerator</span></code> en <code class="docutils literal notranslate"><span class="pre">$denominator</span></code>); deze worden gezet in de constructor bij het
+initialiseren van een nieuwe instantie van deze klasse.</p>
+<p>Verder zie je methoden voor het vergelijken, optellen (1), aftrekken (2),
+vermenigvuldigen (3) en delen (4) van rationale getallen. Let op:
+operatires op twee rationale getallen geven altijd een nieuwe <code class="docutils literal notranslate"><span class="pre">Rational</span></code> terug,
+dit zie je ook terugkomen in de declaratie van deze methoden.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{eqnarray}
+\frac{a}{b} + \frac{c}{d} &amp;=&amp; \frac{a \times d + c \times b}{b \times d} &amp; (1)\\
+\frac{a}{b} - \frac{c}{d} &amp;=&amp; \frac{a \times d - c \times b}{b \times d} &amp; (2)\\
+\frac{a}{b} \times \frac{c}{d} &amp;=&amp; \frac{a \times c}{b \times d} &amp; (3) \\
+\frac{a}{b} \div \frac{c}{d} &amp;=&amp; \frac{a \times d}{b \times c} &amp; (4) \\
+\end{eqnarray}
+\end{split}\]</div>
+<p>Een typisch gebruik van deze klasse zou als volgt kunnen zijn:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$a = new Rational(2, 3);</span>
+<span class="x">$b = new Rational(-1, 3);</span>
+<span class="x">$sum = $a-&gt;add($b);</span>
+<span class="x">echo $sum, PHP_EOL;  // prints 1/3</span>
+</pre></div>
+</div>
+<p>Let op: de laatste regel in het bovenstaande voorbeeld zal voor de eerste
+versie van <code class="docutils literal notranslate"><span class="pre">Rational</span></code> de waarde 3/9 geven. Later zal je een verbetering
+doorvoeren die de vereenvoudiging 1/3 als resultaat heeft.</p>
+<p>Implementeer de klasse <code class="docutils literal notranslate"><span class="pre">Rational</span></code> op basis van de hierboven gegeven
+beschrijving. Bedenk ook hoe je omgaat met negatieve getallen en nul (delen
+door nul moet een <code class="docutils literal notranslate"><span class="pre">DivisionByZeroError</span></code> geven).</p>
+</section>
+<section id="rational-gebruiken">
+<h3><code class="docutils literal notranslate"><span class="pre">Rational</span></code> gebruiken<a class="headerlink" href="#rational-gebruiken" title="Link to this heading">#</a></h3>
+<p>Schrijf een programma die de klasse <code class="docutils literal notranslate"><span class="pre">Rational</span></code> gaat gebruiken in een nieuw
+bestand, in dezelfde directory als het bestand met de klasse <code class="docutils literal notranslate"><span class="pre">Rational</span></code>. Dit
+programma gaat onderstaande functie implementeren.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function approxE(int $n): Rational</span>
+</pre></div>
+</div>
+<p>Implementeer de functie <code class="docutils literal notranslate"><span class="pre">approxE</span></code> met de bovenstaande signatuur. In deze
+methode ga je een
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Taylorreeks">Taylorreeks</a> gebruiken om de
+eerste <code class="docutils literal notranslate"><span class="pre">$n</span></code> termen van de rationale benadering
+van het getal <span class="math notranslate nohighlight">\(e\)</span> te berekenen. Deze reeks is als volgt</p>
+<div class="math notranslate nohighlight">
+\[
+e = \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{3!} + \frac{1}{4!} + \frac{1}{5!} + \cdots
+\]</div>
+<p>Je zal hier ook een methode voor de berekening van de faculteit nodig hebben;
+je kan hiervoor onderstaande functie gebruiken.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function factorial(int $n): int</span>
+<span class="x">{</span>
+<span class="x">    for ($fac = 1; $n &gt; 0; $n--) {</span>
+<span class="x">        $fac *= $n;</span>
+<span class="x">    }</span>
+<span class="x">    return $fac;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Print steeds de waarde die je krijgt nadat elke term aan de benadering is
+toegevoegd. De uitvoer voor <code class="docutils literal notranslate"><span class="pre">approxE(6)</span></code> zal als volgt zijn.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">5</span><span class="o">/</span><span class="mi">2</span> <span class="mi">32</span><span class="o">/</span><span class="mi">12</span> <span class="mi">780</span><span class="o">/</span><span class="mi">288</span> <span class="mi">93888</span><span class="o">/</span><span class="mi">34560</span>
+</pre></div>
+</div>
+</section>
+<section id="rational-verbeteren">
+<h3><code class="docutils literal notranslate"><span class="pre">Rational</span></code> verbeteren<a class="headerlink" href="#rational-verbeteren" title="Link to this heading">#</a></h3>
+<p>Er zijn verschillende problemen met onze implementatie van de rationele
+getalklasse. Als we proberen een nauwkeurigere benadering van <span class="math notranslate nohighlight">\(e\)</span> te berekenen,
+bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">$n</span></code> rond 10, wat gebeurt er met de waarden? Het vreemde gedrag
+dat je waarneemt is het resultaat van overflow. PHP zal het type <code class="docutils literal notranslate"><span class="pre">float</span></code>
+gebruiken als een geheel getal buiten het bereik van het type <code class="docutils literal notranslate"><span class="pre">int</span></code> valt,
+maar dat type is niet toegestaan in de constructor van Rational. Je moet dus
+altijd voorzichtig zijn bij het uitvoeren van numerieke berekeningen.</p>
+<p>Er zijn een paar relatief eenvoudige wijzigingen die we kunnen aanbrengen in
+de klasse Rational om overflow voor nog een aantal termen van de benadering
+te voorkomen. Merk ten eerste op dat onze rationele getallen niet altijd in
+hun meest eenvoudige vorm worden opgeslagen. In de vierde term in het
+bovenstaande voorbeeld zijn bijvoorbeeld zowel teller als noemer deelbaar
+door 4, dus we slaan het resultaat liever op als 8/3 in plaats van 32/12.</p>
+<p>Je kan dit probleem oplossen door de klasse <code class="docutils literal notranslate"><span class="pre">Rational</span></code> te wijzigen door alleen
+rationale getallen met teller en noemer
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Relatief_priem">relatief priem</a> op te slaan
+en terug te geven. Voeg een <em>private</em> methode <code class="docutils literal notranslate"><span class="pre">gcd</span></code> (<em>greatest common
+divisor</em>, grootste gemene delr) toe die het
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Algoritme_van_Euclides">algoritme van Euclides</a>
+implementeert om de grootste gemene deler van twee getallen te berekenen,
+en gebruik dit resultaat om deze voorwaarde af te dwingen.</p>
+<p>Het algoritme van Euclides berust erop dat de grootste gemene deler van twee
+gehele getallen ook de grootste gemene deler is van zowel het kleinste getal
+als van de rest die overblijft bij deling van het grootste getal door het
+kleinste. Zo ontstaat er een aflopend iteratief proces.  Je kan de grootste
+gemene deler (ggd) efficiënt berekenen met behulp van de volgende eigenschap,
+die geldt voor positieve gehele getallen p en q:</p>
+<p>Als <span class="math notranslate nohighlight">\(p &gt; q\)</span>, is de ggd van <span class="math notranslate nohighlight">\(p\)</span> en <span class="math notranslate nohighlight">\(q\)</span> gelijk aan de ggd van <span class="math notranslate nohighlight">\(q\)</span> en <span class="math notranslate nohighlight">\(p \mod q\)</span>.</p>
+<p>Een recursieve uitwerking is als volgt</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private function gcd(int $p, int $q): int
+{
+    if ($q == 0) {
+        return $p;
+    } else {
+        return $this-&gt;gcd($q, $p % $q);
+    }
+}
+</pre></div>
+</div>
+<p>Bereken de benadering van <span class="math notranslate nohighlight">\(e\)</span> opnieuw nadat je de relevante methoden in de
+klasse Rational hebt aangepast. Is de benadering van <span class="math notranslate nohighlight">\(e\)</span> verbeterd?</p>
+</section>
+<section id="tot-slot">
+<h3>Tot slot<a class="headerlink" href="#tot-slot" title="Link to this heading">#</a></h3>
+<p>Bedenk dat het niet van belang is hoe de methoden van Rational worden
+geïmplementeerd voor programma’s die deze klasse gebruiken, zolang de
+interface maar gelijk blijft. Dat wil zeggen, zolang de <em>signatuur</em> van de
+methoden (methodenaam, parameters en returntype) gelijk blijft, zijn geen
+wijzigingen op andere lokaties nodig (bijvoorbeeld in <code class="docutils literal notranslate"><span class="pre">approxE</span></code>). Dit is een
+belangrijk voordeel van modulair en objectgeoriënteerd programmeren: de
+clientcode blijft geïsoleerd van de details van de implementatie.</p>
+</section>
+</section>
+<section id="interfaces-en-excepties">
+<h2>Interfaces en excepties<a class="headerlink" href="#interfaces-en-excepties" title="Link to this heading">#</a></h2>
+<section id="de-functie-inttohex">
+<h3>De functie <code class="docutils literal notranslate"><span class="pre">intToHex</span></code><a class="headerlink" href="#de-functie-inttohex" title="Link to this heading">#</a></h3>
+<p>Implementeer de functie <code class="docutils literal notranslate"><span class="pre">intToHex</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">/**</span>
+<span class="x"> * Converts a positive integer to hexadecimal</span>
+<span class="x"> * </span>
+<span class="x"> * @param int $x Positive integer number</span>
+<span class="x"> * @return string containing hexadecimal value</span>
+<span class="x"> */</span>
+<span class="x">function intToHex(int $x): string</span>
+</pre></div>
+</div>
+<p>Maak geen gebruik van reeds aanwezige methodes voor het converteren van
+decimaal naar hexadecimaal. Je hoeft geen rekening te houden met eventueel
+ongeldige waardes van <code class="docutils literal notranslate"><span class="pre">$x</span></code>.</p>
+<p>Een letter genereren aan de hand van een integer-waarde kan als volgt.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$i = 1;</span>
+<span class="x">$c = chr(ord(&#39;A&#39;) + $i); // $c = &#39;B&#39;</span>
+</pre></div>
+</div>
+<p>Je kan de methode testen met onderstaande aanroepen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">echo</span> <span class="n">intToHex</span><span class="p">(</span><span class="mi">128</span><span class="p">),</span> <span class="n">PHP_EOL</span><span class="p">;</span> <span class="o">//</span> <span class="mi">80</span>
+<span class="n">echo</span> <span class="n">intToHex</span><span class="p">(</span><span class="mi">11256099</span><span class="p">),</span> <span class="n">PHP_EOL</span><span class="p">;</span> <span class="o">//</span> <span class="n">ABC123</span>
+<span class="n">echo</span> <span class="n">intToHex</span><span class="p">(</span><span class="mi">0</span><span class="p">),</span> <span class="n">PHP_EOL</span><span class="p">;</span> <span class="o">//</span> <span class="mi">0</span>
+<span class="n">echo</span> <span class="n">intToHex</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">PHP_EOL</span><span class="p">;</span> <span class="o">//</span> <span class="n">Ongeldig</span>
+</pre></div>
+</div>
+</section>
+<section id="de-functie-hextoint">
+<h3>De functie <code class="docutils literal notranslate"><span class="pre">hexToInt</span></code><a class="headerlink" href="#de-functie-hextoint" title="Link to this heading">#</a></h3>
+<p>Implementeer de functie <code class="docutils literal notranslate"><span class="pre">hexToInt</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">/**</span>
+<span class="x"> * Converts a hexadecimal number to integer</span>
+<span class="x"> *</span>
+<span class="x"> * @param string $s String containing hexadecimal number</span>
+<span class="x"> * @return int value of hexadecimal number</span>
+<span class="x"> */</span>
+<span class="x">function hexToInt(string $s): int</span>
+</pre></div>
+</div>
+<p>Maak geen gebruik van reeds aanwezige  methodes voor het converteren van
+hexadecimaal naar decimaal. Je hoeft geen rekening te houden met eventueel
+ongeldige waardes van <code class="docutils literal notranslate"><span class="pre">$s</span></code>.</p>
+<p>Een integer-waarde genereren aan de hand van een letter kan als volgt.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$c = &#39;B&#39;;</span>
+<span class="x">$i = ord($c) - ord(&#39;A&#39;); // $i = 1</span>
+</pre></div>
+</div>
+<p>Je kan een afzonderlijk karakter uit een string halen door de string als een
+array te indexeren.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$s = &#39;ABC&#39;;
+$c = $s[1]; // $c = &#39;B&#39;
+</pre></div>
+</div>
+<p>Je kan de methode testen met onderstaande aanroepen.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">echo hexToInt(&#39;100&#39;), PHP_EOL; // 256</span>
+<span class="x">echo hexToInt(&#39;EFFE&#39;), PHP_EOL; // 61438</span>
+<span class="x">echo hexToInt(&#39;1A0&#39;), PHP_EOL; // 416</span>
+<span class="x">echo hexToInt(&#39;0&#39;), PHP_EOL; // 0</span>
+<span class="x">echo hexToInt(&#39;&#39;), PHP_EOL; // Ongeldig</span>
+<span class="x">echo hexToInt(&#39;PHP&#39;), PHP_EOL; // Ongeldig</span>
+</pre></div>
+</div>
+</section>
+<section id="excepties">
+<h3>Excepties<a class="headerlink" href="#excepties" title="Link to this heading">#</a></h3>
+<p>Welke argumenten voor de methodes <code class="docutils literal notranslate"><span class="pre">intToHex</span></code> en <code class="docutils literal notranslate"><span class="pre">hexToInt</span></code> zijn niet geldig?
+Test de gemaakte methodes met ongeldige waardes. Wat gebeurt er?</p>
+<p>De gevolgen van ongeldige argumenten zijn afhankelijk van jouw implementatie.
+Het kan zijn dat het ongeldige argument genegeerd wordt (met een
+onvoorspelbaar resultaat) of dat er een fout (exceptie) verschijnt.</p>
+<p>Pas je code aan zodat deze een exceptie gooit in het geval van een ongeldig
+argument. Een ongeldig argument kan een ongeldige waarde zijn, maar ook een
+ongeldig karakter als het gaat om een string.</p>
+<p>Kies uit de volgende excepties: <code class="docutils literal notranslate"><span class="pre">Exception</span></code>, <code class="docutils literal notranslate"><span class="pre">Error</span></code>, <code class="docutils literal notranslate"><span class="pre">Throwable</span></code>,
+<code class="docutils literal notranslate"><span class="pre">DomainException</span></code>, <code class="docutils literal notranslate"><span class="pre">IllegalArgumentException</span></code>. Welke van deze excepties
+gebruik je, en waarom?</p>
+</section>
+<section id="interface-stack">
+<h3>Interface <code class="docutils literal notranslate"><span class="pre">Stack</span></code><a class="headerlink" href="#interface-stack" title="Link to this heading">#</a></h3>
+<p>Implementeer een klasse die de volgende interface implementeert.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">interface Stack</span>
+<span class="x">{</span>
+<span class="x">    /**</span>
+<span class="x">     * Voegt een item toe aan de stack</span>
+<span class="x">     */</span>
+<span class="x">    public function push(mixed $item): void;</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Verwijdert het laatste item van de stack en geeft het terug</span>
+<span class="x">     */</span>
+<span class="x">    public function pop(): mixed;</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Verwijdert alle items van de stack</span>
+<span class="x">     */</span>
+<span class="x">    public function clear(): void;</span>
+
+<span class="x">    /**</span>
+<span class="x">     * Retourneert true als de stack leeg is</span>
+<span class="x">     */</span>
+<span class="x">    public function isEmpty(): bool;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>De klasse zal gebruik maken van een array om de stack te bewaren, en heeft
+daarom ten minste één instantievariabele.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>private array $items;
+</pre></div>
+</div>
+<p>De klasse heeft ook één constructor die een lege stack initialiseert:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">public</span> <span class="n">function</span> <span class="n">__construct</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Er hoeft nog geen rekening gehouden te worden met fouten als gevolg van
+incorrect gebruik van de stack.</p>
+</section>
+<section id="de-stack-testen">
+<h3>De stack testen<a class="headerlink" href="#de-stack-testen" title="Link to this heading">#</a></h3>
+<p>Test de klasse als volgt; hierbij is $stack een nieuwe instantie van je klasse.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$stack-&gt;push(&#39;Pascal&#39;);</span>
+<span class="x">$stack-&gt;clear();</span>
+<span class="x">$stack-&gt;push(&quot;Python&quot;);</span>
+<span class="x">$stack-&gt;push(&quot;Java&quot;);</span>
+<span class="x">$stack-&gt;push(&quot;C&quot;);</span>
+<span class="x">echo $stack-&gt;pop(), PHP_EOL; // C</span>
+<span class="x">$stack-&gt;push(&quot;PHP&quot;);</span>
+<span class="x">echo $stack-&gt;pop(), PHP_EOL; // PHP</span>
+<span class="x">echo $stack-&gt;pop(), PHP_EOL; // Java</span>
+<span class="x">echo $stack-&gt;isEmpty() ? &#39;true&#39; : &#39;false&#39;, PHP_EOL; // false</span>
+<span class="x">echo $stack-&gt;pop(), PHP_EOL; // Python</span>
+<span class="x">echo $stack-&gt;isEmpty() ? &#39;true&#39; : &#39;false&#39;, PHP_EOL; // true</span>
+<span class="x">echo $stack-&gt;pop(), PHP_EOL; // Deze is te veel...</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Excepties<a class="headerlink" href="#id1" title="Link to this heading">#</a></h3>
+<p>Welke fouten kunnen optreden bij incorrect gebruik van de stack?
+Denk goed na wat er allemaal mis kan gaan. Een voorbeeld is de methode <code class="docutils literal notranslate"><span class="pre">pop</span></code>
+gebruiken terwijl de stack leeg is.</p>
+<p>Let op. Niet elke fout is een probleem. Niet elke ogenschijnlijke fout is
+een probleem. Bijvoorbeeld de methode <code class="docutils literal notranslate"><span class="pre">clear</span></code> aanroepen op een lege stack
+lijkt niet zinvol, maar het levert verder geen enkel probleem op.
+In dat geval is een exceptie niet wenselijk.</p>
+<p>Zorg ervoor dat in geval van fouten een exceptie wordt gegooid met een
+duidelijke foutmelding. Kies zelf geschikte exceptieklassen.</p>
+<p>Maak vervolgens een klasse <code class="docutils literal notranslate"><span class="pre">StackException</span></code> die gebruikt gaat worden voor
+alle excepties die gegooid worden door je implementatie van de interface
+<code class="docutils literal notranslate"><span class="pre">Stack</span></code>. Van welke klasse moet <code class="docutils literal notranslate"><span class="pre">StackException</span></code> overerven om deze correct
+werkend te krijgen?</p>
+<p>Aanbeveling: Maak eerst een kopie van je klasse om de vorige versie te behouden.</p>
+</section>
+<section id="exception-handling">
+<h3>Exception handling<a class="headerlink" href="#exception-handling" title="Link to this heading">#</a></h3>
+<p>Onderstaande code verwijdert alle items van een stack en drukt ze af op het
+scherm, zonder dat bekend is hoe veel items er zijn:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$stack-&gt;push(7);</span>
+<span class="x">$stack-&gt;push(210);</span>
+<span class="x">$stack-&gt;push(-20);</span>
+<span class="x">try {</span>
+<span class="x">    while (true) {</span>
+<span class="x">        echo $stack-&gt;pop(), &quot;\n&quot;;</span>
+<span class="x">    }</span>
+<span class="x">} catch (Exception) { }</span>
+<span class="x">echo &quot;Einde stack\n&quot;;</span>
+</pre></div>
+</div>
+<p>Waarom is het gebruik maken van exception handling in deze situatie niet
+wenselijk?  Herschrijf deze code zodat deze bad practice niet meer voorkomt.</p>
+</section>
+</section>
+<section id="extra-oefeningen">
+<h2>Extra oefeningen<a class="headerlink" href="#extra-oefeningen" title="Link to this heading">#</a></h2>
 <p>Op internet is een veelvoud aan oefenmateriaal te vinden om te oefenen met
-functies in PHP. Hierbij spelen twee aspecten een rol. Aan de ene kant is
-het schrijven van functies een vaardigheid die taalonafhankelijk is, waar
-het gaat om het selecteren en toepassen van het juiste algoritme. Dit kan
-bijvoorbeeld geoefend worden op de site van
-<a class="reference external" href="https://www.w3resource.com/php-exercises/php-function-exercises.php">w3resource</a>.</p>
+functies, objecten en klassen in PHP. Hierbij spelen twee aspecten een rol.
+Aan de ene kant is het schrijven hiervan een vaardigheid die taalonafhankelijk
+is, waar het gaat om het selecteren en toepassen van het juiste algoritme. Dit kan
+bijvoorbeeld geoefend worden op de site van w3resource, waar oefeningen voor
+<a class="reference external" href="https://www.w3resource.com/php-exercises/php-function-exercises.php">functies</a>
+en <a class="reference external" href="https://www.w3resource.com/php-exercises/oop/index.php">objectgeroriënteerd programmeren</a>
+te vinden zijn.</p>
 <p>Aan de andere kant heeft PHP een aantal specifieke functionaliteiten en
-keywords waarmee je kan oefenen. De kata’s over PHP-functies op
-<a class="reference external" href="https://www.codewars.com/collections/php-functions">CodeWars</a> gaan met name
-over dit aspect. Kijk hierbij naar de kata’s over Default Arguments, Pass By
+keywords waarmee je kan oefenen. De kata’s op CodeWars gaant met name over
+dit aspect. Kijk bij de
+<a class="reference external" href="https://www.codewars.com/collections/php-functions">functiekata’s</a>
+naar de kata’s over Default Arguments, Pass By
 Reference, Splat Operator, Type Declarations en Return Type Declarations. De
 overige kata’s op deze pagina gaan over aspecten van PHP die (nog) niet
-besproken zijn.</p>
-</section>
-<section id="object-georienteerd-programmeren">
-<h2>Object-georiënteerd programmeren<a class="headerlink" href="#object-georienteerd-programmeren" title="Link to this heading">#</a></h2>
-<p>Ook om te leren werken met objecten en klassen zijn voldoende bronnen op
-internet. Ook hier kan je kijken op de website van
-<a class="reference external" href="https://www.w3resource.com/php-exercises/oop/index.php">w3resource</a> en bij
-de kata’s over object-georiënteerd programmeren in PHP op
-<a class="reference external" href="https://www.codewars.com/collections/object-oriented-php">CodeWars</a>. De
-laatste kata in deze reeks, Objects on the Fly, gaat over anonieme klassen;
+besproken zijn. Bij de
+<a class="reference external" href="https://www.codewars.com/collections/object-oriented-php">kata’s over objectgeoriënteerd programmeren</a>
+gaat de laatste kata in de reeks, Objects on the Fly, over anonieme klassen;
 dit is niet besproken. De overige kata’s gaan over onderwerpen die wel
 besproken zijn.</p>
 </section>
@@ -518,8 +965,33 @@ besproken zijn.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functies">Functies</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#object-georienteerd-programmeren">Object-georiënteerd programmeren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#functies-en-types">Functies en types</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwadraten-berekenen">Kwadraten berekenen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwadraten-by-reference">Kwadraten by reference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gemiddelde-van-meerdere-argumenten">Gemiddelde van meerdere argumenten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stringinterpolatie">Stringinterpolatie</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#zoeken-in-json-formaat">Zoeken in JSON-formaat</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objecten-en-klassen">Objecten en klassen</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rationale-getallen">Rationale getallen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-klasse-rational">De klasse <code class="docutils literal notranslate"><span class="pre">Rational</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rational-gebruiken"><code class="docutils literal notranslate"><span class="pre">Rational</span></code> gebruiken</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#rational-verbeteren"><code class="docutils literal notranslate"><span class="pre">Rational</span></code> verbeteren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tot-slot">Tot slot</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interfaces-en-excepties">Interfaces en excepties</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-functie-inttohex">De functie <code class="docutils literal notranslate"><span class="pre">intToHex</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-functie-hextoint">De functie <code class="docutils literal notranslate"><span class="pre">hexToInt</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#excepties">Excepties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#interface-stack">Interface <code class="docutils literal notranslate"><span class="pre">Stack</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#de-stack-testen">De stack testen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Excepties</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#exception-handling">Exception handling</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#extra-oefeningen">Extra oefeningen</a></li>
 </ul>
   </nav></div>
 

@@ -62,6 +62,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = '1.1-php/oefening';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
@@ -184,9 +186,6 @@
 <li class="toctree-l1"><a class="reference internal" href="strings.html">Strings</a></li>
 <li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Oefeningen</a></li>
-
-
-
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
 <ul class="nav bd-sidenav">
@@ -409,12 +408,30 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Oefeningen</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maak-een-statische-pagina-homepage">1. Maak een statische pagina (homepage)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maak-een-dynamische-pagina-boekpagina">2. Maak een dynamische pagina (boekpagina)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabelen-en-operatoren">Variabelen en operatoren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toekennen-en-printen">Toekennen en printen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meer-toekennen-en-printen">Meer toekennen en printen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waarde-van-kwadratische-formule">Waarde van kwadratische formule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waarden-opnieuw-toewijzen-aan-variabelen">Waarden opnieuw toewijzen aan variabelen</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings-lussen-en-keuzes">Strings, lussen en keuzes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-checker">Order checker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tanken-of-scheuren">Tanken of scheuren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#millenniumbug">Millenniumbug</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abc">ABC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dubbelwoorden">Dubbelwoorden</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schaakstukken">Schaakstukken</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gemiddelde-berekenen">Gemiddelde berekenen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwadraten">Kwadraten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meer-kwadraten">Meer kwadraten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elementen-tellen">Elementen tellen</a></li>
+</ul>
+</li>
+</ul>
             </nav>
         </div>
     </div>
@@ -427,16 +444,229 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="oefeningen">
 <h1>Oefeningen<a class="headerlink" href="#oefeningen" title="Link to this heading">#</a></h1>
-<p>[TODO]</p>
+<section id="variabelen-en-operatoren">
+<h2>Variabelen en operatoren<a class="headerlink" href="#variabelen-en-operatoren" title="Link to this heading">#</a></h2>
+<section id="toekennen-en-printen">
+<h3>Toekennen en printen<a class="headerlink" href="#toekennen-en-printen" title="Link to this heading">#</a></h3>
+<p>Schrijf een programma waarin drie variabelen <code class="docutils literal notranslate"><span class="pre">$hours_worked</span></code>, <code class="docutils literal notranslate"><span class="pre">$pay_rate</span></code> en
+<code class="docutils literal notranslate"><span class="pre">$tax_rate</span></code> voorkomen. Deze variabelen moeten respectievelijke de waardes 40,
+10 en 0.10 krijgen. Druk nu het aantal gewerkte uren, het totale salaris en
+het totale belastingbedrag af. Je kan het totale salaris berekenen door
+<span class="math notranslate nohighlight">\(hours_worked te vermenigvuldigen met `\)</span>pay_rate<code class="docutils literal notranslate"><span class="pre">,</span> <span class="pre">en</span> <span class="pre">het</span> <span class="pre">totale</span>&#160; <span class="pre">belastingbedrag</span> <span class="pre">door</span> <span class="pre">dit</span> <span class="pre">resultaat</span> <span class="pre">te</span> <span class="pre">vermenigvuldigen</span> <span class="pre">met</span> </code>$tax_rate`. Het
+resultaat moet er als volgt uitzien, waarbij de getallen natuurlijk
+berekend moeten worden.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hours</span> <span class="n">Worked</span><span class="p">:</span> <span class="mi">40</span>
+<span class="n">Pay</span> <span class="n">Amount</span>  <span class="p">:</span> <span class="mi">400</span>
+<span class="n">Tax</span> <span class="n">Amount</span>  <span class="p">:</span> <span class="mi">40</span>
+</pre></div>
+</div>
+<p>Je kan je programma uitvoeren met het commando <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">bestandsnaam.php</span></code>, of
+door in PhpStorm op het groene playknopje (rechtsboven) te klikken.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="maak-een-statische-pagina-homepage">
-<h1>1. Maak een statische pagina (homepage)<a class="headerlink" href="#maak-een-statische-pagina-homepage" title="Link to this heading">#</a></h1>
+<section id="meer-toekennen-en-printen">
+<h3>Meer toekennen en printen<a class="headerlink" href="#meer-toekennen-en-printen" title="Link to this heading">#</a></h3>
+<p>Pas het vorige script zo aan dat de variabele <code class="docutils literal notranslate"><span class="pre">$hours_worked</span></code> de waarde
+<code class="docutils literal notranslate"><span class="pre">&quot;40&quot;</span></code> krijgt (waarbij je de aanhalingstekens letterlijk overneemt in de
+code). Kijk wat nu de uitvoer is van het script. Gebruik vervolgens de
+waarde <code class="docutils literal notranslate"><span class="pre">&quot;40x&quot;</span></code> en kijk nu wat de uitvoer is. Gebruik ten slotte de waarde
+<code class="docutils literal notranslate"><span class="pre">&quot;x40&quot;</span></code> en kijk weer wat de uitvoer is.</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="maak-een-dynamische-pagina-boekpagina">
-<h1>2. Maak een dynamische pagina (boekpagina)<a class="headerlink" href="#maak-een-dynamische-pagina-boekpagina" title="Link to this heading">#</a></h1>
+<section id="waarde-van-kwadratische-formule">
+<h3>Waarde van kwadratische formule<a class="headerlink" href="#waarde-van-kwadratische-formule" title="Link to this heading">#</a></h3>
+<p>Schrijf een programma dat de waarde van de formule <span class="math notranslate nohighlight">\(3x^2-8x+4\)</span> berekent.
+Gebruik hierbij een variabele <code class="docutils literal notranslate"><span class="pre">$x</span></code> en ken hier een waarde aan toe. Schrijf
+een statement dat een waarde berekent voor de vergelijking en sla het
+resultaat op in een andere variabele. Druk tenslotte het resultaat af,
+bijvoorbeeld als volgt.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Voor</span> <span class="n">X</span> <span class="o">=</span> <span class="mi">4</span> <span class="ow">is</span> <span class="n">de</span> <span class="n">waarde</span> <span class="mi">20</span>
+</pre></div>
+</div>
+<p>Voer het programma uit met verschillende waarden voor <code class="docutils literal notranslate"><span class="pre">$x</span></code> (bewerk het
+programma voor elke waarde van <code class="docutils literal notranslate"><span class="pre">$x</span></code>) en onderzoek het resultaat. Gebruik
+waarden met decimalen, grote waarden, kleine waarden, negatieve waarden en
+nul. Als je op zou lossen voor welke waarden van <code class="docutils literal notranslate"><span class="pre">$x</span></code> deze formule 0 is, zou
+je vinden dat dit zo is als <code class="docutils literal notranslate"><span class="pre">$x</span></code> gelijk is aan 2 of aan 2/3. Probeer deze
+waarden voor $x. Zijn de resultaten precies goed?</p>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>3.<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<section id="waarden-opnieuw-toewijzen-aan-variabelen">
+<h3>Waarden opnieuw toewijzen aan variabelen<a class="headerlink" href="#waarden-opnieuw-toewijzen-aan-variabelen" title="Link to this heading">#</a></h3>
+<p>Wijzig het vorige programma zodanig dat in één run van het programma de
+waarde van de kwadratische functie wordt berekend en uitgeschreven voor
+drie verschillende waarden van <code class="docutils literal notranslate"><span class="pre">$x</span></code>: 0, 2 en 4 (of drie waarden naar keuze).</p>
+<p>Schrijf het programma met slechts twee variabelen, <code class="docutils literal notranslate"><span class="pre">$x</span></code> en <code class="docutils literal notranslate"><span class="pre">$value</span></code> (de
+uitkomst van de formule voor $x). Dit betekent natuurlijk dat je op
+verschillende plaatsen in het programma verschillende dingen in deze
+variabelen moet zetten.</p>
+</section>
+</section>
+<section id="strings-lussen-en-keuzes">
+<h2>Strings, lussen en keuzes<a class="headerlink" href="#strings-lussen-en-keuzes" title="Link to this heading">#</a></h2>
+<section id="order-checker">
+<h3>Order checker<a class="headerlink" href="#order-checker" title="Link to this heading">#</a></h3>
+<p>Bob’s IJzerwaren Discounter rekent met de volgende prijzen:</p>
+<ul class="simple">
+<li><p>5 cent per bout</p></li>
+<li><p>3 cent per moer</p></li>
+<li><p>1 cent per sluitring</p></li>
+</ul>
+<p>Schrijf een functie die het aantal bouten, moeren en sluitringen in een
+aankoop als parameters meekrijgt en dan het totaal berekent en afdrukt.</p>
+<p>Als extra functie controleert het programma de bestelling. Een correcte
+bestelling moet</p>
+<ul class="simple">
+<li><p>minstens evenveel moeren als bouten bevatten</p></li>
+<li><p>minstens tweemaal zoveel sluitringen als bouten bevatten</p></li>
+</ul>
+<p>Als dit niet het geval is dan heeft de bestelling een fout. Bij een fout
+schrijft het programma <code class="docutils literal notranslate"><span class="pre">Controleer</span> <span class="pre">de</span> <span class="pre">bestelling:</span> <span class="pre">te</span> <span class="pre">weinig</span> <span class="pre">moeren</span></code> of
+<code class="docutils literal notranslate"><span class="pre">Controleer</span> <span class="pre">de</span> <span class="pre">bestelling:</span> <span class="pre">te</span> <span class="pre">weinig</span> <span class="pre">sluitringen</span></code>, al naar gelang het geval.
+Beide foutmeldingen worden geschreven als de bestelling beide fouten heeft.
+Als er geen fouten zijn, schrijft het programma <code class="docutils literal notranslate"><span class="pre">Bestelling</span> <span class="pre">is</span> <span class="pre">OK</span></code>. In alle
+gevallen wordt de totaalprijs in centen (van het opgegeven aantal stuks)
+uitgeschreven. Als bijvoorbeeld het aantal bouten 12, het aantal moeren 8
+en het aantal ringen 24 is moet het volgende worden afgedrukt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Controleer</span> <span class="n">de</span> <span class="n">bestelling</span><span class="p">:</span> <span class="n">te</span> <span class="n">weinig</span> <span class="n">moeren</span>
+
+<span class="n">Totale</span> <span class="n">kosten</span><span class="p">:</span> <span class="mi">108</span>
+</pre></div>
+</div>
+</section>
+<section id="tanken-of-scheuren">
+<h3>Tanken of scheuren<a class="headerlink" href="#tanken-of-scheuren" title="Link to this heading">#</a></h3>
+<p>Het bekende Al’s Last Chance Gas pompstation ligt aan Route 190 aan de rand
+van Death Valley, Verenigde <a class="reference external" href="http://Staten.Er">Staten.Er</a> is geen ander benzinestation in een
+omtrek van 320 kilometer. Schrijf een functie om bestuurders te helpen
+beslissen of ze moeten tanken. De functie krijgt de volgende parameters mee:</p>
+<ul class="simple">
+<li><p>De inhoud van de benzinetank, in liters.</p></li>
+<li><p>De aanduiding van de benzinemeter in procenten (vol = 100, driekwart vol
+= 75, enzovoort).</p></li>
+<li><p>Het aantal kilometer per liter van de auto.</p></li>
+</ul>
+<p>Het programma schrijft dan <code class="docutils literal notranslate"><span class="pre">Tanken!</span></code> of <code class="docutils literal notranslate"><span class="pre">Rijd</span> <span class="pre">door</span></code> afhankelijk van of de
+auto de 320 kilometer kan halen met de resterende benzine in de tank. Als
+bijvoorbeeld de tankinhoud 48 liter is, de benzinemeter op 30% staat en de
+auto 15 kilometers per liter rijdt, moet het volgende worden afgedrukt:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Tanken!
+</pre></div>
+</div>
+</section>
+<section id="millenniumbug">
+<h3>Millenniumbug<a class="headerlink" href="#millenniumbug" title="Link to this heading">#</a></h3>
+<p>Schrijf een functie waar een geboortejaar, met twee cijfers, en het huidige
+jaar, ook met twee cijfers, wordt afgedrukt. De functie moet de leeftijd
+correct in jaren teruggeven.</p>
+<p>Als bijvoorbeeld het geboortejaar 62 is en het huidige jaar 99, is de
+leeftijd 37. De functie moet bepalen of een tweecijferige waarde zoals 62
+overeenkomt met een jaar in de 20e eeuw (1962) of in de 21e eeuw (2062).</p>
+<p>Het getal 00 kan bijvoorbeeld gebruikt worden om het jaar 2000 aan te
+duiden. Als het geboortejaar 62 is en het huidige jaar 00, dus 2000, is de
+leeftijd 38.</p>
+<p>Veronderstel verder dat leeftijden niet negatief zijn, dus als het
+geboortejaar 27 is en het huidige jaar 07, is de leeftijd niet -20 maar 80.
+Een ander randgeval is bijvoorbeeld de situatie waar het geboortejaar 01 is
+en het huidige jaar 07. Dan kan de leeftijd 6 of 106 zijn. Neem dan aan dat
+de leeftijd altijd kleiner dan 100 zal zijn.</p>
+</section>
+<section id="abc">
+<h3>ABC<a class="headerlink" href="#abc" title="Link to this heading">#</a></h3>
+<p>Een woord is zogezegd <em>abecedarisch</em> als de letters in het woord in
+alfabetische volgorde voorkomen. De volgende woorden zijn bijvoorbeeld
+allemaal abecedarische woorden:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">accent</span><span class="p">,</span> <span class="n">accept</span><span class="p">,</span> <span class="n">afkoop</span><span class="p">,</span> <span class="n">afloop</span><span class="p">,</span> <span class="n">agnost</span><span class="p">,</span> <span class="n">begijn</span><span class="p">,</span> <span class="n">bekort</span><span class="p">,</span> <span class="n">beloop</span><span class="p">,</span> <span class="n">bemost</span><span class="p">,</span> 
+<span class="n">chintz</span><span class="p">,</span> <span class="n">chloor</span><span class="p">,</span> <span class="n">dekkop</span><span class="p">,</span> <span class="n">dekmos</span><span class="p">,</span> <span class="n">dikkop</span><span class="p">,</span> <span class="n">dikoor</span><span class="p">,</span> <span class="n">eenoor</span><span class="p">,</span> <span class="n">effort</span><span class="p">,</span> <span class="n">floppy</span><span class="p">,</span> 
+<span class="n">glossy</span><span class="p">,</span> <span class="n">abelmos</span><span class="p">,</span> <span class="n">accijns</span><span class="p">,</span> <span class="n">beknopt</span><span class="p">,</span> <span class="n">bennoot</span><span class="p">,</span> <span class="n">bijknop</span><span class="p">,</span> <span class="n">bijloop</span><span class="p">,</span> <span class="n">bijnoot</span><span class="p">,</span> 
+<span class="n">deinoor</span><span class="p">,</span> <span class="n">deeghouw</span><span class="p">,</span> <span class="n">knoop</span>
+</pre></div>
+</div>
+<p>Schrijf een PHP-script waarin je de GET-parameter <code class="docutils literal notranslate"><span class="pre">s</span></code> uitleest die een woord
+bevat en een boolean afdrukt die aangeeft of het woord abecedarisch is. Je
+kan de GET-parameter uitlezen mwt <code class="docutils literal notranslate"><span class="pre">$_GET['s']</span></code>. Draai dit script in een
+webserver met <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">-S</span> <span class="pre">localhost:8000</span></code> en roep het aan via
+<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/bestand.php?s=woord</span></code>.</p>
+</section>
+<section id="dubbelwoorden">
+<h3>Dubbelwoorden<a class="headerlink" href="#dubbelwoorden" title="Link to this heading">#</a></h3>
+<p>Men zegt dat een woord een <em>dubbelwoord</em> is als elke letter die voorkomt in
+het woord precies twee keer voorkomt. Hier zijn enkele voorbeelden van
+dubbelwoorden:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dodo</span><span class="p">,</span> <span class="n">enen</span><span class="p">,</span> <span class="n">jojo</span><span class="p">,</span> <span class="n">lala</span><span class="p">,</span> <span class="n">mama</span><span class="p">,</span> <span class="n">mimi</span><span class="p">,</span> <span class="n">papa</span><span class="p">,</span> <span class="n">bonbon</span><span class="p">,</span> <span class="n">dumdum</span><span class="p">,</span> <span class="n">inging</span><span class="p">,</span> <span class="n">kerker</span><span class="p">,</span> 
+<span class="n">tamtam</span><span class="p">,</span> <span class="n">tenten</span><span class="p">,</span> <span class="n">verver</span><span class="p">,</span> <span class="n">beriberi</span><span class="p">,</span> <span class="n">couscous</span><span class="p">,</span> <span class="n">genegene</span><span class="p">,</span> <span class="n">taaitaai</span>
+</pre></div>
+</div>
+<p>Ook veel (maar lang niet alle) palindromen zijn dubbelwoorden:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">hannah</span><span class="p">,</span> <span class="n">neen</span><span class="p">,</span> <span class="n">raar</span><span class="p">,</span> <span class="n">redder</span><span class="p">,</span> <span class="n">parteretrap</span>
+</pre></div>
+</div>
+<p>Schrijf een PHP-script waarin je de GET-parameter <code class="docutils literal notranslate"><span class="pre">s</span></code> uitleest die een woord
+bevat en een boolean afdrukt die aangeeft of het een dubbelwoord is. Draai
+dit script in een webserver.</p>
+<p>Om hoofdletters te negeren, kan je de functie <code class="docutils literal notranslate"><span class="pre">strtolower</span></code> gebruiken die
+een string in kleine letters omzet, voordat je deze controleert.</p>
+</section>
+<section id="schaakstukken">
+<h3>Schaakstukken<a class="headerlink" href="#schaakstukken" title="Link to this heading">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>♔ ♕ ♖ ♗ ♘ ♙ ♚ ♛ ♜ ♝ ♞ ♟
+</pre></div>
+</div>
+<p>In <a class="reference external" href="https://home.unicode.org">Unicode</a> worden karakters door numerieke
+<em>code points</em> gerepresenteerd. Schaakstukken zijn ook
+<a class="reference external" href="https://en.wikipedia.org/wiki/Chess_symbols_in_Unicode">gedefinieerd</a> en
+kunnen als karakters worden gebruikt.  Het is een oplopende reeks die begint
+met 9812 (witte koning) en eindigt op 9823 (zwarte pion). Doorloop deze
+reeks met een lus en print elke waarde als een Unicode-karakter. Je kan
+hiervoor de functie
+<a class="reference external" href="https://www.php.net/manual/en/function.mb-chr.php"><code class="docutils literal notranslate"><span class="pre">mb_chr</span></code></a> gebruiken.</p>
+</section>
+</section>
+<section id="arrays">
+<h2>Arrays<a class="headerlink" href="#arrays" title="Link to this heading">#</a></h2>
+<section id="gemiddelde-berekenen">
+<h3>Gemiddelde berekenen<a class="headerlink" href="#gemiddelde-berekenen" title="Link to this heading">#</a></h3>
+<p>Schrijf een PHP-script waarin je de GET-parameter <code class="docutils literal notranslate"><span class="pre">x</span></code> uitleest die een array
+met getallen bevat en het gemiddelde van deze getallen afdrukt. Je
+kan de array uitlezen en omzetten naar integers met onderstaand snippet.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = array_map(&#39;intval&#39;, $_GET[&#39;x&#39;]);</span>
+</pre></div>
+</div>
+<p>Je mag aannemen
+dat de array niet leeg is; dit hoef je niet te controleren. Gebruik een lus
+om de getallen in de array op te tellen, en een standaardfunctie om het
+aantal getallen te bepalen.</p>
+<p>Draai dit script in een
+webserver met <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">-S</span> <span class="pre">localhost:8000</span></code> en roep het aan via bijvoorbeeld
+<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/bestand.php?x[]=1&amp;x[]=2&amp;x[]=3</span></code>.</p>
+</section>
+<section id="kwadraten">
+<h3>Kwadraten<a class="headerlink" href="#kwadraten" title="Link to this heading">#</a></h3>
+<p>Schrijf een PHP-script waarin je de GET-parameter <code class="docutils literal notranslate"><span class="pre">x</span></code> uitleest die een array
+met getallen bevat en een nieuwe array afdrukt waar elk getal gekwadrateerd
+is. Maak hierbij gebruik van een lege array waarin je de kwadraten zet, en
+gebruik een lus om de nieuwe array te vullen. Merk op dat als je <code class="docutils literal notranslate"><span class="pre">echo</span></code>
+gebruikt om een array af te drukken je de tekst <code class="docutils literal notranslate"><span class="pre">Array</span></code> zult zien, maak
+daarom gebruik van <code class="docutils literal notranslate"><span class="pre">var_dump</span></code>.</p>
+</section>
+<section id="meer-kwadraten">
+<h3>Meer kwadraten<a class="headerlink" href="#meer-kwadraten" title="Link to this heading">#</a></h3>
+<p>Schrijf een PHP-script waarin je de GET-parameter <code class="docutils literal notranslate"><span class="pre">x</span></code> uitleest die een array
+met getallen bevat en dezelfde array afdrukt waarbij elk getal gekwadrateerd
+is. Maak hierbij geen gebruik van een lege array; in plaats daarvan
+moet je een lus gebruiken om de elementen van de originele array één voor
+één te vervangen door hun kwadraat. Je mag hierbij aannemen dat de array
+niet associatief is, dus dat de sleutels van de array oplopende getallen
+vanaf 0 zijn.</p>
+</section>
+<section id="elementen-tellen">
+<h3>Elementen tellen<a class="headerlink" href="#elementen-tellen" title="Link to this heading">#</a></h3>
+<p>Schrijf een PHP-script waarin je de GET-parameter <code class="docutils literal notranslate"><span class="pre">x</span></code> uitleest die een array
+bevat en druk een associatieve array af waarbij elk van de elementen van de
+originele array als sleutel in het resultaat terugkomt, en de bijbehorende
+waarde het aantal voorkomens van deze sleutel in de oorspronkelijke array is.
+Je kan in dit geval rechtstreeks de waarde <code class="docutils literal notranslate"><span class="pre">$_GET['x']</span></code> gebruiken.</p>
+<p>Als je bijvoorbeeld de array <code class="docutils literal notranslate"><span class="pre">['a',</span> <span class="pre">'a',</span> <span class="pre">'b',</span> <span class="pre">'a',</span> <span class="pre">'c',</span> <span class="pre">'b']</span></code> meegeeft, moet
+het resultaat de associatieve array <code class="docutils literal notranslate"><span class="pre">['a'</span> <span class="pre">=&gt;</span> <span class="pre">3,</span> <span class="pre">'b'</span> <span class="pre">=&gt;</span> <span class="pre">2,</span> <span class="pre">'c'</span> <span class="pre">=&gt;</span> <span class="pre">1]</span></code> zijn.</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -504,12 +734,30 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Oefeningen</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maak-een-statische-pagina-homepage">1. Maak een statische pagina (homepage)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#maak-een-dynamische-pagina-boekpagina">2. Maak een dynamische pagina (boekpagina)</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">3.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variabelen-en-operatoren">Variabelen en operatoren</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#toekennen-en-printen">Toekennen en printen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meer-toekennen-en-printen">Meer toekennen en printen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waarde-van-kwadratische-formule">Waarde van kwadratische formule</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#waarden-opnieuw-toewijzen-aan-variabelen">Waarden opnieuw toewijzen aan variabelen</a></li>
 </ul>
-
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings-lussen-en-keuzes">Strings, lussen en keuzes</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#order-checker">Order checker</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tanken-of-scheuren">Tanken of scheuren</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#millenniumbug">Millenniumbug</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#abc">ABC</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dubbelwoorden">Dubbelwoorden</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#schaakstukken">Schaakstukken</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arrays">Arrays</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gemiddelde-berekenen">Gemiddelde berekenen</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kwadraten">Kwadraten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#meer-kwadraten">Meer kwadraten</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#elementen-tellen">Elementen tellen</a></li>
+</ul>
+</li>
+</ul>
   </nav></div>
 
 </div></div>
