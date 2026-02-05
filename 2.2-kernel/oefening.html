@@ -406,7 +406,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoloader-schrijven">Autoloader schrijven</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoloader">Autoloader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composer">Composer</a></li>
 </ul>
             </nav>
         </div>
@@ -420,9 +421,59 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="oefeningen">
 <h1>Oefeningen<a class="headerlink" href="#oefeningen" title="Link to this heading">#</a></h1>
-<section id="autoloader-schrijven">
-<h2>Autoloader schrijven<a class="headerlink" href="#autoloader-schrijven" title="Link to this heading">#</a></h2>
-<p>[TODO]</p>
+<section id="autoloader">
+<h2>Autoloader<a class="headerlink" href="#autoloader" title="Link to this heading">#</a></h2>
+<p>Schrijf een functie <code class="docutils literal notranslate"><span class="pre">autoload</span></code> die een enkele stringparameter meekrijgt en
+deze afdrukt. Registreer deze functie vervolgens als autoloader met
+<code class="docutils literal notranslate"><span class="pre">spl_autoload_register</span></code>. Kijk wat er gebeurt als je een niet-bestaande
+klasse probeert te laden.</p>
+<p>Maak nu een paar klassen aan, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">TestA</span></code> en <code class="docutils literal notranslate"><span class="pre">TestB</span></code>, die in
+corresponderende PHP-bestanden <code class="docutils literal notranslate"><span class="pre">TestA.php</span></code> en <code class="docutils literal notranslate"><span class="pre">TestB.php</span></code> staan. Maak ook
+een klasse met een namespace, bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">App\Test.php</span></code>, aan in een
+corresponderend PHP-bestand, hier <code class="docutils literal notranslate"><span class="pre">Test.php</span></code> in de directory <code class="docutils literal notranslate"><span class="pre">App</span></code>.</p>
+<p>Pas vervolgens de autoloaderfunctie aan zodat deze de meegegeven klassenaa
+omzet naar een bestandsnaam volgens de
+<a class="reference external" href="https://www.php-fig.org/psr/psr-4/">PSR-4-standaard</a>. De autoloader
+moet vervolgens dit bestand inladen met <code class="docutils literal notranslate"><span class="pre">require_once</span></code>. Gebruik deze
+autoloader om instanties te maken van de klassen die je hiervoor gemaakt
+hebt, zonder handmatig de bestanden waar die klassen instaan in te laden.</p>
+</section>
+<section id="composer">
+<h2>Composer<a class="headerlink" href="#composer" title="Link to this heading">#</a></h2>
+<p>Maak voor deze opdracht een nieuw PHP-project aan. Voeg een bestand
+<code class="docutils literal notranslate"><span class="pre">composer.json</span></code> toe waarin je het package <code class="docutils literal notranslate"><span class="pre">symfony/finder</span></code> vereist. Het
+versienummer hiervan moet ten minste 8.0.1 zijn, maar versie 9 mag niet
+gebruikt worden. Definieer in dit bestand ook een regel voor de autoloader die
+inhoudt dat alle klassen in de namespace <code class="docutils literal notranslate"><span class="pre">App</span></code> gezocht moeten worden in de
+directory <code class="docutils literal notranslate"><span class="pre">src</span></code>. Gebruik hiervoor de autoloaderstijl PSR-4. Gebruik Composer
+om deze library en autoloader te installeren.</p>
+<p>Maak vervolgens een directory <code class="docutils literal notranslate"><span class="pre">src</span></code> met daarnaast een
+bestand <code class="docutils literal notranslate"><span class="pre">FinderTest.php</span></code>. Dat bestand moet een klasse <code class="docutils literal notranslate"><span class="pre">App\FinderTest</span></code>
+bevatten; het bestand moet dus beginnen met de namespacedeclaratie
+<code class="docutils literal notranslate"><span class="pre">namespace</span> <span class="pre">App</span></code> en de klassedeclaratie <code class="docutils literal notranslate"><span class="pre">class</span> <span class="pre">FinderTest</span></code>. In deze klasse
+moet een enkele statische methode <code class="docutils literal notranslate"><span class="pre">test</span></code> met een enkele parameter <code class="docutils literal notranslate"><span class="pre">$dir</span></code> staan,
+die onderstaande code bevat.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$finder = new Finder();</span>
+<span class="x">$finder-&gt;files()-&gt;in($dir);</span>
+<span class="x">if ($finder-&gt;hasResults()) {</span>
+<span class="x">    foreach ($finder as $file) {</span>
+<span class="x">        echo $file-&gt;getRelativePathname(), PHP_EOL;</span>
+<span class="x">    }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Hiervoor moet je ook een <code class="docutils literal notranslate"><span class="pre">use</span></code>-statement tussen de namespace- en
+klassedeclaratie zetten voor de klasse <code class="docutils literal notranslate"><span class="pre">Symfony\Component\Finder\Finder</span></code>.</p>
+<p>Maak ten slotte een bestand <code class="docutils literal notranslate"><span class="pre">test.php</span></code> in de root van het project. Hierin
+moet je de autoloader van Composer laden en vervolgens de onderstaande
+aanroep van <code class="docutils literal notranslate"><span class="pre">FinderTest::test</span></code> uitvoeren. Zorg dat er een geschikt
+<code class="docutils literal notranslate"><span class="pre">use</span></code>-statement is zodat je de klasse uit de namespace <code class="docutils literal notranslate"><span class="pre">App</span></code> gebruikt.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">FinderTest::test(__DIR__);</span>
+</pre></div>
+</div>
+<p>Als alles werkt, zou je alle bestanden in je project moeten zien, zoals
+<code class="docutils literal notranslate"><span class="pre">test.php</span></code>, <code class="docutils literal notranslate"><span class="pre">composer.json</span></code>, <code class="docutils literal notranslate"><span class="pre">composer.lock</span></code>, <code class="docutils literal notranslate"><span class="pre">src/FinderTest.php</span></code> en alle
+bestanden in de directory <code class="docutils literal notranslate"><span class="pre">vendor</span></code>.</p>
 </section>
 </section>
 
@@ -491,7 +542,8 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoloader-schrijven">Autoloader schrijven</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autoloader">Autoloader</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#composer">Composer</a></li>
 </ul>
   </nav></div>
 
