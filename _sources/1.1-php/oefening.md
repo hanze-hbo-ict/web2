@@ -8,7 +8,7 @@ Schrijf een programma waarin drie variabelen `$hours_worked`, `$pay_rate` en
 `$tax_rate` voorkomen. Deze variabelen moeten respectievelijke de waardes 40, 
 10 en 0.10 krijgen. Druk nu het aantal gewerkte uren, het totale salaris en 
 het totale belastingbedrag af. Je kan het totale salaris berekenen door 
-$hours_worked te vermenigvuldigen met `$pay_rate`, en het totale 
+`$hours_worked` te vermenigvuldigen met `$pay_rate`, en het totale 
 belastingbedrag door dit resultaat te vermenigvuldigen met `$tax_rate`. Het 
 resultaat moet er als volgt uitzien, waarbij de getallen natuurlijk 
 berekend moeten worden.
