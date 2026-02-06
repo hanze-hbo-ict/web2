@@ -65,4 +65,20 @@ Bedenk ten slotte dat je de informatie over het request uit het meegegeven
 argument moet halen, het is niet de bedoeling dat je in de router nog kijkt 
 naar de superglobals.
 
-[TODO koppelen aan kernel]
+## Front controller
+
+Het is de taak van de kernel om uiteindelijk de gevraagde pagina te renderen.
+De front controller moet dan ook de kernel instantiëren en het request 
+doorgeven aan de kernel. De kernel moet vervolgens de router aanroepen om te 
+achterhalen hoe het request uitgevoerd moet worden.
+
+Voeg daarom een front controller `index.php` aan je project toe. In deze 
+front controller moet je de autoloader van Composer laden en een instantie 
+van de kernel maken. Ook moet je een request object maken aan de hand van 
+de superglobals. Je moet vervolgens de kernel een response laten genereren 
+aan de hand van het request en deze response naar de browser sturen.
+
+Binnen de kernel moet je een instantie van de router maken en de router 
+laten bepalen welke controller gebruikt moet worden. Die controller moet je 
+vervolgens aanroepen om een response te maken. Je kan die response 
+vervolgens teruggeven uit de kernel.

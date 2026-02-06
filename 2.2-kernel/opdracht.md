@@ -9,6 +9,15 @@ ieder geval klassen in de namespaces `Framework` en `App` in de directory
 door het commando `composer install` te gebruiken, zoals beschreven in het 
 hoofdstuk over Composer.
 
+Je zult voor het debuggen van je applicatie vaak `var_dump` gebruiken om 
+variabelen te inspecteren. Dit is niet altijd even leesbaar in een browser. 
+Het is daarom toegestaan om de component
+[VarDumper](https://symfony.com/doc/current/components/var_dumper.html)
+van [Symfony](https://symfony.com) te gebruiken, die een aantal extra 
+functionaliteiten biedt om var dumps beter leesbaar te maken. Je kan, als je 
+hiervan gebruik wilt maken, deze in `composer.json` toevoegen aan de 
+afhankelijkheden van je project, bijvoorbeeld met `composer require`.
+
 ## Kernel
 
 Refactor de PHP-scripts die in de document root staan zodat ze gebruik maken 
@@ -28,6 +37,6 @@ interface KernelInterface
 ```
 
 
-Zorg ervoor dat de kernels in het juiste bestand staan zodat de autoloader 
+Zorg ervoor dat de kernels in de juiste bestanden staan zodat de autoloader 
 ze kan vinden en zorg er ook voor dat de bestanden in de document root de 
 autoloader van Composer gebruiken.
