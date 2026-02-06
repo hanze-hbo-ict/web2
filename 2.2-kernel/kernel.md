@@ -6,7 +6,9 @@ superglobals en andere invoer voor de applicatie en zal bovendien alle
 uitvoer die de applicatie genereert als response naar de client sturen. 
 Diepe kennis van HTTP is hier dus niet voor nodig. Enige kennis van het 
 protocol is wel handig, maar dat zal in latere hoofdstukken waar nodig 
-besproken worden.
+besproken worden. Dit kan schematisch als volgt worden weergegeven.
+
+![Architectuurschema met kernel](../images/schema-kernel.png)
 
 In principe kan een PHP-script de hiervoor besproken flow prima uitvoeren. 
 Immers, we hebben al gezien dat als we een php-bestand in de document root 
@@ -134,5 +136,12 @@ waarbij je het daadwerkelijke afhandelen van het request door een abstracte
 methode laat uitvoeren en je in de methode `handle` hier een 
 `try`-`catch`-blok omheen zet.
 
-<!-- TODO architectuurplaatje -->
+We noemen dergelijke gedeelde functionaliteit vaak *middleware*, en zullen 
+nog zien dat hier ook standaardoplossingen voor zijn, waarbij we design 
+patterns toepassen om flexibel te zijn in welke middleware we in welke 
+volgorde willen gebruiken. Als we middleware toevoegen aan de applicatie 
+komt de architectuur er schematisch als volgt uit te zien.
+
+![Architectuur met middelware](../images/schema-middleware.png)
+
 
