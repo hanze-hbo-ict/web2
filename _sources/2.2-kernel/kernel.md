@@ -125,6 +125,14 @@ $kernel = new App\HelloKernel();
 echo $kernel->handle($_GET, $_POST);
 ```
 
-[TODO architectuurplaatje]
+Aangezien je voor elk PHP-script een kernel nodig hebt, maar deze kernels 
+wel bepaald gedrag delen, kan het handig zijn om een abstracte klasse als 
+basis te gebruiken. Je kan hier bijvoorbeeld excepties en fouten afhandelen 
+en een nette foutpagina tonen. Dit kan je doen door gebruik te maken van het
+[template method pattern](https://refactoring.guru/design-patterns/template-method),
+waarbij je het daadwerkelijke afhandelen van het request door een abstracte 
+methode laat uitvoeren en je in de methode `handle` hier een 
+`try`-`catch`-blok omheen zet.
 
-[TODO basiskernel, exceptiehandling e.d.]
+<!-- TODO architectuurplaatje -->
+

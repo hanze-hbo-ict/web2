@@ -530,8 +530,15 @@ van te maken en deze te gebruiken. Als je deze code bijvoorbeeld in
 <span class="k">echo</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">,</span> <span class="nv">$_POST</span><span class="p">);</span>
 </pre></div>
 </div>
-<p>[TODO architectuurplaatje]</p>
-<p>[TODO basiskernel, exceptiehandling e.d.]</p>
+<p>Aangezien je voor elk PHP-script een kernel nodig hebt, maar deze kernels
+wel bepaald gedrag delen, kan het handig zijn om een abstracte klasse als
+basis te gebruiken. Je kan hier bijvoorbeeld excepties en fouten afhandelen
+en een nette foutpagina tonen. Dit kan je doen door gebruik te maken van het
+<a class="reference external" href="https://refactoring.guru/design-patterns/template-method">template method pattern</a>,
+waarbij je het daadwerkelijke afhandelen van het request door een abstracte
+methode laat uitvoeren en je in de methode <code class="docutils literal notranslate"><span class="pre">handle</span></code> hier een
+<code class="docutils literal notranslate"><span class="pre">try</span></code>-<code class="docutils literal notranslate"><span class="pre">catch</span></code>-blok omheen zet.</p>
+<!-- TODO architectuurplaatje -->
 </section>
 </section>
 

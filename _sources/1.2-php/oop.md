@@ -442,6 +442,3 @@ $c = new namespace\Foo(); # verwijst naar Foo\Test
 $d = new namespace\Alias(); # verwijst naar Foo\Alias
 $e = new \Foo(); # verwijst naar Foo (uit de globale namespace)
 ```
-
-
-[TODO null safe operator $a?->b?->c]
