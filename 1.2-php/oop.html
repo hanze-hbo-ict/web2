@@ -435,7 +435,20 @@ gemaakt door gebruik te maken van het keyword <code class="docutils literal notr
 <a class="reference external" href="https://www.php.net/manual/en/language.oop5.decon.php">constructor</a>
 aangeroepen; dit is de methode met de naam <code class="docutils literal notranslate"><span class="pre">__construct</span></code>. Aangezien in PHP
 functies en methoden niet overloaded kunnen worden, kan er maar één
-constructor zijn. Daarnaast kan een klasse methoden en instantievariabelen
+constructor zijn. Bijzonder aan het gebruik van het keyword <code class="docutils literal notranslate"><span class="pre">new</span></code> is dat dit
+ook gevolgd mag worden door een variabele; in dat geval wordt de
+stringwaarde van die variabele als klassenaam gezien en wordt die klasse
+geïnstantieerd. Zo is het effect onderstaand stukje code gelijk aan <code class="docutils literal notranslate"><span class="pre">$obj</span> <span class="pre">=</span>&#160; <span class="pre">new</span> <span class="pre">Test();</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$class = &#39;Test&#39;;</span>
+<span class="x">$obj = new $class();</span>
+</pre></div>
+</div>
+<p>Je kan de naam van een klasse als string krijgen door hier
+<code class="docutils literal notranslate"><span class="pre">::class</span></code> achter te zetten; zo is <code class="docutils literal notranslate"><span class="pre">Test::class</span></code> gelijk aan de string <code class="docutils literal notranslate"><span class="pre">Test</span></code>.
+Dit lijkt hier niet handig, maar we zullen nog zien dat klassen in zogeheten
+namespaces kunnen staan, en dan is dit een goede mogelijkheid om de
+volledige klassenaam te verkrijgen.</p>
+<p>Naast een constructor kan een klasse methoden en instantievariabelen
 bevatten. Instantievariabelen worden binnen een klasse gedeclareerd door
 de variabelenaam met dollarteken te laten voorafgaan door één van de drie
 keywords voor
@@ -488,6 +501,30 @@ gebruikt, bijvoorbeeld <code class="docutils literal notranslate"><span class="p
 <span class="x">        self::staticTest();</span>
 <span class="x">    }</span>
 <span class="x">}</span>
+</pre></div>
+</div>
+<p>Bij complexere objectstructuren, of in situaties waar een object optioneel
+als argument wordt meegegeven en dus ook <code class="docutils literal notranslate"><span class="pre">null</span></code> kan zijn, zul je vaak code
+zien als hieronder.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">if (isset($foo)) {</span>
+<span class="x">    if (isset($foo-&gt;bar)) {</span>
+<span class="x">        $x = $foo-&gt;bar-&gt;baz;</span>
+<span class="x">    } else {</span>
+<span class="x">        $x = null;</span>
+<span class="x">    }</span>
+<span class="x">} else {</span>
+<span class="x">    $x = null;</span>
+<span class="x">}   </span>
+</pre></div>
+</div>
+<p>Dit is natuurlijk erg omslachtig; PHP heeft voor dit geval een speciale
+operator, de
+<a class="reference external" href="https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.nullsafe">nullsafe operator</a>
+<code class="docutils literal notranslate"><span class="pre">?-&gt;</span></code>, die in principe hetzelfde werkt als <code class="docutils literal notranslate"><span class="pre">-&gt;</span></code>, maar waarmee het object alleen
+aangesproken wordt als het niet <code class="docutils literal notranslate"><span class="pre">null</span></code> is; als het wel <code class="docutils literal notranslate"><span class="pre">null</span></code> is, is het
+resultaat van de expressie <code class="docutils literal notranslate"><span class="pre">null</span></code>. Bovenstaande code kan met deze operator
+op de volgende manier veel korter en duidelijker geschreven worden.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$x = $foo?-&gt;bar?-&gt;baz;</span>
 </pre></div>
 </div>
 </section>

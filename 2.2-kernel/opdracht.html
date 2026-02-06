@@ -429,6 +429,14 @@ ieder geval klassen in de namespaces <code class="docutils literal notranslate">
 <code class="docutils literal notranslate"><span class="pre">src</span></code> gezocht worden. Zorg ervoor dat Composer de juiste bestanden genereert
 door het commando <code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">install</span></code> te gebruiken, zoals beschreven in het
 hoofdstuk over Composer.</p>
+<p>Je zult voor het debuggen van je applicatie vaak <code class="docutils literal notranslate"><span class="pre">var_dump</span></code> gebruiken om
+variabelen te inspecteren. Dit is niet altijd even leesbaar in een browser.
+Het is daarom toegestaan om de component
+<a class="reference external" href="https://symfony.com/doc/current/components/var_dumper.html">VarDumper</a>
+van <a class="reference external" href="https://symfony.com">Symfony</a> te gebruiken, die een aantal extra
+functionaliteiten biedt om var dumps beter leesbaar te maken. Je kan, als je
+hiervan gebruik wilt maken, deze in <code class="docutils literal notranslate"><span class="pre">composer.json</span></code> toevoegen aan de
+afhankelijkheden van je project, bijvoorbeeld met <code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">require</span></code>.</p>
 </section>
 <section id="kernel">
 <h2>Kernel<a class="headerlink" href="#kernel" title="Link to this heading">#</a></h2>
@@ -446,7 +454,7 @@ laat de kernels voor verschillnde pagina’s hiervan extenden.</p>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Zorg ervoor dat de kernels in het juiste bestand staan zodat de autoloader
+<p>Zorg ervoor dat de kernels in de juiste bestanden staan zodat de autoloader
 ze kan vinden en zorg er ook voor dat de bestanden in de document root de
 autoloader van Composer gebruiken.</p>
 </section>

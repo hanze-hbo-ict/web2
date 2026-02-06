@@ -408,6 +408,7 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request">Request</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#router">Router</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#front-controller">Front controller</a></li>
 </ul>
             </nav>
         </div>
@@ -477,7 +478,22 @@ slash <code class="docutils literal notranslate"><span class="pre">/</span></cod
 <p>Bedenk ten slotte dat je de informatie over het request uit het meegegeven
 argument moet halen, het is niet de bedoeling dat je in de router nog kijkt
 naar de superglobals.</p>
-<p>[TODO koppelen aan kernel]</p>
+</section>
+<section id="front-controller">
+<h2>Front controller<a class="headerlink" href="#front-controller" title="Link to this heading">#</a></h2>
+<p>Het is de taak van de kernel om uiteindelijk de gevraagde pagina te renderen.
+De front controller moet dan ook de kernel instantiëren en het request
+doorgeven aan de kernel. De kernel moet vervolgens de router aanroepen om te
+achterhalen hoe het request uitgevoerd moet worden.</p>
+<p>Voeg daarom een front controller <code class="docutils literal notranslate"><span class="pre">index.php</span></code> aan je project toe. In deze
+front controller moet je de autoloader van Composer laden en een instantie
+van de kernel maken. Ook moet je een request object maken aan de hand van
+de superglobals. Je moet vervolgens de kernel een response laten genereren
+aan de hand van het request en deze response naar de browser sturen.</p>
+<p>Binnen de kernel moet je een instantie van de router maken en de router
+laten bepalen welke controller gebruikt moet worden. Die controller moet je
+vervolgens aanroepen om een response te maken. Je kan die response
+vervolgens teruggeven uit de kernel.</p>
 </section>
 </section>
 
@@ -548,6 +564,7 @@ naar de superglobals.</p>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#request">Request</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#router">Router</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#front-controller">Front controller</a></li>
 </ul>
   </nav></div>
 

@@ -12,7 +12,24 @@ gemaakt door gebruik te maken van het keyword `new`. Hierbij wordt een
 [constructor](https://www.php.net/manual/en/language.oop5.decon.php)
 aangeroepen; dit is de methode met de naam `__construct`. Aangezien in PHP 
 functies en methoden niet overloaded kunnen worden, kan er maar één 
-constructor zijn. Daarnaast kan een klasse methoden en instantievariabelen 
+constructor zijn. Bijzonder aan het gebruik van het keyword `new` is dat dit 
+ook gevolgd mag worden door een variabele; in dat geval wordt de 
+stringwaarde van die variabele als klassenaam gezien en wordt die klasse 
+geïnstantieerd. Zo is het effect onderstaand stukje code gelijk aan `$obj = 
+new Test();`. 
+
+```php
+$class = 'Test';
+$obj = new $class();
+```
+
+Je kan de naam van een klasse als string krijgen door hier 
+`::class` achter te zetten; zo is `Test::class` gelijk aan de string `Test`. 
+Dit lijkt hier niet handig, maar we zullen nog zien dat klassen in zogeheten 
+namespaces kunnen staan, en dan is dit een goede mogelijkheid om de 
+volledige klassenaam te verkrijgen.
+
+Naast een constructor kan een klasse methoden en instantievariabelen 
 bevatten. Instantievariabelen worden binnen een klasse gedeclareerd door 
 de variabelenaam met dollarteken te laten voorafgaan door één van de drie 
 keywords voor
@@ -70,6 +87,34 @@ class Test {
         self::staticTest();
     }
 }
+```
+
+Bij complexere objectstructuren, of in situaties waar een object optioneel 
+als argument wordt meegegeven en dus ook `null` kan zijn, zul je vaak code 
+zien als hieronder.
+
+```php
+if (isset($foo)) {
+    if (isset($foo->bar)) {
+        $x = $foo->bar->baz;
+    } else {
+        $x = null;
+    }
+} else {
+    $x = null;
+}   
+```
+
+Dit is natuurlijk erg omslachtig; PHP heeft voor dit geval een speciale 
+operator, de
+[nullsafe operator](https://www.php.net/manual/en/language.oop5.basic.php#language.oop5.basic.nullsafe)
+`?->`, die in principe hetzelfde werkt als `->`, maar waarmee het object alleen 
+aangesproken wordt als het niet `null` is; als het wel `null` is, is het 
+resultaat van de expressie `null`. Bovenstaande code kan met deze operator 
+op de volgende manier veel korter en duidelijker geschreven worden.
+
+```php
+$x = $foo?->bar?->baz;
 ```
 
 ## Overerving
