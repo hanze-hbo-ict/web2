@@ -39,7 +39,7 @@ toegestaan; zo zou je eventueel ook het requestobject als parameter aan de
 functie kunnen meegeven. We zullen nog zien dat dit echter niet direct 
 noodzakelijk is om toch over het requestobject te kunnen beschikken.
 
-[TODO architectuurplaatje]
+<!-- TODO architectuurplaatje -->
 
 ## Parameters in de URL
 
