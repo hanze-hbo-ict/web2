@@ -39,7 +39,15 @@ toegestaan; zo zou je eventueel ook het requestobject als parameter aan de
 functie kunnen meegeven. We zullen nog zien dat dit echter niet direct 
 noodzakelijk is om toch over het requestobject te kunnen beschikken.
 
-<!-- TODO architectuurplaatje -->
+De router zal aangeroepen worden door de kernel. Elk request zal feitelijk 
+door de router bekeken moeten worden, aangezien de router moet bepalen welke 
+controller gekozen wordt. Dit leidt ertoe dat de router in de middlewarelaag 
+van de kernel thuishoort, of eventueel meteen na deze laag. Dit ziet er 
+schematisch als volgt uit, waarbij bedacht moet worden dat de controllers 
+callables zijn die door de router geselecteerd worden, en vaak een enkele 
+bijbehorende view, ofwel template, gebruiken.
+
+![Schema met router](../images/schema-routing.png)
 
 ## Parameters in de URL
 
