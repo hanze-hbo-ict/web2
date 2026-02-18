@@ -1,0 +1,949 @@
+
+<!DOCTYPE html>
+
+
+<html lang="nl" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Interfaces &#8212; Webtechnologie II</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=91d546e9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=b028fc25"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=5ce3cdba"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3.1-request/interface';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Zoeken" href="../search.html" />
+    <link rel="next" title="Response" href="../3.2-response/response.html" />
+    <link rel="prev" title="Oefeningen" href="oefening.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="nl"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../about/syllabus.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-hanze.png" class="logo__image only-light" alt="Webtechnologie II - Home"/>
+    <img src="../_static/logo-hanze.png" class="logo__image only-dark pst-js-only" alt="Webtechnologie II - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Zoeken</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../about/syllabus.html">
+                    Webtechnologie 2
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Over deze cursus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/eindopdracht.html">Eindopdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/installeren.html">PHP installeren</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/php.html">PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/variabelen.html">Variabelen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/controlestatements.html">Conditionele en lusstatements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/strings.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/arrays.html">Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/oefening.html">Oefeningen</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/functies.html">Functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/typeconversie.html">Typeconversie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oop.html">Object-georiënteerd programmeren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/excepties.html">Foutafhandeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/include.html">Bestanden invoegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oefening.html">Oefeningen</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/html.html">HTML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/formulieren.html">Formulieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/opdracht.html">Opdracht</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2.2 Kernel</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/http.html">HTTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/kernel.html">Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/autoloader.html">Autoloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/composer.html">Composer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Request, Response en Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Response</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/response.html">Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/opdracht.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-response/interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opdracht.html">Opdracht</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7.1 Authenticatie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7.2 Autorisatie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7.2-autorisatie/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.2-autorisatie/opgave.html">Opgave</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download deze pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/3.1-request/interface.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download het bronbestand"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Afdrukken naar pdf"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Volledig scherm"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Interfaces</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messageinterface">`MessageInterface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requestinterface"><code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uploadedfileinterface"><code class="docutils literal notranslate"><span class="pre">UploadedFileInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernelinterface"><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code></a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="interfaces">
+<h1>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h1>
+<p>Onderstaande interfaces zijn ontleend aan
+<a class="reference external" href="https://www.php-fig.org/psr/psr-7">PSR-7</a>;
+het commentaar bij de interfaces is hier ook grotendeels aan ontleend en is,
+waar nodig, aangepast.</p>
+<section id="messageinterface">
+<h2>`MessageInterface<a class="headerlink" href="#messageinterface" title="Link to this heading">#</a></h2>
+<p>`</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+
+namespace Framework\Http;
+
+/**
+ * HTTP messages consist of requests from a client to a server and responses
+ * from a server to a client. This interface defines the methods common to
+ * each.
+ *
+ * Messages are considered immutable; all methods that might change state MUST
+ * be implemented such that they retain the internal state of the current
+ * message and return an instance that contains the changed state.
+ *
+ * @see http://www.ietf.org/rfc/rfc7230.txt
+ * @see http://www.ietf.org/rfc/rfc7231.txt
+ */
+interface MessageInterface
+{
+    /**
+     * Retrieves all message header values.
+     *
+     * The keys represent the header name, and each value is a string associated
+     * with the header.
+     *
+     * @return string[] Returns an associative array of the message&#39;s headers.
+     *     Each key MUST be a header name, and each value MUST be a string
+     *     containing that header.
+     */
+    function getHeaders(): array;
+
+    /**
+     * Checks if a header exists by the given case-insensitive name.
+     *
+     * @param string $name Case-insensitive header field name.
+     * @return bool Returns true if any header names match the given header
+     *     name using a case-insensitive string comparison. Returns false if
+     *     no matching header name is found in the message.
+     */
+    function hasHeader(string $name): bool;
+
+    /**
+     * Retrieves string with the value of a single header.
+     *
+     * If the header does not appear in the message, this method MUST return
+     * an empty string.
+     *
+     * @param string $name Case-insensitive header field name.
+     * @return string A string of values as provided for the given header
+     *    concatenated together using a comma. If the header does not appear in
+     *    the message, this method MUST return an empty string.
+     */
+    function getHeader(string $name): string;
+
+    /**
+     * Return an instance with the provided value replacing the specified header.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that has the
+     * new and/or updated header and value.
+     *
+     * @param string $name Case-insensitive header field name.
+     * @param string $value Header value(s).
+     * @return static
+     * @throws \InvalidArgumentException for invalid header names or values.
+     */
+    function withHeader(string $name, string $value): static;
+
+    /**
+     * Return an instance without the specified header.
+     *
+     * Header resolution MUST be done without case-sensitivity.
+     *
+     * This method MUST be implemented in such a way as to retain the
+     * immutability of the message, and MUST return an instance that removes
+     * the named header.
+     *
+     * @param string $name Case-insensitive header field name to remove.
+     * @return static
+     */
+    function withoutHeader(string $name): static;
+}
+</pre></div>
+</div>
+</section>
+<section id="requestinterface">
+<h2><code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code><a class="headerlink" href="#requestinterface" title="Link to this heading">#</a></h2>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Framework\Http</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Uri\Rfc3986\Uri</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Representation of an incoming, server-side HTTP request.</span>
+<span class="sd"> *</span>
+<span class="sd"> * Per the HTTP specification, this interface includes properties for</span>
+<span class="sd"> * each of the following:</span>
+<span class="sd"> *</span>
+<span class="sd"> * - HTTP method</span>
+<span class="sd"> * - URI</span>
+<span class="sd"> * - Headers</span>
+<span class="sd"> * - Message body</span>
+<span class="sd"> *</span>
+<span class="sd"> * Additionally, it encapsulates all data as it has arrived at the</span>
+<span class="sd"> * application from the CGI and/or PHP environment, including:</span>
+<span class="sd"> *</span>
+<span class="sd"> * - The values represented in $_SERVER.</span>
+<span class="sd"> * - Any cookies provided (generally via $_COOKIE)</span>
+<span class="sd"> * - Query string arguments (generally via $_GET, or as parsed via parse_str())</span>
+<span class="sd"> * - Upload files, if any (as represented by $_FILES)</span>
+<span class="sd"> * - Deserialized body parameters (generally from $_POST)</span>
+<span class="sd"> *</span>
+<span class="sd"> * Additionally, this interface recognizes the utility of introspecting a</span>
+<span class="sd"> * request to derive and match additional parameters (e.g., via URI path</span>
+<span class="sd"> * matching, decrypting cookie values, deserializing non-form-encoded body</span>
+<span class="sd"> * content, matching authorization headers to users, etc). These parameters</span>
+<span class="sd"> * are stored in an &quot;attributes&quot; property.</span>
+<span class="sd"> *</span>
+<span class="sd"> * Requests are considered immutable; all methods that might change state MUST</span>
+<span class="sd"> * be implemented such that they retain the internal state of the current</span>
+<span class="sd"> * message and return an instance that contains the changed state.</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">RequestInterface</span> <span class="k">extends</span> <span class="nx">MessageInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieves the HTTP method of the request.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string Returns the request method.</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieves the URI instance.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @see http://tools.ietf.org/html/rfc3986#section-4.3</span>
+<span class="sd">     * @return Uri Returns a Uri instance</span>
+<span class="sd">     *     representing the URI of the request.</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getUri</span><span class="p">()</span><span class="o">:</span> <span class="nx">Uri</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve server parameters.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Retrieves data related to the incoming request environment,</span>
+<span class="sd">     * typically derived from PHP&#39;s $_SERVER superglobal. The data IS NOT</span>
+<span class="sd">     * REQUIRED to originate from $_SERVER.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return array</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getServerParams</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve cookies.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Retrieves cookies sent by the client to the server.</span>
+<span class="sd">     *</span>
+<span class="sd">     * The data MUST be compatible with the structure of the $_COOKIE</span>
+<span class="sd">     * superglobal.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return array</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getCookieParams</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+    
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve query string arguments.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Retrieves the deserialized query string arguments, if any.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return array</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getQueryParams</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve file upload data.</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method returns upload metadata as an array of instances of</span>
+<span class="sd">     * Framework\Http\UploadedFileInterface.</span>
+<span class="sd">     *</span>
+<span class="sd">     * These values MUST be prepared from $_FILES during instantiation.</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method MAY ignore or otherwise fail to handle nested arrays in the</span>
+<span class="sd">     * $_FILES array.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return array An array of UploadedFileInterface instances; an empty</span>
+<span class="sd">     *     array MUST be returned if no data is present.</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getUploadedFiles</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve any parameters provided in the request body.</span>
+<span class="sd">     *</span>
+<span class="sd">     * If the request method is POST, this method MUST</span>
+<span class="sd">     * return the contents of $_POST.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Otherwise, this method MUST return null.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return null|array The deserialized body parameters as an array, if any.</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getParsedBody</span><span class="p">()</span><span class="o">:</span> <span class="k">null</span><span class="o">|</span><span class="k">array</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve attributes derived from the request.</span>
+<span class="sd">     *</span>
+<span class="sd">     * The request &quot;attributes&quot; may be used to allow injection of any</span>
+<span class="sd">     * parameters derived from the request: e.g., the results of path</span>
+<span class="sd">     * match operations; the results of decrypting cookies; the results of</span>
+<span class="sd">     * deserializing non-form-encoded message bodies; etc. Attributes</span>
+<span class="sd">     * will be application and request specific, and CAN be mutable.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return mixed[] Attributes derived from the request.</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getAttributes</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve a single derived request attribute.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Retrieves a single derived request attribute as described in</span>
+<span class="sd">     * getAttributes(). If the attribute has not been previously set, returns</span>
+<span class="sd">     * the default value as provided.</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method obviates the need for a hasAttribute() method, as it allows</span>
+<span class="sd">     * specifying a default value to return if the attribute is not found.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @see getAttributes()</span>
+<span class="sd">     * @param string $name The attribute name.</span>
+<span class="sd">     * @param mixed $default Default value to return if the attribute does not exist.</span>
+<span class="sd">     * @return mixed</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getAttribute</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$default</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Return an instance with the specified derived request attribute.</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method allows setting a single derived request attribute as</span>
+<span class="sd">     * described in getAttributes().</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method MUST be implemented in such a way as to retain the</span>
+<span class="sd">     * immutability of the message, and MUST return an instance that has the</span>
+<span class="sd">     * updated attribute.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @see getAttributes()</span>
+<span class="sd">     * @param string $name The attribute name.</span>
+<span class="sd">     * @param mixed $value The value of the attribute.</span>
+<span class="sd">     * @return static</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">withAttribute</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">mixed</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Return an instance that removes the specified derived request attribute.</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method allows removing a single derived request attribute as</span>
+<span class="sd">     * described in getAttributes().</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method MUST be implemented in such a way as to retain the</span>
+<span class="sd">     * immutability of the message, and MUST return an instance that removes</span>
+<span class="sd">     * the attribute.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @see getAttributes()</span>
+<span class="sd">     * @param string $name The attribute name.</span>
+<span class="sd">     * @return static</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">withoutAttribute</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Merk op dat <code class="docutils literal notranslate"><span class="pre">Uri\Rfc3986\Uri</span></code> beschikbaar is vanaf PHP 8.5 en vereist dat de
+extensie <code class="docutils literal notranslate"><span class="pre">uri</span></code> wordt aangezet. Als je een oudere PHP-versie gebruikt, mag je
+de package
+<a class="reference external" href="https://packagist.org/packages/league/uri-polyfill"><code class="docutils literal notranslate"><span class="pre">league/uri-polyfill</span></code></a>
+gebruiken om deze klasse te kunnen gebruiken.</p>
+</section>
+<section id="uploadedfileinterface">
+<h2><code class="docutils literal notranslate"><span class="pre">UploadedFileInterface</span></code><a class="headerlink" href="#uploadedfileinterface" title="Link to this heading">#</a></h2>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Framework\Http</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Value object representing a file uploaded through an HTTP request.</span>
+<span class="sd"> *</span>
+<span class="sd"> * Instances of this interface are considered immutable; all methods that</span>
+<span class="sd"> * might change state MUST be implemented such that they retain the internal</span>
+<span class="sd"> * state of the current instance and return an instance that contains the</span>
+<span class="sd"> * changed state.</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">UploadedFileInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Move the uploaded file to a new location.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Use this method as an alternative to move_uploaded_file().</span>
+<span class="sd">     *</span>
+<span class="sd">     * $targetPath MUST be an absolute path.</span>
+<span class="sd">     *</span>
+<span class="sd">     * The original file or stream MUST be removed on completion.</span>
+<span class="sd">     *</span>
+<span class="sd">     * If this method is called more than once, any subsequent calls MUST raise</span>
+<span class="sd">     * an exception.</span>
+<span class="sd">     *</span>
+<span class="sd">     * When writing files via moveTo(), is_uploaded_file() and</span>
+<span class="sd">     * move_uploaded_file() SHOULD be used to ensure permissions and upload</span>
+<span class="sd">     * status are verified correctly.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @see http://php.net/is_uploaded_file</span>
+<span class="sd">     * @see http://php.net/move_uploaded_file</span>
+<span class="sd">     * @param string $targetPath Path to which to move the uploaded file.</span>
+<span class="sd">     * @throws \InvalidArgumentException if the $targetPath specified is invalid.</span>
+<span class="sd">     * @throws \RuntimeException on any error during the move operation.</span>
+<span class="sd">     * @throws \RuntimeException on the second or subsequent call to the method.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">moveTo</span><span class="p">(</span><span class="nv">$targetPath</span><span class="p">);</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve the file size.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Implementations SHOULD return the value stored in the &quot;size&quot; key of</span>
+<span class="sd">     * the file in the $_FILES array if available, as PHP calculates this based</span>
+<span class="sd">     * on the actual size transmitted.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return int|null The file size in bytes or null if unknown.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSize</span><span class="p">();</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve the error associated with the uploaded file.</span>
+<span class="sd">     *</span>
+<span class="sd">     * The return value MUST be one of PHP&#39;s UPLOAD_ERR_XXX constants.</span>
+<span class="sd">     *</span>
+<span class="sd">     * If the file was uploaded successfully, this method MUST return</span>
+<span class="sd">     * UPLOAD_ERR_OK.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Implementations SHOULD return the value stored in the &quot;error&quot; key of</span>
+<span class="sd">     * the file in the $_FILES array.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @see http://php.net/manual/en/features.file-upload.errors.php</span>
+<span class="sd">     * @return int One of PHP&#39;s UPLOAD_ERR_XXX constants.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getError</span><span class="p">();</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve the filename sent by the client.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Do not trust the value returned by this method. A client could send</span>
+<span class="sd">     * a malicious filename with the intention to corrupt or hack your</span>
+<span class="sd">     * application.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Implementations SHOULD return the value stored in the &quot;name&quot; key of</span>
+<span class="sd">     * the file in the $_FILES array.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string|null The filename sent by the client or null if none</span>
+<span class="sd">     *     was provided.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getClientFilename</span><span class="p">();</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieve the media type sent by the client.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Do not trust the value returned by this method. A client could send</span>
+<span class="sd">     * a malicious media type with the intention to corrupt or hack your</span>
+<span class="sd">     * application.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Implementations SHOULD return the value stored in the &quot;type&quot; key of</span>
+<span class="sd">     * the file in the $_FILES array.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string|null The media type sent by the client or null if none</span>
+<span class="sd">     *     was provided.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getClientMediaType</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="kernelinterface">
+<h2><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code><a class="headerlink" href="#kernelinterface" title="Link to this heading">#</a></h2>
+<p>De parameters van <code class="docutils literal notranslate"><span class="pre">Framework\Kernel\KernelInterface</span></code> kunnen nu worden
+vervangen door een instantie van <code class="docutils literal notranslate"><span class="pre">Framework\Http\RequestInterface</span></code>.
+Als de interfaces uit PSR-7 worden gebruikt, kan deze interface in zijn
+geheel worden vervangen door <code class="docutils literal notranslate"><span class="pre">Psr\Http\Server\RequestHandlerInterface</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Framework\Kernel</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Framework\Http\RequestInterface</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Handles a server request and produces a response.</span>
+<span class="sd"> *</span>
+<span class="sd"> * A kernel processes an HTTP request in order to produce an</span>
+<span class="sd"> * HTTP response.</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">KernelInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Handles a request and produces a response.</span>
+<span class="sd">     *</span>
+<span class="sd">     * May call other collaborating code to generate the response.</span>
+<span class="sd">     * </span>
+<span class="sd">     * @param RequestInterface $request The server request. </span>
+<span class="sd">     * @return string The response as a string.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./3.1-request"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="oefening.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">vorige</p>
+        <p class="prev-next-title">Oefeningen</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../3.2-response/response.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">volgende</p>
+        <p class="prev-next-title">Response</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messageinterface">`MessageInterface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requestinterface"><code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uploadedfileinterface"><code class="docutils literal notranslate"><span class="pre">UploadedFileInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernelinterface"><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Door Bart Barnard & Ralf van den Broek
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
