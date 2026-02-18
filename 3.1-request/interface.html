@@ -399,7 +399,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messageinterface">`MessageInterface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messageinterface"><code class="docutils literal notranslate"><span class="pre">MessageInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requestinterface"><code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uploadedfileinterface"><code class="docutils literal notranslate"><span class="pre">UploadedFileInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernelinterface"><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code></a></li>
@@ -421,7 +421,7 @@
 het commentaar bij de interfaces is hier ook grotendeels aan ontleend en is,
 waar nodig, aangepast.</p>
 <section id="messageinterface">
-<h2>`MessageInterface<a class="headerlink" href="#messageinterface" title="Link to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">MessageInterface</span></code><a class="headerlink" href="#messageinterface" title="Link to this heading">#</a></h2>
 <p>`</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
 
@@ -733,7 +733,7 @@ gebruiken om deze klasse te kunnen gebruiken.</p>
 <span class="sd">     * @throws \RuntimeException on any error during the move operation.</span>
 <span class="sd">     * @throws \RuntimeException on the second or subsequent call to the method.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">moveTo</span><span class="p">(</span><span class="nv">$targetPath</span><span class="p">);</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">moveTo</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$targetPath</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Retrieve the file size.</span>
@@ -744,7 +744,7 @@ gebruiken om deze klasse te kunnen gebruiken.</p>
 <span class="sd">     *</span>
 <span class="sd">     * @return int|null The file size in bytes or null if unknown.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSize</span><span class="p">();</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSize</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">int</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Retrieve the error associated with the uploaded file.</span>
@@ -760,7 +760,7 @@ gebruiken om deze klasse te kunnen gebruiken.</p>
 <span class="sd">     * @see http://php.net/manual/en/features.file-upload.errors.php</span>
 <span class="sd">     * @return int One of PHP&#39;s UPLOAD_ERR_XXX constants.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getError</span><span class="p">();</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getError</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Retrieve the filename sent by the client.</span>
@@ -775,7 +775,7 @@ gebruiken om deze klasse te kunnen gebruiken.</p>
 <span class="sd">     * @return string|null The filename sent by the client or null if none</span>
 <span class="sd">     *     was provided.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getClientFilename</span><span class="p">();</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getClientFilename</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Retrieve the media type sent by the client.</span>
@@ -790,7 +790,7 @@ gebruiken om deze klasse te kunnen gebruiken.</p>
 <span class="sd">     * @return string|null The media type sent by the client or null if none</span>
 <span class="sd">     *     was provided.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getClientMediaType</span><span class="p">();</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getClientMediaType</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -895,7 +895,7 @@ geheel worden vervangen door <code class="docutils literal notranslate"><span cl
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messageinterface">`MessageInterface</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#messageinterface"><code class="docutils literal notranslate"><span class="pre">MessageInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#requestinterface"><code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#uploadedfileinterface"><code class="docutils literal notranslate"><span class="pre">UploadedFileInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernelinterface"><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code></a></li>
