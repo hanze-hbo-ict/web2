@@ -42,6 +42,7 @@ parts:
     - file: 2.2-kernel/composer
     - file: 2.2-kernel/oefening
     - file: 2.2-kernel/opdracht
+    - file: 2.2-kernel/interface
 
 - caption: 3.1 Request
   chapters:
@@ -49,12 +50,14 @@ parts:
     - file: 3.1-request/request
     - file: 3.1-request/response
     - file: 3.1-request/oefening
+    - file: 3.1-request/interface
 
 - caption: 3.2 Response
   chapters:
     - file: 3.2-response/response
     - file: 3.2-response/oefening
     - file: 3.2-response/opdracht
+    - file: 3.2-response/interface
 
 - caption: 4.1 Templating
   chapters:
@@ -72,13 +75,18 @@ parts:
 
 - caption: 5.1 Dependency injection
   chapters:
-    - file: 5.1-di/intro
-    - file: 5.1-di/opgave
+    - file: 5.1-di/singleton
+    - file: 5.1-di/dependencyinjection
+    - file: 5.1-di/compositionroot
+    - file: 5.1-di/opdracht
 
-- caption: 5.2 DI Container
+- caption: 5.2 IoC container
   chapters:
-    - file: 5.2-container/intro
-    - file: 5.2-container/opgave
+    - file: 5.2-container/ioc
+    - file: 5.2-container/container
+    - file: 5.2-container/reflectie
+    - file: 5.2-container/oefening
+    - file: 5.2-container/opdracht
 
 - caption: 6.1 Database
   chapters:
