@@ -6,8 +6,8 @@ het commentaar bij de interfaces is hier ook grotendeels aan ontleend en is,
 waar nodig, aangepast.
 
 ## `MessageInterface`
-`
-```
+
+```php
 <?php
 
 namespace Framework\Http;

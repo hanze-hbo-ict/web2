@@ -422,88 +422,87 @@ het commentaar bij de interfaces is hier ook grotendeels aan ontleend en is,
 waar nodig, aangepast.</p>
 <section id="messageinterface">
 <h2><code class="docutils literal notranslate"><span class="pre">MessageInterface</span></code><a class="headerlink" href="#messageinterface" title="Link to this heading">#</a></h2>
-<p>`</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-namespace Framework\Http;
+<span class="k">namespace</span> <span class="nx">Framework\Http</span><span class="p">;</span>
 
-/**
- * HTTP messages consist of requests from a client to a server and responses
- * from a server to a client. This interface defines the methods common to
- * each.
- *
- * Messages are considered immutable; all methods that might change state MUST
- * be implemented such that they retain the internal state of the current
- * message and return an instance that contains the changed state.
- *
- * @see http://www.ietf.org/rfc/rfc7230.txt
- * @see http://www.ietf.org/rfc/rfc7231.txt
- */
-interface MessageInterface
-{
-    /**
-     * Retrieves all message header values.
-     *
-     * The keys represent the header name, and each value is a string associated
-     * with the header.
-     *
-     * @return string[] Returns an associative array of the message&#39;s headers.
-     *     Each key MUST be a header name, and each value MUST be a string
-     *     containing that header.
-     */
-    function getHeaders(): array;
+<span class="sd">/**</span>
+<span class="sd"> * HTTP messages consist of requests from a client to a server and responses</span>
+<span class="sd"> * from a server to a client. This interface defines the methods common to</span>
+<span class="sd"> * each.</span>
+<span class="sd"> *</span>
+<span class="sd"> * Messages are considered immutable; all methods that might change state MUST</span>
+<span class="sd"> * be implemented such that they retain the internal state of the current</span>
+<span class="sd"> * message and return an instance that contains the changed state.</span>
+<span class="sd"> *</span>
+<span class="sd"> * @see http://www.ietf.org/rfc/rfc7230.txt</span>
+<span class="sd"> * @see http://www.ietf.org/rfc/rfc7231.txt</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">MessageInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieves all message header values.</span>
+<span class="sd">     *</span>
+<span class="sd">     * The keys represent the header name, and each value is a string associated</span>
+<span class="sd">     * with the header.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string[] Returns an associative array of the message&#39;s headers.</span>
+<span class="sd">     *     Each key MUST be a header name, and each value MUST be a string</span>
+<span class="sd">     *     containing that header.</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getHeaders</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 
-    /**
-     * Checks if a header exists by the given case-insensitive name.
-     *
-     * @param string $name Case-insensitive header field name.
-     * @return bool Returns true if any header names match the given header
-     *     name using a case-insensitive string comparison. Returns false if
-     *     no matching header name is found in the message.
-     */
-    function hasHeader(string $name): bool;
+    <span class="sd">/**</span>
+<span class="sd">     * Checks if a header exists by the given case-insensitive name.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $name Case-insensitive header field name.</span>
+<span class="sd">     * @return bool Returns true if any header names match the given header</span>
+<span class="sd">     *     name using a case-insensitive string comparison. Returns false if</span>
+<span class="sd">     *     no matching header name is found in the message.</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">hasHeader</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 
-    /**
-     * Retrieves string with the value of a single header.
-     *
-     * If the header does not appear in the message, this method MUST return
-     * an empty string.
-     *
-     * @param string $name Case-insensitive header field name.
-     * @return string A string of values as provided for the given header
-     *    concatenated together using a comma. If the header does not appear in
-     *    the message, this method MUST return an empty string.
-     */
-    function getHeader(string $name): string;
+    <span class="sd">/**</span>
+<span class="sd">     * Retrieves string with the value of a single header.</span>
+<span class="sd">     *</span>
+<span class="sd">     * If the header does not appear in the message, this method MUST return</span>
+<span class="sd">     * an empty string.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $name Case-insensitive header field name.</span>
+<span class="sd">     * @return string A string of values as provided for the given header</span>
+<span class="sd">     *    concatenated together using a comma. If the header does not appear in</span>
+<span class="sd">     *    the message, this method MUST return an empty string.</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getHeader</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 
-    /**
-     * Return an instance with the provided value replacing the specified header.
-     *
-     * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return an instance that has the
-     * new and/or updated header and value.
-     *
-     * @param string $name Case-insensitive header field name.
-     * @param string $value Header value(s).
-     * @return static
-     * @throws \InvalidArgumentException for invalid header names or values.
-     */
-    function withHeader(string $name, string $value): static;
+    <span class="sd">/**</span>
+<span class="sd">     * Return an instance with the provided value replacing the specified header.</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method MUST be implemented in such a way as to retain the</span>
+<span class="sd">     * immutability of the message, and MUST return an instance that has the</span>
+<span class="sd">     * new and/or updated header and value.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $name Case-insensitive header field name.</span>
+<span class="sd">     * @param string $value Header value(s).</span>
+<span class="sd">     * @return static</span>
+<span class="sd">     * @throws \InvalidArgumentException for invalid header names or values.</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">withHeader</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 
-    /**
-     * Return an instance without the specified header.
-     *
-     * Header resolution MUST be done without case-sensitivity.
-     *
-     * This method MUST be implemented in such a way as to retain the
-     * immutability of the message, and MUST return an instance that removes
-     * the named header.
-     *
-     * @param string $name Case-insensitive header field name to remove.
-     * @return static
-     */
-    function withoutHeader(string $name): static;
-}
+    <span class="sd">/**</span>
+<span class="sd">     * Return an instance without the specified header.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Header resolution MUST be done without case-sensitivity.</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method MUST be implemented in such a way as to retain the</span>
+<span class="sd">     * immutability of the message, and MUST return an instance that removes</span>
+<span class="sd">     * the named header.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $name Case-insensitive header field name to remove.</span>
+<span class="sd">     * @return static</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">withoutHeader</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$name</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
