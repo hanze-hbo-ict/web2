@@ -59,11 +59,13 @@ parts:
     - file: 3.2-routing/regex
     - file: 3.2-routing/oefening
     - file: 3.2-routing/opdracht
+    - file: 3.2-routing/interface
 
 - caption: 4.1 Templating
   chapters:
     - file: 4.1-templating/intro
     - file: 4.1-templating/opgave
+    - file: 4.1-templating/interface
 
 - caption: 4.2 Response
   chapters:
