@@ -51,26 +51,26 @@ parts:
     - file: 3.1-request/oefening
     - file: 3.1-request/interface
 
-- caption: 3.2 Response
+- caption: 3.2 Routing
   chapters:
-    - file: 3.2-response/response
-    - file: 3.2-response/oefening
-    - file: 3.2-response/opdracht
-    - file: 3.2-response/interface
+    - file: 3.2-routing/frontcontroller
+    - file: 3.2-routing/router
+    - file: 3.2-routing/callable
+    - file: 3.2-routing/regex
+    - file: 3.2-routing/oefening
+    - file: 3.2-routing/opdracht
 
 - caption: 4.1 Templating
   chapters:
     - file: 4.1-templating/intro
     - file: 4.1-templating/opgave
 
-- caption: 4.2 Routing
+- caption: 4.2 Response
   chapters:
-    - file: 4.2-routing/frontcontroller
-    - file: 4.2-routing/router
-    - file: 4.2-routing/callable
-    - file: 4.2-routing/regex
-    - file: 4.2-routing/oefening
-    - file: 4.2-routing/opdracht
+    - file: 4.2-response/response
+    - file: 4.2-response/oefening
+    - file: 4.2-response/opdracht
+    - file: 4.2-response/interface
 
 - caption: 5.1 Dependency injection
   chapters:
