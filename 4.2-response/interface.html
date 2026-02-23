@@ -227,11 +227,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../3.2-routing/regex.html">Reguliere expressies</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.2-routing/oefening.html">Oefeningen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.2-routing/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/intro.html">Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Response</span></p>
 <ul class="current nav bd-sidenav">
@@ -408,6 +410,7 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#responseinterface"><code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernelinterface"><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#routerinterface"><code class="docutils literal notranslate"><span class="pre">RouterInterface</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -550,6 +553,11 @@ geheel worden vervangen door <code class="docutils literal notranslate"><span cl
 </pre></div>
 </div>
 </section>
+<section id="routerinterface">
+<h2><code class="docutils literal notranslate"><span class="pre">RouterInterface</span></code><a class="headerlink" href="#routerinterface" title="Link to this heading">#</a></h2>
+<p>De <code class="docutils literal notranslate"><span class="pre">callable</span></code>s die door <code class="docutils literal notranslate"><span class="pre">RouterInterface::route</span></code> worden teruggegeven geven nu
+instanties van <code class="docutils literal notranslate"><span class="pre">ResposneInterface</span></code> terug in plaats van <code class="docutils literal notranslate"><span class="pre">string</span></code>s.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -619,6 +627,7 @@ geheel worden vervangen door <code class="docutils literal notranslate"><span cl
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#responseinterface"><code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernelinterface"><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#routerinterface"><code class="docutils literal notranslate"><span class="pre">RouterInterface</span></code></a></li>
 </ul>
   </nav></div>
 

@@ -130,3 +130,8 @@ interface KernelInterface
     public function handle(RequestInterface $request): ResponseInterface;
 }
 ```
+
+## `RouterInterface`
+
+De `callable`s die door `RouterInterface::route` worden teruggegeven geven nu 
+instanties van `ResposneInterface` terug in plaats van `string`s.
