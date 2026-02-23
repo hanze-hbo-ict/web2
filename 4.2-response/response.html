@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>De front controller &#8212; Webtechnologie II</title>
+    <title>Response &#8212; Webtechnologie II</title>
   
   
   
@@ -62,10 +62,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '4.2-routing/frontcontroller';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4.2-response/response';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="De router" href="router.html" />
+    <link rel="next" title="Oefeningen" href="oefening.html" />
     <link rel="prev" title="Opgave" href="../4.1-templating/opgave.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
@@ -219,26 +219,33 @@
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefeningen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Response</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3.2-response/response.html">Response</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-response/oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-response/opdracht.html">Opgave</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-response/interface.html">Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/intro.html">Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Response</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">De front controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="router.html">De router</a></li>
-<li class="toctree-l1"><a class="reference internal" href="callable.html">Verwijzingen naar functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Response</a></li>
 <li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/singleton.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/dependencyinjection.html">Dependency injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/compositionroot.html">Composition root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
 <ul class="nav bd-sidenav">
@@ -313,7 +320,7 @@
       
       
       
-      <li><a href="../_sources/4.2-routing/frontcontroller.md" target="_blank"
+      <li><a href="../_sources/4.2-response/response.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -376,9 +383,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -389,19 +394,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>De front controller</h1>
+    <h1>Response</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Inhoud </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#het-pad-van-een-request">Het pad van een request</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -411,57 +408,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="de-front-controller">
-<h1>De front controller<a class="headerlink" href="#de-front-controller" title="Link to this heading">#</a></h1>
-<p>Tot nu toe hebben we URL’s geïnterpreteerd als verwijzingen naar bestanden
-in een lokale directory, zodat we bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">http://localhost:8080/test.php</span></code>
-hebben laten uitvoeren door het script <code class="docutils literal notranslate"><span class="pre">test.php</span></code>. Als je echter naar URL’s
-in productie-omgevingen kijkt, zie je dat URL’s slechts zelden op <code class="docutils literal notranslate"><span class="pre">.php</span></code>
-eindigen. Zo is bijvoorbeeld MediaWiki, de technologie achter Wikipedia,
-geschreven in <a class="reference external" href="https://www.mediawiki.org/wiki/PHP">PHP</a>. Toch eindigen de
-URL’s niet in PHP; het lemma over PHP is bijvoorbeeld te vinden op
-<code class="docutils literal notranslate"><span class="pre">https://nl.wikipedia.org/wiki/PHP</span></code>.</p>
-<p>Om te zien hoe dit werkt, maken we een bestand <code class="docutils literal notranslate"><span class="pre">index.php</span></code> aan in de
-document root. Dit bestand wordt getoond als de URL
-<code class="docutils literal notranslate"><span class="pre">http://localhost:8080/index.php</span></code> gebruikt wordt, zoals je zou verwachten.
-Maar ook als je bijvoorbeeld de URL <code class="docutils literal notranslate"><span class="pre">http://localhost:8080/welkom</span></code> gebruikt,
-wordt deze pagina getoond, mits er geen bestand <code class="docutils literal notranslate"><span class="pre">welkom</span></code> in de document root
-staat. Dit werkt op elk niveau; de URL <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/foo/bar/baz.php</span></code>
-wordt in eerste instantie afgehandeld door <code class="docutils literal notranslate"><span class="pre">foo/bar/baz.php</span></code>, maar als die niet
-bestaat door <code class="docutils literal notranslate"><span class="pre">foo/bar/index.php</span></code>, en als die niet bestaat door <code class="docutils literal notranslate"><span class="pre">foo/index.php</span></code>,
-en als die ook niet bestaat door <code class="docutils literal notranslate"><span class="pre">index.php</span></code>. Pas als ook die laatste niet
-bestaat, zal de server een 404-response geven.</p>
-<p>We kunnen van dit fenomeen gebruik maken door slechts één PHP-bestand in de
-<code class="docutils literal notranslate"><span class="pre">public</span></code>-folder te zetten, het bestand <code class="docutils literal notranslate"><span class="pre">index.php</span></code>. Alle requests zullen dan
-door dit script worden afgehandeld, behalve als een bestand met die naam
-bestaat. Dit laatste zullen we gebruiken om statische assets zoals
-afbeeldingen en stylesheets te tonen. Het bestand <code class="docutils literal notranslate"><span class="pre">index.php</span></code> wordt de
-<em>front controller</em> van de applicatie genoemd.</p>
-<p><img alt="Front controller" src="../_images/frontcontroller.png" /></p>
-<section id="het-pad-van-een-request">
-<h2>Het pad van een request<a class="headerlink" href="#het-pad-van-een-request" title="Link to this heading">#</a></h2>
-<p>Alle requests kunnen nu door een enkele <em>front controller</em> <code class="docutils literal notranslate"><span class="pre">index.php</span></code>
-afgehandeld worden. We hebben nu echter nog geen informatie over de
-oorspronkelijke URL die door de eindgebruiker is aangeroepen, terwijl het
-natuurlijk wel heel logisch is om die te gebruiken om aan te geven welke
-informatie getoond moet worden; <code class="docutils literal notranslate"><span class="pre">https://nl.wikipedia.org/wiki/PHP</span></code> en
-<code class="docutils literal notranslate"><span class="pre">https://nl.wikipedia.org/wiki/Python</span></code> moeten immers andere lemma’s tonen.</p>
-<p>De benodigde informatie is te vinden in de <em>superglobal</em> <code class="docutils literal notranslate"><span class="pre">$_SERVER</span></code>. Deze
-bevat onder meer de waarde <code class="docutils literal notranslate"><span class="pre">$_SEVER['REQUEST_URI']</span></code>, waarin het pad van een
-request te vinden is. Als bijvoorbeeld de URL
-<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/foo/bar/baz.php</span></code> aangeroepen wordt, zal deze waarde
-gelijk zijn aan <code class="docutils literal notranslate"><span class="pre">/foo/bar/baz.php</span></code>. Dit begint dus altijd met een <em>slash</em>.</p>
-<p>Als de URL ook een <em>query string</em> bevat, dus bijvoorbeeld
-<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/foo.php?q=test</span></code>, dan zal die ook onderdeel zijn van
-<code class="docutils literal notranslate"><span class="pre">$_SEVER['REQUEST_URI']</span></code>. In dit geval zal de waarde daarvan dus
-<code class="docutils literal notranslate"><span class="pre">/foo.php?q=test</span></code> zijn. Omdat we echter op dit moment alleen geïnteresseerd
-zijn in het pad zelf, moet alles vanaf het vraagteken nog verwijderd worden.
-Hier zijn meerdere mogelijkheden voor, zoals
-<a class="reference external" href="https://www.php.net/manual/en/function.explode.php"><code class="docutils literal notranslate"><span class="pre">explode</span></code></a>,
-<a class="reference external" href="https://www.php.net/manual/en/function.parse-url.php"><code class="docutils literal notranslate"><span class="pre">parse_url</span></code></a> en,
-vanaf PHP 8.5, de klasse
-<a class="reference external" href="https://www.php.net/releases/8.5/en.php#new-uri-extension"><code class="docutils literal notranslate"><span class="pre">Uri\WhatWg\Url</span></code></a>.</p>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="response">
+<h1>Response<a class="headerlink" href="#response" title="Link to this heading">#</a></h1>
 </section>
 
     <script type="text/x-thebe-config">
@@ -477,7 +425,7 @@ vanaf PHP 8.5, de klasse
         },
         kernelOptions: {
             name: "python3",
-            path: "./4.2-routing"
+            path: "./4.2-response"
         },
         predefinedOutput: true
     }
@@ -504,11 +452,11 @@ vanaf PHP 8.5, de klasse
       </div>
     </a>
     <a class="right-next"
-       href="router.html"
+       href="oefening.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">De router</p>
+        <p class="prev-next-title">Oefeningen</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -518,22 +466,6 @@ vanaf PHP 8.5, de klasse
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Inhoud
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#het-pad-van-een-request">Het pad van een request</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

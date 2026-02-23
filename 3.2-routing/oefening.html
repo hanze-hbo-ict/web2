@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Request &#8212; Webtechnologie II</title>
+    <title>Oefeningen &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '3.1-request/request';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3.2-routing/oefening';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Oefeningen" href="oefening.html" />
-    <link rel="prev" title="Request, Response en Message" href="intro.html" />
+    <link rel="next" title="Opdracht" href="opdracht.html" />
+    <link rel="prev" title="Reguliere expressies" href="regex.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -213,20 +213,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Request, Response en Message</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/intro.html">Request, Response en Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/request.html">Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/frontcontroller.html">De front controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/router.html">De router</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/callable.html">Verwijzingen naar functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/regex.html">Reguliere expressies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/opdracht.html">Opdracht</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
 <ul class="nav bd-sidenav">
@@ -320,7 +320,7 @@
       
       
       
-      <li><a href="../_sources/3.1-request/request.md" target="_blank"
+      <li><a href="../_sources/3.2-routing/oefening.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -396,7 +396,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Request</h1>
+    <h1>Oefeningen</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -406,10 +406,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#van-http-naar-php">Van HTTP naar PHP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-kernel-en-de-request">De kernel en de request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#het-maken-van-de-request-klasse">Het maken van de <code class="docutils literal notranslate"><span class="pre">Request</span></code> klasse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-kleine-refactoring">Een kleine <em>refactoring</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#callables">Callables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reguliere-expressies">Reguliere expressies</a></li>
 </ul>
             </nav>
         </div>
@@ -421,99 +419,59 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="request">
-<h1>Request<a class="headerlink" href="#request" title="Link to this heading">#</a></h1>
-<section id="van-http-naar-php">
-<h2>Van HTTP naar PHP<a class="headerlink" href="#van-http-naar-php" title="Link to this heading">#</a></h2>
-<p>Het HTTP is alleen maar een <em>transport-protocol</em>: wanneer we iets ingewikkelders willen doen dan alleen maar data heen en weer sturen, zullen we gebruik moeten maken van een programmeertaal – PHP in ons geval.</p>
-<p>Dat houdt evenwel in dat we met twee verschillende paradigmata te maken hebben: aan de ene kant de wereld van het <em>transport</em> en aan de andere kant de wereld van het <em>programma</em>. Om te voorkomen dat we deze twee werelden te veel met elkaar mixed, is het van belang dat we een <em>vertaling</em> van het één in het ander maken. Op die manier kunnen we onze programmacode helemaal loskoppelen van de wereld van het HTTP, wat de transfereerbaarheid, onderhoudbaarheid en testbaarheid vanzelfsprekend ten goede komt.</p>
-<p>Bekijk de onderstaande afbeelding. Hier wordt de vertaling van de HTTP-wereld naar de PHP-wereld (en vice versa) grafisch uitgebeeld. Aan de linkerkant komt een <em>request</em> onze PHP-wereld binnen, de <em>applicatie</em> doet van alles met dit <em>request</em>, genereert uiteindelijk een <em>response</em>, die weer aan de HTTP-wereld wordt teruggegeven.</p>
-<p><img alt="De vertaling van HTTP naar PHP en vice versa" src="../_images/http-php.jpeg" /></p>
-<p>Het is de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code> die de vertaling van de HTTP- naar de PHP-wereld maakt, en de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code> die het omgekeerde doet.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="oefeningen">
+<h1>Oefeningen<a class="headerlink" href="#oefeningen" title="Link to this heading">#</a></h1>
+<section id="callables">
+<h2>Callables<a class="headerlink" href="#callables" title="Link to this heading">#</a></h2>
+<ol class="arabic">
+<li><p>Sorteer een array van strings aan de hand van de lengte van de strings.
+Gebruik hiervoor de functie <code class="docutils literal notranslate"><span class="pre">usort</span></code> en een callable. Je kan in de
+callable ook gebruik maken van de
+<a class="reference external" href="https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.spaceship-op">spaceshipoperator</a>
+<code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code>, maar dat hoeft niet.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = [&#39;Foo&#39;, &#39;Woord&#39;, &#39;Test&#39;];</span>
+<span class="x">usort($array, /* ... */);</span>
+<span class="x">assert($array == [&#39;Foo&#39;, &#39;Test&#39;, &#39;Woord&#39;]);</span>
+</pre></div>
+</div>
+</li>
+<li><p>Tel het aantal elementen van een array. Gebruik hierbij de functie
+<code class="docutils literal notranslate"><span class="pre">array_map</span></code> en een anonieme functie, waarbij de anonieme functie een lokale
+variabele <em>by reference</em> bindt zodat deze variabele in de callable steeds
+opgehoogd kan worden om zo het aantal te tellen.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$array = [&#39;Foo&#39;, &#39;Woord&#39;, &#39;Test&#39;];
+$k = 0;
+array_map(/* ... */, $array);
+assert($k == 3);
+</pre></div>
+</div>
+</li>
+<li><p>Maak een klasse AddN die een instantievariabele heeft die een integer
+bevat, en een methode die een closure teruggeeft waarmee je dat getal bij
+je eigen getal kan tellen.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class AddN {</span>
+<span class="x">   public function __construct(public int $n) {}</span>
+<span class="x">   public function getCalculation(): callable { /* ... */ }</span>
+<span class="x">}</span>
+<span class="x">$add5 = new AddN(5)-&gt;getCalculation();</span>
+<span class="x">assert($add5(3) == 8);</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Naast deze oefeningen kan je ook kijken bij de kata’s over PHP-functies op
+<a class="reference external" href="https://www.codewars.com/collections/php-functions">CodeWars</a>, met name die
+over <em>Anonymous Functions (aka Closures)</em> en <em>The “Use” Keyword</em>.</p>
 </section>
-<section id="de-kernel-en-de-request">
-<h2>De kernel en de request<a class="headerlink" href="#de-kernel-en-de-request" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="../2.2-kernel/kernel.html#klasse-als-kernel"><span class="std std-ref">In een eerder onderdeel</span></a> hebben we het gehad over de <code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code> die een methode <code class="docutils literal notranslate"><span class="pre">handle</span></code> heeft. Zoals je daar kunt zien, verwacht deze methode op dit moment twee parameters: <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">$get</span></code> en <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">$post</span></code>. Deze twee parameters werden gevuld door het script <code class="docutils literal notranslate"><span class="pre">hello.php</span></code>.</p>
-<p>Je ziet hier direct al twee problemen met deze aanpak. Allereerst schaalt het niet heel lekker. Er is nu rekening gehouden met twee superglobals die gevuld worden vanuit de PHP-omgeving, maar er zijn er natuurlijk <a class="reference external" href="https://www.php.net/manual/en/language.variables.superglobals.php">nog meer</a>: <code class="docutils literal notranslate"><span class="pre">$_FILES</span></code>, <code class="docutils literal notranslate"><span class="pre">$_COOKIE</span></code>, of <code class="docutils literal notranslate"><span class="pre">$_SESSION</span></code>, om er maar drie te noemen.</p>
-<p>Een tweede punt van aandacht is dat we op deze manier de hele tijd superglobals door onze applicatie heen sturen. Globale variabele zijn sowieso altijd verdacht, maar zeker superglobals. Bovendien zijn zowel <code class="docutils literal notranslate"><span class="pre">$_GET</span></code> als <code class="docutils literal notranslate"><span class="pre">$_POST</span></code> eenvoudige associatieve arrays, dus onze IDE kan op niet helpen met het uitzoeken van wat we hier allemaal mee kunnen doen.</p>
-<p>Om deze reden is het beter om de superglobal <code class="docutils literal notranslate"><span class="pre">$_GET</span></code> om te zetten in een instantie van de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code> en die verder in de applicatie te gebruiken. Dit object <em>encapsuleert</em> dan de superglobal.</p>
-<p>Als je <a class="reference external" href="https://www.php-fig.org/psr/psr-7/#3-interfaces">de betreffende paragraaf van PSR-7 bekijkt</a> zie je dat <code class="docutils literal notranslate"><span class="pre">Message</span></code>, <code class="docutils literal notranslate"><span class="pre">Request</span></code> en <code class="docutils literal notranslate"><span class="pre">ServerRequest</span></code> gedrieën alle zaken encapsuleren die we <a class="reference internal" href="intro.html"><span class="std std-doc">in de vorige paragraaf besproken hebben</span></a>. Zo is er een methode om het <em>target</em> van de request op te vragen (<code class="docutils literal notranslate"><span class="pre">getRequestTarget()</span></code>), een methode om het gebruikte HTTP-werkwoord op te vragen (<code class="docutils literal notranslate"><span class="pre">getMethod()</span></code>), of een methode om de <em>query parameters</em> op te vragen (<code class="docutils literal notranslate"><span class="pre">getQueryParams()</span></code>).</p>
-<p>Verder kun je zien dat we in de implementaties van deze methoden de waarden uit de superglobals kunnen (moeten) aanpassen, waardoor het werken hiermee verderop in onze applicatie een stuk makkelijker wordt. Zo hoeven we bijvoorbeeld niet te weten hoe <em>query parameters</em> over de lijn worden verstuurd, omdat ze in onze <code class="docutils literal notranslate"><span class="pre">Request</span></code> worden omgezet in een standaard php-array.</p>
-</section>
-<section id="het-maken-van-de-request-klasse">
-<h2>Het maken van de <code class="docutils literal notranslate"><span class="pre">Request</span></code> klasse<a class="headerlink" href="#het-maken-van-de-request-klasse" title="Link to this heading">#</a></h2>
-<p>We maken de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code> (net als de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code>) in de namespace <code class="docutils literal notranslate"><span class="pre">Message</span></code>: maak in de directory <code class="docutils literal notranslate"><span class="pre">App</span></code> een nieuwe directory <code class="docutils literal notranslate"><span class="pre">Message</span></code> om dit voorbeeld te kunnen volgen.</p>
-<div class="admonition-alleen-get admonition">
-<p class="admonition-title">Alleen $_GET</p>
-<p>Voor deze discussie maken we alleen gebruik van de <code class="docutils literal notranslate"><span class="pre">$_GET</span></code>-superglobal; het werken met de rest wordt overgelaten aan de oefeningen en de opdracht.</p>
-</div>
-<p>Om de <code class="docutils literal notranslate"><span class="pre">$_GET</span></code> superglobal te kunnen encapsuleren, moeten we deze natuurlijk opslaag in de <em>scope</em> van de instantie van de betreffende klasse. Die lokale representatie zouden we dan kunnen vullen met behulp van <a class="reference internal" href="../1.2-php/oop.html#constructor-promotion"><span class="std std-ref">contructor promotion</span></a>. In de methode <code class="docutils literal notranslate"><span class="pre">getQueryParams</span></code> retourneren we dit veld dan:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">Framework\Message</span><span class="p">;</span>
-
-<span class="k">class</span> <span class="nc">Request</span>
-<span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">array</span> <span class="nv">$get</span><span class="p">)</span> <span class="p">{}</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getQueryParams</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">;</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>Omdat we nu met deze klasse alle eigenschappen van het <em>request</em> in één object kunnen opslaan, kunnen we de signature van <code class="docutils literal notranslate"><span class="pre">handle</span></code> in de <code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code> kunnen aanpassen:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-    <span class="c1">//andere code weggelaten</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>En dan moeten we, vanzelfsprekend, ook de implementatie hiervan <code class="docutils literal notranslate"><span class="pre">HelloKernel</span></code> navenant aanpassen:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-  <span class="c1">//andere code weggelaten</span>
-  <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
-  <span class="p">{</span>
-    <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQueryParams</span><span class="p">()[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
-    <span class="k">return</span> <span class="s2">&quot;Hello, </span><span class="si">$name</span><span class="s2">&quot;</span><span class="p">;</span>
-  <span class="p">}</span>
-</pre></div>
-</div>
-<p>In het script <code class="docutils literal notranslate"><span class="pre">hello.php</span></code> moeten we dan een instantie maken van de <code class="docutils literal notranslate"><span class="pre">Request</span></code>-klasse. Het volledige script wordt dan als volgt:</p>
-<div class="highlight-php notranslate" id="hello-script"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;?php</span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="k">use</span> <span class="nx">App\HelloKernel</span><span class="p">;</span>
-<span class="linenos"> 4</span><span class="k">use</span> <span class="nx">Framework\Message\Request</span><span class="p">;</span>
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="k">require_once</span> <span class="p">(</span><span class="s1">&#39;vendor/autoload.php&#39;</span><span class="p">);</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="nv">$kernel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelloKernel</span><span class="p">();</span>
-<span class="linenos"> 9</span><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">);</span>
-<span class="linenos">10</span><span class="k">echo</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
-</pre></div>
-</div>
-</section>
-<section id="een-kleine-refactoring">
-<h2>Een kleine <em>refactoring</em><a class="headerlink" href="#een-kleine-refactoring" title="Link to this heading">#</a></h2>
-<p>Hoewel dit op zich werkt, is het nog niet helemaal lekker. In verband met de <em>life cycle</em> van de <em>request</em> is het ongewenst dat we hier zonder meer nieuwe instanties van kunnen maken. Voor nu voert het wat te ver om dat volledig toe te lichten, maar het is beter om de verantwoordelijkheid van het aanmaken van instanties van deze klasse bij de klasse zelf te beleggen. Om dit te bewerkstelligen maken we de <em>constructor</em> van de klasse privaat en breiden we de API uit met een <em>statische methode</em> die een instantie van de klasse teruggeeft:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-    <span class="c1">//andere code weggelaten</span>
-    <span class="k">private</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">array</span> <span class="nv">$get</span><span class="p">)</span> <span class="p">{}</span>
-    
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">fromGlobals</span><span class="p">()</span><span class="o">:</span><span class="nx">self</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">);</span> 
-    <span class="p">}</span>
-</pre></div>
-</div>
-<p>De manier waarop we de instantie van <code class="docutils literal notranslate"><span class="pre">Request</span></code> aanmaken is dan ook anders (regel 9 in het script hierboven):</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-  <span class="c1">//andere code weggelaten</span>
-
-  <span class="nv">$request</span> <span class="o">=</span> <span class="nx">Request</span><span class="o">::</span><span class="na">fromGlobals</span><span class="p">();</span>
-  <span class="k">echo</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>Je ziet dat we <em>alleen</em> in de statische methode <code class="docutils literal notranslate"><span class="pre">fromGlobals()</span></code> met de superglobals te maken hebben; in de rest van onze applicatie werken we eenvoudig met php-objecten en constructies. Dit zal zo blijven, totdat we de boel uiteindelijk om gaan zetten in een instantie van de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code>, die we weer de HTTP-wereld insturen.</p>
+<section id="reguliere-expressies">
+<h2>Reguliere expressies<a class="headerlink" href="#reguliere-expressies" title="Link to this heading">#</a></h2>
+<p>Reguliere expressies zijn een uitgebreid onderwerp, waarbij oefening
+essentieel is om een begrip te krijgen van de mogelijkheden. Op de site
+<a class="reference external" href="https://regexone.com">RegexOne</a> staan ruim twintig oefeningen om je kennis
+van reguliere expressies op te bouwen.</p>
+<p>Daarnaast kan je op de website van
+<a class="reference external" href="https://www.w3resource.com/php-exercises/php-regular-expression-exercises.php">w3resource</a>
+een aantal oefeningen vinden om reguliere expressies toe te passen in PHP.</p>
 </section>
 </section>
 
@@ -530,7 +488,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./3.1-request"
+            path: "./3.2-routing"
         },
         predefinedOutput: true
     }
@@ -548,20 +506,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="regex.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Request, Response en Message</p>
+        <p class="prev-next-title">Reguliere expressies</p>
       </div>
     </a>
     <a class="right-next"
-       href="oefening.html"
+       href="opdracht.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Oefeningen</p>
+        <p class="prev-next-title">Opdracht</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -582,10 +540,8 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#van-http-naar-php">Van HTTP naar PHP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-kernel-en-de-request">De kernel en de request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#het-maken-van-de-request-klasse">Het maken van de <code class="docutils literal notranslate"><span class="pre">Request</span></code> klasse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-kleine-refactoring">Een kleine <em>refactoring</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#callables">Callables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reguliere-expressies">Reguliere expressies</a></li>
 </ul>
   </nav></div>
 

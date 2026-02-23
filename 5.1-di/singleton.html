@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Oefeningen &#8212; Webtechnologie II</title>
+    <title>Services &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '4.2-routing/oefening';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '5.1-di/singleton';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Opdracht" href="opdracht.html" />
-    <link rel="prev" title="Reguliere expressies" href="regex.html" />
+    <link rel="next" title="Dependency injection" href="dependencyinjection.html" />
+    <link rel="prev" title="Interfaces" href="../4.2-response/interface.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -219,25 +219,32 @@
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefeningen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Response</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3.2-response/response.html">Response</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-response/oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-response/opdracht.html">Opgave</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.2-response/interface.html">Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/intro.html">Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Response</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/response.html">Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/opdracht.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="frontcontroller.html">De front controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="router.html">De router</a></li>
-<li class="toctree-l1"><a class="reference internal" href="callable.html">Verwijzingen naar functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regex.html">Reguliere expressies</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Oefeningen</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dependencyinjection.html">Dependency injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compositionroot.html">Composition root</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
@@ -313,7 +320,7 @@
       
       
       
-      <li><a href="../_sources/4.2-routing/oefening.md" target="_blank"
+      <li><a href="../_sources/5.1-di/singleton.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -389,7 +396,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Oefeningen</h1>
+    <h1>Services</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -399,8 +406,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#callables">Callables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reguliere-expressies">Reguliere expressies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singleton-pattern">Singleton pattern</a></li>
 </ul>
             </nav>
         </div>
@@ -412,59 +418,58 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="oefeningen">
-<h1>Oefeningen<a class="headerlink" href="#oefeningen" title="Link to this heading">#</a></h1>
-<section id="callables">
-<h2>Callables<a class="headerlink" href="#callables" title="Link to this heading">#</a></h2>
-<ol class="arabic">
-<li><p>Sorteer een array van strings aan de hand van de lengte van de strings.
-Gebruik hiervoor de functie <code class="docutils literal notranslate"><span class="pre">usort</span></code> en een callable. Je kan in de
-callable ook gebruik maken van de
-<a class="reference external" href="https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.spaceship-op">spaceshipoperator</a>
-<code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code>, maar dat hoeft niet.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = [&#39;Foo&#39;, &#39;Woord&#39;, &#39;Test&#39;];</span>
-<span class="x">usort($array, /* ... */);</span>
-<span class="x">assert($array == [&#39;Foo&#39;, &#39;Test&#39;, &#39;Woord&#39;]);</span>
-</pre></div>
-</div>
-</li>
-<li><p>Tel het aantal elementen van een array. Gebruik hierbij de functie
-<code class="docutils literal notranslate"><span class="pre">array_map</span></code> en een anonieme functie, waarbij de anonieme functie een lokale
-variabele <em>by reference</em> bindt zodat deze variabele in de callable steeds
-opgehoogd kan worden om zo het aantal te tellen.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$array = [&#39;Foo&#39;, &#39;Woord&#39;, &#39;Test&#39;];
-$k = 0;
-array_map(/* ... */, $array);
-assert($k == 3);
-</pre></div>
-</div>
-</li>
-<li><p>Maak een klasse AddN die een instantievariabele heeft die een integer
-bevat, en een methode die een closure teruggeeft waarmee je dat getal bij
-je eigen getal kan tellen.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class AddN {</span>
-<span class="x">   public function __construct(public int $n) {}</span>
-<span class="x">   public function getCalculation(): callable { /* ... */ }</span>
-<span class="x">}</span>
-<span class="x">$add5 = new AddN(5)-&gt;getCalculation();</span>
-<span class="x">assert($add5(3) == 8);</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>Naast deze oefeningen kan je ook kijken bij de kata’s over PHP-functies op
-<a class="reference external" href="https://www.codewars.com/collections/php-functions">CodeWars</a>, met name die
-over <em>Anonymous Functions (aka Closures)</em> en <em>The “Use” Keyword</em>.</p>
-</section>
-<section id="reguliere-expressies">
-<h2>Reguliere expressies<a class="headerlink" href="#reguliere-expressies" title="Link to this heading">#</a></h2>
-<p>Reguliere expressies zijn een uitgebreid onderwerp, waarbij oefening
-essentieel is om een begrip te krijgen van de mogelijkheden. Op de site
-<a class="reference external" href="https://regexone.com">RegexOne</a> staan ruim twintig oefeningen om je kennis
-van reguliere expressies op te bouwen.</p>
-<p>Daarnaast kan je op de website van
-<a class="reference external" href="https://www.w3resource.com/php-exercises/php-regular-expression-exercises.php">w3resource</a>
-een aantal oefeningen vinden om reguliere expressies toe te passen in PHP.</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="services">
+<h1>Services<a class="headerlink" href="#services" title="Link to this heading">#</a></h1>
+<p>Complexere webapplicaties kunnen veelal opgedeeld worden in een aantal
+componenten. Deze componenten worden vaak <em>services</em> genoemd, omdat ze een
+dienst aanbieden aan de rest van de applicatie. We hebben al een aantal
+services gezien, te weten de kernel, de router en de template engine. Een
+ander voorbeeld wat we nog zullen zien is een databaseverbinding.</p>
+<p>Kenmerkend aan deze services is dat er meestal maar één instantie van hoeft
+te zijn. Dit is met name het geval als de service externe resources gebruikt;
+als er bijvoorbeeld in een applicatie meerdere databaseverbindingen worden
+opgezet, beperkt dit het aantal verzoeken dat tegelijk kan worden uitgevoerd
+kleiner zal zijn dan als er steeds maar één verbinding wordt opgezet. Bij
+andere services is dit minder van belang, maar is er nog steeds geen
+noodzaak om meerdere instanties van de service te hebben. Het is dus handig
+om de applicatie zo op te zetten dat ervoor gezorgd wordt dat van elke
+service slechts een enkele instantie wordt gemaakt.</p>
+<section id="singleton-pattern">
+<h2>Singleton pattern<a class="headerlink" href="#singleton-pattern" title="Link to this heading">#</a></h2>
+<p>Een klasse waarvan slechts een enkele instantie bestaat wordt een
+<em>singleton</em> genoemd. Historisch wordt dit vaak afgedwongen door
+toepassing van het
+<a class="reference external" href="https://refactoring.guru/design-patterns/singleton"><em>singleton pattern</em></a>,
+een design pattern waarbij de constructor van een klasse <em>private</em> is, en je
+de singleton-instantie van het object kan verkrijgen door middel van een
+statische methode.</p>
+<p>Dit pattern wordt veelal gezien als <em>anti-pattern</em>, een design pattern met
+nadelige gevolgen, omdat het gebruik van dit pattern verborgen
+afhankelijkheden worden geïntroduceerd in de code. Je kan namelijk niet aan
+de definities van de constructor en de andere methodes in de klassen zien
+dat bijvoorbeeld de database gebruikt wordt; daarvoor moet je de code zelf
+lezen om te zien waar de singleton gebruikt wordt.</p>
+<p>Bovendien is het niet mogelijk om de singleton te vervangen, bijvoorbeeld
+voor het schrijven van een test. Bij het testen van de code, met name bij
+unit tests, is het van belang om externe afhankelijkheden te vermijden; het
+doel is immers het testen van de methode zelf. Externe afhankelijkheden
+worden daarom vervangen door zogeheten <em>mockobjecten</em>, objecten die wel aan
+de interface van de externe afhankelijkheid voldoen maar voorgeprogrammeerde
+resultaten geven en kunnen bijhouden of de juiste aanroepen worden gedaan.
+Het vervangen van een singleton door een mock is erg lastig of zelfs
+onmogelijk als gebruik wordt gemaakt van het singleton pattern.</p>
+<p>Het singleton pattern schendt ten slotte het
+<a class="reference external" href="https://en.wikipedia.org/wiki/Single-responsibility_principle"><em>single-responsibility principle</em></a>.
+De singletonklasse heeft nu immers twee verantwoordelijkheden. De eerste is
+de verantwoordelijkheid die er al was, zoals in het geval van een
+databaseservice het regelen van een koppeling met een database. Maar
+aanvullend heeft de klasse nu de verantwoordelijkheid om ervoor te zorgen
+dat er maar één instantie van de klasse bestaat.</p>
+<p>Samenvattend is de conclusie dat het singleton pattern niet de juiste
+oplossing is om ervoor te zorgen dat er maar een enkele instantie van een
+klasse is. Dit betekent niet dat de wens om een klasse een singleton te
+laten zijn onjuist is; die wens is prima, om de redenen die al genoemd zijn.
+Het singleton pattern is echter niet de juiste manier om dat doel te bereiken.</p>
 </section>
 </section>
 
@@ -481,7 +486,7 @@ een aantal oefeningen vinden om reguliere expressies toe te passen in PHP.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./4.2-routing"
+            path: "./5.1-di"
         },
         predefinedOutput: true
     }
@@ -499,20 +504,20 @@ een aantal oefeningen vinden om reguliere expressies toe te passen in PHP.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="regex.html"
+       href="../4.2-response/interface.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Reguliere expressies</p>
+        <p class="prev-next-title">Interfaces</p>
       </div>
     </a>
     <a class="right-next"
-       href="opdracht.html"
+       href="dependencyinjection.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Opdracht</p>
+        <p class="prev-next-title">Dependency injection</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -533,8 +538,7 @@ een aantal oefeningen vinden om reguliere expressies toe te passen in PHP.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#callables">Callables</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reguliere-expressies">Reguliere expressies</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singleton-pattern">Singleton pattern</a></li>
 </ul>
   </nav></div>
 

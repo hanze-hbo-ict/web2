@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Interfaces &#8212; Webtechnologie II</title>
+    <title>Dependency injection &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '3.2-response/interface';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '5.1-di/dependencyinjection';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Intro" href="../4.1-templating/intro.html" />
-    <link rel="prev" title="Opgave" href="opdracht.html" />
+    <link rel="next" title="Composition root" href="compositionroot.html" />
+    <link rel="prev" title="Services" href="singleton.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -219,26 +219,33 @@
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefeningen</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Response</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opgave</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interfaces</a></li>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/intro.html">Intro</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
 </ul>
-<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Routing</span></p>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Response</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/frontcontroller.html">De front controller</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/router.html">De router</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/callable.html">Verwijzingen naar functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/regex.html">Reguliere expressies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-routing/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/response.html">Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/opdracht.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="singleton.html">Services</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Dependency injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="compositionroot.html">Composition root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
 <ul class="nav bd-sidenav">
@@ -313,7 +320,7 @@
       
       
       
-      <li><a href="../_sources/3.2-response/interface.md" target="_blank"
+      <li><a href="../_sources/5.1-di/dependencyinjection.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -389,7 +396,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Interfaces</h1>
+    <h1>Dependency injection</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -399,8 +406,9 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#responseinterface"><code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernelinterface"><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inversion-of-control">Inversion of control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor-injection">Constructor injection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setter-injection">Setter injection</a></li>
 </ul>
             </nav>
         </div>
@@ -412,136 +420,112 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="interfaces">
-<h1>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h1>
-<p>Onderstaande interface is ontleend aan
-<a class="reference external" href="https://www.php-fig.org/psr/psr-7">PSR-7</a>;
-het commentaar bij de interface is hier ook grotendeels aan ontleend en is,
-waar nodig, aangepast.</p>
-<section id="responseinterface">
-<h2><code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code><a class="headerlink" href="#responseinterface" title="Link to this heading">#</a></h2>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="k">namespace</span> <span class="nx">Framework\Http</span><span class="p">;</span>
-
-<span class="sd">/**</span>
-<span class="sd"> * Representation of an outgoing, server-side response.</span>
-<span class="sd"> *</span>
-<span class="sd"> * Per the HTTP specification, this interface includes properties for</span>
-<span class="sd"> * each of the following:</span>
-<span class="sd"> *</span>
-<span class="sd"> * - Status code and reason phrase</span>
-<span class="sd"> * - Headers</span>
-<span class="sd"> * - Message body</span>
-<span class="sd"> *</span>
-<span class="sd"> * Responses are considered immutable; all methods that might change state MUST</span>
-<span class="sd"> * be implemented such that they retain the internal state of the current</span>
-<span class="sd"> * message and return an instance that contains the changed state.</span>
-<span class="sd"> */</span>
-<span class="k">interface</span> <span class="nx">ResponseInterface</span> <span class="k">extends</span> <span class="nx">MessageInterface</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * Gets the response status code.</span>
-<span class="sd">     *</span>
-<span class="sd">     * The status code is a 3-digit integer result code of the server&#39;s attempt</span>
-<span class="sd">     * to understand and satisfy the request.</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return int Status code.</span>
-<span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">getStatusCode</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * Return an instance with the specified status code and, optionally, reason phrase.</span>
-<span class="sd">     *</span>
-<span class="sd">     * If no reason phrase is specified, implementations MAY choose to default</span>
-<span class="sd">     * to the RFC 7231 or IANA recommended reason phrase for the response&#39;s</span>
-<span class="sd">     * status code.</span>
-<span class="sd">     *</span>
-<span class="sd">     * This method MUST be implemented in such a way as to retain the</span>
-<span class="sd">     * immutability of the message, and MUST return an instance that has the</span>
-<span class="sd">     * updated status and reason phrase.</span>
-<span class="sd">     *</span>
-<span class="sd">     * @see http://tools.ietf.org/html/rfc7231#section-6</span>
-<span class="sd">     * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml</span>
-<span class="sd">     * @param int $code The 3-digit integer result code to set.</span>
-<span class="sd">     * @param string $reasonPhrase The reason phrase to use with the</span>
-<span class="sd">     *     provided status code; if none is provided, implementations MAY</span>
-<span class="sd">     *     use the defaults as suggested in the HTTP specification.</span>
-<span class="sd">     * @return static</span>
-<span class="sd">     * @throws \InvalidArgumentException For invalid status code arguments.</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">withStatusCode</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$code</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$reasonPhrase</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * Gets the response reason phrase associated with the status code.</span>
-<span class="sd">     *</span>
-<span class="sd">     * Because a reason phrase is not a required element in a response</span>
-<span class="sd">     * status line, the reason phrase value MAY be empty. Implementations MAY</span>
-<span class="sd">     * choose to return the default RFC 7231 recommended reason phrase (or those</span>
-<span class="sd">     * listed in the IANA HTTP Status Code Registry) for the response&#39;s</span>
-<span class="sd">     * status code.</span>
-<span class="sd">     *</span>
-<span class="sd">     * @see http://tools.ietf.org/html/rfc7231#section-6</span>
-<span class="sd">     * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml</span>
-<span class="sd">     * @return string Reason phrase; must return an empty string if none present.</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getReasonPhrase</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * Gets the body of the response.</span>
-<span class="sd">     *</span>
-<span class="sd">     * @return string Returns the body as a string.</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getBody</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * Return an instance with the specified response body.</span>
-<span class="sd">     *</span>
-<span class="sd">     * This method MUST be implemented in such a way as to retain the</span>
-<span class="sd">     * immutability of the message, and MUST return a new instance that has the</span>
-<span class="sd">     * new body stream.</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param string $body Body.</span>
-<span class="sd">     * @return static</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">withBody</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$body</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
-<span class="p">}</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="dependency-injection">
+<h1>Dependency injection<a class="headerlink" href="#dependency-injection" title="Link to this heading">#</a></h1>
+<p>Zoals al benoemd is het gebruik van het singleton pattern om meerdere
+redenen onwenselijk. Eén van de genoemde redenen is dat hierdoor verborgen
+afhankelijkheden ontstaan tussen verschillende componenten. Hierdoor wordt
+de <a class="reference external" href="https://en.wikipedia.org/wiki/Coupling_(computer_programming)"><em>coupling</em></a>
+tussen deze componenten vergroot; het hebben van <em>loose coupling</em>, waarbij
+componenten grotendeels onafhankelijk van elkaar kunnen functioneren, is
+echter in het algemeen zeer wenselijk.</p>
+<p>Niet alleen het singleton pattern vergroot echter de coupling. Ook het
+aanmaken van service-objecten binnen een ander component vergroot deze
+coupling. Hierdoor ontstaat immers ook een verborgen afhankelijkheid. Als je
+bijvoorbeeld de template engine in een controller wilt gebruiken en die
+template engine binnen de controller zou instantiëren met het keyword <code class="docutils literal notranslate"><span class="pre">new</span></code>,
+dan is de controller afhankelijk van de implementatie van de template engine,
+zoals in onderstaand voorbeeld.
+Deze afhankelijkheid is onzichtbaar en kan bovendien niet worden gewijzigd.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class Controller</span>
+<span class="x">{</span>
+<span class="x">    public function handle(RequestInterface $request): ResponseInterface</span>
+<span class="x">    {</span>
+<span class="x">        // ...</span>
+<span class="x">        $template_engine = new TemplateEngine();</span>
+<span class="x">        $html = $template_engine-&gt;render(&#39;view.html&#39;, $params);</span>
+<span class="x">        return new Response($html);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
 </pre></div>
 </div>
+<p>Hier zien we dat twee manieren, waarvan we misschien intuïtief gebruik zouden
+willen maken om het ene component te gebruiken binnen het andere component,
+toch tot problemen kunnen leiden. Er is dus een andere manier nodig om
+componenten aan elkaar te koppelen.</p>
+<section id="inversion-of-control">
+<h2>Inversion of control<a class="headerlink" href="#inversion-of-control" title="Link to this heading">#</a></h2>
+<p>Aangezien verborgen afhankelijkheden problematisch blijken te zijn, kan je
+aannemen dat het verstandig is om afhankelijkheden expliciet te maken. De
+techniek die je hiervoor kan gebruiken heet
+<a class="reference external" href="https://nl.wikipedia.org/wiki/Dependency_injection"><em>dependency injection</em></a>.
+Dit is een techniek waarbij de afhankelijkheden van een klasse expliciet
+worden meegegeven aan de klasse, in plaats van dat de klasse ze zelf ophaalt
+of maakt.</p>
+<p>Dependency injection is een vorm van een meer algemeen concept dat
+<a class="reference external" href="https://en.wikipedia.org/wiki/Inversion_of_control"><em>inversion of control</em></a>
+heet. Als een applicatie een bepaalde library gebruikt, is het meestal zo dat
+die applicatie functies in de library aanroept; de <em>flow of control</em> is dus
+van de applicatie naar de library. Bij inversion of control is dat omgekeerd.
+Dit speelt met name bij het gebruik van <em>frameworks</em>. Kenmerkend daaraan is
+dat het entry point van de applicatie in het framework ligt, en dat het het
+framework is dat functies van de applicatie aanroept. De flow of control is
+dus van het framework naar de applicatie. Ook browsers en game engines zijn
+voorbeelden hiervan; in beide gevallen is er een generieke <em>event loop</em> die
+applicatiefuncties aanroept als bepaalde events optreden.</p>
 </section>
-<section id="kernelinterface">
-<h2><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code><a class="headerlink" href="#kernelinterface" title="Link to this heading">#</a></h2>
-<p>De returnwaarde van <code class="docutils literal notranslate"><span class="pre">Framework\Kernel\KernelInterface</span></code> kan nu worden
-vervangen door een instantie van <code class="docutils literal notranslate"><span class="pre">Framework\Http\ResponseInterface</span></code>.
-Als de interfaces uit PSR-7 worden gebruikt, kan deze interface in zijn
-geheel worden vervangen door <code class="docutils literal notranslate"><span class="pre">Psr\Http\Server\RequestHandlerInterface</span></code>.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="k">namespace</span> <span class="nx">Framework\Kernel</span><span class="p">;</span>
-
-<span class="k">use</span> <span class="nx">Framework\Http\RequestInterface</span><span class="p">;</span>
-<span class="k">use</span> <span class="nx">Framework\Http\ResponseInterface</span><span class="p">;</span>
-
-<span class="sd">/**</span>
-<span class="sd"> * Handles a server request and produces a response.</span>
-<span class="sd"> *</span>
-<span class="sd"> * A kernel processes an HTTP request in order to produce an</span>
-<span class="sd"> * HTTP response.</span>
-<span class="sd"> */</span>
-<span class="k">interface</span> <span class="nx">KernelInterface</span>
-<span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * Handles a request and produces a response.</span>
-<span class="sd">     *</span>
-<span class="sd">     * May call other collaborating code to generate the response.</span>
-<span class="sd">     * </span>
-<span class="sd">     * @param RequestInterface $request The server request. </span>
-<span class="sd">     * @return ResponseInterface The response.</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
-<span class="p">}</span>
+<section id="constructor-injection">
+<h2>Constructor injection<a class="headerlink" href="#constructor-injection" title="Link to this heading">#</a></h2>
+<p>De meest gebruikelijk vorm van dependency injection is <em>constructor
+injection</em>. Hierbij worden alle afhankelijkeden die een klasse nodig heeft
+meegegeven aan de constructor. Deze afhankelijkheden zijn dus expliciet
+zichtbaar in de definitie van die constructor en worden bovendien niet door
+de component zelf beheerd. Als voor de constructorparameters interfaces
+worden gebruikt, is het bovendien eenvoudig om de implementatie van de
+afhankelijkheid uit te wisselen voor een andere implementatie, mits die maar
+aan de gevraagde interface voldoet.</p>
+<p>Het hierboven genoemde voorbeeld, waarbij een controller een template engine
+gebruikt, kan als volgt worden herschreven om gebruik te maken van
+constructor injection.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class Controller</span>
+<span class="x">{</span>
+<span class="x">    public function __construct(private TemplateEngineInterface $template_engine)</span>
+<span class="x">    {</span>
+<span class="x">    }</span>
+<span class="x">    </span>
+<span class="x">    public function handle(RequestInterface $request): ResponseInterface</span>
+<span class="x">    {</span>
+<span class="x">        // ...</span>
+<span class="x">        $html = $this-&gt;template_engine-&gt;render(&#39;view.html&#39;, $params);</span>
+<span class="x">        return new Response($html);</span>
+<span class="x">    }</span>
+<span class="x">}</span>
 </pre></div>
 </div>
+<p>Het is hiermee mogelijk geworden om een andere implementatie te gebruiken
+voor de interface <code class="docutils literal notranslate"><span class="pre">TemplateEngineInterface</span></code>, waarbij in de eerder getoonde
+code de klasse hard gekoppeld was aan de implementatie in <code class="docutils literal notranslate"><span class="pre">TemplateEngine</span></code>.
+Merk bovendien op dat niet elke klasse-instantiatie met <code class="docutils literal notranslate"><span class="pre">new</span></code> problematisch
+is. Het aanmaken van de response blijft via dit keyword gebeuren. Het
+verschil is gelegen in de constatering dat <code class="docutils literal notranslate"><span class="pre">Response</span></code> geen service is, maar
+een <em>value object</em>. Het zou niet logisch zijn om deze van buiten te injecten,
+aangezien het de taak van de controller is om dit object te maken.</p>
+</section>
+<section id="setter-injection">
+<h2>Setter injection<a class="headerlink" href="#setter-injection" title="Link to this heading">#</a></h2>
+<p>Een potentieel nadeel aan constructor injection is dat het al bij het
+aanmaken van de component nodig is om alle afhankelijkheden te maken en dat
+deze naderhand niet gewisseld kunnen worden. Als dit bezwaarlijk is, dan kan
+gebruik gemaakt worden van <em>setter injection</em>. Hierbij wordt een
+setter-methode toegevoegd aan de klasse waarmee de afhankelijkheid ingesteld
+kan worden. Dit zou bijvoorbeeld gebruikt kunnen worden om een logger in te
+stellen; de logger hoeft niet ingesteld te worden als loggen niet gewenst is
+en bovendien zou het zo kunnen zijn dat loggen op een gegeven moment op een
+andere manier gedaan moet worden. Aan deze beschrijving is al te zien dat
+setter injection een variant van het
+<a class="reference external" href="https://refactoring.guru/design-patterns/strategy"><em>strategy pattern</em></a> is.
+Merk wel op dat dit een methode is die maar zelden gebruikt hoeft te worden;
+vrijwel altijd zal constructor injection de voorkeur hebben.</p>
 </section>
 </section>
 
@@ -558,7 +542,7 @@ geheel worden vervangen door <code class="docutils literal notranslate"><span cl
         },
         kernelOptions: {
             name: "python3",
-            path: "./3.2-response"
+            path: "./5.1-di"
         },
         predefinedOutput: true
     }
@@ -576,20 +560,20 @@ geheel worden vervangen door <code class="docutils literal notranslate"><span cl
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="opdracht.html"
+       href="singleton.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Opgave</p>
+        <p class="prev-next-title">Services</p>
       </div>
     </a>
     <a class="right-next"
-       href="../4.1-templating/intro.html"
+       href="compositionroot.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">Composition root</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -610,8 +594,9 @@ geheel worden vervangen door <code class="docutils literal notranslate"><span cl
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#responseinterface"><code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code></a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernelinterface"><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inversion-of-control">Inversion of control</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#constructor-injection">Constructor injection</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setter-injection">Setter injection</a></li>
 </ul>
   </nav></div>
 

@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Request &#8212; Webtechnologie II</title>
+    <title>Interfaces &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '3.1-request/request';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4.2-response/interface';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Oefeningen" href="oefening.html" />
-    <link rel="prev" title="Request, Response en Message" href="intro.html" />
+    <link rel="next" title="Services" href="../5.1-di/singleton.html" />
+    <link rel="prev" title="Opgave" href="opdracht.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -213,11 +213,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Request, Response en Message</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/intro.html">Request, Response en Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/request.html">Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
 <ul class="nav bd-sidenav">
@@ -234,11 +234,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Response</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4.2-response/response.html">Response</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-response/oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-response/opdracht.html">Opgave</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.2-response/interface.html">Interfaces</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="response.html">Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opgave</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
 <ul class="nav bd-sidenav">
@@ -320,7 +320,7 @@
       
       
       
-      <li><a href="../_sources/3.1-request/request.md" target="_blank"
+      <li><a href="../_sources/4.2-response/interface.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -396,7 +396,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Request</h1>
+    <h1>Interfaces</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -406,10 +406,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#van-http-naar-php">Van HTTP naar PHP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-kernel-en-de-request">De kernel en de request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#het-maken-van-de-request-klasse">Het maken van de <code class="docutils literal notranslate"><span class="pre">Request</span></code> klasse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-kleine-refactoring">Een kleine <em>refactoring</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#responseinterface"><code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernelinterface"><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -421,99 +419,136 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="request">
-<h1>Request<a class="headerlink" href="#request" title="Link to this heading">#</a></h1>
-<section id="van-http-naar-php">
-<h2>Van HTTP naar PHP<a class="headerlink" href="#van-http-naar-php" title="Link to this heading">#</a></h2>
-<p>Het HTTP is alleen maar een <em>transport-protocol</em>: wanneer we iets ingewikkelders willen doen dan alleen maar data heen en weer sturen, zullen we gebruik moeten maken van een programmeertaal – PHP in ons geval.</p>
-<p>Dat houdt evenwel in dat we met twee verschillende paradigmata te maken hebben: aan de ene kant de wereld van het <em>transport</em> en aan de andere kant de wereld van het <em>programma</em>. Om te voorkomen dat we deze twee werelden te veel met elkaar mixed, is het van belang dat we een <em>vertaling</em> van het één in het ander maken. Op die manier kunnen we onze programmacode helemaal loskoppelen van de wereld van het HTTP, wat de transfereerbaarheid, onderhoudbaarheid en testbaarheid vanzelfsprekend ten goede komt.</p>
-<p>Bekijk de onderstaande afbeelding. Hier wordt de vertaling van de HTTP-wereld naar de PHP-wereld (en vice versa) grafisch uitgebeeld. Aan de linkerkant komt een <em>request</em> onze PHP-wereld binnen, de <em>applicatie</em> doet van alles met dit <em>request</em>, genereert uiteindelijk een <em>response</em>, die weer aan de HTTP-wereld wordt teruggegeven.</p>
-<p><img alt="De vertaling van HTTP naar PHP en vice versa" src="../_images/http-php.jpeg" /></p>
-<p>Het is de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code> die de vertaling van de HTTP- naar de PHP-wereld maakt, en de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code> die het omgekeerde doet.</p>
-</section>
-<section id="de-kernel-en-de-request">
-<h2>De kernel en de request<a class="headerlink" href="#de-kernel-en-de-request" title="Link to this heading">#</a></h2>
-<p><a class="reference internal" href="../2.2-kernel/kernel.html#klasse-als-kernel"><span class="std std-ref">In een eerder onderdeel</span></a> hebben we het gehad over de <code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code> die een methode <code class="docutils literal notranslate"><span class="pre">handle</span></code> heeft. Zoals je daar kunt zien, verwacht deze methode op dit moment twee parameters: <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">$get</span></code> en <code class="docutils literal notranslate"><span class="pre">array</span> <span class="pre">$post</span></code>. Deze twee parameters werden gevuld door het script <code class="docutils literal notranslate"><span class="pre">hello.php</span></code>.</p>
-<p>Je ziet hier direct al twee problemen met deze aanpak. Allereerst schaalt het niet heel lekker. Er is nu rekening gehouden met twee superglobals die gevuld worden vanuit de PHP-omgeving, maar er zijn er natuurlijk <a class="reference external" href="https://www.php.net/manual/en/language.variables.superglobals.php">nog meer</a>: <code class="docutils literal notranslate"><span class="pre">$_FILES</span></code>, <code class="docutils literal notranslate"><span class="pre">$_COOKIE</span></code>, of <code class="docutils literal notranslate"><span class="pre">$_SESSION</span></code>, om er maar drie te noemen.</p>
-<p>Een tweede punt van aandacht is dat we op deze manier de hele tijd superglobals door onze applicatie heen sturen. Globale variabele zijn sowieso altijd verdacht, maar zeker superglobals. Bovendien zijn zowel <code class="docutils literal notranslate"><span class="pre">$_GET</span></code> als <code class="docutils literal notranslate"><span class="pre">$_POST</span></code> eenvoudige associatieve arrays, dus onze IDE kan op niet helpen met het uitzoeken van wat we hier allemaal mee kunnen doen.</p>
-<p>Om deze reden is het beter om de superglobal <code class="docutils literal notranslate"><span class="pre">$_GET</span></code> om te zetten in een instantie van de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code> en die verder in de applicatie te gebruiken. Dit object <em>encapsuleert</em> dan de superglobal.</p>
-<p>Als je <a class="reference external" href="https://www.php-fig.org/psr/psr-7/#3-interfaces">de betreffende paragraaf van PSR-7 bekijkt</a> zie je dat <code class="docutils literal notranslate"><span class="pre">Message</span></code>, <code class="docutils literal notranslate"><span class="pre">Request</span></code> en <code class="docutils literal notranslate"><span class="pre">ServerRequest</span></code> gedrieën alle zaken encapsuleren die we <a class="reference internal" href="intro.html"><span class="std std-doc">in de vorige paragraaf besproken hebben</span></a>. Zo is er een methode om het <em>target</em> van de request op te vragen (<code class="docutils literal notranslate"><span class="pre">getRequestTarget()</span></code>), een methode om het gebruikte HTTP-werkwoord op te vragen (<code class="docutils literal notranslate"><span class="pre">getMethod()</span></code>), of een methode om de <em>query parameters</em> op te vragen (<code class="docutils literal notranslate"><span class="pre">getQueryParams()</span></code>).</p>
-<p>Verder kun je zien dat we in de implementaties van deze methoden de waarden uit de superglobals kunnen (moeten) aanpassen, waardoor het werken hiermee verderop in onze applicatie een stuk makkelijker wordt. Zo hoeven we bijvoorbeeld niet te weten hoe <em>query parameters</em> over de lijn worden verstuurd, omdat ze in onze <code class="docutils literal notranslate"><span class="pre">Request</span></code> worden omgezet in een standaard php-array.</p>
-</section>
-<section id="het-maken-van-de-request-klasse">
-<h2>Het maken van de <code class="docutils literal notranslate"><span class="pre">Request</span></code> klasse<a class="headerlink" href="#het-maken-van-de-request-klasse" title="Link to this heading">#</a></h2>
-<p>We maken de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code> (net als de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code>) in de namespace <code class="docutils literal notranslate"><span class="pre">Message</span></code>: maak in de directory <code class="docutils literal notranslate"><span class="pre">App</span></code> een nieuwe directory <code class="docutils literal notranslate"><span class="pre">Message</span></code> om dit voorbeeld te kunnen volgen.</p>
-<div class="admonition-alleen-get admonition">
-<p class="admonition-title">Alleen $_GET</p>
-<p>Voor deze discussie maken we alleen gebruik van de <code class="docutils literal notranslate"><span class="pre">$_GET</span></code>-superglobal; het werken met de rest wordt overgelaten aan de oefeningen en de opdracht.</p>
-</div>
-<p>Om de <code class="docutils literal notranslate"><span class="pre">$_GET</span></code> superglobal te kunnen encapsuleren, moeten we deze natuurlijk opslaag in de <em>scope</em> van de instantie van de betreffende klasse. Die lokale representatie zouden we dan kunnen vullen met behulp van <a class="reference internal" href="../1.2-php/oop.html#constructor-promotion"><span class="std std-ref">contructor promotion</span></a>. In de methode <code class="docutils literal notranslate"><span class="pre">getQueryParams</span></code> retourneren we dit veld dan:</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="interfaces">
+<h1>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h1>
+<p>Onderstaande interface is ontleend aan
+<a class="reference external" href="https://www.php-fig.org/psr/psr-7">PSR-7</a>;
+het commentaar bij de interface is hier ook grotendeels aan ontleend en is,
+waar nodig, aangepast.</p>
+<section id="responseinterface">
+<h2><code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code><a class="headerlink" href="#responseinterface" title="Link to this heading">#</a></h2>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">namespace</span> <span class="nx">Framework\Message</span><span class="p">;</span>
 
-<span class="k">class</span> <span class="nc">Request</span>
+<span class="k">namespace</span> <span class="nx">Framework\Http</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Representation of an outgoing, server-side response.</span>
+<span class="sd"> *</span>
+<span class="sd"> * Per the HTTP specification, this interface includes properties for</span>
+<span class="sd"> * each of the following:</span>
+<span class="sd"> *</span>
+<span class="sd"> * - Status code and reason phrase</span>
+<span class="sd"> * - Headers</span>
+<span class="sd"> * - Message body</span>
+<span class="sd"> *</span>
+<span class="sd"> * Responses are considered immutable; all methods that might change state MUST</span>
+<span class="sd"> * be implemented such that they retain the internal state of the current</span>
+<span class="sd"> * message and return an instance that contains the changed state.</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">ResponseInterface</span> <span class="k">extends</span> <span class="nx">MessageInterface</span>
 <span class="p">{</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">array</span> <span class="nv">$get</span><span class="p">)</span> <span class="p">{}</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Gets the response status code.</span>
+<span class="sd">     *</span>
+<span class="sd">     * The status code is a 3-digit integer result code of the server&#39;s attempt</span>
+<span class="sd">     * to understand and satisfy the request.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return int Status code.</span>
+<span class="sd">     */</span>
+    <span class="k">function</span> <span class="nf">getStatusCode</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getQueryParams</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">;</span>
-    <span class="p">}</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Return an instance with the specified status code and, optionally, reason phrase.</span>
+<span class="sd">     *</span>
+<span class="sd">     * If no reason phrase is specified, implementations MAY choose to default</span>
+<span class="sd">     * to the RFC 7231 or IANA recommended reason phrase for the response&#39;s</span>
+<span class="sd">     * status code.</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method MUST be implemented in such a way as to retain the</span>
+<span class="sd">     * immutability of the message, and MUST return an instance that has the</span>
+<span class="sd">     * updated status and reason phrase.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @see http://tools.ietf.org/html/rfc7231#section-6</span>
+<span class="sd">     * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml</span>
+<span class="sd">     * @param int $code The 3-digit integer result code to set.</span>
+<span class="sd">     * @param string $reasonPhrase The reason phrase to use with the</span>
+<span class="sd">     *     provided status code; if none is provided, implementations MAY</span>
+<span class="sd">     *     use the defaults as suggested in the HTTP specification.</span>
+<span class="sd">     * @return static</span>
+<span class="sd">     * @throws \InvalidArgumentException For invalid status code arguments.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">withStatusCode</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$code</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$reasonPhrase</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Gets the response reason phrase associated with the status code.</span>
+<span class="sd">     *</span>
+<span class="sd">     * Because a reason phrase is not a required element in a response</span>
+<span class="sd">     * status line, the reason phrase value MAY be empty. Implementations MAY</span>
+<span class="sd">     * choose to return the default RFC 7231 recommended reason phrase (or those</span>
+<span class="sd">     * listed in the IANA HTTP Status Code Registry) for the response&#39;s</span>
+<span class="sd">     * status code.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @see http://tools.ietf.org/html/rfc7231#section-6</span>
+<span class="sd">     * @see http://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml</span>
+<span class="sd">     * @return string Reason phrase; must return an empty string if none present.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getReasonPhrase</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Gets the body of the response.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return string Returns the body as a string.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getBody</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Return an instance with the specified response body.</span>
+<span class="sd">     *</span>
+<span class="sd">     * This method MUST be implemented in such a way as to retain the</span>
+<span class="sd">     * immutability of the message, and MUST return a new instance that has the</span>
+<span class="sd">     * new body stream.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $body Body.</span>
+<span class="sd">     * @return static</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">withBody</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$body</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
-<p>Omdat we nu met deze klasse alle eigenschappen van het <em>request</em> in één object kunnen opslaan, kunnen we de signature van <code class="docutils literal notranslate"><span class="pre">handle</span></code> in de <code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code> kunnen aanpassen:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-    <span class="c1">//andere code weggelaten</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
-</pre></div>
-</div>
-<p>En dan moeten we, vanzelfsprekend, ook de implementatie hiervan <code class="docutils literal notranslate"><span class="pre">HelloKernel</span></code> navenant aanpassen:</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-  <span class="c1">//andere code weggelaten</span>
-  <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
-  <span class="p">{</span>
-    <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQueryParams</span><span class="p">()[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
-    <span class="k">return</span> <span class="s2">&quot;Hello, </span><span class="si">$name</span><span class="s2">&quot;</span><span class="p">;</span>
-  <span class="p">}</span>
-</pre></div>
-</div>
-<p>In het script <code class="docutils literal notranslate"><span class="pre">hello.php</span></code> moeten we dan een instantie maken van de <code class="docutils literal notranslate"><span class="pre">Request</span></code>-klasse. Het volledige script wordt dan als volgt:</p>
-<div class="highlight-php notranslate" id="hello-script"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="cp">&lt;?php</span>
-<span class="linenos"> 2</span>
-<span class="linenos"> 3</span><span class="k">use</span> <span class="nx">App\HelloKernel</span><span class="p">;</span>
-<span class="linenos"> 4</span><span class="k">use</span> <span class="nx">Framework\Message\Request</span><span class="p">;</span>
-<span class="linenos"> 5</span>
-<span class="linenos"> 6</span><span class="k">require_once</span> <span class="p">(</span><span class="s1">&#39;vendor/autoload.php&#39;</span><span class="p">);</span>
-<span class="linenos"> 7</span>
-<span class="linenos"> 8</span><span class="nv">$kernel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HelloKernel</span><span class="p">();</span>
-<span class="linenos"> 9</span><span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">);</span>
-<span class="linenos">10</span><span class="k">echo</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
-</pre></div>
-</div>
 </section>
-<section id="een-kleine-refactoring">
-<h2>Een kleine <em>refactoring</em><a class="headerlink" href="#een-kleine-refactoring" title="Link to this heading">#</a></h2>
-<p>Hoewel dit op zich werkt, is het nog niet helemaal lekker. In verband met de <em>life cycle</em> van de <em>request</em> is het ongewenst dat we hier zonder meer nieuwe instanties van kunnen maken. Voor nu voert het wat te ver om dat volledig toe te lichten, maar het is beter om de verantwoordelijkheid van het aanmaken van instanties van deze klasse bij de klasse zelf te beleggen. Om dit te bewerkstelligen maken we de <em>constructor</em> van de klasse privaat en breiden we de API uit met een <em>statische methode</em> die een instantie van de klasse teruggeeft:</p>
+<section id="kernelinterface">
+<h2><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code><a class="headerlink" href="#kernelinterface" title="Link to this heading">#</a></h2>
+<p>De returnwaarde van <code class="docutils literal notranslate"><span class="pre">Framework\Kernel\KernelInterface</span></code> kan nu worden
+vervangen door een instantie van <code class="docutils literal notranslate"><span class="pre">Framework\Http\ResponseInterface</span></code>.
+Als de interfaces uit PSR-7 worden gebruikt, kan deze interface in zijn
+geheel worden vervangen door <code class="docutils literal notranslate"><span class="pre">Psr\Http\Server\RequestHandlerInterface</span></code>.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-    <span class="c1">//andere code weggelaten</span>
-    <span class="k">private</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="k">array</span> <span class="nv">$get</span><span class="p">)</span> <span class="p">{}</span>
-    
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">fromGlobals</span><span class="p">()</span><span class="o">:</span><span class="nx">self</span>
-    <span class="p">{</span>
-        <span class="k">return</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">);</span> 
-    <span class="p">}</span>
-</pre></div>
-</div>
-<p>De manier waarop we de instantie van <code class="docutils literal notranslate"><span class="pre">Request</span></code> aanmaken is dan ook anders (regel 9 in het script hierboven):</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-  <span class="c1">//andere code weggelaten</span>
 
-  <span class="nv">$request</span> <span class="o">=</span> <span class="nx">Request</span><span class="o">::</span><span class="na">fromGlobals</span><span class="p">();</span>
-  <span class="k">echo</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
+<span class="k">namespace</span> <span class="nx">Framework\Kernel</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Framework\Http\RequestInterface</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Framework\Http\ResponseInterface</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Handles a server request and produces a response.</span>
+<span class="sd"> *</span>
+<span class="sd"> * A kernel processes an HTTP request in order to produce an</span>
+<span class="sd"> * HTTP response.</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">KernelInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Handles a request and produces a response.</span>
+<span class="sd">     *</span>
+<span class="sd">     * May call other collaborating code to generate the response.</span>
+<span class="sd">     * </span>
+<span class="sd">     * @param RequestInterface $request The server request. </span>
+<span class="sd">     * @return ResponseInterface The response.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Je ziet dat we <em>alleen</em> in de statische methode <code class="docutils literal notranslate"><span class="pre">fromGlobals()</span></code> met de superglobals te maken hebben; in de rest van onze applicatie werken we eenvoudig met php-objecten en constructies. Dit zal zo blijven, totdat we de boel uiteindelijk om gaan zetten in een instantie van de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code>, die we weer de HTTP-wereld insturen.</p>
 </section>
 </section>
 
@@ -530,7 +565,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./3.1-request"
+            path: "./4.2-response"
         },
         predefinedOutput: true
     }
@@ -548,20 +583,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="opdracht.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Request, Response en Message</p>
+        <p class="prev-next-title">Opgave</p>
       </div>
     </a>
     <a class="right-next"
-       href="oefening.html"
+       href="../5.1-di/singleton.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Oefeningen</p>
+        <p class="prev-next-title">Services</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -582,10 +617,8 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#van-http-naar-php">Van HTTP naar PHP</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-kernel-en-de-request">De kernel en de request</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#het-maken-van-de-request-klasse">Het maken van de <code class="docutils literal notranslate"><span class="pre">Request</span></code> klasse</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-kleine-refactoring">Een kleine <em>refactoring</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#responseinterface"><code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#kernelinterface"><code class="docutils literal notranslate"><span class="pre">KernelInterface</span></code></a></li>
 </ul>
   </nav></div>
 
