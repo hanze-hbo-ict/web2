@@ -216,7 +216,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/intro.html">Request, Response en Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/request.html">Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/opdracht.html">Opdracht</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
@@ -385,7 +386,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -401,6 +404,15 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#http-headers">HTTP headers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-klasse-response">De klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -412,6 +424,34 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="response">
 <h1>Response<a class="headerlink" href="#response" title="Link to this heading">#</a></h1>
+<p>Wanneer we een <code class="docutils literal notranslate"><span class="pre">Request</span></code> hebben afgehandeld, is het natuurlijk zaak om een <em>response</em> af te maken, die uiteindelijk naar de machine die het request heeft gedaan, de <em>client</em>, teruggestuurd kan worden. Tot nu toe hebben we gewoon in <a class="reference internal" href="../2.2-kernel/kernel.html#klasse-als-kernel"><span class="std std-ref">de <em>kernel</em></span></a> gewoon het resultaat van de applicatie afgedrukt (<code class="docutils literal notranslate"><span class="pre">echo</span> <span class="pre">$kernel-&gt;handle($_GET,</span> <span class="pre">$_POST)</span></code>), maar net zoals we een <em>request</em> willen encapsuleren in <a class="reference internal" href="#request.md"><span class="xref myst">z’n eigen klasse</span></a>, is het ook beter om de <em>response</em> te encapsuleren in een separate klasse. Dat is de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code> (je verwacht het niet).</p>
+<section id="http-headers">
+<h2>HTTP headers<a class="headerlink" href="#http-headers" title="Link to this heading">#</a></h2>
+<p>Bekijk nog een keer de verhouding tussen de verschillende klassen, die je hieronder kunt vinden.</p>
+<p><img alt="De verhouding tussen de verschillende onderdelen" src="../_images/psr-7-deels.jpeg" /></p>
+<p>Net als de <code class="docutils literal notranslate"><span class="pre">Request</span></code>, is de <code class="docutils literal notranslate"><span class="pre">Response</span></code> een instantie van <code class="docutils literal notranslate"><span class="pre">Message</span></code>. Als je <a class="reference external" href="https://www.php-fig.org/psr/psr-7/">de documentatie van deze interface</a> bekijkt, zie je dat de methoden van <code class="docutils literal notranslate"><span class="pre">MessageInterface</span></code> feitelijk om drie dingen gaan: het <em>protocol</em>, de <em>headers</em>, en de <em>body</em>. Dat betekent dat zowel de <em>request</em> als de <em>response</em> eveneens deze drie elementen bevatten.</p>
+<p>Denk nog even terug aan <a class="reference internal" href="#intro.md#headers-en-payload"><span class="xref myst">de vorm van een request-response-cyclus</span></a>. In het plaatje dat je daar hebt gezien, zag je deze drie elementen ook terugkomen. De <em>conversatie</em> die de <em>client</em> met de <em>server</em> voert, maakt gebruik van deze drie elementen. De <em>client</em> vraagt een bepaald document bij de *server, en de <em>server</em> antwoordt met een bepaalde versie van dit document. Of de <em>client</em> geeft behaalde data aan de <em>server</em>, waar deze laatste iets mee moet doen, en de <em>server</em> reageert eventueel met bepaalde gegevens. Al deze opties zijn vastgelegd in de <em>headers</em>.</p>
+<p>Met deze informatie kunnen we het onderstaande overzicht maken:</p>
+<ul class="simple">
+<li><p>Een <em>get-request</em> heeft een <code class="docutils literal notranslate"><span class="pre">Accept</span></code>-header; de corresponderende <em>header</em> van de <em>response</em> is <code class="docutils literal notranslate"><span class="pre">Content-Type</span></code>.</p></li>
+<li><p>De <em>body</em> van een <em>get-request</em> is in de regel leeg; de <em>body</em> van de <em>response</em> bevat in dit geval de opgevraagde data.</p></li>
+<li><p>De <em>body</em> van een <em>post-request</em> bevat in de regel de data die de <em>client</em> naar de <em>server</em> wil sturen; de <em>body</em> van de <em>response</em> is in dit geval meestal leeg.</p></li>
+</ul>
+</section>
+<section id="de-klasse-response">
+<h2>De klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code><a class="headerlink" href="#de-klasse-response" title="Link to this heading">#</a></h2>
+<p>Het voor deze discussie meest interessante van <a class="reference internal" href="interface.html#responseinterface"><span class="std std-ref">de <code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code></span></a> is de methode <code class="docutils literal notranslate"><span class="pre">getBody()</span></code>. Deze methode geeft een <em>string</em> terug die de <em>body</em> van de <em>response</em> is – feitelijk de tekst die we voorheen eenvoudig vanuit de <em>front controller</em> werd afgedrukt. Door de encapsulatie kunnen we echter voordat we de response daadwerkelijk uitrpinten nog verrijken met eventuele extra <em>headers</em> of nog iets aan de body toevoegen.</p>
+<p>Met de kennis die we nu hebben, kunnen we de hele <em>request life-cycle</em> beschrijven:</p>
+<ol class="arabic simple">
+<li><p>De [<strong>front controller</strong>](../3.2-routing/<em>front controller</em>.md) ontvangt een <em>request</em>.</p></li>
+<li><p>Op basis hiervan wordt een <code class="docutils literal notranslate"><span class="pre">Request</span></code> gemaakt.</p></li>
+<li><p>De <code class="docutils literal notranslate"><span class="pre">Router</span></code> bepaalt welke <em>controller</em> bij dit specifieke <code class="docutils literal notranslate"><span class="pre">Request</span></code> hoort.</p></li>
+<li><p>Deze <em>controller</em> maakt, eventueel met behulp van templates, de <code class="docutils literal notranslate"><span class="pre">Response</span></code>.</p></li>
+<li><p>Deze <code class="docutils literal notranslate"><span class="pre">Response</span></code> wordt naar de <em>client</em> teruggestuurd.</p></li>
+</ol>
+<p>Grofweg komt dit overeen met het onderstaande sequentie-diagram.</p>
+<p><img alt="Complete life-cycle" src="../_images/request-response-sequence.svg" /></p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -468,6 +508,23 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#http-headers">HTTP headers</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-klasse-response">De klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

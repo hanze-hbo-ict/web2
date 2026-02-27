@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '3.1-request/request';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Oefeningen" href="oefening.html" />
+    <link rel="next" title="Oefening" href="oefening.html" />
     <link rel="prev" title="Request, Response en Message" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
@@ -216,7 +216,8 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Request, Response en Message</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
@@ -412,6 +413,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-kernel-en-de-request">De kernel en de request</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#het-maken-van-de-request-klasse">Het maken van de <code class="docutils literal notranslate"><span class="pre">Request</span></code> klasse</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-kleine-refactoring">Een kleine <em>refactoring</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface">Interface</a></li>
 </ul>
             </nav>
         </div>
@@ -447,7 +449,7 @@
 <p>We maken de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code> (net als de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code>) in de namespace <code class="docutils literal notranslate"><span class="pre">Message</span></code>: maak in de directory <code class="docutils literal notranslate"><span class="pre">App</span></code> een nieuwe directory <code class="docutils literal notranslate"><span class="pre">Message</span></code> om dit voorbeeld te kunnen volgen.</p>
 <div class="admonition-alleen-get admonition">
 <p class="admonition-title">Alleen $_GET</p>
-<p>Voor deze discussie maken we alleen gebruik van de <code class="docutils literal notranslate"><span class="pre">$_GET</span></code>-superglobal; het werken met de rest wordt overgelaten aan de oefeningen en de opdracht.</p>
+<p>Voor deze discussie maken we alleen gebruik van de <code class="docutils literal notranslate"><span class="pre">$_GET</span></code>-superglobal; het werken met de rest wordt overgelaten aan <a class="reference internal" href="oefening.html"><span class="std std-doc">de oefeningen</span></a> en <a class="reference internal" href="opdracht.html"><span class="std std-doc">de opdracht</span></a>.</p>
 </div>
 <p>Om de <code class="docutils literal notranslate"><span class="pre">$_GET</span></code> superglobal te kunnen encapsuleren, moeten we deze natuurlijk opslaag in de <em>scope</em> van de instantie van de betreffende klasse. Die lokale representatie zouden we dan kunnen vullen met behulp van <a class="reference internal" href="../1.2-php/oop.html#constructor-promotion"><span class="std std-ref">contructor promotion</span></a>. In de methode <code class="docutils literal notranslate"><span class="pre">getQueryParams</span></code> retourneren we dit veld dan:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
@@ -517,6 +519,10 @@
 </div>
 <p>Je ziet dat we <em>alleen</em> in de statische methode <code class="docutils literal notranslate"><span class="pre">fromGlobals()</span></code> met de superglobals te maken hebben; in de rest van onze applicatie werken we eenvoudig met php-objecten en constructies. Dit zal zo blijven, totdat we de boel uiteindelijk om gaan zetten in een instantie van de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code>, die we weer de HTTP-wereld insturen.</p>
 </section>
+<section id="interface">
+<h2>Interface<a class="headerlink" href="#interface" title="Link to this heading">#</a></h2>
+<p>Bekijk <a class="reference internal" href="interface.html#requestinterface"><span class="std std-ref">de <code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code></span></a> en de daarbijhorende documentatie om je een goed beeld te vormen van de werking van de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -563,7 +569,7 @@
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Oefeningen</p>
+        <p class="prev-next-title">Oefening</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -588,6 +594,7 @@
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-kernel-en-de-request">De kernel en de request</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#het-maken-van-de-request-klasse">Het maken van de <code class="docutils literal notranslate"><span class="pre">Request</span></code> klasse</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-kleine-refactoring">Een kleine <em>refactoring</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#interface">Interface</a></li>
 </ul>
   </nav></div>
 

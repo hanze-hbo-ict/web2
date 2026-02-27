@@ -31,7 +31,7 @@ Verder kun je zien dat we in de implementaties van deze methoden de waarden uit 
 We maken de klasse `Request` (net als de klasse `Response`) in de namespace `Message`: maak in de directory `App` een nieuwe directory `Message` om dit voorbeeld te kunnen volgen.
 
 ```{admonition} Alleen $_GET
-Voor deze discussie maken we alleen gebruik van de `$_GET`-superglobal; het werken met de rest wordt overgelaten aan de oefeningen en de opdracht.
+Voor deze discussie maken we alleen gebruik van de `$_GET`-superglobal; het werken met de rest wordt overgelaten aan [de oefeningen](oefening.md) en [de opdracht](opdracht.md).
 ```
 
 Om de `$_GET` superglobal te kunnen encapsuleren, moeten we deze natuurlijk opslaag in de *scope* van de instantie van de betreffende klasse. Die lokale representatie zouden we dan kunnen vullen met behulp van [contructor promotion](../1.2-php/oop.md#constructor-promotion). In de methode `getQueryParams` retourneren we dit veld dan:
@@ -117,4 +117,6 @@ De manier waarop we de instantie van `Request` aanmaken is dan ook anders (regel
 
 Je ziet dat we *alleen* in de statische methode `fromGlobals()` met de superglobals te maken hebben; in de rest van onze applicatie werken we eenvoudig met php-objecten en constructies. Dit zal zo blijven, totdat we de boel uiteindelijk om gaan zetten in een instantie van de klasse `Response`, die we weer de HTTP-wereld insturen.
 
+## Interface
 
+Bekijk [de `RequestInterface`](interface.md#requestinterface) en de daarbijhorende documentatie om je een goed beeld te vormen van de werking van de klasse `Request`.

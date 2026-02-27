@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Strings &#8212; Webtechnologie II</title>
+    <title>Opdracht &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '1.1-php/strings';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '3.1-request/opdracht';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Arrays" href="arrays.html" />
-    <link rel="prev" title="Conditionele en lusstatements" href="controlestatements.html" />
+    <link rel="next" title="Interfaces" href="interface.html" />
+    <link rel="prev" title="Oefening" href="oefening.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -177,13 +177,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../about/installeren.html">PHP installeren</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="php.html">PHP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="variabelen.html">Variabelen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="controlestatements.html">Conditionele en lusstatements</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Strings</a></li>
-<li class="toctree-l1"><a class="reference internal" href="arrays.html">Arrays</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/php.html">PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/variabelen.html">Variabelen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/controlestatements.html">Conditionele en lusstatements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/strings.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/arrays.html">Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/oefening.html">Oefeningen</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
 <ul class="nav bd-sidenav">
@@ -213,12 +213,12 @@
 <li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../3.1-request/intro.html">Request, Response en Message</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.1-request/request.html">Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefening</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.1-request/opdracht.html">Opdracht</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Request, Response en Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefening</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
 <ul class="nav bd-sidenav">
@@ -323,7 +323,7 @@
       
       
       
-      <li><a href="../_sources/1.1-php/strings.md" target="_blank"
+      <li><a href="../_sources/3.1-request/opdracht.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -399,7 +399,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Strings</h1>
+    <h1>Opdracht</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -409,9 +409,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stringoperaties">Stringoperaties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stringfuncties">Stringfuncties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multibyte-encodings"><em>Multibyte encodings</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maak-de-klasse-request">Maak de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequentiele-opbouw">Sequentiële opbouw</a></li>
 </ul>
             </nav>
         </div>
@@ -423,198 +422,16 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="strings">
-<h1>Strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h1>
-<p>Net als veel andere talen kent PHP een
-<a class="reference external" href="https://www.php.net/manual/en/language.types.string.php">stringtype</a>.
-Een string is een
-verzameling karakters; in PHP zijn dit altijd 8-bit-karakters. Dit heeft
-invloed op de manier waarop bepaalde stringfuncties werken, zoals we nog
-kunnen zien.</p>
-<p>Strings kunnen omsloten worden door enkele aanhalingstekens <code class="docutils literal notranslate"><span class="pre">'</span></code> of door
-dubbele aanhalingstekens <code class="docutils literal notranslate"><span class="pre">&quot;</span></code>. De keuze van aanhalingstekens bepaalt op welke
-manier de string wordt geïnterpreteerd. In een string met
-<a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.single">enkele aanhalingstekens</a>
-worden vrijwel alle tekens letterlijk geïnterpreteerd. Alleen het enkele
-aanhalingsteken zelf en de backslash <code class="docutils literal notranslate"><span class="pre">\</span></code> moeten, om op te nemen in de
-string, geëscapet worden door er een backslash voor te zetten. In een
-string met
-<a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.double">dubbele aanhalingstekens</a>
-kunnen ook andere escapesequenties gebruikt worden; zo betekent de
-combinatie <code class="docutils literal notranslate"><span class="pre">\n</span></code> in een string met dubbele aanhalingstekens een <em>newline</em>,
-terwijl dit in een string met enkele aanhalingstekens gewoon voor de
-karakters <code class="docutils literal notranslate"><span class="pre">\n</span></code> staat. Een ander voorbeeld is de combinatie <code class="docutils literal notranslate"><span class="pre">\t</span></code> die voor
-een tab staat.</p>
-<p>Ook bieden strings met dubbele aanhalingstekens de mogelijkheid om varabelen
-te <a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.parsing"><em>interpoleren</em></a>
-in de string. Als je de naam van een variabele opneemt in
-een string, wordt deze vervangen door de waarde daarvan, zoals in
-onderstaand voorbeeld.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$foo = 1;</span>
-<span class="x">$bar = 2;</span>
-<span class="x">$double = &quot;foo = $foo\nbar = $bar&quot;;</span>
-<span class="x">$single = &#39;foo = $foo\nbar = $bar&#39;;</span>
-<span class="x">var_dump($double); // bevat foo = 1, newline, bar = 2</span>
-<span class="x">var_dump($single); // bevat foo = $foo\nbar = $bar</span>
-</pre></div>
-</div>
-<p>Als de varabele gevolgt moet worden door letters zal PHP denken dat deze bij
-de variabelenaam horen; als je bijvoorbeeld de variabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> wil laten
-volgen door het woord <code class="docutils literal notranslate"><span class="pre">test</span></code>, zou je <code class="docutils literal notranslate"><span class="pre">&quot;$vartest&quot;</span></code> willen gebruiken, maar dan
-zal PHP de variabele <code class="docutils literal notranslate"><span class="pre">$vartest</span></code> interpoleren. Om dit te voorkomen kan je de
-variabele omsluiten met accolades, door <code class="docutils literal notranslate"><span class="pre">&quot;{$var}test&quot;</span></code> te gebruiken.</p>
-<p>Daarnaast biedt PHP de mogelijkheid om strings over meerdere regels op te
-nemen met de zogeheten
-<a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.heredoc">heredoc</a>- en
-<a class="reference external" href="https://www.php.net/manual/en/language.types.string.php#language.types.string.syntax.nowdoc">nowdoc</a>-syntax.
-Bij de heredoc-syntax begint de string met drie kleiner-dantekens <code class="docutils literal notranslate"><span class="pre">&lt;&lt;&lt;</span></code>,
-gevolgd door een identifier die normaal gesproken in hoofdletters is.
-Daarna volgt de string, die meerdere regels kan bevatten. De string wordt
-afgesloten als aan het begin van een regel de identifier staat. Hierbij
-worden ook variabelen geïnterpoleerd, dit is dus te vergelijken met een
-string met dubbele aanhalingstekens. In de nowdoc-syntax gebeurt dit niet;
-hierbij moet de identifier die na de kleiner-dantekens staat omsloten worden
-met enkele aanhalingstekens. Van beide vormen is hieronder een voorbeeld te
-zien.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$var = &#39;foo&#39;;</span>
-<span class="x">$heredoc = &lt;&lt;&lt;HERE</span>
-<span class="x">Hello $var!</span>
-<span class="x">HERE;</span>
-<span class="x">$nowdoc = &lt;&lt;&lt;&#39;NOW&#39;</span>
-<span class="x">Hello $var!</span>
-<span class="x">NOW;</span>
-</pre></div>
-</div>
-<section id="stringoperaties">
-<h2>Stringoperaties<a class="headerlink" href="#stringoperaties" title="Link to this heading">#</a></h2>
-<p>Een alternatief voor de hierboven genoemde stringinterpolatie is
-<a class="reference external" href="https://www.php.net/manual/en/language.operators.string.php">stringconcatenatie</a>
-door middel van de operator <code class="docutils literal notranslate"><span class="pre">.</span></code>. Anders dan in Java en Python worden strings
-niet samengevoegd met de operator <code class="docutils literal notranslate"><span class="pre">+</span></code> maar is hier een aparte operator <code class="docutils literal notranslate"><span class="pre">.</span></code>
-voor. Hiermee kunnen variabelen ook in strings gezet worden; het bovenstaande
-voorbeeld zou ook als volgt opgebouwd kunnen worden.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$foo = 1;</span>
-<span class="x">$bar = 2;</span>
-<span class="x">$interpolate = &quot;foo = $foo\nbar = $bar&quot;;</span>
-<span class="x">$concatenate = &#39;foo = &#39;.$foo.&quot;\nbar = &quot;.$bar;</span>
-<span class="x">var_dump($interpolate === $concatenate); // beide strings zijn gelijk</span>
-</pre></div>
-</div>
-<p>Niet alleen stringvariabelen mogen geïnterpoleerd of samengevoegd worden;
-andere types variabelen zullen worden omgezet naar strings zodat ze in de
-string gezet kunnen worden.</p>
-<p>Je kan de individuele karakters van een string aanspreken door de positie,
-geteld vanaf 0, van het karakter tussen blokhaken achter de string te zetten.
-Als bijvoorbeeld de variabele <code class="docutils literal notranslate"><span class="pre">$var</span></code> de waarde <code class="docutils literal notranslate"><span class="pre">'abc'</span></code> bevat, is <code class="docutils literal notranslate"><span class="pre">$var[0]</span></code>
-gelijk aan <code class="docutils literal notranslate"><span class="pre">'a'</span></code> en <code class="docutils literal notranslate"><span class="pre">$var[2]</span></code> gelijk aan <code class="docutils literal notranslate"><span class="pre">'b'</span></code>. PHP heeft geen apart type
-voor losse karakters zoals het type <code class="docutils literal notranslate"><span class="pre">char</span></code> in Java, dus het type van
-<code class="docutils literal notranslate"><span class="pre">$var[0]</span></code> is <code class="docutils literal notranslate"><span class="pre">string</span></code>. Anders dan in bijvoorbeeld Python is het bovendien
-mogelijk om een enkel karakter van een string aan te passen door een nieuw
-karakter toe te kennen aan <code class="docutils literal notranslate"><span class="pre">$var[0]</span></code>, zoals in onderstaand voorbeeld. Merk
-op dat het ook mogelijk is om indices te gebruiken die buiten de
-oorspronkelijke string vallen; eventuele tussenliggende karakters worden
-opgevuld met spaties.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$var = &#39;abc&#39;;</span>
-<span class="x">$var[0] = &#39;x&#39;; // $var is nu &#39;xbc&#39;;</span>
-<span class="x">$var[3] = &#39;d&#39;; // $var is nu &#39;xbcd&#39;;</span>
-<span class="x">$var[5] = &#39;e&#39;; // $var is nu &#39;xbcd e&#39;;</span>
-</pre></div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="opdracht">
+<h1>Opdracht<a class="headerlink" href="#opdracht" title="Link to this heading">#</a></h1>
+<section id="maak-de-klasse-request">
+<h2>Maak de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code><a class="headerlink" href="#maak-de-klasse-request" title="Link to this heading">#</a></h2>
+<p>Bekijk <a class="reference internal" href="interface.html#requestinterface"><span class="std std-ref">de <code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code></span></a>, en met name het daarbijhorende commentaar. Maak een klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code> (in <code class="docutils literal notranslate"><span class="pre">/Framework/Http/</span></code>) die deze interface implementeert. Geef de betreffende methoden de relavante functionaliteit.</p>
 </section>
-<section id="stringfuncties">
-<h2>Stringfuncties<a class="headerlink" href="#stringfuncties" title="Link to this heading">#</a></h2>
-<p>PHP heeft een grote verzameling
-<a class="reference external" href="https://www.php.net/manual/en/ref.strings.php">stringfuncties</a>.
-In de eerste plaats is het mogelijk om de lengte van de string te
-verkrijgen met de functie
-<a class="reference external" href="https://www.php.net/manual/en/function.strlen.php"><code class="docutils literal notranslate"><span class="pre">strlen</span></code></a>.
-Daarnaast kan je een deel van de string verkrijgen met de functie
-<a class="reference external" href="https://www.php.net/manual/en/function.substr.php"><code class="docutils literal notranslate"><span class="pre">substr</span></code></a>,
-vergelijkbaar met een string <em>slice</em> in Python.</p>
-<p>PHP heeft weliswaar geen type voor losse karakters, maar heeft wel twee
-functies om een karakter om te zetten naar zijn ASCII-waarde en omgekeerd.<br />
-Dit zijn de functies
-<a class="reference external" href="https://www.php.net/manual/en/function.ord.php"><code class="docutils literal notranslate"><span class="pre">ord</span></code></a> en
-<a class="reference external" href="https://www.php.net/manual/en/function.chr.php"><code class="docutils literal notranslate"><span class="pre">chr</span></code></a>.
-De functie <code class="docutils literal notranslate"><span class="pre">ord</span></code> kijkt specifiek alleen naar het eerste karakter van de
-meegegeven string en zal, als deze meer karakters bevat, een waarschuwing
-geven. Merk hierbij op dat deze functies, net als de andere hier genoemde
-functies, geen weet hebben van de <em>encoding</em> van een string. Als een string
-dus geëncodeerd is met UTF-8 en het eerste karakter uit meerdere bytes
-bestaat, zoals bijvoorbeeld een letter met een accent, dan wordt de waarde
-van het eerste byte van dat karakter teruggegeven, niet het
-Unicode-codepoint van het karakter als geheel.</p>
-<p>Strings kunnen met de functies
-<a class="reference external" href="https://www.php.net/manual/en/function.strtolower.php"><code class="docutils literal notranslate"><span class="pre">strtolower</span></code></a> en
-<a class="reference external" href="https://www.php.net/manual/en/function.strtoupper.php"><code class="docutils literal notranslate"><span class="pre">strtoupper</span></code></a>
-omgezet worden in respectievelijke kleine letters en hoofdletters. Als
-alleen het eerste teken moet worden omgezet kunnen in plaats daarvan
-<a class="reference external" href="https://www.php.net/manual/en/function.lcfirst.php"><code class="docutils literal notranslate"><span class="pre">lcfirst</span></code></a> en
-<a class="reference external" href="https://www.php.net/manual/en/function.ucfirst.php"><code class="docutils literal notranslate"><span class="pre">ucfirst</span></code></a>
-gebruikt worden. Bovendien kan
-<a class="reference external" href="https://www.php.net/manual/en/function.ucwords.php"><code class="docutils literal notranslate"><span class="pre">ucwords</span></code></a>
-gebruikt worden om van de eerste letter van elk woord in de string een
-hoofdletter te maken. Daarnaast kan de functie
-<a class="reference external" href="https://www.php.net/manual/en/function.trim.php"><code class="docutils literal notranslate"><span class="pre">trim</span></code></a>
-worden gebruikt om witruimte, zoals spaties, tabs en newlines, te
-verwijderen aan het begin en einde van een string.</p>
-<p>Met de functie
-<a class="reference external" href="https://www.php.net/manual/en/function.strpos.php"><code class="docutils literal notranslate"><span class="pre">strpos</span></code></a>
-kan de positie van een substring in een string worden gevonden. Merk op dat
-deze functie <code class="docutils literal notranslate"><span class="pre">false</span></code> teruggeeft als de substring niet gevonden wordt, maar
-ook het getal 0 kan teruggeven als de string begint met de gezochte
-substring. Daarnaast kan je met
-<a class="reference external" href="https://www.php.net/manual/en/function.str-replace.php"><code class="docutils literal notranslate"><span class="pre">str_replace</span></code></a>
-bepaalde substrings laten vervangen door andere.</p>
-<p>Het is ook mogelijk om alleen te kijken of een bepaalde string een andere
-string bevat, zonder hierbij de positie nodig te hebben. Dit kan met de
-functie <a class="reference external" href="https://www.php.net/manual/en/function.str-contains.php"><code class="docutils literal notranslate"><span class="pre">str_contains</span></code></a>.
-Daarnaast kan gekeken worden of een string begint of eindigt met een andere
-string door gebruik te maken van de functies
-<a class="reference external" href="https://www.php.net/manual/en/function.str-starts-with.php"><code class="docutils literal notranslate"><span class="pre">str_starts_with</span></code></a> en
-<a class="reference external" href="https://www.php.net/manual/en/function.str-ends-with.php"><code class="docutils literal notranslate"><span class="pre">str_ends_with</span></code></a>.</p>
-<p>Aangezien PHP met name gebruikt wordt voor webapplicaties, heeft het een
-aantal functies om tekst te kunnen gebruiken in HTML pagina’s. Belangrijke
-functies hiervoor zijn
-<a class="reference external" href="https://www.php.net/manual/en/function.htmlspecialchars.php"><code class="docutils literal notranslate"><span class="pre">htmlspecialchars</span></code></a>,
-waarmee alle karakters die een speciale betekenis hebben in HTML, zoals <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>
-en <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, omgezet worden naar HTML-entity’s, en
-<a class="reference external" href="https://www.php.net/manual/en/function.strip-tags.php"><code class="docutils literal notranslate"><span class="pre">strip_tags</span></code></a>,
-waarmee alle HTML-tags uit een string worden verwijderd. Daarnaast kan de
-functie
-<a class="reference external" href="https://www.php.net/manual/en/function.urlencode.php"><code class="docutils literal notranslate"><span class="pre">urlencode</span></code></a>
-gebruikt worden om een waarde geschikt te maken om te dienen als parameter
-in een URL. Deze functies kunnen gebruikt worden als onderdeel van een
-strategie om
-<a class="reference external" href="https://nl.wikipedia.org/wiki/Cross-site_scripting">XSS</a>-aanvallen
-te mitigeren.</p>
-</section>
-<section id="multibyte-encodings">
-<h2><em>Multibyte encodings</em><a class="headerlink" href="#multibyte-encodings" title="Link to this heading">#</a></h2>
-<p>In het verleden gebruikten websites en andere applicaties veelal encodings
-waarbij elk karakter een enkele byte was. In Nederland werd hier met name
-ASCII, ISO 8859-1, ISO 8859-15 of Windows-1252 voor gebruikt. Deze encodings
-hebben echter allemaal als probleem dat ze alleen het Latijnse schrift met
-een zeer beperkte verrzameling accenten ondersteunen. Daarom wordt nu
-vrijwel altijd gebruik gemaakt van
-<a class="reference external" href="https://nl.wikipedia.org/wiki/Unicode">Unicode</a>,
-met name via de encoding
-<a class="reference external" href="https://nl.wikipedia.org/wiki/UTF-8">UTF-8</a>.
-Strings in PHP, anders dan in bijvoorbeeld Python, hebben hier echter geen
-weet van. Dit brengt met zich mee dat de hierboven genoemde functies er in
-principe vanuit gaan dat elke byte in een string een karakter is, zo zal
-bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">strlen('ë')</span></code> gelijk zijn aan 2 en <code class="docutils literal notranslate"><span class="pre">strlen('🙂')</span></code> gelijk zijn
-aan 4, omdat dat het aantal bytes is dat noodzakelijk is om deze karakters
-in UTF-8 te encoden.</p>
-<p>PHP heeft een extensie met een aantal functies om hiermee om te gaan. Dit is
-de extensie <a class="reference external" href="https://www.php.net/manual/en/intro.mbstring.php">mbstring</a>.
-Deze extensie bevat functies zoals
-<a class="reference external" href="https://www.php.net/manual/en/function.mb-strlen.php"><code class="docutils literal notranslate"><span class="pre">mb_strlen</span></code></a>,
-die het aantal karakters in een string teruggeeft. De bovengenoemde
-voorbeelden geven allebei 1 terug als <code class="docutils literal notranslate"><span class="pre">mb_strlen</span></code> wordt gebruikt in plaats
-van <code class="docutils literal notranslate"><span class="pre">strlen</span></code>. De
-<a class="reference external" href="https://www.php.net/manual/en/ref.mbstring.php">meeste hierboven genoemde functies</a>
-hebben een corresponderende multibyte-versie.</p>
+<section id="sequentiele-opbouw">
+<h2>Sequentiële opbouw<a class="headerlink" href="#sequentiele-opbouw" title="Link to this heading">#</a></h2>
+<p>Om de boel enigszins beheersbaar te houden, kun je beginnen met de meest voor de hand liggende methoden en de overige methoden pas realiseren wanneer je deze nodig hebt. Om te kunnen bepalen welke <em>controller</em> je nodig hebt, moet je natuurlijk de <em>uri</em> van de <em>request</em> weten, dus de methode <code class="docutils literal notranslate"><span class="pre">getUri</span></code> heb je al snel nodig. Hetzelfde geldt voor de methode (het http-werkwoord) van de request.</p>
+<p>Vervolgens heb je de <em>request parameters</em> (<code class="docutils literal notranslate"><span class="pre">?name=Ralf&amp;vierlettercode=BRRA</span></code>) nodig, dus implementeer je de methode <code class="docutils literal notranslate"><span class="pre">getQueryParams()</span></code>. Daarna kun je de <em>body</em> van de request parseren. Uiteindelijk kun je de bestanden en andere attributen van de <em>request</em> realiseren.</p>
 </section>
 </section>
 
@@ -631,7 +448,7 @@ hebben een corresponderende multibyte-versie.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./1.1-php"
+            path: "./3.1-request"
         },
         predefinedOutput: true
     }
@@ -649,20 +466,20 @@ hebben een corresponderende multibyte-versie.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="controlestatements.html"
+       href="oefening.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Conditionele en lusstatements</p>
+        <p class="prev-next-title">Oefening</p>
       </div>
     </a>
     <a class="right-next"
-       href="arrays.html"
+       href="interface.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Arrays</p>
+        <p class="prev-next-title">Interfaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -683,9 +500,8 @@ hebben een corresponderende multibyte-versie.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stringoperaties">Stringoperaties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stringfuncties">Stringfuncties</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#multibyte-encodings"><em>Multibyte encodings</em></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#maak-de-klasse-request">Maak de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sequentiele-opbouw">Sequentiële opbouw</a></li>
 </ul>
   </nav></div>
 

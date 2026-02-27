@@ -1,14 +1,10 @@
 # Opgave
 
-We zijn bezig met php, maar dat draait natuurlijk in een http-omgeving. Die moeten we dus in elkaar overzetten (waarom). Hiervoor gebruiken we de klasse `ServerRequest`.
 
-Extra info: dit komt ook uit een psr, met link
+## Complete life-cycle
 
-Plaatje van de information-flow
+Maak de klasse `Response` in dezelfde *namespace* als waar je `Request` hebt gemaakt. Zorg ervoor dat deze klasse de juiste interface implementeert, en geef de betreffende methoden een relevante implementatie.
 
-Opdracht:
-- maak deze klasse
-- dingen om op te letten
+Pas je `Kernel` aan zodat de methode `handle` een `ResponseInterface` teruggeeft.
 
-Zie deze invoer; 
-
+Pas je *frontcontroller* aan zodat deze werkt met een `ResponseInterface` in plaats van met een platte string.

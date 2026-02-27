@@ -216,7 +216,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/intro.html">Request, Response en Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/request.html">Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/opdracht.html">Opdracht</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
@@ -431,6 +432,10 @@
 <p>Om dit allemaal te kunnen bewerkstelligen is het noodzakelijk dat er data van de client naar de server worden verstuurd. De server moet immers weten waar je op wilt zoeken of van welke docent je het rooster wilt raadplegen. Deze situatie is <em>iets</em> anders dan hoe je normaal een webpagina opvraagt. In de regel doet de client een verzoek voor informatie naar de server en reageert de server met die informatie. In deze situatie is het verzoek evenwel niet (of niet alleen) een verzoek om informatie te <em>krijgen</em>, maar ook (en vooral) om data te <em>verwerken</em>.</p>
 <p>We hebben iets vergelijkbaars al gezien toen we <a class="reference internal" href="../1.1-php/php.html#gebruikersinvoer-en-navigatie"><span class="std std-ref">het hadden over gebruikersinvoer en navigatie</span></a>: daar gaven we twee parameters (<code class="docutils literal notranslate"><span class="pre">name</span></code> en <code class="docutils literal notranslate"><span class="pre">age</span></code>) via de URL mee aan het <em>request</em>. Dit <em>request</em> was een <em>GET</em>-request, en de parameters werden dan ook door php in de <code class="docutils literal notranslate"><span class="pre">$_GET</span></code>-superglobal opgevangen.</p>
 <p>Een beter, gebruikelijker en veiliger manier van data naar de server sturen is om een <em>ander soort request</em> uit te voeren. In plaats van GET maken we gebruik van POST: we POST-en een stuk data naar de server, die doet daar zijn ding mee en antwoordt – eventueel – met een reponse.</p>
+<div class="tip admonition">
+<p class="admonition-title">Vormen van request</p>
+<p>GET en POST zijn zogenaamde <em>http-werkwoorden</em> (<em>http-verbs</em>). Er worden <a class="reference external" href="https://www.rfc-editor.org/rfc/rfc9110.html#name-method-definitions">in RFC9110 (§9.3)</a> in totaal acht beschreven, maar we komen er in het wild eigenlijk maar vier tegen. In <a class="reference internal" href="../3.1-request/intro.html"><span class="std std-doc">het volgende hoofdstuk</span></a> gaan we wat uitgebreider in op deze werkwoorden.</p>
+</div>
 <p>Een belangrijk verschil tussen GET en POST is dat deze laatste de mogelijkheid heeft om wijzigingen <em>op de server</em> aan te brengen. Wanneer ik data van de client naar de server stuur, is het natuurlijk de bedoeling van die client dat er iets met die data gebeurt – op wordt geslagen, verwerkt in een database of gebruikt voor één of andere query.</p>
 <p>POST-requests zijn om deze reden <em>niet veilig</em>: wanneer we de mogelijkheid bieden de server vanaf de buitenkant te benaderen, hebben we onmiddellijk en onvermijdelijk een lek in die server gecreëerd – een lek dat we zo snel en zo goed mogelijk willen dichten.</p>
 <p>Eén van de infrastructurele aanpassingen die voor de dichten van belang is, is dat we niet zonder meer een POST-request naar een server kunnen doen.</p>

@@ -216,7 +216,8 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/intro.html">Request, Response en Message</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/request.html">Request</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/opdracht.html">Opdracht</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
@@ -385,7 +386,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -401,6 +404,14 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-life-cycle">Complete life-cycle</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -412,15 +423,12 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="opgave">
 <h1>Opgave<a class="headerlink" href="#opgave" title="Link to this heading">#</a></h1>
-<p>We zijn bezig met php, maar dat draait natuurlijk in een http-omgeving. Die moeten we dus in elkaar overzetten (waarom). Hiervoor gebruiken we de klasse <code class="docutils literal notranslate"><span class="pre">ServerRequest</span></code>.</p>
-<p>Extra info: dit komt ook uit een psr, met link</p>
-<p>Plaatje van de information-flow</p>
-<p>Opdracht:</p>
-<ul class="simple">
-<li><p>maak deze klasse</p></li>
-<li><p>dingen om op te letten</p></li>
-</ul>
-<p>Zie deze invoer;</p>
+<section id="complete-life-cycle">
+<h2>Complete life-cycle<a class="headerlink" href="#complete-life-cycle" title="Link to this heading">#</a></h2>
+<p>Maak de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code> in dezelfde <em>namespace</em> als waar je <code class="docutils literal notranslate"><span class="pre">Request</span></code> hebt gemaakt. Zorg ervoor dat deze klasse de juiste interface implementeert, en geef de betreffende methoden een relevante implementatie.</p>
+<p>Pas je <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> aan zodat de methode <code class="docutils literal notranslate"><span class="pre">handle</span></code> een <code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code> teruggeeft.</p>
+<p>Pas je <em>frontcontroller</em> aan zodat deze werkt met een <code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code> in plaats van met een platte string.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -477,6 +485,22 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-life-cycle">Complete life-cycle</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
