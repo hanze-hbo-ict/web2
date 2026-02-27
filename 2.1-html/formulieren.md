@@ -12,7 +12,7 @@ We hebben iets vergelijkbaars al gezien toen we [het hadden over gebruikersinvoe
 
 Een beter, gebruikelijker en veiliger manier van data naar de server sturen is om een *ander soort request* uit te voeren. In plaats van GET maken we gebruik van POST: we POST-en een stuk data naar de server, die doet daar zijn ding mee en antwoordt – eventueel – met een reponse.
 
-```{adminition} Vormen van request
+```{admonition} Vormen van request
 :class: tip
 
 GET en POST zijn zogenaamde *http-werkwoorden* (*http-verbs*). Er worden [in RFC9110 (§9.3)](https://www.rfc-editor.org/rfc/rfc9110.html#name-method-definitions) in totaal acht beschreven, maar we komen er in het wild eigenlijk maar vier tegen. In [het volgende hoofdstuk](../3.1-request/intro.md) gaan we wat uitgebreider in op deze werkwoorden.

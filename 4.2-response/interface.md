@@ -98,10 +98,7 @@ interface ResponseInterface extends MessageInterface
 
 ## `KernelInterface`
 
-De returnwaarde van `Framework\Kernel\KernelInterface` kan nu worden 
-vervangen door een instantie van `Framework\Http\ResponseInterface`.
-Als de interfaces uit PSR-7 worden gebruikt, kan deze interface in zijn 
-geheel worden vervangen door `Psr\Http\Server\RequestHandlerInterface`.
+De returnwaarde van de methode `handle` in `Framework\Kernel\KernelInterface` kan nu worden vervangen door een instantie van `Framework\Http\ResponseInterface`.  Als de interfaces uit PSR-7 worden gebruikt, kan deze interface in zijn geheel worden vervangen door `Psr\Http\Server\RequestHandlerInterface`.
 
 ```php
 <?php
