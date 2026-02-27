@@ -427,6 +427,29 @@
 <section id="maak-de-klasse-request">
 <h2>Maak de klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code><a class="headerlink" href="#maak-de-klasse-request" title="Link to this heading">#</a></h2>
 <p>Bekijk <a class="reference internal" href="interface.html#requestinterface"><span class="std std-ref">de <code class="docutils literal notranslate"><span class="pre">RequestInterface</span></code></span></a>, en met name het daarbijhorende commentaar. Maak een klasse <code class="docutils literal notranslate"><span class="pre">Request</span></code> (in <code class="docutils literal notranslate"><span class="pre">/Framework/Http/</span></code>) die deze interface implementeert. Geef de betreffende methoden de relavante functionaliteit.</p>
+<p>Het is van belang dat er niet zonder meer instanties van deze klasse kunnen worden gemaakt. Om dit te kunnen controlleren wordt de verantwoordelijkheid voor het maken van dergelijke instanties bij de klasse zelf belegd – een techniek die bekend staat onder <a class="reference external" href="https://softwarecrafts.eu/static-factory-methods-aka-named-constructors/"><em>named constuctors</em></a>.</p>
+<p>Bij een dergelijke opbouw maken we gebruik van een <em>statische methode</em> die een instantie van de klasse in kwestie teruggeeft. Natuurlijk kunnen we deze methode elke naam geven die we willen, maar omdat dit feitelijk het punt is waar we de http-wereld in de php-wereld omzetten, ligt een naam als <code class="docutils literal notranslate"><span class="pre">fromGlobals</span></code> of <code class="docutils literal notranslate"><span class="pre">createFromGlobals</span></code> voor de hand.</p>
+<p>Bekijk het onderstaande voorbeeld. We schermen de constructor van de klasse af door deze <em>private</em> te maken; vervolgens roepen we deze constructor aan via de statische methode <code class="docutils literal notranslate"><span class="pre">fromGlobals</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Request</span> <span class="nx">impements</span> <span class="nx">RequestInterface</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="k">array</span> <span class="nv">$get</span><span class="p">,</span>
+        <span class="k">private</span> <span class="k">array</span> <span class="nv">$post</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="k">private</span> <span class="k">array</span> <span class="nv">$files</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="p">)</span> <span class="p">{}</span>
+
+    <span class="k">static</span> <span class="k">public</span> <span class="k">function</span> <span class="nf">fromGlobals</span><span class="p">()</span><span class="o">:</span> <span class="nx">self</span> 
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Request</span><span class="p">(</span>
+            <span class="nv">$_GET</span><span class="p">,</span>
+            <span class="nv">$_POST</span><span class="p">,</span>
+            <span class="nv">$_FILES</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Merk op dat we hier drie globale variabelen meegeven aan de constructor. Vanzelfsprekend zul je dit gedurende het project nog moeten aanpassen en uitbreiden.</p>
 </section>
 <section id="sequentiele-opbouw">
 <h2>Sequentiële opbouw<a class="headerlink" href="#sequentiele-opbouw" title="Link to this heading">#</a></h2>

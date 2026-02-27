@@ -386,7 +386,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -402,6 +404,14 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-klasse-response">De klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -413,6 +423,43 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="oefeningen">
 <h1>Oefeningen<a class="headerlink" href="#oefeningen" title="Link to this heading">#</a></h1>
+<section id="de-klasse-response">
+<h2>De klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code><a class="headerlink" href="#de-klasse-response" title="Link to this heading">#</a></h2>
+<p>Maak een functie <code class="docutils literal notranslate"><span class="pre">handle</span></code>, conform de onderstaande definitie:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
+</pre></div>
+</div>
+<p>Maak nu een klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code> die <a class="reference internal" href="interface.html#responseinterface"><span class="std std-ref">de <code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code></span></a> implementeert. Realiseer in je klasse in ieder geval de methoden <code class="docutils literal notranslate"><span class="pre">withStatusCode()</span></code> en <code class="docutils literal notranslate"><span class="pre">getBody()</span></code>. Zorg ervoor dat je response de volgende functionaliteit heeft:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Request</p></th>
+<th class="head"><p>Response status code</p></th>
+<th class="head"><p>Response body</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/ping</span></code></p></td>
+<td><p>200 Ok</p></td>
+<td><p>‘pong’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/coffee</span></code></p></td>
+<td><p>218 I’m a teapot</p></td>
+<td><p>-</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/echo</span></code></p></td>
+<td><p>200 Ok</p></td>
+<td><p>body van de request</p></td>
+</tr>
+<tr class="row-odd"><td><p>ander</p></td>
+<td><p>404 Not found</p></td>
+<td><p>-</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Maak gebruik van <a class="reference external" href="https://www.php.net/manual/en/function.spl-object-id.php"><code class="docutils literal notranslate"><span class="pre">spl_object_id()</span></code></a> om de bewijzen dat <code class="docutils literal notranslate"><span class="pre">withStatusCode()</span></code> het oorspronkelijke object niet heeft aangepast.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -469,6 +516,22 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-klasse-response">De klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

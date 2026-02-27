@@ -443,7 +443,7 @@
 <p>Het voor deze discussie meest interessante van <a class="reference internal" href="interface.html#responseinterface"><span class="std std-ref">de <code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code></span></a> is de methode <code class="docutils literal notranslate"><span class="pre">getBody()</span></code>. Deze methode geeft een <em>string</em> terug die de <em>body</em> van de <em>response</em> is – feitelijk de tekst die we voorheen eenvoudig vanuit de <em>front controller</em> werd afgedrukt. Door de encapsulatie kunnen we echter voordat we de response daadwerkelijk uitrpinten nog verrijken met eventuele extra <em>headers</em> of nog iets aan de body toevoegen.</p>
 <p>Met de kennis die we nu hebben, kunnen we de hele <em>request life-cycle</em> beschrijven:</p>
 <ol class="arabic simple">
-<li><p>De [<strong>front controller</strong>](../3.2-routing/<em>front controller</em>.md) ontvangt een <em>request</em>.</p></li>
+<li><p>De <a class="reference internal" href="../3.2-routing/frontcontroller.html"><span class="std std-doc"><em>front controller</em></span></a> ontvangt een <em>request</em>.</p></li>
 <li><p>Op basis hiervan wordt een <code class="docutils literal notranslate"><span class="pre">Request</span></code> gemaakt.</p></li>
 <li><p>De <code class="docutils literal notranslate"><span class="pre">Router</span></code> bepaalt welke <em>controller</em> bij dit specifieke <code class="docutils literal notranslate"><span class="pre">Request</span></code> hoort.</p></li>
 <li><p>Deze <em>controller</em> maakt, eventueel met behulp van templates, de <code class="docutils literal notranslate"><span class="pre">Response</span></code>.</p></li>

@@ -410,6 +410,7 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-life-cycle">Complete life-cycle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aanpassingen">Aanpassingen</a></li>
 </ul>
             </nav>
         </div>
@@ -426,8 +427,30 @@
 <section id="complete-life-cycle">
 <h2>Complete life-cycle<a class="headerlink" href="#complete-life-cycle" title="Link to this heading">#</a></h2>
 <p>Maak de klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code> in dezelfde <em>namespace</em> als waar je <code class="docutils literal notranslate"><span class="pre">Request</span></code> hebt gemaakt. Zorg ervoor dat deze klasse de juiste interface implementeert, en geef de betreffende methoden een relevante implementatie.</p>
+<p>Als je <a class="reference internal" href="#"><span class="xref myst">de RFC</span></a> bekijkt, zie je dat een <em>response</em> altijd op z’n minst de volgende onderdelen bevat:</p>
+<ul class="simple">
+<li><p>een <em>Status-Code</em></p></li>
+<li><p>een ‘protocol version</p></li>
+<li><p>een lijst van nul of meer <em>headers</em></p></li>
+<li><p>een optionele <em>body</em></p></li>
+</ul>
+<p>Het is dus logisch om deze gegevens in de <em>constructor</em> van de <code class="docutils literal notranslate"><span class="pre">Response</span></code> mee te geven:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">int</span> <span class="nv">$status_code</span> <span class="o">=</span> <span class="mi">200</span><span class="p">,</span>
+        <span class="nx">string</span> <span class="nv">$protocol_version</span> <span class="o">=</span> <span class="s1">&#39;1.1&#39;</span><span class="p">,</span>
+        <span class="k">array</span> <span class="nv">$headers</span> <span class="o">=</span> <span class="p">[],</span>
+        <span class="nx">string</span> <span class="nv">$body</span> <span class="o">=</span> <span class="k">null</span>
+    <span class="p">)</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>Natuurlijk zul je dit gedurende het project nog moeten aanpassen en uitbreiden.</p>
+</section>
+<section id="aanpassingen">
+<h2>Aanpassingen<a class="headerlink" href="#aanpassingen" title="Link to this heading">#</a></h2>
 <p>Pas je <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> aan zodat de methode <code class="docutils literal notranslate"><span class="pre">handle</span></code> een <code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code> teruggeeft.</p>
-<p>Pas je <em>frontcontroller</em> aan zodat deze werkt met een <code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code> in plaats van met een platte string.</p>
+<p>Pas je <em>front controller</em> aan zodat deze werkt met een <code class="docutils literal notranslate"><span class="pre">ResponseInterface</span></code> in plaats van met een platte string.</p>
 </section>
 </section>
 
@@ -497,6 +520,7 @@
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#complete-life-cycle">Complete life-cycle</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aanpassingen">Aanpassingen</a></li>
 </ul>
   </nav></div>
 

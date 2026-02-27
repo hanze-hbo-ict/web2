@@ -24,7 +24,7 @@ Het voor deze discussie meest interessante van [de `ResponseInterface`](interfac
 
 Met de kennis die we nu hebben, kunnen we de hele *request life-cycle* beschrijven:
 
-1. De [**front controller**](../3.2-routing/*front controller*.md) ontvangt een *request*.
+1. De [*front controller*](../3.2-routing/frontcontroller.md) ontvangt een *request*.
 2. Op basis hiervan wordt een `Request` gemaakt.
 3. De `Router` bepaalt welke *controller* bij dit specifieke `Request` hoort.
 4. Deze *controller* maakt, eventueel met behulp van templates, de `Response`.
