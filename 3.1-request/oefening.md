@@ -29,4 +29,4 @@ Methode | verwachte output
 
 Implementeer de methode `withAttribute()` conform [de gegeven interface](interface.md#requestinterface). Extraheer de `id` uit de *query parameters* en maak een nieuw request-object op basis van het eerste, waarbij deze waarde wordt geïnjecteerd:
 
-Maak gebruik van `spl_object_id()` om de bewijzen dat we te maken hebben met twee verschillende objecten (het eerste object is dus niet aangepast).
+Maak gebruik van [`spl_object_id()`](https://www.php.net/manual/en/function.spl-object-id.php) om de bewijzen dat we te maken hebben met twee verschillende objecten (het eerste object is dus niet aangepast).
