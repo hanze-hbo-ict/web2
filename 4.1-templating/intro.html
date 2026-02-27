@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Intro &#8212; Webtechnologie II</title>
+    <title>Templating &#8212; Webtechnologie II</title>
   
   
   
@@ -232,7 +232,7 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Templating</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
@@ -386,7 +386,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -397,11 +399,22 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Intro</h1>
+    <h1>Templating</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-view-controller">Model-View-Controller</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-html-bestand-inlezen">Een html-bestand inlezen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-buffering">Output buffering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-functie-eval">De functie <code class="docutils literal notranslate"><span class="pre">Eval</span></code></a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -411,8 +424,148 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="templating">
+<h1>Templating<a class="headerlink" href="#templating" title="Link to this heading">#</a></h1>
+<p>Tot nu toe hebben we in de methode <code class="docutils literal notranslate"><span class="pre">handle</span></code> van onze diverse kernels eenvoudig een stuk tekst teruggegeven:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+  <span class="c1">//andere code weggelaten</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+  <span class="p">{</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQueryParams</span><span class="p">()[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello, </span><span class="si">$name</span><span class="s2">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>Hoewel dit werkt, spreekt het redelijk voor zich dat dit niet echt schaalbaar of onderhoudbaar is. In de regel bestaan <em>responses</em> uit vele kilobytes aan data, en de zou niet handig zijn wanneer we al deze data eenvoudig als string in een <code class="docutils literal notranslate"><span class="pre">handle</span></code>-methode zouden definiëren:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+  <span class="c1">//andere code weggelaten</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+  <span class="p">{</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQueryParams</span><span class="p">()[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+    <span class="k">return</span> <span class="s2">&quot;</span>
+<span class="s2">&lt;!DOCTYPE html&gt;</span>
+<span class="s2">&lt;html lang=&quot;</span><span class="nx">nl</span><span class="s2">&quot; data-content_root=&quot;</span><span class="o">../</span><span class="s2">&quot; &gt;</span>
+
+<span class="s2">  &lt;head&gt;</span>
+<span class="s2">    &lt;meta charset=&quot;</span><span class="nx">utf</span><span class="o">-</span><span class="mi">8</span><span class="s2">&quot; /&gt;</span>
+<span class="s2">    &lt;meta name=&quot;</span><span class="nx">viewport</span><span class="s2">&quot; content=&quot;</span><span class="nx">width</span><span class="o">=</span><span class="nx">device</span><span class="o">-</span><span class="nx">width</span><span class="p">,</span> <span class="nx">initial</span><span class="o">-</span><span class="nx">scale</span><span class="o">=</span><span class="mf">1.0</span><span class="s2">&quot; /&gt;&lt;meta name=&quot;</span><span class="nx">viewport</span><span class="s2">&quot; content=&quot;</span><span class="nx">width</span><span class="o">=</span><span class="nx">device</span><span class="o">-</span><span class="nx">width</span><span class="p">,</span> <span class="nx">initial</span><span class="o">-</span><span class="nx">scale</span><span class="o">=</span><span class="mi">1</span><span class="s2">&quot; /&gt;</span>
+<span class="s2">    &lt;title&gt;Request &amp;#8212; Webtechnologie II&lt;/title&gt;</span>
+<span class="s2">  &lt;script data-cfasync=&quot;</span><span class="k">false</span><span class="s2">&quot;&gt;</span>
+<span class="s2">    document.documentElement.dataset.mode = localStorage.getItem(&quot;</span><span class="nx">mode</span><span class="s2">&quot;) || &quot;&quot;;</span>
+<span class="s2">    document.documentElement.dataset.theme = localStorage.getItem(&quot;</span><span class="nx">theme</span><span class="s2">&quot;) || &quot;&quot;;</span>
+<span class="s2">  &lt;/script&gt;</span>
+<span class="s2">    ...</span>
+<span class="s2">    &lt;/body&gt;&lt;/html&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Om deze reden willen we de <em>html</em> scheiden van de <em>logica</em> van onze applicatie. De gedachte is dan dat onze <code class="docutils literal notranslate"><span class="pre">handle</span></code>-methode het juiste html-bestand opzoekt en deze retourneert.</p>
+<p>Behalve deze voor de hand liggende reden, zijn er nog twee eveneens belangrijke, maar minder evidente redenen voor deze scheiding. Allereerst is het schrijven van goede html een heel andere capaciteit dan het schrijven van progammacode – activiteiten die derhalve dikwijls door diverse personen worden gedaan. Een dergelijke scheiding maakt het samenwerking door deze personen een stuk eenvoudiger.</p>
+<p>En zelfs – ten tweede – wanneer dezelfde persoon zowel de html als de programmacode schrijft, dan nog is het voor deze persoon lekker wanneer hij of zij zich helemaal kan richten op het één of het ander. Wanneer je de hele tijd moet schakelen tussen code of html zal dat de concentratie op beiden niet ten goede komen.</p>
+<section id="model-view-controller">
+<h2>Model-View-Controller<a class="headerlink" href="#model-view-controller" title="Link to this heading">#</a></h2>
+<p>De scheiding tussen logica, html en data kent binnen software engineerin een relatief oude en goede traditie – ouder dan internet of html. Het staat bekend onder de term <em>Model-View-Controller</em>, wat eind jaren zeventig is bedacht door <a class="reference external" href="https://en.wikipedia.org/wiki/Trygve_Reenskaug">Trygve Reenskaug</a>. Zoals de naam al doet vermoeden, kent deze architectuur drie onderdelen:</p>
+<ul class="simple">
+<li><p>Het <em>model</em> is de interne representatie van de informatie die door het systeem beschikbaar gemaakt wordt.</p></li>
+<li><p>De <em>view</em> is de presentatie van deze informatie, dat wat de bezoeker of gebruiker van de applicatie ziet en waar hij of zij mee interacteert.</p></li>
+<li><p>De <em>controller</em> is de <em>applicatielogica</em> die de verbinding maakt tussen de <em>view</em> en het <em>model</em>.</p></li>
+</ul>
+<p>Zie het plaatje hieronder (van <a class="reference external" href="https://nl.wikipedia.org/wiki/Model-view-controller">wikipedia</a>). Hierin zie je hoe de gebruiker van een systeem interacteert met de controller. Deze <em>controller</em> verandert de interne representatie van het model, waardoor de <em>view</em> geüpdate wordt, wat de gebruiker vervolgens weer ziet.</p>
+<p><img alt="Overzicht van de verhouding tussen model, view en controller" src="../_images/mvc-wikipedia.jpeg" /></p>
+<p>Er zijn verschillende antwoorden mogelijk op de vraag hoe de view aan de actuele informatie komt. In het plaatje hierboven komt het over alsof het model zelf verantwoordelijk is voor het updaten van de view, maar meestal gaat dat via de controller. Er zijn overigens in de loop der tijd allerlei subtiele varianten van het standaardmodel bedacht, zoals <a class="reference external" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93adapter"><em>Model View Adapter</em></a>, het <a class="reference external" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93presenter"><em>Model View Presenter</em></a> of het <a class="reference external" href="https://en.wikipedia.org/wiki/Model%E2%80%93view%E2%80%93viewmodel">*Model View ViewModel</a> (wat in iOS applicaties gebruikt wordt).</p>
+<p>In een webcontext is het model in de regel een <em>database</em>, de controller wordt gevormd door de verschillende <em>controllers</em> (waar we het al over hebben gehad) en is de <em>view</em> de uiteindelijke html die door de client wordt gerenderd. Het is de bedoeling van de controller om de representatie van de data in de view te injecteren en deze vervolgens naar de client te sturen.</p>
+</section>
+<section id="een-html-bestand-inlezen">
+<h2>Een html-bestand inlezen<a class="headerlink" href="#een-html-bestand-inlezen" title="Link to this heading">#</a></h2>
+<p>Laten we verder gaan met de <code class="docutils literal notranslate"><span class="pre">HelloKernel</span></code>, waar we <a class="reference internal" href="../3.1-request/request.html"><span class="std std-doc">in hoofdstuk 3.1</span></a> mee zijn begonnen. Dankzij de DSL-opbouw van PHP is het vrij eenvoudig om direct een html-bestand in te lezen. Stel je voor dat we het onderstaande (zeer eenvoudige) html-bestand <code class="docutils literal notranslate"><span class="pre">welkom.html</span></code> in een directory <code class="docutils literal notranslate"><span class="pre">templates</span></code> hebben gezet:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Vriendelijke welkomstpagina<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hallo allemaal 👋<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>De methode <code class="docutils literal notranslate"><span class="pre">handle</span></code> in <code class="docutils literal notranslate"><span class="pre">HelloKernel</span></code> zag er tot nu toe als volgt uit:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+  <span class="c1">//andere code weggelaten</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+  <span class="p">{</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQueryParams</span><span class="p">()[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello, </span><span class="si">$name</span><span class="s2">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>We kunnen de html van hierboven eenvoudig in deze methode inladen, door gebruik te maken van de - inmiddels overbekende - functie <a class="reference external" href="https://www.php.net/require"><code class="docutils literal notranslate"><span class="pre">require</span></code></a>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+  <span class="c1">//andere code weggelaten</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+  <span class="p">{</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQueryParams</span><span class="p">()[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+    <span class="k">require</span> <span class="s1">&#39;templates/welkom.html&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="s2">&quot;Hello, </span><span class="si">$name</span><span class="s2">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>Als je dit stukje code uitvoert, zul je zien dat een request naar de juiste pagina inderdaad de html laat zien:</p>
+<p><img alt="Een template wordt direct ingeladen" src="../_images/templates1.jpeg" /></p>
+<p>Dit resultaat is te verwachten wanneer je bedenkt hoe <code class="docutils literal notranslate"><span class="pre">require</span></code> ook al weer werkt: deze functie laadt een pagina in en voert de code daarin direct uit. Omdat dit html is, en er feitelijk geen php-code in staat, is het resultaat van deze functie-aanroep gewoon de html die in het betreffende bestand staat. En je ziet dat het return-statement in <code class="docutils literal notranslate"><span class="pre">handle</span></code> ook nog steeds effect heeft: de html wordt dus als het ware middenin die functie naar de client gestuurd.</p>
+<p>Vanzelfsprekend is dit ongewenst gedrag. Niet alleen willen we niet dat er zomaar middenin een functie data naar een client wordt gestuurd, maar we willen ook controle houden over de data zolang deze zich in de functie bevindt.</p>
+</section>
+<section id="output-buffering">
+<h2>Output buffering<a class="headerlink" href="#output-buffering" title="Link to this heading">#</a></h2>
+<p>Om te voorkomen dat de output direct (zo snel mogelijk) naar de client wordt gestuurd, kunnen we gebruik maken van een techniek die bekend staat onder de naam <em>output buffering</em>. Wat dit feitelijk doet is alle data die normalitair zou worden uitgestuurd (geprint naar de terminal, verstuurd naar een client) <em>tegenhouden</em>, net zo lang totdat het commando gegeven wordt om de opgeslagen output uit te printen (te <em>flushen</em>).</p>
+<p>In php zijn hiervoor de volgende commando’s van belang:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.php.net/ob_start"><code class="docutils literal notranslate"><span class="pre">ob_start()</span></code></a>: aanzetten van *output buffering. In de documentatie lezen we “While output buffering is active no output is sent from the script, instead the output is stored in an internal buffer.”</p></li>
+<li><p><a class="reference external" href="https://www.php.net/manual/en/function.ob-flush.php"><code class="docutils literal notranslate"><span class="pre">ob_flush()</span></code></a>: het versturen van de inhoud van de buffer naar de <em>output handler</em>.</p></li>
+<li><p><a class="reference external" href="https://www.php.net/manual/en/function.ob-get-clean.php"><code class="docutils literal notranslate"><span class="pre">ob_get_clean()</span></code></a>: haalt de huidige inhoud van de <em>output buffer</em> op en zet het bufferen weer uit.</p></li>
+</ul>
+<p>Met deze kennis kunnen we de <code class="docutils literal notranslate"><span class="pre">handle</span></code>-methode in de <code class="docutils literal notranslate"><span class="pre">Kernel</span></code> als volgt aanpassen:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+  <span class="c1">//andere code weggelaten</span>
+  <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Request</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+  <span class="p">{</span>
+    <span class="nb">ob_start</span><span class="p">();</span>
+    <span class="nv">$name</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">getQueryParams</span><span class="p">()[</span><span class="s1">&#39;name&#39;</span><span class="p">];</span>
+    <span class="k">require</span> <span class="s1">&#39;templates/welkom.html&#39;</span><span class="p">;</span>
+    <span class="nv">$html</span> <span class="o">=</span> <span class="nb">ob_get_clean</span><span class="p">();</span>
+    <span class="k">return</span> <span class="nv">$html</span> <span class="o">.</span> <span class="s2">&quot;Hello, </span><span class="si">$name</span><span class="s2">&quot;</span><span class="p">;</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>Als je dit runt, zul je zien dat het resultaat nog steeds hetzelfde is. Dat is ook logisch, want functioneel hebben we eigenlijk nog niks aan de code veranderd. We weten evenwel hoe we php in html kunnen laten zien, bijvoorbeeld door gebruik te maken van de short-tag <code class="docutils literal notranslate"><span class="pre">&lt;?=</span> <span class="pre">...</span> <span class="pre">?&gt;</span></code>. Omdat de scope van <code class="docutils literal notranslate"><span class="pre">$name</span></code> binnen dezelfde score als de <code class="docutils literal notranslate"><span class="pre">ob_start()</span></code> valt, is deze variabele ook onmiddellijk bekend binnen onze template:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">&quot;UTF-8&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Vriendelijke welkomstpagina<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Hallo <span class="cp">&lt;?= $name ?&gt;</span> 👋<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p><img alt="Een template met werkende variabelen" src="../_images/templates2.jpeg" /></p>
+</section>
+<section id="de-functie-eval">
+<h2>De functie <code class="docutils literal notranslate"><span class="pre">Eval</span></code><a class="headerlink" href="#de-functie-eval" title="Link to this heading">#</a></h2>
+<p>Net als in de meeste andere programmeertalen kun je ook in php een string als php-code laten uitvoeren: in php gebruiken we hiervoor <a class="reference external" href="https://www.php.net/eval">de functie <code class="docutils literal notranslate"><span class="pre">eval</span></code></a>. Zie het onderstaande voorbeeld: op regel 2 definiëren we een variabel <code class="docutils literal notranslate"><span class="pre">$str</span></code> die een stukje valide php-code bevat. Deze code wordt op regel 3 uitgevoerd, waardoor de variabele <code class="docutils literal notranslate"><span class="pre">$demo</span></code> geïnitialiseerd wordt en een waarde krijgt. Vervolgens wordt op de laatste regel die variabele afgedrukt.</p>
+<div class="highlight-php notranslate" id="eval-script"><div class="highlight"><pre><span></span><span class="linenos">1</span><span class="cp">&lt;?php</span>
+<span class="linenos">2</span><span class="nv">$str</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\$</span><span class="s2">demo=32;&quot;</span><span class="p">;</span>
+<span class="linenos">3</span><span class="k">eval</span><span class="p">(</span><span class="nv">$str</span><span class="p">);</span>
+<span class="linenos">4</span><span class="k">echo</span> <span class="nv">$demo</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Je ziet dat we <code class="docutils literal notranslate"><span class="pre">$demo</span></code> niet echt expliciet hebben gedefinieerd: de IDE geeft ook aan dat die variabele niet bestaat - wat logisch is, want die IDE gaat niet al je strings langs om te checken of er toevallig valide php-code in staat, en gaat die zeker niet zonder meer voor je uitvoeren.</p>
+<div class="warning admonition">
+<p class="admonition-title">Gevaarlijk</p>
+<p>Je kunt je voorstellen dat deze functie behoorlijk gevaarlijk is, omdat het zonder meer arbitraire php-code kan uitvoeren. Naar het schijnt heeft Rasmus Lerdorf <em>himself</em> ooit gesteld dat “if eval is your answer you are probably asking the wrong question”.</p>
+<p>Toch maken we voor dit onderdeel gebruik van deze functie. Dat kan op zich ook wel, zolang we maar de controle over de gebruikte templates en de data in eigen beheer houden.</p>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -469,6 +622,25 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-view-controller">Model-View-Controller</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-html-bestand-inlezen">Een html-bestand inlezen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#output-buffering">Output buffering</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#de-functie-eval">De functie <code class="docutils literal notranslate"><span class="pre">Eval</span></code></a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
