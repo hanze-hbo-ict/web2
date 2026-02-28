@@ -77,7 +77,7 @@ parts:
 
 - caption: 5.1 Dependency injection
   chapters:
-    - file: 5.1-di/singleton
+    - file: 5.1-di/service
     - file: 5.1-di/dependencyinjection
     - file: 5.1-di/compositionroot
     - file: 5.1-di/opdracht
