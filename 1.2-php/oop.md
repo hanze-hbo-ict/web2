@@ -254,8 +254,8 @@ met de methode `count` en de interface
 [`Traversable`](https://www.php.net/manual/en/class.traversable.php)
 die markeert dat een object met `foreach` werkt. Zou je een functie willen 
 schrijven die een parameter accepteert die zowel in een `foreach`-lus 
-gebruikt kan worden en ook de methode `count` aanbiedt, dan kan je een 
-typedeclaratie `Countable&Traver`
+gebruikt kan worden en ook de methode `count` aanbiedt, dan kan je de 
+typedeclaratie `Countable&Traversable` gebruiken.
 
 ```php
 function count_and_traverse(Countable&Traversable $list): void {

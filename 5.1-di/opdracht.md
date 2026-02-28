@@ -1,5 +1,7 @@
 # Opdracht
 
+## Dependency injection
+
 Pas je applicatie zo aan dat er geen gebruik wordt gemaakt van het 
 singleton pattern of andere verborgen afhankelijkheden. Maak deze 
 afhankelijkheden expliciet door constructorparamerters toe te voegen en maak 

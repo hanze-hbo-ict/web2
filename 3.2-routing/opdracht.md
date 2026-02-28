@@ -18,7 +18,7 @@ methode nu zodat je die hierna kan gebruiken om de router te schrijven.
 
 ## Router
 
-Deze week moet je bezig met de router. De opdracht schrijft voor dat deze 
+Deze week ga je aan de slag met de router. De opdracht schrijft voor dat deze 
 aan de interface `Framework\Routing\RouterInterface` voldoet, die hieronder 
 staat.
 
