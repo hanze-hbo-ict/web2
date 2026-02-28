@@ -1,0 +1,801 @@
+
+<!DOCTYPE html>
+
+
+<html lang="nl" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>IoC container &#8212; Webtechnologie II</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  <!-- 
+    this give us a css class that will be invisible only if js is disabled 
+  -->
+  <noscript>
+    <style>
+      .pst-js-only { display: none !important; }
+
+    </style>
+  </noscript>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=26a4bc78f4c0ddb94549" rel="stylesheet" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=949a1ff5" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=91d546e9" />
+  
+  <!-- So that users can add custom icons -->
+  <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549" />
+
+    <script src="../_static/documentation_options.js?v=b028fc25"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=ff8fa330"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script src="../_static/translations.js?v=5ce3cdba"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '5.2-container/container';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Zoeken" href="../search.html" />
+    <link rel="next" title="Voorbeeldcode" href="voorbeeld.html" />
+    <link rel="prev" title="Opdracht" href="../5.1-di/opdracht.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="nl"/>
+  <meta name="docsearch:version" content="" />
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <dialog id="pst-search-dialog">
+    
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form>
+  </dialog>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <dialog id="pst-primary-sidebar-modal"></dialog>
+      <div id="pst-primary-sidebar" class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../about/syllabus.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo-hanze.png" class="logo__image only-light" alt="Webtechnologie II - Home"/>
+    <img src="../_static/logo-hanze.png" class="logo__image only-dark pst-js-only" alt="Webtechnologie II - Home"/>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+<button class="btn search-button-field search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
+ <i class="fa-solid fa-magnifying-glass"></i>
+ <span class="search-button__default-text">Zoeken</span>
+ <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+</button></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../about/syllabus.html">
+                    Webtechnologie 2
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Over deze cursus</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../about/introductie.html">Introductie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/eindopdracht.html">Eindopdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../about/installeren.html">PHP installeren</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1.1 PHP</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/php.html">PHP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/variabelen.html">Variabelen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/controlestatements.html">Conditionele en lusstatements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/strings.html">Strings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/arrays.html">Arrays</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.1-php/oefening.html">Oefeningen</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">1.2 PHP</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/functies.html">Functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/typeconversie.html">Typeconversie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oop.html">Object-georiënteerd programmeren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/excepties.html">Foutafhandeling</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/include.html">Bestanden invoegen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../1.2-php/oefening.html">Oefeningen</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2.1 HTML en CSS</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/html.html">HTML</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/formulieren.html">Formulieren</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.1-html/opdracht.html">Opdracht</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">2.2 Kernel</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/http.html">HTTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/kernel.html">Kernel</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/autoloader.html">Autoloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/composer.html">Composer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../2.2-kernel/interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.1 Request</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/intro.html">Request, Response en Message</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/request.html">Request</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/intro.html">Templating</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Response</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/response.html">Response</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/opdracht.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../4.2-response/interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/singleton.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/dependencyinjection.html">Dependency injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/compositionroot.html">Composition root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/opdracht.html">Opdracht</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 IoC container</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">IoC container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="voorbeeld.html">Voorbeeldcode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reflectie.html">Reflectie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7.1 Authenticatie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/opgave.html">Opgave</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">7.2 Autorisatie</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7.2-autorisatie/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.2-autorisatie/opgave.html">Opgave</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download deze pagina">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/5.2-container/container.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download het bronbestand"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Afdrukken naar pdf"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Volledig scherm"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button pst-js-only" aria-label="Color mode" data-bs-title="Color mode"  data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <i class="theme-switch fa-solid fa-sun                fa-lg" data-mode="light" title="Light"></i>
+  <i class="theme-switch fa-solid fa-moon               fa-lg" data-mode="dark"  title="Dark"></i>
+  <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"  title="System Settings"></i>
+</button>
+
+
+<button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+</button>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>IoC container</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#services-en-klassen">Services en klassen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#services-instantieren">Services instantiëren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autowiring">Autowiring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singletons">Singletons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuratie">Configuratie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gebruik-van-de-ioc-container">Gebruik van de IoC container</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="ioc-container">
+<h1>IoC container<a class="headerlink" href="#ioc-container" title="Link to this heading">#</a></h1>
+<p>Als je, zoals we tot nu toe gedaan hebben, dependency injection handmatig
+toepast, zul je zien dat je op een gegeven moment vrij veel code krijgt om
+allerlei objecten te maken en mee te geven aan andere objecten. Zeker als
+objecten meerdere services nodig hebben kan dit vrij onoverzichtelijk worden.
+Een ander probleem is dat, als een object een nieuwe service nodig heeft, je
+deze wijziging handmatig moet doorvoeren bij het opbouwen van de objectgraaf.</p>
+<p>Deze problemen zijn te ondervangen door gebruik te maken van een
+<em>inversion of control container</em>, of kortweg <em>IoC container</em>
+Deze naam verwijst naar het feit dat klassen door het gebruik van een
+dergelijke container niet meer zelf verantwoordelijk zijn voor het vinden
+van hun afhankelijkheden, maar dat ze ze door de container krijgen aangeboden.</p>
+<p>De container is dus verantwoordelijk voor het instantiëren van de juiste
+objecten om de services die in de applicatie nodig zijn te kunnen
+initialiseren. Om dit te kunnen doen, moet de container zodanig
+geconfigureerd worden dat dit op de juiste manier kan gebeuren. Er zijn dus
+twee relevante aspecten aan de container. In de eerste plaats is er een
+interface nodig om services uit de container op te halen.
+<a class="reference external" href="https://www.php-fig.org/psr/psr-11">PSR-11</a> biedt hier een interface
+<code class="docutils literal notranslate"><span class="pre">Psr\Container\ContainerInterface</span></code> voor met een methode <code class="docutils literal notranslate"><span class="pre">get</span></code> om een service
+op te halen en een methode <code class="docutils literal notranslate"><span class="pre">has</span></code> om te controleren of een bepaalde service
+bestaat.</p>
+<p>PSR-11 beschrijft echter expliciet geen interface voor het configureren en
+registeren van services. Hierbij is er dus de vrijheid om dit op een
+veelvoud aan manieren te doen. In het hiernavolgende zal een aantal aspecten
+besproken worden waaraan gedacht moet worden om dit te realiseren. Bovendien
+is een skelet van een implementatie van een IoC container beschikbaar,
+waarbij implementatiehints gegeven worden om de daar genoemde methoden te
+implementeren.</p>
+<section id="services-en-klassen">
+<h2>Services en klassen<a class="headerlink" href="#services-en-klassen" title="Link to this heading">#</a></h2>
+<p>Zoals gezegd is het de taak van de IoC container om services te instantiëren.
+Services zijn in een OOP-applicatie objecten. Services moeten bovendien een
+herkenbare naam hebben, zodat de applicatie weet welke service aangemaakt
+moet worden. Uit beide constateringen volgt dat een natuurlijke naam voor
+een service de klassenaam is van het serviceobject. Dit is in beginsel een
+redelijke keuze en wordt dan ook veel toegepast, maar heeft enkele haken en
+ogen.</p>
+<p>In de eerste plaats is het goed mogelijk dat er verschillende services zijn
+die dezelfde klasse gebruiken. Een applicatie die bijvoorbeeld twee
+verschillende databaseverbindingen nodig heeft, bijvoorbeeld om een database
+te migreren, zal normaal gesproken twee instanties van dezelfde klasse
+gebruiken voor de databaseverbindingen. De klassenaam is dan dus niet meer
+onderscheidend genoeg, maar een specifiekere naam is dan noodzakelijk.</p>
+<p>In de tweede plaats is het een goed gebruik om services afhankelijk te laten
+zijn van interfaces, niet van een specifieke implementerende klasse. Een
+service is echter altijd een object van een specifieke klasse. Zo kan een
+concrete databaseverbinding een instantie van <code class="docutils literal notranslate"><span class="pre">MySqlConnection</span></code> zijn, als
+het een verbinding met een MySQL-database betreft, maar implementeert die
+klasse wellicht een algemene interface <code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code>, en is dat de
+typedeclaratie die in andere services gebruikt worden. We zullen nog zien
+dat het dan handig zal zijn om de service de naam <code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code> te
+geven in plaats van <code class="docutils literal notranslate"><span class="pre">MySqlConnection</span></code>, aangezien we dan de service
+automatisch aan de constructorparameter kunnen koppelen.</p>
+<p>Deze beide omstandigheden brengen met zich mee dat het noodzakelijk is om
+configureerbaar te maken welke klasse gebruikt wordt om een bepaalde service
+te instantiëren. Het is echter ook handig om de servicenaam hiervoor als
+defaultwaarde te gebruiken.</p>
+</section>
+<section id="services-instantieren">
+<h2>Services instantiëren<a class="headerlink" href="#services-instantieren" title="Link to this heading">#</a></h2>
+<p>Nu we weten welke klasse we moeten instantiëren, is het nodig om de
+constructor hiervan aan te roepen. Dit kan via reflectie of het keyword
+<code class="docutils literal notranslate"><span class="pre">new</span></code>, maar in beide gevallen is het nodig om een lijst van
+constructorparameters te hebben.</p>
+<p>Eén aanpak is om deze lijst uit de configuratie te halen. We eisen dan dat
+de configuratie voor een service ook de constructorparameters bevat. Dit is
+omslachtig, maar biedt wel volledige controle. Het lost echter niet direct
+het probleem op dat, als een klasse een extra constructorparameter nodig
+heeft, dat hierdoor een wijziging moet plaatsvinden in het opbouwen van de
+objectgraaf. We zullen nog zien dat <em>autowiring</em>, wat hieronder besproken
+zal worden, dit probleem oplost.</p>
+<p>Dit alles laat onverlet dat het vaak noodzakelijk zal zijn om expliciet
+constructorparameters te configureren. Het zal immers niet altijd zo zijn
+dat de applicatie zelf kan voorspellen welke afhankelijkheden nodig zijn, en
+bovendien kan een service ook anderssoortige parameters hebben, zoals
+bijvoorbeeld verbindingsinformatie voor een database.</p>
+<p>Het is dus noodzakelijk dat het bij de configuratie mogelijk is om
+constructorparameters aan te geven. Hierbij is het handig om <em>named
+parameters</em> te gebruiken, zodat het niet nodig is om de volgorde van de
+parameters aan te houden.</p>
+<p>Bovendien kan het nodig zijn om in de configuratie aan te geven dat een
+bepaalde parameter ingevuld moet worden door een met naam genoemde service.
+Om deze naam te onderscheiden van andere strings kan het handig zijn om
+bijvoorbeeld de conventie te gebruiken dat als een string met een at <code class="docutils literal notranslate"><span class="pre">&#64;</span></code>
+begint, hiermee bedoeld wordt dat de rest van de string de naam van een
+service is die uit de container opgevraagd moet worden. Ook als in een
+arrayparameter strings aanwezig zijn, moet een dergelijke conventie toegepast
+worden. Het kan bijvoorbeeld goed zijn dat een router een array van
+controllers meekrijgt als parameter, die allemaal als service opgezocht
+moeten worden in de container.</p>
+<p>Sommige services hebben naast de constructoraanroep een aantal
+methode-aanroepen nodig om volledig geconfigureerd te worden. Ook deze
+aanroepen kunnen opgeslagen worden in de configuratie, zodat ze juist worden
+uitgevoerd. Een alternatief hiervoor kan het gebruik van een factoryfunctie
+zijn. In de configuratie van de service wordt dan een verwijzing naar deze
+functie opgenomen. Als de service geïnitialiseerd moet worden, wordt dan
+deze factoryfunctie aangeroepen en is de returnwaarde de geïnitialiseerde
+service. Hierbij is het gebruikelijk dat de factoryfunctie de beschikking
+krijgt over de container zodat hiermee andere services opgezocht kunnen worden.</p>
+</section>
+<section id="autowiring">
+<h2>Autowiring<a class="headerlink" href="#autowiring" title="Link to this heading">#</a></h2>
+<p>Het is in PHP, en overigens ook in de meeste andere hogere programmeertalen,
+mogelijk om programmatisch informatie te verkrijgen over de klassen die
+gebruikt worden in de applicatie. Deze techniek heet <em>reflectie</em>, en
+zal later nog besproken worden. Hiermee is het onder meer mogelijk om de
+parameters van de constructor en hun types uit te lezen.</p>
+<p>Door gebruik te maken van reflectie, kunnen we nagaan welke types de
+constructorparameters hebben. Als dit toevallig namen van services zijn,
+zouden we ervoor kunnen kiezen om, als de waarde van de parameter niet
+geconfigureerd is, de bijbehorende service als parameter mee te geven. Dit
+heet <em>autowiring</em>.</p>
+<p>Je kan nu zien waarom het handig was om de naam van een klasse of interface
+als servicenaam te gebruiken. Als een controller bijvoorbeeld een
+databaseverbinding nodig heeft, heeft hij bijvoorbeeld een constructorparameter
+met als type <code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code>. Als er een service met die naam aanwezig
+is, zouden we die kunnen gebruiken in de constructor, en omdat we types en
+servicenamen in overeenstemming hebben gehouden, is die service van het
+juiste type. Dit is dus een redelijke default. Bovendien hoeven we nu de
+configuratie niet aan te passen als een object een extra service nodig heeft,
+mits die service bekend is in de container. Hij zal dan immers automatisch
+toegevoegd worden.</p>
+<p>We kunnen autowiring implementeren door met reflectie een lijst van
+constructorparameters te vinden, en voor elke parameter te kijken of deze in
+de configuratie staat. De naam van de parameter is hiervoor een geschikte
+zoeksleutel. Als de parameter niet expliciet geconfigureerd is, kan in
+plaats daarvan gekeken worden of het type bekend is als service in de
+container; als dat zo is, kan die service opgehaald worden uit de container
+en gebruikt worden als parameter. Hier is weer het recursieve karakter
+zichtbaar; om die service op te halen zal vermoedelijk immers weer
+autowiring worden toegepast.</p>
+</section>
+<section id="singletons">
+<h2>Singletons<a class="headerlink" href="#singletons" title="Link to this heading">#</a></h2>
+<p>Onze bespreking van het onderwerp dependency injection begon met de wens om
+singletonklassen te kunnen hebben, waar maar één instantie van is. Als we
+autowiring naïef zouden toepassen, zou wellicht elke keer dat bijvoorbeeld
+een databaseverbinding nodig is, een nieuwe instantie van de bijbehorende
+klasse worden gemaakt. Dit is duidelijk geen singleton.</p>
+<p>Het is daarom handig om alle services die gemaakt worden op te slaan in een
+cache, en om dan, als een service nog een keer gevraagd wordt, eerst te
+kijken of deze al in de cache staat. Zo ja, dan kiezen we ervoor om die al
+gemaakte service te gebruiken. Op deze manier is elke service een singleton.</p>
+<p>Soms kan dit gedrag onwenselijk zijn en is het juist wel de bedoeling dat
+elke keer een nieuwe instantie gemaakt wordt. Het is daarom handig om dit
+gedrag configureerbaar te maken.</p>
+</section>
+<section id="strings">
+<h2>Strings<a class="headerlink" href="#strings" title="Link to this heading">#</a></h2>
+<p>Naast andere services heb je vaak ook bepaalde strings nodig om een service
+te configureren. Denk bijvoorbeeld aan het pad naar de template directory
+voor de template engine of een connectiestring voor een database. Voor zover
+dit gewoon hele strings zijn, kunnen ze als constructorparameter worden
+geconfigureerd.</p>
+<p>Het kan echter wenselijk zijn om een dergelijke string op te kunnen bouwen
+uit een configureerbaar deel en een hardcoded deel, met name als het
+configureerbare deel hierdoor herbruikbaar wordt. Stel bijvoorbeeld dat de
+templates in de directory <code class="docutils literal notranslate"><span class="pre">templates</span></code> van het project staan, dan zou het
+handig zijn om de root directory van het project configureerbaar te maken,
+en hierachter de string <code class="docutils literal notranslate"><span class="pre">/templates</span></code> te plaatsen. Dit speelt hier met name,
+omdat de root directory van het project vrij eenvoudig kan veranderen door
+de applicatie ergens anders te deployen.</p>
+<p>Door de optie om strings te registreren aan de container toe te voegen kan
+dit mogelijk worden gemaakt. Zo zou de root directory van het project
+geregistreerd kunnen worden als de string <code class="docutils literal notranslate"><span class="pre">root_dir</span></code>. Bij het ophalen van
+constructorparameters kan dan bijvoorbeeld de string <code class="docutils literal notranslate"><span class="pre">%root_dir%</span></code> of <code class="docutils literal notranslate"> <span class="pre">{root_dir}</span></code> vervangen worden door die waarde.</p>
+</section>
+<section id="configuratie">
+<h2>Configuratie<a class="headerlink" href="#configuratie" title="Link to this heading">#</a></h2>
+<p>Zoals we hebben gezien heeft de container een behoorlijk aantal
+configuratieopties nodig. Er zijn in hoofdlijnen twee manieren om deze
+configuratie op te slaan.</p>
+<p>De eerste is om een tekstbestand te maken waarin deze configuratie staat, en
+in de containerklasse een statische methode op te nemen die een container
+aanmaakt en het genoemde tekstbestand inlaadt. Hierbij kan worden gedacht aan
+<a class="reference external" href="https://nl.wikipedia.org/wiki/JSON">JSON</a>, dat met
+<a class="reference external" href="https://www.php.net/manual/en/function.json-decode.php"><code class="docutils literal notranslate"><span class="pre">json_decode</span></code></a>
+omgezet kan worden naar een array. Op de plaats waar de container benodigd
+is kan je een deze statische methode aanroepen.</p>
+<p>De tweede optie is om gebruik te maken van het <code class="docutils literal notranslate"><span class="pre">require</span></code>-statement. Hierbij
+maak je een PHP-bestand waarin je een containerobject maakt met <code class="docutils literal notranslate"><span class="pre">new</span></code> en
+vervolgens deze container configureert. Ten slotte gebruik je <code class="docutils literal notranslate"><span class="pre">return</span></code> om de
+container terug te geven aan het <code class="docutils literal notranslate"><span class="pre">require</span></code>-statement. Dit lijkt enigszins op
+de manier om de composition root in een apart bestand te zetten. Op de
+plaats waar je de container nodig hebt kan je dan het <code class="docutils literal notranslate"><span class="pre">require</span></code>-statement
+neerzetten.</p>
+</section>
+<section id="gebruik-van-de-ioc-container">
+<h2>Gebruik van de IoC container<a class="headerlink" href="#gebruik-van-de-ioc-container" title="Link to this heading">#</a></h2>
+<p>Nu we een IoC container hebben is de volgende vraag waar we deze gaan
+gebruiken. Hierbij moet in gedachten worden gehouden dat het de taak van de
+container is om de objectgraaf op te bouwen. De objectgraaf wordt opgebouwd
+in de composition root, dus dit is ook de plaats waar de IoC container wordt
+gebruikt.</p>
+<p>De composition root bestond eerst uit het handmatig aanmaken van een aantal
+services, die eventueel als afhankelijkheden aan elkaars constructor werden
+meegegeven. Vervolgens werd een enkele service teruggegeven; dit is de entry
+point van de applicatie, in ons geval de kernel.</p>
+<p>Om een IoC container te maken, wordt deze handmatige vorm van dependency
+injection vervangen door het gebruik van de IoC container. Dit bestaat
+conceptueel uit drie stappen.</p>
+<ol class="arabic simple">
+<li><p>Eerst wordt de IoC container geconfigureerd en alle services
+geregistreerd in de container.</p></li>
+<li><p>Daarna wordt het entry point van de applicatie opgehaald uit de container.
+Dit is de enige expliciete aanroep van de container; het is nu de taak
+van de container om de hele objectgraaf op te bouwen.</p></li>
+<li><p>Hierna is de container niet meer nodig en kan de verwijzing naar de
+container weggegooid worden. In een taal als PHP, waarbij het geheugen
+van objecten automatisch vrijgegeven wordt als ze niet meer gebruikt
+worden, is dit geen expliciete stap, maar dit zou wel zo zijn in een taal
+als C.</p></li>
+</ol>
+<p>Deze drie stappen worden wel aangeduid als het
+<a class="reference external" href="https://blog.ploeh.dk/2010/09/29/TheRegisterResolveReleasepattern/">register-resolve-release pattern</a>;
+eerst wordt de container geregistreerd (<em>register</em>), daarna wordt een object
+opgehaald (<em>resolve</em>) uit de container, en daarna wordt de container
+vrijgegeven (<em>release</em>).</p>
+<p>Merk hierbij op dat in de feitelijke applicatie zelf de container nergens
+meer gebruikt wordt. De container wordt enkel en alleen gebruikt om de
+objectgraaf op te bouwen. Het is erg verleidelijk om de container ook
+tijdens de applicatie beschikbaar te houden zodat objecten hier nog services
+uit kunnen ophalen, het zogeheten
+<a class="reference external" href="https://en.wikipedia.org/wiki/Service_locator_pattern"><em>service locator pattern</em></a>,
+maar dit is net als het singleton pattern een antipattern aangezien ook
+hierdoor verborgen afhankelijkheden worden geïntroduceerd.</p>
+<p>In de praktijk zie je wel dat de container toch beschikbaar wordt gehouden.
+Dit komt omdat bij webapplicaties in PHP, waarbij voor elke request een
+apart proces wordt gestart, het niet altijd nodig is om de volledige
+objectgraaf aan te maken. Immers, in elk request wordt slechts een enkele
+controller gebruikt, en het kan voor de performance gunstig zijn om de
+andere controllers niet te instantiëren. Wat je in dat geval ziet is dat de
+router of een vergelijkbare component de beschikking heeft over de container,
+zodat aan de hand van de benodigde route de juiste controller op te halen
+uit de container. Maar ook hier geldt dat dit gebruik van de container
+geminimaliseerd moet worden; als deze variant wordt toegepast, worden in
+principe slechts twee objecten expliciet uit de container gehaald, te weten
+de kernel en de controller die voor dit request nodig is.</p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./5.2-container"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../5.1-di/opdracht.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">vorige</p>
+        <p class="prev-next-title">Opdracht</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="voorbeeld.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">volgende</p>
+        <p class="prev-next-title">Voorbeeldcode</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#services-en-klassen">Services en klassen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#services-instantieren">Services instantiëren</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autowiring">Autowiring</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#singletons">Singletons</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#strings">Strings</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#configuratie">Configuratie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#gebruik-van-de-ioc-container">Gebruik van de IoC container</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+Door Bart Barnard & Ralf van den Broek
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script defer src="../_static/scripts/bootstrap.js?digest=26a4bc78f4c0ddb94549"></script>
+<script defer src="../_static/scripts/pydata-sphinx-theme.js?digest=26a4bc78f4c0ddb94549"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

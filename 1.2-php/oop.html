@@ -250,6 +250,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../5.1-di/compositionroot.html">Composition root</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../5.1-di/opdracht.html">Opdracht</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 IoC container</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/container.html">IoC container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/voorbeeld.html">Voorbeeldcode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/reflectie.html">Reflectie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/interface.html">Interfaces</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Intro</a></li>
@@ -660,8 +669,8 @@ met de methode <code class="docutils literal notranslate"><span class="pre">coun
 <a class="reference external" href="https://www.php.net/manual/en/class.traversable.php"><code class="docutils literal notranslate"><span class="pre">Traversable</span></code></a>
 die markeert dat een object met <code class="docutils literal notranslate"><span class="pre">foreach</span></code> werkt. Zou je een functie willen
 schrijven die een parameter accepteert die zowel in een <code class="docutils literal notranslate"><span class="pre">foreach</span></code>-lus
-gebruikt kan worden en ook de methode <code class="docutils literal notranslate"><span class="pre">count</span></code> aanbiedt, dan kan je een
-typedeclaratie <code class="docutils literal notranslate"><span class="pre">Countable&amp;Traver</span></code></p>
+gebruikt kan worden en ook de methode <code class="docutils literal notranslate"><span class="pre">count</span></code> aanbiedt, dan kan je de
+typedeclaratie <code class="docutils literal notranslate"><span class="pre">Countable&amp;Traversable</span></code> gebruiken.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">function count_and_traverse(Countable&amp;Traversable $list): void {</span>
 <span class="x">    echo {$list-&gt;count()}, &#39; elements:&#39;, PHP_EOL;</span>
 <span class="x">    foreach ($list as $element) {</span>

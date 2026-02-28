@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>De router &#8212; Webtechnologie II</title>
+    <title>Voorbeeldcode &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '3.2-routing/router';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '5.2-container/voorbeeld';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Verwijzingen naar functies" href="callable.html" />
-    <link rel="prev" title="De front controller" href="frontcontroller.html" />
+    <link rel="next" title="Reflectie" href="reflectie.html" />
+    <link rel="prev" title="IoC container" href="container.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -221,14 +221,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="frontcontroller.html">De front controller</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">De router</a></li>
-<li class="toctree-l1"><a class="reference internal" href="callable.html">Verwijzingen naar functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regex.html">Reguliere expressies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
 <ul class="nav bd-sidenav">
@@ -251,13 +251,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../5.1-di/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 IoC container</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/container.html">IoC container</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/voorbeeld.html">Voorbeeldcode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/reflectie.html">Reflectie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/opdracht.html">Opdracht</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/interface.html">Interfaces</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="container.html">IoC container</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Voorbeeldcode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="reflectie.html">Reflectie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
 <ul class="nav bd-sidenav">
@@ -332,7 +332,7 @@
       
       
       
-      <li><a href="../_sources/3.2-routing/router.md" target="_blank"
+      <li><a href="../_sources/5.2-container/voorbeeld.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -395,9 +395,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -408,19 +406,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>De router</h1>
+    <h1>Voorbeeldcode</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Inhoud </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-in-de-url">Parameters in de URL</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -430,74 +420,128 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="de-router">
-<h1>De router<a class="headerlink" href="#de-router" title="Link to this heading">#</a></h1>
-<p>Een enkele webapplicatie zal normaal gesproken uit een veelvoud van pagina’s
-bestaan, waarbij aan de hand van de URL bekeken moet worden welke pagina
-getoond moet worden. Dit zou met een groot <code class="docutils literal notranslate"><span class="pre">if</span></code>-statement geschreven kunnen
-worden, maar dat is natuurlijk niet onderhoudbaar. Daarom zullen we de
-logica voor de verschillende pagina’s willen scheiden ven elkaar. Om dit
-mogelijk te maken, bevat de applicatie een component die de
-<em>router</em> genoemd wordt. Deze component bekijkt de URL, en eventueel andere
-aspecten van het request, en selecteert vervolgens de geschikte logica om de
-request verder af te handelen. Omdat webapplicaties vaak
-volgens een model-view-controllerarchitectuur worden opgezet, worden de
-klasses die deze logica implementeren in het algemeen <em>controllers</em> genoemd.
-Zo zou er een klasse <code class="docutils literal notranslate"><span class="pre">IndexController</span></code> kunnen zijn die de homepage toont, of
-een klasse <code class="docutils literal notranslate"><span class="pre">LoginController</span></code> die een login-pagina toont.</p>
-<p>De router in het framework dat wij ontwikkelen moet voldoen aan de interface
-<code class="docutils literal notranslate"><span class="pre">Framework\Routing\RouterInterface</span></code>, die er als volgt uitziet.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">namespace Framework\Routing;</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="voorbeeldcode">
+<h1>Voorbeeldcode<a class="headerlink" href="#voorbeeldcode" title="Link to this heading">#</a></h1>
+<p>Onderstaande code kan als implementatiegids dienen om een IoC container te
+implementeren. Hierin worden een aantal keuzes gemaakt die niet verplicht
+zijn, maar wel als inspiratie kunnen dienen.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-<span class="x">use Framework\Http\RequestInterface;</span>
+<span class="k">use</span> <span class="nx">Psr\Container\ContainerInterface</span><span class="p">;</span>
 
-<span class="x">interface RouterInterface</span>
-<span class="x">{</span>
-<span class="x">    function route(RequestInterface $request): callable;</span>
-<span class="x">}</span>
+<span class="sd">/**</span>
+<span class="sd"> * An inversion of control container.</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">IoCContainer</span> <span class="k">implements</span> <span class="nx">ContainerInterface</span> <span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Create an IoC container based on a configuration file.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $root_dir The application root directory.</span>
+<span class="sd">     * @param string $filename The path to the configuration file.</span>
+<span class="sd">     * @return The configured container.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">createFromConfig</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$root_dir</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$filename</span><span class="p">)</span><span class="o">:</span> <span class="nx">self</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement createFromConfig() method.</span>
+        <span class="c1">// 1. Create a new container.</span>
+        <span class="c1">// 2. Get the contents of the configuration file.</span>
+        <span class="c1">// 3. Register services in configuration file.</span>
+        <span class="c1">// 4. Register root directory as a string.</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Register a service with the container.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $id The service id.</span>
+<span class="sd">     * @param ?string $class The service class name, defaults to the service id.</span>
+<span class="sd">     * @param bool $singleton Whether the service should be a singleton.</span>
+<span class="sd">     * @param mixed ...$parameters Other service configuration values.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerService</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$class</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">bool</span> <span class="nv">$singleton</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span> <span class="nx">mixed</span> <span class="o">...</span><span class="nv">$parameters</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement registerService() method.</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Register a string with the container.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $id The string id.</span>
+<span class="sd">     * @param string $string The string value.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerString</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$string</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement registerString() method.</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">getConfig</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement getConfig() method.</span>
+        <span class="c1">// 1. Get the config for the service id.</span>
+        <span class="c1">// 2. Replace missing parameters with defaults.</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">getClassNameForService</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement getClassNameForService() method.</span>
+        <span class="c1">// 1. Check if the class is set explicitly in config.</span>
+        <span class="c1">// 2. Check if the service id is a class name.</span>
+        <span class="c1">// 3. Check if the service id is an interface name that ends in `Interface`</span>
+        <span class="c1">// 4. If so, try the corresponding class name without `Interface`</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">replaceServices</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement replaceServices() method.</span>
+        <span class="c1">// 1. If the value is an array, call method recursively on all values.</span>
+        <span class="c1">// 2. If the value is a string and starts with an @, replace it with the corresponding service.</span>
+        <span class="c1">// 3. Otherwise, replace string placeholders in value</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">getConstructorParams</span><span class="p">(</span><span class="nx">\ReflectionClass</span> <span class="nv">$class</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$params</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement getConstructorParams() method.</span>
+        <span class="c1">// 1. Get class constructor</span>
+        <span class="c1">// 2. Iterate over constructor parameters</span>
+        <span class="c1">// 3. If the parameter is present in config, replace services in parameter value</span>
+        <span class="c1">// 4. If the parameter is not present and not optional, get a service using autowiring</span>
+        <span class="c1">// 5. If the parameter is not present and optional, use the default value</span>
+        <span class="c1">// 6. Return array containing constructor parameter values</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement create() method.</span>
+        <span class="c1">// 1. Create reflection class object based on class of service</span>
+        <span class="c1">// 2. Get array of constructor parameters based on configured parameters</span>
+        <span class="c1">// 3. Create new instance of class with constructor parameters</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">cacheSingleton</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$factory</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement cacheSingleton() method.</span>
+        <span class="c1">// 1. Call factory if service is not cached and cache result</span>
+        <span class="c1">// 2. Return cached service</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">\Override</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// TODO: Implement get() method.</span>
+        <span class="c1">// 1. Throw Psr\Container\NotFoundExceptionInterface if id does not exist in container</span>
+        <span class="c1">// 2. Get configuration for id</span>
+        <span class="c1">// 3. Create factory callback for service based on id</span>
+        <span class="c1">// 4. Cache service if it is a singleton</span>
+        <span class="c1">// 5. Otherwise call factory</span>
+        <span class="c1">// 5. Throw Psr\Container\ContainerExceptionInterface if an error occurs while creating service</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">\Override</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
+    <span class="p">{</span>
+        <span class="c1">// TODO: Implement has() method.</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
-<p>Het type <code class="docutils literal notranslate"><span class="pre">callable</span></code> wordt hieronder nog toegelicht. Kort gezegd bevat dit
-type een verwijzing naar een functie die uitgevoerd kan worden. De router
-heeft dus als taak om, gegeven een request, een functie te vinden die dit
-request kan afhandelen. Het is in PHP niet mogelijk om de signatuur van een
-callable vast te leggen in de typedeclaratie; de bedoeling is echter dat de
-functie die het request afhandelt geen parameters heeft en een instantie van
-<code class="docutils literal notranslate"><span class="pre">Framework\Http\ResponseInterface</span></code> teruggeeft. Variaties hierop zijn ook
-toegestaan; zo zou je eventueel ook het requestobject als parameter aan de
-functie kunnen meegeven. We zullen nog zien dat dit echter niet direct
-noodzakelijk is om toch over het requestobject te kunnen beschikken.</p>
-<p>De router zal aangeroepen worden door de kernel. Elk request zal feitelijk
-door de router bekeken moeten worden, aangezien de router moet bepalen welke
-controller gekozen wordt. Dit leidt ertoe dat de router in de middlewarelaag
-van de kernel thuishoort, of eventueel meteen na deze laag. Dit ziet er
-schematisch als volgt uit, waarbij bedacht moet worden dat de controllers
-callables zijn die door de router geselecteerd worden, en vaak een enkele
-bijbehorende view, ofwel template, gebruiken.</p>
-<p><img alt="Schema met router" src="../_images/schema-routing.png" /></p>
-<section id="parameters-in-de-url">
-<h2>Parameters in de URL<a class="headerlink" href="#parameters-in-de-url" title="Link to this heading">#</a></h2>
-<p>In vrijwel alle gevallen zal een applicatie veel URL’s bevatten die op
-elkaar lijken en volgens een vast stramien geformatteerd worden. Zo zal
-alleen de URL <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/</span></code> naar de homepage moeten leiden, maar
-zullen alle URL’s die beginnen met <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/blog/</span></code> en eindigen
-op een getal wellicht een blogpost moeten tonen. Hierbij moet het getal
-gezien worden als de id van een blogpost in de database, dus alleen als dit
-getal ook een geldige id is is op deze URL een pagina beschikbaar.</p>
-<p>Het spreekt voor zich dat al deze blogpagina’s in beginsel door dezelfde
-controller afgehandeld moeten worden. Het moet dus mogelijk zijn dat de
-router dit URL-formaat herkend, de bijbehorende controller laat aanroepen en
-ook het getal dat in de URL stond door kan geven aan de controller zodat de
-goede blogpost gevonden kan worden. Er is een veelvoud aan oplossingen
-denkbaar, maar in ieder geval zou gedacht kunnen worden aan <em>reguliere
-expressies</em>, die hieronder nog besproken worden.</p>
-<p>Merk op dat het in beginsel mogelijk is om dergelijke ids in de <em>query
-string</em> te zetten. De URL zou dan bijvoorbeeld
-<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/blog?id=5</span></code> worden. Dit heeft echter in het algemeen
-niet de voorkeur; dergelijke URL’s worden als minder leesbaar beschouwd en
-vanwege zoekmachineoptimalisatie heeft een URL als
-<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/blog/5</span></code> dan de voorkeur.</p>
-</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -513,7 +557,7 @@ vanwege zoekmachineoptimalisatie heeft een URL als
         },
         kernelOptions: {
             name: "python3",
-            path: "./3.2-routing"
+            path: "./5.2-container"
         },
         predefinedOutput: true
     }
@@ -531,20 +575,20 @@ vanwege zoekmachineoptimalisatie heeft een URL als
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="frontcontroller.html"
+       href="container.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">De front controller</p>
+        <p class="prev-next-title">IoC container</p>
       </div>
     </a>
     <a class="right-next"
-       href="callable.html"
+       href="reflectie.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Verwijzingen naar functies</p>
+        <p class="prev-next-title">Reflectie</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -554,22 +598,6 @@ vanwege zoekmachineoptimalisatie heeft een URL als
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Inhoud
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-in-de-url">Parameters in de URL</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

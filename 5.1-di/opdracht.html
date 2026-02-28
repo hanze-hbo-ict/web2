@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '5.1-di/opdracht';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Intro" href="../6.1-database/intro.html" />
+    <link rel="next" title="IoC container" href="../5.2-container/container.html" />
     <link rel="prev" title="Composition root" href="compositionroot.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
@@ -250,6 +250,15 @@
 <li class="toctree-l1"><a class="reference internal" href="compositionroot.html">Composition root</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Opdracht</a></li>
 </ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 IoC container</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/container.html">IoC container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/voorbeeld.html">Voorbeeldcode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/reflectie.html">Reflectie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/interface.html">Interfaces</a></li>
+</ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Intro</a></li>
@@ -386,7 +395,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -402,6 +413,14 @@
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-injection">Dependency injection</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -413,6 +432,8 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="opdracht">
 <h1>Opdracht<a class="headerlink" href="#opdracht" title="Link to this heading">#</a></h1>
+<section id="dependency-injection">
+<h2>Dependency injection<a class="headerlink" href="#dependency-injection" title="Link to this heading">#</a></h2>
 <p>Pas je applicatie zo aan dat er geen gebruik wordt gemaakt van het
 singleton pattern of andere verborgen afhankelijkheden. Maak deze
 afhankelijkheden expliciet door constructorparamerters toe te voegen en maak
@@ -420,6 +441,7 @@ een composition root die alle objecten in je applicatie op de goede manier
 instantieerd. Maak vervolgens in je front controller gebruik van deze
 composition root om de kernel te instantiëren die je gebruikt om het request
 af te handelen.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -462,11 +484,11 @@ af te handelen.</p>
       </div>
     </a>
     <a class="right-next"
-       href="../6.1-database/intro.html"
+       href="../5.2-container/container.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">IoC container</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -476,6 +498,22 @@ af te handelen.</p>
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dependency-injection">Dependency injection</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

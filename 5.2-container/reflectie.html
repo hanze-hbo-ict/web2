@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>De router &#8212; Webtechnologie II</title>
+    <title>Reflectie &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '3.2-routing/router';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '5.2-container/reflectie';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Verwijzingen naar functies" href="callable.html" />
-    <link rel="prev" title="De front controller" href="frontcontroller.html" />
+    <link rel="next" title="Oefeningen" href="oefening.html" />
+    <link rel="prev" title="Voorbeeldcode" href="voorbeeld.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -221,14 +221,14 @@
 <li class="toctree-l1"><a class="reference internal" href="../3.1-request/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">3.2 Routing</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="frontcontroller.html">De front controller</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">De router</a></li>
-<li class="toctree-l1"><a class="reference internal" href="callable.html">Verwijzingen naar functies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="regex.html">Reguliere expressies</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/frontcontroller.html">De front controller</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/router.html">De router</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/callable.html">Verwijzingen naar functies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/regex.html">Reguliere expressies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../3.2-routing/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
 <ul class="nav bd-sidenav">
@@ -251,13 +251,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../5.1-di/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 IoC container</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/container.html">IoC container</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/voorbeeld.html">Voorbeeldcode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/reflectie.html">Reflectie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/opdracht.html">Opdracht</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../5.2-container/interface.html">Interfaces</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="container.html">IoC container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="voorbeeld.html">Voorbeeldcode</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Reflectie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
 <ul class="nav bd-sidenav">
@@ -332,7 +332,7 @@
       
       
       
-      <li><a href="../_sources/3.2-routing/router.md" target="_blank"
+      <li><a href="../_sources/5.2-container/reflectie.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -408,7 +408,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>De router</h1>
+    <h1>Reflectie</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -418,7 +418,11 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-in-de-url">Parameters in de URL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflectionclass"><code class="docutils literal notranslate"><span class="pre">ReflectionClass</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflectionmethod"><code class="docutils literal notranslate"><span class="pre">ReflectionMethod</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflectionparameter"><code class="docutils literal notranslate"><span class="pre">ReflectionParameter</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflectiontype"><code class="docutils literal notranslate"><span class="pre">ReflectionType</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voorbeeld">Voorbeeld</a></li>
 </ul>
             </nav>
         </div>
@@ -430,73 +434,170 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="de-router">
-<h1>De router<a class="headerlink" href="#de-router" title="Link to this heading">#</a></h1>
-<p>Een enkele webapplicatie zal normaal gesproken uit een veelvoud van pagina’s
-bestaan, waarbij aan de hand van de URL bekeken moet worden welke pagina
-getoond moet worden. Dit zou met een groot <code class="docutils literal notranslate"><span class="pre">if</span></code>-statement geschreven kunnen
-worden, maar dat is natuurlijk niet onderhoudbaar. Daarom zullen we de
-logica voor de verschillende pagina’s willen scheiden ven elkaar. Om dit
-mogelijk te maken, bevat de applicatie een component die de
-<em>router</em> genoemd wordt. Deze component bekijkt de URL, en eventueel andere
-aspecten van het request, en selecteert vervolgens de geschikte logica om de
-request verder af te handelen. Omdat webapplicaties vaak
-volgens een model-view-controllerarchitectuur worden opgezet, worden de
-klasses die deze logica implementeren in het algemeen <em>controllers</em> genoemd.
-Zo zou er een klasse <code class="docutils literal notranslate"><span class="pre">IndexController</span></code> kunnen zijn die de homepage toont, of
-een klasse <code class="docutils literal notranslate"><span class="pre">LoginController</span></code> die een login-pagina toont.</p>
-<p>De router in het framework dat wij ontwikkelen moet voldoen aan de interface
-<code class="docutils literal notranslate"><span class="pre">Framework\Routing\RouterInterface</span></code>, die er als volgt uitziet.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">namespace Framework\Routing;</span>
-
-<span class="x">use Framework\Http\RequestInterface;</span>
-
-<span class="x">interface RouterInterface</span>
-<span class="x">{</span>
-<span class="x">    function route(RequestInterface $request): callable;</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="reflectie">
+<h1>Reflectie<a class="headerlink" href="#reflectie" title="Link to this heading">#</a></h1>
+<p>Om het mogelijk te maken om automatisch te bepalen welke services meegegeven
+moeten worden aan een constructor, is het nodig om PHP te kunnen bevragen
+over de constructorparameters. De techniek die we hiervoor gebruiken heet
+<a class="reference external" href="https://en.wikipedia.org/wiki/Reflective_programming"><em>reflectie</em></a>;
+dit is een voorbeeld van een techniek die gebruikt kan worden voor
+<a class="reference external" href="https://en.wikipedia.org/wiki/Metaprogramming"><em>metaprogrammeren</em></a>,
+een programmeertechniek waarbij een programma zichzelf of andere programma’s
+als data kan beschouwen.</p>
+<p>PHP biedt
+<a class="reference external" href="https://www.php.net/manual/en/book.reflection.php">een aantal klassen</a>
+aan die gebruikt kunnen worden voor reflectie. In het navolgende zullen we
+ons beperken tot reflectie van klassen en de daarbij behorende eigenschappen,
+maar ook bijvoorbeeld functies kunnen worden onderzocht met reflectie.</p>
+<section id="reflectionclass">
+<h2><code class="docutils literal notranslate"><span class="pre">ReflectionClass</span></code><a class="headerlink" href="#reflectionclass" title="Link to this heading">#</a></h2>
+<p>Om reflectie toe te kunnen passen op een klasse, is een instantie van de klasse
+<a class="reference external" href="https://www.php.net/manual/en/class.reflectionclass.php"><code class="docutils literal notranslate"><span class="pre">ReflectionClass</span></code></a>
+vereist. Deze klasse bevat alle informatie over de te onderzoeken klasse en
+hiermee kan je verwijzingen verkrijgen naar informatie over onder meer
+constructors, methodes en instantievariabelen. Je kan de klassenaam of een
+instantie van de klasse meegeven aan de constructor van <code class="docutils literal notranslate"><span class="pre">ReflectionClass</span></code>.
+In beide gevallen krijg je een reflectie-object dat een klasse beschrijft.</p>
+<p>Je kan het reflectie-object bijvoorbeeld vragen om de naam van de klasse met
+<a class="reference external" href="https://www.php.net/manual/en/reflectionclass.getname.php"><code class="docutils literal notranslate"><span class="pre">getName</span></code></a>,
+of om de naam zonder namespaces met
+<a class="reference external" href="https://www.php.net/manual/en/reflectionclass.getshortname.php"><code class="docutils literal notranslate"><span class="pre">getShortName</span></code></a>.
+Bovendien kan je de superklasse en de interfaces die de klasse implementeert
+vinden met
+<a class="reference external" href="https://www.php.net/manual/en/reflectionclass.getparentclass.php"><code class="docutils literal notranslate"><span class="pre">getParentClass</span></code></a>
+en <a class="reference external" href="https://www.php.net/manual/en/reflectionclass.getinterfaces.php"><code class="docutils literal notranslate"><span class="pre">getInterfaces</span></code></a>.</p>
+<p>Voor ons relevanter is dat je een instantie van het object kan maken. Dit
+kan op twee manieren. In de eerste plaats kan je de constructor aanroepen
+door gebruik te maken van
+<a class="reference external" href="https://www.php.net/manual/en/reflectionclass.newinstance.php"><code class="docutils literal notranslate"><span class="pre">newInstance</span></code></a> of
+<a class="reference external" href="https://www.php.net/manual/en/reflectionclass.newinstanceargs.php"><code class="docutils literal notranslate"><span class="pre">newInstanceArgs</span></code></a>.
+Onderstaande drie aanroepen hebben bijvoorbeeld hetzelfde resultaat.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$object = new TestClass(1, 2, 3);</span>
+<span class="x">$object = new ReflectionClass(&#39;TestClass&#39;)-&gt;newInstance(1, 2, 3);</span>
+<span class="x">$object = new ReflectionClass(&#39;TestClass&#39;)-&gt;newInstanceArgs([1, 2, 3]);</span>
+</pre></div>
+</div>
+<p>Daarnaast kan je de constructor overslaan door gebruik te maken van
+<a class="reference external" href="https://www.php.net/manual/en/reflectionclass.newinstancewithoutconstructor.php"><code class="docutils literal notranslate"><span class="pre">newInstanceWithoutConstructor</span></code></a>.
+Hiermee maak je een nieuw object van de onderzochte klasse, maar zonder de
+constructor aan te roepen. Dit kan natuurlijk tot allerlei problemen leiden,
+maar het is wel een voorbeeld van een toepassing van reflectie waarbij je
+resultaten kan bereiken die je zonder reflectie niet kan bereiken. Dit
+specifieke voorbeeld zou bijvoorbeeld gebruikt kunnen worden om
+databaseobjecten te maken, waarbij je de attributen van het object expliciet
+instelt op waardes die uit de database komen.</p>
+<p>Om te weten welke parameters meegegeven moeten worden aan <code class="docutils literal notranslate"><span class="pre">newInstance</span></code>, is
+het noodzakelijk om informatie te kunnen verkrijgen over de constructor. Je
+kan een verwijzing naar de reflectie-informatie over de constructor
+verkrijgen via
+<a class="reference external" href="https://www.php.net/manual/en/reflectionclass.getconstructor.php"><code class="docutils literal notranslate"><span class="pre">getConstructor</span></code></a>.
+Deze methode geeft een object van het type <code class="docutils literal notranslate"><span class="pre">ReflectionMethod</span></code> terug. Ook van
+de andere methodes van een klasse kan een instantie van <code class="docutils literal notranslate"><span class="pre">ReflectionMethod</span></code>
+verkregen worden via de methode
+<a class="reference external" href="https://www.php.net/manual/en/reflectionclass.getmethod.php"><code class="docutils literal notranslate"><span class="pre">getMethod</span></code></a>.</p>
+</section>
+<section id="reflectionmethod">
+<h2><code class="docutils literal notranslate"><span class="pre">ReflectionMethod</span></code><a class="headerlink" href="#reflectionmethod" title="Link to this heading">#</a></h2>
+<p>Instanties van
+<a class="reference external" href="https://www.php.net/manual/en/class.reflectionmethod.php"><code class="docutils literal notranslate"><span class="pre">ReflectionMethod</span></code></a>
+beschrijven een methode in een klasse. Met
+<a class="reference external" href="https://www.php.net/manual/en/reflectionmethod.getdeclaringclass.php"><code class="docutils literal notranslate"><span class="pre">getDeclaringClass</span></code></a>
+en
+<a class="reference external" href="https://www.php.net/manual/en/reflectionfunctionabstract.getname.php"><code class="docutils literal notranslate"><span class="pre">getName</span></code></a>
+kan je de klasse en naam van de methode verkrijgen.</p>
+<p>Je kan de methode die beschreven wordt door een instantie hiervan aanroepen
+via <a class="reference external" href="https://www.php.net/manual/en/reflectionmethod.invoke.php"><code class="docutils literal notranslate"><span class="pre">invoke</span></code></a> of
+<a class="reference external" href="https://www.php.net/manual/en/reflectionmethod.invokeargs.php"><code class="docutils literal notranslate"><span class="pre">invokeArgs</span></code></a>,
+waarbij in beide gevallen het object waarop de methode moet worden
+aangeroepen als eerste parameter wordt meegegeven. De constructor ven een
+klasse wordt niet op deze manier aangeroepen; hiervoor gebruik je de methode
+<code class="docutils literal notranslate"><span class="pre">ReflectionClass::newInstance</span></code>, zoals hierboven besproken.</p>
+<p>Je kan ook een functieverwijzing verkrijgen in de vorm van een <code class="docutils literal notranslate"><span class="pre">Closure</span></code> die
+je later kan gebruiken via
+<a class="reference external" href="https://www.php.net/manual/en/reflectionmethod.getclosure.php"><code class="docutils literal notranslate"><span class="pre">getClosure</span></code></a>;
+ook hier geeft je het object mee als parameter.</p>
+<p>Bij een methode zullen we meestal met name geïnteresseerd zijn in zijn
+parameters en returntype. Je kan de parameters verkrijgen met
+<a class="reference external" href="https://www.php.net/manual/en/reflectionfunctionabstract.getparameters.php"><code class="docutils literal notranslate"><span class="pre">getParameters</span></code></a>;
+deze functie geeft een array met instanties van <code class="docutils literal notranslate"><span class="pre">ReflectionParameter</span></code> terug,
+die informatie geven over de parameterlijst van de methode.
+Om het returntype te verkrijgen gebruik je
+<a class="reference external" href="https://www.php.net/manual/en/reflectionfunctionabstract.getreturntype.php"><code class="docutils literal notranslate"><span class="pre">getReturnType</span></code></a>,
+die een instantie van <code class="docutils literal notranslate"><span class="pre">ReflectionType</span></code> met informatie over het returntype
+teruggeeft.</p>
+</section>
+<section id="reflectionparameter">
+<h2><code class="docutils literal notranslate"><span class="pre">ReflectionParameter</span></code><a class="headerlink" href="#reflectionparameter" title="Link to this heading">#</a></h2>
+<p>De klasse
+<a class="reference external" href="https://www.php.net/manual/en/class.reflectionparameter.php"><code class="docutils literal notranslate"><span class="pre">ReflectionParameter</span></code></a>
+beschrijft een parameter van een functie. In de eerste plaats kan je de naam
+van de parameter verkrijgen met
+<a class="reference external" href="https://www.php.net/manual/en/reflectionparameter.getname.php"><code class="docutils literal notranslate"><span class="pre">getName</span></code></a>;
+hierbij moet bedacht worden dat deze naam zonder dollarteken is. Je kan de
+naam gebruiken om de parameter te vullen in een aanroep van de methode.
+Alternatief kan je de positie van de parameter in de parameterlijst
+verkrijgen met
+<a class="reference external" href="https://www.php.net/manual/en/reflectionparameter.getposition.php"><code class="docutils literal notranslate"><span class="pre">getPosition</span></code></a>.</p>
+<p>Ook het type van een parameter kan je ophalen, met
+<a class="reference external" href="https://www.php.net/manual/en/reflectionparameter.gettype.php"><code class="docutils literal notranslate"><span class="pre">getType</span></code></a>.
+Deze informatie is natuurlijk zeer handig als je autowiring wilt toepassen
+in een IoC container. De methode geeft een instantie van <code class="docutils literal notranslate"><span class="pre">ReflectionType</span></code>
+terug met informatie over het type; deze klasse wordt hieronder nog
+besproken.</p>
+<p>Ten slotte zijn er nog een aantal handige booleanmethoden die je kan
+gebruiken. Zo geeft
+<a class="reference external" href="https://www.php.net/manual/en/reflectionparameter.isoptional.php"><code class="docutils literal notranslate"><span class="pre">isOptional</span></code></a>
+aan of de parameter optioneel is, dus niet meegegeven hoeft te worden. In
+dat geval kan je de defaultwaarde van de parameter ophalen met
+<a class="reference external" href="https://www.php.net/manual/en/reflectionparameter.getdefaultvalue.php"><code class="docutils literal notranslate"><span class="pre">getDefaultValue</span></code></a>.
+Daarnaast geeft
+<a class="reference external" href="https://www.php.net/manual/en/reflectionparameter.isvariadic.php"><code class="docutils literal notranslate"><span class="pre">isVariadic</span></code></a>
+aan of de parameter variadisch is, dat wil zeggen dat deze gedeclareerd is
+met een beletselteken <code class="docutils literal notranslate"><span class="pre">...</span></code> zodat alle overgebleven parameters aan deze
+parameter worden toegekend.</p>
+</section>
+<section id="reflectiontype">
+<h2><code class="docutils literal notranslate"><span class="pre">ReflectionType</span></code><a class="headerlink" href="#reflectiontype" title="Link to this heading">#</a></h2>
+<p>Een aantal hierboven besproken methodes geven informatie over een type terug.
+Deze informatie wordt teruggegeven als instanties van het type
+<a class="reference external" href="https://www.php.net/manual/en/class.reflectiontype.php"><code class="docutils literal notranslate"><span class="pre">ReflectionType</span></code></a>.
+Dit is een abstracte klasse, dus feitelijk worden altijd subklassen van dit
+type gebruikt. Er zijn drie subklassen, <code class="docutils literal notranslate"><span class="pre">ReflectionNamedType</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ReflectionUnionType</span></code> en <code class="docutils literal notranslate"><span class="pre">ReflectionIntersectionType</span></code>.</p>
+<p>De subklasse
+<a class="reference external" href="https://www.php.net/manual/en/class.reflectionnamedtype.php"><code class="docutils literal notranslate"><span class="pre">ReflectionNamedType</span></code></a>
+is met name relevant aangezien deze subklasse reguliere typedeclaraties
+beschrijft. De klasse heeft drie voor ons relevante methodes;
+<a class="reference external" href="https://www.php.net/manual/en/reflectionnamedtype.getname.php"><code class="docutils literal notranslate"><span class="pre">getName</span></code></a>
+geeft de naam van het type, zoals bijvoorbeeld een klassenaam, terug.
+Daarnaast kan je nagaan of het type ingebouwd is met
+<a class="reference external" href="https://www.php.net/manual/en/reflectionnamedtype.isbuiltin.php"><code class="docutils literal notranslate"><span class="pre">isBuiltin</span></code></a>
+en of het toegestaan is om <code class="docutils literal notranslate"><span class="pre">null</span></code> als waarde te gebruiken met
+<a class="reference external" href="https://www.php.net/manual/en/reflectiontype.allowsnull.php"><code class="docutils literal notranslate"><span class="pre">allowsNull</span></code></a>.</p>
+<p>De andere twee subklassen beschrijven complexere typedeclaraties;
+<a class="reference external" href="https://www.php.net/manual/en/class.reflectionuniontype.php"><code class="docutils literal notranslate"><span class="pre">ReflectionUnionType</span></code></a>
+beschrijft een typedeclaratie die meerdere verschillende types toestaat,
+zoals bijvoorbeeld <code class="docutils literal notranslate"><span class="pre">int|float</span></code>, en
+<a class="reference external" href="https://www.php.net/manual/en/class.reflectionintersectiontype.php"><code class="docutils literal notranslate"><span class="pre">ReflectionIntersectionType</span></code></a>
+beschrijft een typedeclaratie die vereist dat de waarde die meegegeven
+wordt meerdere superklassen of interfaces heeft, zoals bijvoorbeeld
+<code class="docutils literal notranslate"><span class="pre">Countable&amp;Traversable</span></code>. Deze beide klassen hebben een methode
+<a class="reference external" href="https://www.php.net/manual/en/reflectionuniontype.gettypes.php"><code class="docutils literal notranslate"><span class="pre">getTypes</span></code></a>
+om de onderliggende types te verkrijgen en hebben ook de al beschreven
+methode <code class="docutils literal notranslate"><span class="pre">allowsNull</span></code>.</p>
+</section>
+<section id="voorbeeld">
+<h2>Voorbeeld<a class="headerlink" href="#voorbeeld" title="Link to this heading">#</a></h2>
+<p>Het onderstaande voorbeeld drukt alle parameters van de constructor van een
+klasse en hun types af.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$reflection = new ReflectionClass($class);</span>
+<span class="x">$constructor = $reflection-&gt;getConstructor();</span>
+<span class="x">foreach ($constructor-&gt;getParameters() as $param) {</span>
+<span class="x">    $type = $param-&gt;getType();</span>
+<span class="x">    echo $type-&gt;getName(), &#39; $&#39;, $param-&gt;getName(), PHP_EOL;</span>
 <span class="x">}</span>
 </pre></div>
 </div>
-<p>Het type <code class="docutils literal notranslate"><span class="pre">callable</span></code> wordt hieronder nog toegelicht. Kort gezegd bevat dit
-type een verwijzing naar een functie die uitgevoerd kan worden. De router
-heeft dus als taak om, gegeven een request, een functie te vinden die dit
-request kan afhandelen. Het is in PHP niet mogelijk om de signatuur van een
-callable vast te leggen in de typedeclaratie; de bedoeling is echter dat de
-functie die het request afhandelt geen parameters heeft en een instantie van
-<code class="docutils literal notranslate"><span class="pre">Framework\Http\ResponseInterface</span></code> teruggeeft. Variaties hierop zijn ook
-toegestaan; zo zou je eventueel ook het requestobject als parameter aan de
-functie kunnen meegeven. We zullen nog zien dat dit echter niet direct
-noodzakelijk is om toch over het requestobject te kunnen beschikken.</p>
-<p>De router zal aangeroepen worden door de kernel. Elk request zal feitelijk
-door de router bekeken moeten worden, aangezien de router moet bepalen welke
-controller gekozen wordt. Dit leidt ertoe dat de router in de middlewarelaag
-van de kernel thuishoort, of eventueel meteen na deze laag. Dit ziet er
-schematisch als volgt uit, waarbij bedacht moet worden dat de controllers
-callables zijn die door de router geselecteerd worden, en vaak een enkele
-bijbehorende view, ofwel template, gebruiken.</p>
-<p><img alt="Schema met router" src="../_images/schema-routing.png" /></p>
-<section id="parameters-in-de-url">
-<h2>Parameters in de URL<a class="headerlink" href="#parameters-in-de-url" title="Link to this heading">#</a></h2>
-<p>In vrijwel alle gevallen zal een applicatie veel URL’s bevatten die op
-elkaar lijken en volgens een vast stramien geformatteerd worden. Zo zal
-alleen de URL <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/</span></code> naar de homepage moeten leiden, maar
-zullen alle URL’s die beginnen met <code class="docutils literal notranslate"><span class="pre">http://localhost:8000/blog/</span></code> en eindigen
-op een getal wellicht een blogpost moeten tonen. Hierbij moet het getal
-gezien worden als de id van een blogpost in de database, dus alleen als dit
-getal ook een geldige id is is op deze URL een pagina beschikbaar.</p>
-<p>Het spreekt voor zich dat al deze blogpagina’s in beginsel door dezelfde
-controller afgehandeld moeten worden. Het moet dus mogelijk zijn dat de
-router dit URL-formaat herkend, de bijbehorende controller laat aanroepen en
-ook het getal dat in de URL stond door kan geven aan de controller zodat de
-goede blogpost gevonden kan worden. Er is een veelvoud aan oplossingen
-denkbaar, maar in ieder geval zou gedacht kunnen worden aan <em>reguliere
-expressies</em>, die hieronder nog besproken worden.</p>
-<p>Merk op dat het in beginsel mogelijk is om dergelijke ids in de <em>query
-string</em> te zetten. De URL zou dan bijvoorbeeld
-<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/blog?id=5</span></code> worden. Dit heeft echter in het algemeen
-niet de voorkeur; dergelijke URL’s worden als minder leesbaar beschouwd en
-vanwege zoekmachineoptimalisatie heeft een URL als
-<code class="docutils literal notranslate"><span class="pre">http://localhost:8000/blog/5</span></code> dan de voorkeur.</p>
 </section>
 </section>
 
@@ -513,7 +614,7 @@ vanwege zoekmachineoptimalisatie heeft een URL als
         },
         kernelOptions: {
             name: "python3",
-            path: "./3.2-routing"
+            path: "./5.2-container"
         },
         predefinedOutput: true
     }
@@ -531,20 +632,20 @@ vanwege zoekmachineoptimalisatie heeft een URL als
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="frontcontroller.html"
+       href="voorbeeld.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">De front controller</p>
+        <p class="prev-next-title">Voorbeeldcode</p>
       </div>
     </a>
     <a class="right-next"
-       href="callable.html"
+       href="oefening.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Verwijzingen naar functies</p>
+        <p class="prev-next-title">Oefeningen</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -565,7 +666,11 @@ vanwege zoekmachineoptimalisatie heeft een URL als
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#parameters-in-de-url">Parameters in de URL</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflectionclass"><code class="docutils literal notranslate"><span class="pre">ReflectionClass</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflectionmethod"><code class="docutils literal notranslate"><span class="pre">ReflectionMethod</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflectionparameter"><code class="docutils literal notranslate"><span class="pre">ReflectionParameter</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reflectiontype"><code class="docutils literal notranslate"><span class="pre">ReflectionType</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#voorbeeld">Voorbeeld</a></li>
 </ul>
   </nav></div>
 
