@@ -84,11 +84,12 @@ parts:
 
 - caption: 5.2 IoC container
   chapters:
-    - file: 5.2-container/ioc
     - file: 5.2-container/container
+    - file: 5.2-container/voorbeeld
     - file: 5.2-container/reflectie
     - file: 5.2-container/oefening
     - file: 5.2-container/opdracht
+    - file: 5.2-container/interface
 
 - caption: 6.1 Database
   chapters:
