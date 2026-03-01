@@ -150,10 +150,6 @@ Als je dit runt, zul je zien dat het resultaat nog steeds hetzelfde is. Dat is o
 ![Een template met werkende variabelen](../images/templates2.jpeg)
 
 
-
-
-
-
 ## De functie `Eval`
 
 Net als in de meeste andere programmeertalen kun je ook in php een string als php-code laten uitvoeren: in php gebruiken we hiervoor [de functie `eval`](https://www.php.net/eval). Zie het onderstaande voorbeeld: op regel 2 definiëren we een variabel `$str` die een stukje valide php-code bevat. Deze code wordt op regel 3 uitgevoerd, waardoor de variabele `$demo` geïnitialiseerd wordt en een waarde krijgt. Vervolgens wordt op de laatste regel die variabele afgedrukt.
@@ -177,3 +173,5 @@ Je kunt je voorstellen dat deze functie behoorlijk gevaarlijk is, omdat het zond
 
 Toch maken we voor dit onderdeel gebruik van deze functie. Dat kan op zich ook wel, zolang we maar de controle over de gebruikte templates en de data in eigen beheer houden.
 ```
+
+Met deze code kunnen we de templates die we inladen gebruiken als php-scripts, waardoor we eerst een stuk post-processing kunnen uitvoeren voordat we het resultaat terugsturen naar de kernel. Dit wordt toegelicht in [de oefening](oefening.md#template-compositie).

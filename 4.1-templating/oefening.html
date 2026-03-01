@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Intro &#8212; Webtechnologie II</title>
+    <title>Oefening &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '6.1-database/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4.1-templating/oefening';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
     <link rel="next" title="Opgave" href="opgave.html" />
-    <link rel="prev" title="Interfaces" href="../5.2-container/interface.html" />
+    <link rel="prev" title="Templating" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -231,11 +231,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../3.2-routing/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.1 Templating</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/intro.html">Templating</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/oefening.html">Oefening</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/opgave.html">Opgave</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../4.1-templating/interface.html">Interfaces</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Templating</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Response</span></p>
 <ul class="nav bd-sidenav">
@@ -261,9 +261,9 @@
 <li class="toctree-l1"><a class="reference internal" href="../5.2-container/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/opgave.html">Opgave</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
 <ul class="nav bd-sidenav">
@@ -333,7 +333,7 @@
       
       
       
-      <li><a href="../_sources/6.1-database/intro.md" target="_blank"
+      <li><a href="../_sources/4.1-templating/oefening.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -396,7 +396,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -407,11 +409,22 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Intro</h1>
+    <h1>Oefening</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-eenvoudige-template">Een eenvoudige template</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#globale-variabelen">Globale variabelen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#template-compositie">Template compositie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xss">XSS</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -421,8 +434,59 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="oefening">
+<h1>Oefening<a class="headerlink" href="#oefening" title="Link to this heading">#</a></h1>
+<section id="een-eenvoudige-template">
+<h2>Een eenvoudige template<a class="headerlink" href="#een-eenvoudige-template" title="Link to this heading">#</a></h2>
+<p>Gegeven het onderstaande stukje eenvoudige html:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="cp">&lt;?= htmlspecialchars($title) ?&gt;</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span><span class="cp">&lt;?= htmlspecialchars($content) ?&gt;</span><span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Schrijf een functie <code class="docutils literal notranslate"><span class="pre">function</span> <span class="pre">render(string</span> <span class="pre">$template,</span> <span class="pre">array</span> <span class="pre">$data):</span> <span class="pre">string</span></code> die deze html als template meekrijgt (eerste parameter) en een associatieve array (tweede parameter) in de vorm <code class="docutils literal notranslate"><span class="pre">[&quot;title&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;interessante</span> <span class="pre">titel&quot;,</span> <span class="pre">&quot;content&quot;</span> <span class="pre">=&gt;</span> <span class="pre">&quot;allemaal</span> <span class="pre">interessante</span> <span class="pre">dingen&quot;]</span></code>. Maak gebruik van <a class="reference external" href="https://www.php.net/manual/en/function.extract.php">de methode <code class="docutils literal notranslate"><span class="pre">extract</span></code></a> om de waarden uit deze array te halen. Let op dat deze functie een <em>string</em> teruggeeft, dus niets uitprint.</p>
+<p>Je kunt onderstaande code gebruiken om je realisatie te testen:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+ <span class="nv">$template</span> <span class="o">=</span> <span class="s1">&#39;?&gt;&lt;h1&gt;&lt;?= htmlspecialchars($title) ?&gt;&lt;/h1&gt; &lt;p&gt;&lt;?= htmlspecialchars($content) ?&gt;&lt;/p&gt;&#39;</span><span class="p">;</span>
+  <span class="nv">$ar</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s2">&quot;title&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;interessante titel&quot;</span><span class="p">,</span> <span class="s2">&quot;content&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;allemaal interessante dingen&quot;</span><span class="p">);</span>
+
+  <span class="k">echo</span> <span class="nx">render</span><span class="p">(</span><span class="nv">$template</span><span class="p">,</span> <span class="nv">$ar</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="globale-variabelen">
+<h2>Globale variabelen<a class="headerlink" href="#globale-variabelen" title="Link to this heading">#</a></h2>
+<p>Voeg nu een variabele <code class="docutils literal notranslate"><span class="pre">demo</span> <span class="pre">=</span> <span class="pre">42;</span></code> toe aan de testcode hierboven. Probeer vervolgens die variabele te bruiken in je template, bijvoorbeeld door de code <code class="docutils literal notranslate"><span class="pre">&lt;p&gt;De</span> <span class="pre">waarde</span> <span class="pre">van</span> <span class="pre">demo</span> <span class="pre">is</span> <span class="pre">&lt;?=</span> <span class="pre">$demo</span> <span class="pre">?&gt;</span></code> hieraan toe te voegen.</p>
+<p>Je zult zien dat dit niet werkt. Waarom is dat, denk je? Hoe zou je <code class="docutils literal notranslate"><span class="pre">demo</span></code> toch in de template kunnen gebruiken?</p>
+</section>
+<section id="template-compositie">
+<h2>Template compositie<a class="headerlink" href="#template-compositie" title="Link to this heading">#</a></h2>
+<p>Gegeven de onderstaande twee templates:</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- template main.html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="cp">&lt;?= $content ?&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span><span class="cm">&lt;!-- template page.html --&gt;</span>
+<span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span><span class="cp">&lt;?= htmlspecialchars($title) ?&gt;</span><span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>Pas je functie <code class="docutils literal notranslate"><span class="pre">render</span></code> aan zodat de template <code class="docutils literal notranslate"><span class="pre">page</span></code> als <code class="docutils literal notranslate"><span class="pre">content</span></code> in de template <code class="docutils literal notranslate"><span class="pre">main</span></code> wordt geïnjecteerd. Render hiervoor <em>eerst</em> <code class="docutils literal notranslate"><span class="pre">page.html</span></code> en gebruik de output daarvan als input voor <code class="docutils literal notranslate"><span class="pre">main</span></code>.</p>
+</section>
+<section id="xss">
+<h2>XSS<a class="headerlink" href="#xss" title="Link to this heading">#</a></h2>
+<p>Verwijder de call naar <code class="docutils literal notranslate"><span class="pre">htmlspecialchars</span></code> in de tempate hierboven. Gebruik nu de onderstaande array in je call naar <code class="docutils literal notranslate"><span class="pre">render</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+  <span class="nv">$data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;title&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;&lt;script&gt;alert(1)&lt;/script&gt;&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;concent&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;allemaal interessante dingen&quot;</span>
+  <span class="p">];</span>
+</pre></div>
+</div>
+<p>Verklaar het resultaat en waarom dit gevaarlijk is.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -438,7 +502,7 @@
         },
         kernelOptions: {
             name: "python3",
-            path: "./6.1-database"
+            path: "./4.1-templating"
         },
         predefinedOutput: true
     }
@@ -456,12 +520,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../5.2-container/interface.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Interfaces</p>
+        <p class="prev-next-title">Templating</p>
       </div>
     </a>
     <a class="right-next"
@@ -479,6 +543,25 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#een-eenvoudige-template">Een eenvoudige template</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#globale-variabelen">Globale variabelen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#template-compositie">Template compositie</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#xss">XSS</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
