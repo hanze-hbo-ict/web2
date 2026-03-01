@@ -65,6 +65,7 @@ parts:
 - caption: 4.1 Templating
   chapters:
     - file: 4.1-templating/intro
+    - file: 4.1-templating/oefening
     - file: 4.1-templating/opgave
     - file: 4.1-templating/interface
 
