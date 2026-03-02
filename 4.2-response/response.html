@@ -447,6 +447,17 @@
 <li><p>De <em>body</em> van een <em>get-request</em> is in de regel leeg; de <em>body</em> van de <em>response</em> bevat in dit geval de opgevraagde data.</p></li>
 <li><p>De <em>body</em> van een <em>post-request</em> bevat in de regel de data die de <em>client</em> naar de <em>server</em> wil sturen; de <em>body</em> van de <em>response</em> is in dit geval meestal leeg.</p></li>
 </ul>
+<p>Je kunt gebruik maken van <a class="reference external" href="https://www.php.net/manual/en/function.http-response-code.php"><code class="docutils literal notranslate"><span class="pre">http_response_code</span></code></a> om op basis van de <em>code</em> van de <em>response</em> direct de bijhorende <em>status code</em> in te stellen.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">try</span> <span class="p">{</span>
+    <span class="mi">1</span><span class="o">/</span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">Throwable</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nb">http_response_code</span><span class="p">(</span><span class="mi">500</span><span class="p">);</span>
+    <span class="k">echo</span> <span class="s1">&#39;&lt;h1&gt;Error 😵‍💫&lt;/h1&gt;&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><img alt=" geeft direct de juiste omschrijving" src="../_images/500-error.jpeg" /></p>
 </section>
 <section id="de-klasse-response">
 <h2>De klasse <code class="docutils literal notranslate"><span class="pre">Response</span></code><a class="headerlink" href="#de-klasse-response" title="Link to this heading">#</a></h2>

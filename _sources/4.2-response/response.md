@@ -18,6 +18,21 @@ Met deze informatie kunnen we het onderstaande overzicht maken:
 - De *body* van een *get-request* is in de regel leeg; de *body* van de *response* bevat in dit geval de opgevraagde data.
 - De *body* van een *post-request* bevat in de regel de data die de *client* naar de *server* wil sturen; de *body* van de *response* is in dit geval meestal leeg.
 
+Je kunt gebruik maken van [`http_response_code`](https://www.php.net/manual/en/function.http-response-code.php) om op basis van de *code* van de *response* direct de bijhorende *status code* in te stellen.
+
+```php
+<?php
+try {
+    1/0;
+} catch (Throwable) {
+    http_response_code(500);
+    echo '<h1>Error 😵‍💫</h1>';
+}
+```
+
+![`http_response_code()` geeft direct de juiste omschrijving](../images/500-error.jpeg)
+
+
 ## De klasse `Response`
 
 Het voor deze discussie meest interessante van [de `ResponseInterface`](interface.md#responseinterface) is de methode `getBody()`. Deze methode geeft een *string* terug die de *body* van de *response* is – feitelijk de tekst die we voorheen eenvoudig vanuit de *front controller* werd afgedrukt. Door de encapsulatie kunnen we echter voordat we de response daadwerkelijk uitrpinten nog verrijken met eventuele extra *headers* of nog iets aan de body toevoegen.
