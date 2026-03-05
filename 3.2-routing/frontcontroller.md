@@ -53,4 +53,4 @@ Hier zijn meerdere mogelijkheden voor, zoals
 [`explode`](https://www.php.net/manual/en/function.explode.php),
 [`parse_url`](https://www.php.net/manual/en/function.parse-url.php) en,
 vanaf PHP 8.5, de klasse
-[`Uri\WhatWg\Url`](https://www.php.net/releases/8.5/en.php#new-uri-extension).
+[`Uri\Rfc3986\Uri`](https://www.php.net/releases/8.5/en.php#new-uri-extension).
