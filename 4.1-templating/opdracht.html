@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Opgave &#8212; Webtechnologie II</title>
+    <title>Opdracht &#8212; Webtechnologie II</title>
   
   
   
@@ -62,7 +62,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '4.1-templating/opgave';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '4.1-templating/opdracht';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
     <link rel="next" title="Interfaces" href="interface.html" />
@@ -234,7 +234,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Templating</a></li>
 <li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefening</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Opgave</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Opdracht</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">4.2 Response</span></p>
@@ -333,7 +333,7 @@
       
       
       
-      <li><a href="../_sources/4.1-templating/opgave.md" target="_blank"
+      <li><a href="../_sources/4.1-templating/opdracht.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -409,7 +409,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Opgave</h1>
+    <h1>Opdracht</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -431,13 +431,23 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="opgave">
-<h1>Opgave<a class="headerlink" href="#opgave" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="opdracht">
+<h1>Opdracht<a class="headerlink" href="#opdracht" title="Link to this heading">#</a></h1>
 <section id="template">
 <h2>Template<a class="headerlink" href="#template" title="Link to this heading">#</a></h2>
 <p>Deze week werk je aan de templates en de template-engine. Maak in je project een separate directory <code class="docutils literal notranslate"><span class="pre">templates</span></code>, waarin je de html-bestanden zet die je <a class="reference internal" href="../2.1-html/opdracht.html"><span class="std std-doc">in week 2 hebt gemaakt</span></a>.</p>
-<p>De #router* die je <a class="reference internal" href="../3.2-routing/interface.html#routerinterface"><span class="std std-ref">in week 3 hebt gemaakt</span></a> gaf tot nu toe een <em>callable</em> terug. Nu we met templates kunnen werken, is het de bedoeling dat aan call naar de methode <code class="docutils literal notranslate"><span class="pre">route</span></code> een <code class="docutils literal notranslate"><span class="pre">TemplateEngineInterface</span></code> teruggeeft. Zoals je kunt zien heeft deze interface maar één methode: <code class="docutils literal notranslate"><span class="pre">render</span></code>: instanties van klassen die deze interface implementeren moeten dus deze methode hebben, die een string teruggeeft. Het is deze string die de body van de <em>response</em> zal gaan vormen.</p>
-<p>Maak een klasse <code class="docutils literal notranslate"><span class="pre">TemplateEngine</span></code> die deze interface implementeert. Zorg ervoor dat klasse een logische realisatie heeft van de methode <code class="docutils literal notranslate"><span class="pre">render</span></code>.</p>
+<p>De <em>router</em> die je
+<a class="reference internal" href="../3.2-routing/interface.html#routerinterface"><span class="std std-ref">in week 3 hebt gemaakt</span></a> geeft
+een <em>callable</em> terug. Dit is de controller. Nu we een template engine
+hebben, kunnen we deze controller hiervan gebruik laten maken, waardoor de
+presentatie gescheiden wordt van de logica. De flow van de controller zal nu
+in het algemeen zo worden dat eerst de relevante domeinlogica wordt
+uitgevoerd, en hieruit een aantal waarden volgen die in een template
+gerenderd worden. De template engine geeft die je hiervoor gebruikt geeft
+een string terug die de body van de <em>response</em> zal gaan vormen.</p>
+<p>Maak een klasse <code class="docutils literal notranslate"><span class="pre">TemplateEngine</span></code> die de interface <code class="docutils literal notranslate"><span class="pre">TemplateEngineInterface</span></code>
+implementeert. Zorg ervoor
+dat klasse een logische realisatie heeft van de methode <code class="docutils literal notranslate"><span class="pre">render</span></code>.</p>
 </section>
 </section>
 

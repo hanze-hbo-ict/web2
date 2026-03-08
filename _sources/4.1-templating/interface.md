@@ -1,7 +1,6 @@
 # Interfaces
 
-
-De router maakt gebruik van de onderstaande interface.
+De template engine maakt gebruik van de onderstaande interface.
 
 ## `TemplateEngineInterface`
 
