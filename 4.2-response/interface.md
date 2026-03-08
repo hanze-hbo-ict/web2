@@ -109,4 +109,4 @@ interface KernelInterface
 ## `RouterInterface`
 
 De `callable`s die door `RouterInterface::route` worden teruggegeven geven nu 
-instanties van `ResposneInterface` terug in plaats van `string`s.
+instanties van `ResponseInterface` terug in plaats van `string`s.
