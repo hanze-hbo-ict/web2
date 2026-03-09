@@ -9,6 +9,7 @@
    `<=>`, maar dat hoeft niet.
 
    ```php
+   <?php
    $array = ['Foo', 'Woord', 'Test'];
    usort($array, /* ... */);
    assert($array == ['Foo', 'Test', 'Woord']);
@@ -20,6 +21,7 @@
    opgehoogd kan worden om zo het aantal te tellen.
 
    ```
+   <?php
    $array = ['Foo', 'Woord', 'Test'];
    $k = 0;
    array_map(/* ... */, $array);
@@ -31,6 +33,7 @@
    je eigen getal kan tellen.
 
    ```php
+   <?php
    class AddN {
       public function __construct(public int $n) {}
       public function getCalculation(): callable { /* ... */ }
