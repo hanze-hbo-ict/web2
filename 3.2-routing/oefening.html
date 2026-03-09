@@ -442,9 +442,10 @@ Gebruik hiervoor de functie <code class="docutils literal notranslate"><span cla
 callable ook gebruik maken van de
 <a class="reference external" href="https://www.php.net/manual/en/migration70.new-features.php#migration70.new-features.spaceship-op">spaceshipoperator</a>
 <code class="docutils literal notranslate"><span class="pre">&lt;=&gt;</span></code>, maar dat hoeft niet.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$array = [&#39;Foo&#39;, &#39;Woord&#39;, &#39;Test&#39;];</span>
-<span class="x">usort($array, /* ... */);</span>
-<span class="x">assert($array == [&#39;Foo&#39;, &#39;Test&#39;, &#39;Woord&#39;]);</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$array</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Foo&#39;</span><span class="p">,</span> <span class="s1">&#39;Woord&#39;</span><span class="p">,</span> <span class="s1">&#39;Test&#39;</span><span class="p">];</span>
+<span class="nb">usort</span><span class="p">(</span><span class="nv">$array</span><span class="p">,</span> <span class="cm">/* ... */</span><span class="p">);</span>
+<span class="nb">assert</span><span class="p">(</span><span class="nv">$array</span> <span class="o">==</span> <span class="p">[</span><span class="s1">&#39;Foo&#39;</span><span class="p">,</span> <span class="s1">&#39;Test&#39;</span><span class="p">,</span> <span class="s1">&#39;Woord&#39;</span><span class="p">]);</span>
 </pre></div>
 </div>
 </li>
@@ -452,7 +453,8 @@ callable ook gebruik maken van de
 <code class="docutils literal notranslate"><span class="pre">array_map</span></code> en een anonieme functie, waarbij de anonieme functie een lokale
 variabele <em>by reference</em> bindt zodat deze variabele in de callable steeds
 opgehoogd kan worden om zo het aantal te tellen.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$array = [&#39;Foo&#39;, &#39;Woord&#39;, &#39;Test&#39;];
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+$array = [&#39;Foo&#39;, &#39;Woord&#39;, &#39;Test&#39;];
 $k = 0;
 array_map(/* ... */, $array);
 assert($k == 3);
@@ -462,12 +464,13 @@ assert($k == 3);
 <li><p>Maak een klasse AddN die een instantievariabele heeft die een integer
 bevat, en een methode die een closure teruggeeft waarmee je dat getal bij
 je eigen getal kan tellen.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class AddN {</span>
-<span class="x">   public function __construct(public int $n) {}</span>
-<span class="x">   public function getCalculation(): callable { /* ... */ }</span>
-<span class="x">}</span>
-<span class="x">$add5 = new AddN(5)-&gt;getCalculation();</span>
-<span class="x">assert($add5(3) == 8);</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">AddN</span> <span class="p">{</span>
+   <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">public</span> <span class="nx">int</span> <span class="nv">$n</span><span class="p">)</span> <span class="p">{}</span>
+   <span class="k">public</span> <span class="k">function</span> <span class="nf">getCalculation</span><span class="p">()</span><span class="o">:</span> <span class="nx">callable</span> <span class="p">{</span> <span class="cm">/* ... */</span> <span class="p">}</span>
+<span class="p">}</span>
+<span class="nv">$add5</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AddN</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getCalculation</span><span class="p">();</span>
+<span class="nb">assert</span><span class="p">(</span><span class="nv">$add5</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span> <span class="o">==</span> <span class="mi">8</span><span class="p">);</span>
 </pre></div>
 </div>
 </li>
