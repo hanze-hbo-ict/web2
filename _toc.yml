@@ -96,11 +96,13 @@ parts:
   chapters:
     - file: 6.1-database/intro
     - file: 6.1-database/opgave
+    - file: 6.1-database/interface
 
 - caption: 6.2 ORM
   chapters:
     - file: 6.2-orm/intro
     - file: 6.2-orm/opgave
+    - file: 6.2-orm/interface
 
 - caption: 7.1 Authenticatie
   chapters:
