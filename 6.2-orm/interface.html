@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Composition root &#8212; Webtechnologie II</title>
+    <title>Interface &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '5.1-di/compositionroot';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '6.2-orm/interface';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Opdracht" href="opdracht.html" />
-    <link rel="prev" title="Dependency injection" href="dependencyinjection.html" />
+    <link rel="next" title="Intro" href="../7.1-authenticatie/intro.html" />
+    <link rel="prev" title="Opgave" href="opgave.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -245,11 +245,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../4.2-response/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.1 Dependency injection</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="service.html">Services</a></li>
-<li class="toctree-l1"><a class="reference internal" href="dependencyinjection.html">Dependency injection</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Composition root</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/service.html">Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/dependencyinjection.html">Dependency injection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/compositionroot.html">Composition root</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.1-di/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 IoC container</span></p>
 <ul class="nav bd-sidenav">
@@ -267,10 +267,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../6.1-database/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/opgave.html">Opgave</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/interface.html">Interface</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7.1 Authenticatie</span></p>
 <ul class="nav bd-sidenav">
@@ -335,7 +335,7 @@
       
       
       
-      <li><a href="../_sources/5.1-di/compositionroot.md" target="_blank"
+      <li><a href="../_sources/6.2-orm/interface.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -411,7 +411,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Composition root</h1>
+    <h1>Interface</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -421,8 +421,8 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectgraaf">Objectgraaf</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#front-controller">Front controller</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapperinterface"><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositoryinterface"><code class="docutils literal notranslate"><span class="pre">RepositoryInterface</span></code></a></li>
 </ul>
             </nav>
         </div>
@@ -434,98 +434,103 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="composition-root">
-<h1>Composition root<a class="headerlink" href="#composition-root" title="Link to this heading">#</a></h1>
-<p>Als klassen hun eigen afhankelijkheden maken of ophalen, is het duidelijk waar
-dit gebeurt, namelijk op de plek waar die afhankelijkheid nodig is. Als je
-echter dependency injection wilt gebruiken, is dit minder duidelijk. De
-vraag die dan voorligt, is op welke plaats in de code de afhankelijkheden dan
-aangemaakt worden. Dit is geen bezigheid die binnen de reguliere flow van de
-applicatie plaastvindt, dus schematisch wordt dit buiten die flow getekend.</p>
-<p><img alt="Architectuur met dependency injection" src="../_images/schema-di.png" /></p>
-<section id="objectgraaf">
-<h2>Objectgraaf<a class="headerlink" href="#objectgraaf" title="Link to this heading">#</a></h2>
-<p>Een essentiële constatering die nodig is om de vraag waar alle componenten
-aangemaakt worden te kunnen beantwoorden is dat de objecten in een
-applicatie een <a class="reference external" href="https://nl.wikipedia.org/wiki/Grafentheorie"><em>graaf</em></a> vormen.
-Hierbij verwijst elk object naar zijn afhankelijkheden; dat zijn weer
-objecten die op hun beurt naar hun afhankelijkheden wijzen, en zo verder. Er
-is echter in het algemeen één object die het beginpunt van de applicatie
-vormt. In een webapplicatie is dat de kernel. We hebben immers al gezien dat
-de flow in de front controller is dat de kernel een request omzet in een
-response en deze response vervolgens naar de browser stuurt.</p>
-<p><img alt="Objectgraaf met composition root" src="../_images/compositionroot.png" /></p>
-<p>Daarnaast is een belangrijke constatering dat we het hier over een
-object<em>graaf</em> en niet over een object<em>boom</em> hebben. Kenmerkend aan een graaf
-is dat bepaalde knopen op meerdere manieren te bereiken zijn, anders dan bij
-een boom, waar elke knoop een uniek pad heeft. Dit is belangrijk omdat dit
-suggereert dat bepaalde objecten een afhankelijkheid kunnen zijn van
-meerdere andere objecten, oftewel dat afhankelijkheden hergebruikt kunnen
-worden. Het probleem immers waar we mee begonnen is dat we willen dat
-sommige klassen een singleton zijn. Als we de objectgraaf zó opzetten, dat
-er van een singletonklasse maar één instantie is die hergebruikt wordt
-overal waar die service nodig is, bereiken we dit doel zonder dat hiervoor
-het singleton pattern noodzakelijk is.</p>
-<p>Hieronder is een versimpeld voorbeeld van het instantiëren van een
-objectgraaf zichtbaar. Hierbij zien we dat de klassen <code class="docutils literal notranslate"><span class="pre">Database</span></code> en
-<code class="docutils literal notranslate"><span class="pre">TemplateEngine</span></code> beiden als service in twee controllers gebruikt worden,
-maar dat van beide maar een enkele instantie aanwezig is. Het zijn dus
-singletonklassen.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$db = new Database(&#39;mysql://localhost:3306/test&#39;);</span>
-<span class="x">$tpl = new TemplateEngine(__DIR__);</span>
-<span class="x">$router = new Router([</span>
-<span class="x">    &#39;/&#39; =&gt; new IndexController($db, $tpl),</span>
-<span class="x">    &#39;/blog&#39; =&gt; new BlogController($db, $tpl),</span>
-<span class="x">]);</span>
-<span class="x">$kernel = new Kernel($router);</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="interface">
+<h1>Interface<a class="headerlink" href="#interface" title="Link to this heading">#</a></h1>
+<section id="datamapperinterface">
+<h2><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code><a class="headerlink" href="#datamapperinterface" title="Link to this heading">#</a></h2>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Framework\Database</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * A service that maps domain objects to database records.</span>
+<span class="sd"> * @template T</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">DataMapperInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Select a single object by its primary key.</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     * @return T</span>
+<span class="sd">     * @throws NotFoundException if the object was not found.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Select a number of objects with a query.</span>
+<span class="sd">     * @param QueryInterface $query</span>
+<span class="sd">     * @return array&lt;T&gt;</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">select</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Insert a new object in the database.</span>
+<span class="sd">     * @param T $object</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Update an existing object in the database.</span>
+<span class="sd">     * @param T $object</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Delete an object from the database.</span>
+<span class="sd">     * @param T $object</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
-<section id="front-controller">
-<h2>Front controller<a class="headerlink" href="#front-controller" title="Link to this heading">#</a></h2>
-<p>De plaats in de applicatie waar de objectgraaf wordt opgebouwd heet de
-<em>composition root</em>. In een webapplicatie is dit in de front controller.
-Alleen hier worden services geïnstantieerd en worden deze door middel van
-dependency injection meegegeven aan andere services, waardoor de
-objectgraaf wordt opgezet. De applicatie verkrijgt hiermee een verwijzing
-naar het beginpunt van de applicatie en kan zo de applicatie starten.</p>
-<p>Als detail merken we hierbij op dat in een webcontext het request-object
-buiten de objectgraaf valt. Dit object wordt immers alleen gebruikt als
-parameter voor de kernelaanroep en is zelf geen service. Dit brengt met zich
-mee dat de front controller de volgende vier acties zal uitvoeren.</p>
-<ol class="arabic simple">
-<li><p>Request-object maken aan de hand van superglobals.</p></li>
-<li><p>Kernel maken door middel van dependency injection (<em>composition root</em>)</p></li>
-<li><p>Kernel aanroepen met request als parameter om response te verkrijgen.</p></li>
-<li><p>Response naar de browser sturen.</p></li>
-</ol>
-<p>Om de composition root te scheiden van de rest van de front controller, kan
-ervoor gekozen worden om deze in een apart bestand te zetten en via
-<code class="docutils literal notranslate"><span class="pre">require</span></code> te laden in de front controller. Het bestand met de composition root
-kan dan een <code class="docutils literal notranslate"><span class="pre">return</span></code>-statement gebruiken om de kernel terug te geven aan de
-front controller. Als uitbreiding van het hierboven getoonde voorbeeld zou de
-composition root in onderstaand bestand <code class="docutils literal notranslate"><span class="pre">compositionroot.php</span></code> kunnen staan.</p>
+<section id="repositoryinterface">
+<h2><code class="docutils literal notranslate"><span class="pre">RepositoryInterface</span></code><a class="headerlink" href="#repositoryinterface" title="Link to this heading">#</a></h2>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
-<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Database</span><span class="p">(</span><span class="s1">&#39;mysql://localhost:3306/test&#39;</span><span class="p">);</span>
-<span class="nv">$tpl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateEngine</span><span class="p">(</span><span class="no">__DIR__</span><span class="p">);</span>
-<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">([</span>
-    <span class="s1">&#39;/&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">IndexController</span><span class="p">(</span><span class="nv">$db</span><span class="p">,</span> <span class="nv">$tpl</span><span class="p">),</span>
-    <span class="s1">&#39;/blog&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">BlogController</span><span class="p">(</span><span class="nv">$db</span><span class="p">,</span> <span class="nv">$tpl</span><span class="p">),</span>
-<span class="p">]);</span>
-<span class="k">return</span> <span class="k">new</span> <span class="nx">Kernel</span><span class="p">(</span><span class="nv">$router</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>De front controller zou op onderstaande manier van deze composition root
-gebruik kunnen maken.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Framework\Database</span><span class="p">;</span>
 
-<span class="k">require_once</span> <span class="s1">&#39;../vendor/autoload.php&#39;</span><span class="p">;</span>
+<span class="sd">/**</span>
+<span class="sd"> * A service that allows access to a collection of domain objects.</span>
+<span class="sd"> * @template T</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">RepositoryInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Get a single object by its primary key value.</span>
+<span class="sd">     * @param int $id Primary key value.</span>
+<span class="sd">     * @return T</span>
+<span class="sd">     * @throws NotFoundException if the object was not found.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 
-<span class="nv">$request</span> <span class="o">=</span> <span class="nx">Request</span><span class="o">::</span><span class="na">createFromGlobals</span><span class="p">();</span>
-<span class="nv">$kernel</span> <span class="o">=</span> <span class="k">require</span> <span class="s1">&#39;../compositionroot.php&#39;</span><span class="p">;</span>
-<span class="nv">$response</span> <span class="o">=</span> <span class="nv">$kernel</span><span class="o">-&gt;</span><span class="na">handle</span><span class="p">(</span><span class="nv">$request</span><span class="p">);</span>
-<span class="nx">Response</span><span class="o">::</span><span class="na">send</span><span class="p">(</span><span class="nv">$response</span><span class="p">);</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Store a new or existing object in the repository.</span>
+<span class="sd">     * @param T $object</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">object</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Remove an object from the repository.</span>
+<span class="sd">     * @param T $object</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Find a number of objects in the repository based on a query.</span>
+<span class="sd">     * @param QueryInterface $query</span>
+<span class="sd">     * @return array&lt;T&gt;</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Find a single object in the repository based on a query.</span>
+<span class="sd">     * @param QueryInterface $query</span>
+<span class="sd">     * @return T</span>
+<span class="sd">     * @throws NotFoundException if no matching object was found.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findOne</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 </section>
@@ -544,7 +549,7 @@ gebruik kunnen maken.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./5.1-di"
+            path: "./6.2-orm"
         },
         predefinedOutput: true
     }
@@ -562,20 +567,20 @@ gebruik kunnen maken.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="dependencyinjection.html"
+       href="opgave.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Dependency injection</p>
+        <p class="prev-next-title">Opgave</p>
       </div>
     </a>
     <a class="right-next"
-       href="opdracht.html"
+       href="../7.1-authenticatie/intro.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Opdracht</p>
+        <p class="prev-next-title">Intro</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -596,8 +601,8 @@ gebruik kunnen maken.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#objectgraaf">Objectgraaf</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#front-controller">Front controller</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapperinterface"><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositoryinterface"><code class="docutils literal notranslate"><span class="pre">RepositoryInterface</span></code></a></li>
 </ul>
   </nav></div>
 
