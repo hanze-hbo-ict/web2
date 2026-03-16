@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Intro &#8212; Webtechnologie II</title>
+    <title>Introductie &#8212; Webtechnologie II</title>
   
   
   
@@ -262,15 +262,16 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Introductie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../6.2-orm/intro.html">Intro</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/paradigm-mismatch.html"><em>The Paradigm mismatch</em></a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6.2-orm/opgave.html">Opgave</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7.1 Authenticatie</span></p>
 <ul class="nav bd-sidenav">
@@ -398,7 +399,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -409,11 +412,22 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Intro</h1>
+    <h1>Introductie</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectioninterface"><code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sqlite">Sqlite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sqlite-en-php">Sqlite en php</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepared-statements">Prepared statements</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -423,8 +437,41 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="introductie">
+<h1>Introductie<a class="headerlink" href="#introductie" title="Link to this heading">#</a></h1>
+<p>Nagenoeg alle applicaties (niet per se webapplicaties) maken gebruik van een database. Uiteindelijk wil je immers dat de data die je aanmaakt, aanpast of verwijderd, ook gepersisteerd wordt – dat de aanpassingen ook nog beschikbaar zijn wanneer je de computer uit en weer aan hebt gezet. De operaties die je met data kunt doen, worden samengevat onder het fijne CRUD-acroniem (voor <em>Create</em>, <em>Read</em>, <em>Update</em> en <em>Delete</em>).</p>
+<section id="connectioninterface">
+<h2><code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code><a class="headerlink" href="#connectioninterface" title="Link to this heading">#</a></h2>
+<p>Om met een database te kunnen werken hebben we natuurlijk allereerst een <em>verbinding</em> met die database nodig. Deze verbinding wordt via een separate klasse ingesteld en onderhouden die vervolgens als een <em>service</em> beschikbaar wordt gesteld. Klassen die iets met de database moeten doen, krijgen deze <em>service</em> dan (in de regel) <a class="reference internal" href="../5.1-di/dependencyinjection.html#dependency-injection"><span class="std std-ref">via de constructor geïnjecteerd</span></a>.</p>
+<p>Klassen die de verbinding met de database onderhouden implementeren <a class="reference internal" href="interface.html"><span class="std std-doc">de <code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code></span></a>. Als je deze interface bekijkt, zie je dat de enige methoden die worden voorgeschreven te maken hebben met het uitvoeren van <em>queries</em> – dat houdt in dat er geen manier is om buiten deze klasse de daadwerkelijke connectie met de database op te vragen.</p>
+<p>Als je er over nadenkt, is dat ook logisch. Deze connectie-klasse is verantwoordelijk voor het bijhouden van de connectie met de database; klassen die de database nodig hebben, delegeren de specifieke database-operaties naar deze klasse. De gebruikende klassen zeggen als het ware tegen de <code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code>: “Hier is de data, doe je ding”.</p>
+</section>
+<section id="sqlite">
+<h2>Sqlite<a class="headerlink" href="#sqlite" title="Link to this heading">#</a></h2>
+<p>Voor het huidige project maken we gebruik van <a class="reference external" href="https://sqlite.org/index.html">sqlite</a>. Het grote voordeel van deze engine in een onderwijscontext is dat de hele database <em>file based</em> is: je hoeft dus geen relatief complexe infrastructuur op te zetten om met de database te kunnen werken (zoals bijvoorbeeld bij mysql of mssql wel het geval is). Je kunt eenvoudig het databasebestand openen via de command-line:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>%<span class="w"> </span>sqlite3<span class="w"> </span>demo.sqlite3
+SQLite<span class="w"> </span>version<span class="w"> </span><span class="m">3</span>.51.0<span class="w"> </span><span class="m">2025</span>-06-12<span class="w"> </span><span class="m">13</span>:14:41
+Enter<span class="w"> </span><span class="s2">&quot;.help&quot;</span><span class="w"> </span><span class="k">for</span><span class="w"> </span>usage<span class="w"> </span>hints.
+sqlite&gt;<span class="w"> </span>
+</pre></div>
+</div>
+<p>We hebben dezelde database-engine gezien <a class="reference external" href="https://hanze-hbo-ict.github.io/webtech1/week6/flask-views-deel1.html">bij webtechnologie1 in de propedeuse</a>, waar we het koppelden aan python/flask. Het is belangrijk om je te beseffen dat alle database-commando’s met een punt beginnen (<code class="docutils literal notranslate"><span class="pre">.schema</span></code>, <code class="docutils literal notranslate"><span class="pre">.headers</span> <span class="pre">on</span></code>, <code class="docutils literal notranslate"><span class="pre">.exit</span></code>), terwijl de sql-commando’s gewoon zijn zoals je gewend bent (<code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">*</span> <span class="pre">from</span> <span class="pre">users</span></code>).</p>
+<p>Als het allemaal wat is weggezakt, bekijk dan nog even <a class="reference external" href="https://sqlite.org/docs.html">de documentatie</a>.</p>
+</section>
+<section id="sqlite-en-php">
+<h2>Sqlite en php<a class="headerlink" href="#sqlite-en-php" title="Link to this heading">#</a></h2>
+<p>Omdat de instantie die de <code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code> implementeert wel een connectie met de database moet hebben, is het van belang dat deze (bij voorbeeld of bij voorkeur) in de constructor wordt aangemaakt. In php maken we gebruik van <a class="reference external" href="https://www.php.net/manual/en/book.pdo.php"><code class="docutils literal notranslate"><span class="pre">PDO</span></code></a>. Het ligt voor de hand dat je in deze constructor het pad meegeeft waar de database te vinden is (of zou moeten zijn):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+   <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$file</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$file</span> <span class="o">=</span> <span class="nb">realpath</span><span class="p">(</span><span class="nv">$file</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">connection</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\PDO</span><span class="p">(</span><span class="s2">&quot;sqlite:</span><span class="si">$file</span><span class="s2">&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="prepared-statements">
+<h2>Prepared statements<a class="headerlink" href="#prepared-statements" title="Link to this heading">#</a></h2>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -481,6 +528,25 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#connectioninterface"><code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sqlite">Sqlite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sqlite-en-php">Sqlite en php</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepared-statements">Prepared statements</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
