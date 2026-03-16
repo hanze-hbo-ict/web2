@@ -101,6 +101,7 @@ parts:
 - caption: 6.2 ORM
   chapters:
     - file: 6.2-orm/intro
+    - file: 6.2-orm/paradigm-mismatch
     - file: 6.2-orm/opgave
     - file: 6.2-orm/interface
 
