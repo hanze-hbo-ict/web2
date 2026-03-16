@@ -18,6 +18,7 @@ zoals in onderstaand voorbeeld.
 Deze afhankelijkheid is onzichtbaar en kan bovendien niet worden gewijzigd.
 
 ```php
+<?php
 class Controller
 {
     public function handle(RequestInterface $request): ResponseInterface
@@ -73,6 +74,7 @@ gebruikt, kan als volgt worden herschreven om gebruik te maken van
 constructor injection.
 
 ```php
+<?php
 class Controller
 {
     public function __construct(private TemplateEngineInterface $template_engine)
@@ -97,6 +99,8 @@ verschil is gelegen in de constatering dat `Response` geen service is, maar
 een *value object*. Het zou niet logisch zijn om deze van buiten te injecten,
 aangezien het de taak van de controller is om dit object te maken.
 
+![Constructor injection (uit Van Deursen, 2019, p. 95)](../images/constructor-injection.jpeg)
+
 ## Setter injection
 
 Een potentieel nadeel aan constructor injection is dat het al bij het 
@@ -107,8 +111,13 @@ setter-methode toegevoegd aan de klasse waarmee de afhankelijkheid ingesteld
 kan worden. Dit zou bijvoorbeeld gebruikt kunnen worden om een logger in te 
 stellen; de logger hoeft niet ingesteld te worden als loggen niet gewenst is 
 en bovendien zou het zo kunnen zijn dat loggen op een gegeven moment op een 
-andere manier gedaan moet worden. Aan deze beschrijving is al te zien dat 
-setter injection een variant van het
+andere manier gedaan moet worden. 
+
+Aan deze beschrijving is al te zien dat setter injection een variant van het
 [*strategy pattern*](https://refactoring.guru/design-patterns/strategy) is. 
 Merk wel op dat dit een methode is die maar zelden gebruikt hoeft te worden; 
 vrijwel altijd zal constructor injection de voorkeur hebben.
+
+![Setter injection (uit Van Deursen, 2019, p. 104)](../images/setter-injection.jpeg)
+
+
