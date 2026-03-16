@@ -16,7 +16,7 @@ aangemaakt worden te kunnen beantwoorden is dat de objecten in een
 applicatie een [*graaf*](https://nl.wikipedia.org/wiki/Grafentheorie) vormen.
 Hierbij verwijst elk object naar zijn afhankelijkheden; dat zijn weer 
 objecten die op hun beurt naar hun afhankelijkheden wijzen, en zo verder. Er 
-is echter in het algemeen één object die het beginpunt van de applicatie 
+is echter in het algemeen één object dat het beginpunt van de applicatie 
 vormt. In een webapplicatie is dat de kernel. We hebben immers al gezien dat 
 de flow in de front controller is dat de kernel een request omzet in een 
 response en deze response vervolgens naar de browser stuurt.
@@ -42,6 +42,7 @@ maar dat van beide maar een enkele instantie aanwezig is. Het zijn dus
 singletonklassen.
 
 ```php
+<?php
 $db = new Database('mysql://localhost:3306/test');
 $tpl = new TemplateEngine(__DIR__);
 $router = new Router([

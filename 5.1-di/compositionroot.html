@@ -450,7 +450,7 @@ aangemaakt worden te kunnen beantwoorden is dat de objecten in een
 applicatie een <a class="reference external" href="https://nl.wikipedia.org/wiki/Grafentheorie"><em>graaf</em></a> vormen.
 Hierbij verwijst elk object naar zijn afhankelijkheden; dat zijn weer
 objecten die op hun beurt naar hun afhankelijkheden wijzen, en zo verder. Er
-is echter in het algemeen één object die het beginpunt van de applicatie
+is echter in het algemeen één object dat het beginpunt van de applicatie
 vormt. In een webapplicatie is dat de kernel. We hebben immers al gezien dat
 de flow in de front controller is dat de kernel een request omzet in een
 response en deze response vervolgens naar de browser stuurt.</p>
@@ -471,13 +471,14 @@ objectgraaf zichtbaar. Hierbij zien we dat de klassen <code class="docutils lite
 <code class="docutils literal notranslate"><span class="pre">TemplateEngine</span></code> beiden als service in twee controllers gebruikt worden,
 maar dat van beide maar een enkele instantie aanwezig is. Het zijn dus
 singletonklassen.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">$db = new Database(&#39;mysql://localhost:3306/test&#39;);</span>
-<span class="x">$tpl = new TemplateEngine(__DIR__);</span>
-<span class="x">$router = new Router([</span>
-<span class="x">    &#39;/&#39; =&gt; new IndexController($db, $tpl),</span>
-<span class="x">    &#39;/blog&#39; =&gt; new BlogController($db, $tpl),</span>
-<span class="x">]);</span>
-<span class="x">$kernel = new Kernel($router);</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$db</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Database</span><span class="p">(</span><span class="s1">&#39;mysql://localhost:3306/test&#39;</span><span class="p">);</span>
+<span class="nv">$tpl</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateEngine</span><span class="p">(</span><span class="no">__DIR__</span><span class="p">);</span>
+<span class="nv">$router</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Router</span><span class="p">([</span>
+    <span class="s1">&#39;/&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">IndexController</span><span class="p">(</span><span class="nv">$db</span><span class="p">,</span> <span class="nv">$tpl</span><span class="p">),</span>
+    <span class="s1">&#39;/blog&#39;</span> <span class="o">=&gt;</span> <span class="k">new</span> <span class="nx">BlogController</span><span class="p">(</span><span class="nv">$db</span><span class="p">,</span> <span class="nv">$tpl</span><span class="p">),</span>
+<span class="p">]);</span>
+<span class="nv">$kernel</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Kernel</span><span class="p">(</span><span class="nv">$router</span><span class="p">);</span>
 </pre></div>
 </div>
 </section>

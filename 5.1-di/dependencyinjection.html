@@ -452,16 +452,17 @@ template engine binnen de controller zou instantiëren met het keyword <code cla
 dan is de controller afhankelijk van de implementatie van de template engine,
 zoals in onderstaand voorbeeld.
 Deze afhankelijkheid is onzichtbaar en kan bovendien niet worden gewijzigd.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class Controller</span>
-<span class="x">{</span>
-<span class="x">    public function handle(RequestInterface $request): ResponseInterface</span>
-<span class="x">    {</span>
-<span class="x">        // ...</span>
-<span class="x">        $template_engine = new TemplateEngine();</span>
-<span class="x">        $html = $template_engine-&gt;render(&#39;view.html&#39;, $params);</span>
-<span class="x">        return new Response($html);</span>
-<span class="x">    }</span>
-<span class="x">}</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+        <span class="nv">$template_engine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">TemplateEngine</span><span class="p">();</span>
+        <span class="nv">$html</span> <span class="o">=</span> <span class="nv">$template_engine</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;view.html&#39;</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="nv">$html</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Hier zien we dat twee manieren, waarvan we misschien intuïtief gebruik zouden
@@ -502,19 +503,20 @@ aan de gevraagde interface voldoet.</p>
 <p>Het hierboven genoemde voorbeeld, waarbij een controller een template engine
 gebruikt, kan als volgt worden herschreven om gebruik te maken van
 constructor injection.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class Controller</span>
-<span class="x">{</span>
-<span class="x">    public function __construct(private TemplateEngineInterface $template_engine)</span>
-<span class="x">    {</span>
-<span class="x">    }</span>
-<span class="x">    </span>
-<span class="x">    public function handle(RequestInterface $request): ResponseInterface</span>
-<span class="x">    {</span>
-<span class="x">        // ...</span>
-<span class="x">        $html = $this-&gt;template_engine-&gt;render(&#39;view.html&#39;, $params);</span>
-<span class="x">        return new Response($html);</span>
-<span class="x">    }</span>
-<span class="x">}</span>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Controller</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">private</span> <span class="nx">TemplateEngineInterface</span> <span class="nv">$template_engine</span><span class="p">)</span>
+    <span class="p">{</span>
+    <span class="p">}</span>
+    
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span>
+    <span class="p">{</span>
+        <span class="c1">// ...</span>
+        <span class="nv">$html</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">template_engine</span><span class="o">-&gt;</span><span class="na">render</span><span class="p">(</span><span class="s1">&#39;view.html&#39;</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">Response</span><span class="p">(</span><span class="nv">$html</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </div>
 <p>Het is hiermee mogelijk geworden om een andere implementatie te gebruiken
@@ -525,6 +527,7 @@ is. Het aanmaken van de response blijft via dit keyword gebeuren. Het
 verschil is gelegen in de constatering dat <code class="docutils literal notranslate"><span class="pre">Response</span></code> geen service is, maar
 een <em>value object</em>. Het zou niet logisch zijn om deze van buiten te injecten,
 aangezien het de taak van de controller is om dit object te maken.</p>
+<p><img alt="Constructor injection (uit Van Deursen, 2019, p. 95)" src="../_images/constructor-injection.jpeg" /></p>
 </section>
 <section id="setter-injection">
 <h2>Setter injection<a class="headerlink" href="#setter-injection" title="Link to this heading">#</a></h2>
@@ -536,11 +539,12 @@ setter-methode toegevoegd aan de klasse waarmee de afhankelijkheid ingesteld
 kan worden. Dit zou bijvoorbeeld gebruikt kunnen worden om een logger in te
 stellen; de logger hoeft niet ingesteld te worden als loggen niet gewenst is
 en bovendien zou het zo kunnen zijn dat loggen op een gegeven moment op een
-andere manier gedaan moet worden. Aan deze beschrijving is al te zien dat
-setter injection een variant van het
+andere manier gedaan moet worden.</p>
+<p>Aan deze beschrijving is al te zien dat setter injection een variant van het
 <a class="reference external" href="https://refactoring.guru/design-patterns/strategy"><em>strategy pattern</em></a> is.
 Merk wel op dat dit een methode is die maar zelden gebruikt hoeft te worden;
 vrijwel altijd zal constructor injection de voorkeur hebben.</p>
+<p><img alt="Setter injection (uit Van Deursen, 2019, p. 104)" src="../_images/setter-injection.jpeg" /></p>
 </section>
 </section>
 
