@@ -1,4 +1,4 @@
-# Interfaces
+# Interface
 
 Voor het werken met een database hebben we natuurijk een connectie met die database nodig. Die connectie wordt verzorgd door de implementatie van de `ConnectionInterface`. Merk op dat deze interface een verschil maakt tussen `query` en `execute`: de eerste is alleen voor het *bevragen* (`R`) van de data, terwijl de tweede de data werkelijk kan *aanpassen* (`CUD`). 
 

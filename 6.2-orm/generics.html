@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>The Paradigm mismatch &#8212; Webtechnologie II</title>
+    <title>Generics &#8212; Webtechnologie II</title>
   
   
   
@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=91d546e9" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=209f40b0" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '6.2-orm/paradigm-mismatch';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '6.2-orm/generics';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Opgave" href="opgave.html" />
-    <link rel="prev" title="Intro" href="intro.html" />
+    <link rel="next" title="Van modellen naar de database" href="model-klassen.html" />
+    <link rel="prev" title="Interface" href="../6.1-database/interface.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -264,12 +264,13 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Introductie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6.1-database/opgave.html">Opgave</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.1-database/interface.html">Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/interface.html">Interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#"><em>The Paradigm mismatch</em></a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-klassen.html">Van modellen naar de database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identity-map.html">De identity map</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
@@ -336,7 +337,7 @@
       
       
       
-      <li><a href="../_sources/6.2-orm/paradigm-mismatch.md" target="_blank"
+      <li><a href="../_sources/6.2-orm/generics.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -399,9 +400,7 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="fa-solid fa-list"></span>
-</label>
+
 </div></div>
       
     </div>
@@ -412,23 +411,11 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>The Paradigm mismatch</h1>
+    <h1>Generics</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
-            <div>
-                <h2> Inhoud </h2>
-            </div>
-            <nav aria-label="Page">
-                <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-of-identity">Problem of identity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-of-granularity">Problem of granularity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-of-data-navigation">Problem of data navigation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-of-encapsulation">Problem of encapsulation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-of-association">Problem of association</a></li>
-</ul>
-            </nav>
         </div>
     </div>
 </div>
@@ -438,23 +425,52 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="the-paradigm-mismatch">
-<h1><em>The Paradigm mismatch</em><a class="headerlink" href="#the-paradigm-mismatch" title="Link to this heading">#</a></h1>
-<section id="problem-of-identity">
-<h2>Problem of identity<a class="headerlink" href="#problem-of-identity" title="Link to this heading">#</a></h2>
-</section>
-<section id="problem-of-granularity">
-<h2>Problem of granularity<a class="headerlink" href="#problem-of-granularity" title="Link to this heading">#</a></h2>
-</section>
-<section id="problem-of-data-navigation">
-<h2>Problem of data navigation<a class="headerlink" href="#problem-of-data-navigation" title="Link to this heading">#</a></h2>
-</section>
-<section id="problem-of-encapsulation">
-<h2>Problem of encapsulation<a class="headerlink" href="#problem-of-encapsulation" title="Link to this heading">#</a></h2>
-</section>
-<section id="problem-of-association">
-<h2>Problem of association<a class="headerlink" href="#problem-of-association" title="Link to this heading">#</a></h2>
-</section>
+  <section class="tex2jax_ignore mathjax_ignore" id="generics">
+<h1>Generics<a class="headerlink" href="#generics" title="Link to this heading">#</a></h1>
+<p>In de <a class="reference internal" href="interface.html"><span class="std std-doc">interfaces van deze week</span></a> maken we regelmatig gebruik van <code class="docutils literal notranslate"><span class="pre">&#64;template</span> <span class="pre">T</span></code>. Dit is een zogenaamde <em>generic</em>, die we ook al in Java tegen zijn gekomen (<code class="docutils literal notranslate"><span class="pre">List&lt;String&gt;</span></code> bijvoorbeeld, of <code class="docutils literal notranslate"><span class="pre">Map&lt;String,</span> <span class="pre">User&gt;</span></code>). Eigenlijk heeft php zelf geen <em>generics</em>, dus wordt dat in de <em>DocBlocks</em> geregeld.</p>
+<p>Een generic biedt de mogelijkheid om het exacte type van een klasse of het return-type van een methode later in te vullen. Als php zelf generics zou hebben, zou je code zoals hieronder kunnen verwachten. In dat geval maak je dus een <code class="docutils literal notranslate"><span class="pre">Entry</span></code> aan, waarbij het <code class="docutils literal notranslate"><span class="pre">KeyType</span></code> een ‘int’ is, en het <code class="docutils literal notranslate"><span class="pre">ValueType</span></code> een <code class="docutils literal notranslate"><span class="pre">string</span></code>.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">Entry</span><span class="o">&lt;</span><span class="nx">KeyType</span><span class="p">,</span> <span class="nx">ValueType</span><span class="o">&gt;</span>
+<span class="p">{</span>
+    <span class="c1">// ...</span>
+<span class="p">}</span>
+
+<span class="nv">$entry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Entry</span><span class="o">&lt;</span><span class="nx">int</span><span class="p">,</span> <span class="nx">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Maar dit is dus niet mogelijk. Dat betekent dat je bij return-types gehouden bent aan iets als <code class="docutils literal notranslate"><span class="pre">object</span></code> of <code class="docutils literal notranslate"><span class="pre">mixed</span></code>. Maar dat houdt weer in dat je niet in <em>compile time</em> weet welke methoden je op het geretourneerde object kunt aanroepen (de compiler kan immers niet weten of je een <code class="docutils literal notranslate"><span class="pre">User</span></code> of een <code class="docutils literal notranslate"><span class="pre">Animal</span></code> terugkrijgt: het enige wat bekend is dat er een <code class="docutils literal notranslate"><span class="pre">object</span></code> is teruggegeven).</p>
+<p>Door gebruik te maken van de <code class="docutils literal notranslate"><span class="pre">&#64;template</span></code>-annotatie in je <em>DocBlock</em>, introduceer je een type dat je vervolgens kunt gebruiken in je <code class="docutils literal notranslate"><span class="pre">&#64;param</span></code> of <code class="docutils literal notranslate"><span class="pre">&#64;return</span></code> tags. De <em>naam</em> van het type kan feitelijk alles zijn, maar het is gebruikelijk om een hoofdletter te gebruiken.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> * Een klasse die een lijst van typen opslaat</span>
+<span class="sd"> * @template T</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">List</span>
+<span class="p">{</span>
+    <span class="c1">// methode om data aan de lijst toe te voegen</span>
+    <span class="c1">// @param T</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span><span class="nx">void</span> <span class="p">{</span>
+        <span class="c1">///</span>
+    <span class="p">}</span>
+
+    <span class="c1">// methode om een T op een specifieke positie op te halen</span>
+    <span class="c1">// @param int $pos</span>
+    <span class="c1">// @return T</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$pos</span><span class="p">)</span><span class="o">:</span><span class="nx">object</span> <span class="p">{</span>
+        <span class="c1">///</span>
+    <span class="p">}</span>
+
+    <span class="c1">// methode om alle waarden uit de lijst op te halen</span>
+    <span class="c1">// @return array&lt;T&gt;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAll</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+        <span class="c1">///</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="nv">$entry</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Entry</span><span class="o">&lt;</span><span class="nx">int</span><span class="p">,</span> <span class="nx">string</span><span class="o">&gt;</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;test&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Bekijk voor meer informatie over generics in php de <a class="reference external" href="https://thephp.foundation/blog/2024/08/19/state-of-generics-and-collections/">State of Generics and Collections</a>.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -488,20 +504,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="intro.html"
+       href="../6.1-database/interface.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">Interface</p>
       </div>
     </a>
     <a class="right-next"
-       href="opgave.html"
+       href="model-klassen.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Opgave</p>
+        <p class="prev-next-title">Van modellen naar de database</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -511,26 +527,6 @@
             </div>
             
             
-              
-                <dialog id="pst-secondary-sidebar-modal"></dialog>
-                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
-
-
-  <div class="sidebar-secondary-item">
-  <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Inhoud
-  </div>
-  <nav class="bd-toc-nav page-toc">
-    <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-of-identity">Problem of identity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-of-granularity">Problem of granularity</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-of-data-navigation">Problem of data navigation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-of-encapsulation">Problem of encapsulation</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-of-association">Problem of association</a></li>
-</ul>
-  </nav></div>
-
-</div></div>
               
             
           </div>

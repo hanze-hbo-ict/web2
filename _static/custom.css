@@ -3,6 +3,6 @@ a[href$='.zip'] {
     padding-right: 20px;
 }
 
-img { width: 40vw; cursor:pointer; }
+img { max-width: 40vw; cursor:pointer; }
 p:has(> img) { display:flex; justify-content:center; }
 div.admonition { width: 80%; }

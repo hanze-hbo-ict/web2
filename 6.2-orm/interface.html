@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=91d546e9" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=209f40b0" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -264,12 +264,13 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Introductie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6.1-database/opgave.html">Opgave</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.1-database/interface.html">Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/interface.html">Interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="paradigm-mismatch.html"><em>The Paradigm mismatch</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="model-klassen.html">Van modellen naar de database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identity-map.html">De identity map</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Interfaces</a></li>
 </ul>
@@ -424,6 +425,7 @@
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapperinterface"><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositoryinterface"><code class="docutils literal notranslate"><span class="pre">RepositoryInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitymapinterface">IdentityMapInterface</a></li>
 </ul>
             </nav>
         </div>
@@ -439,6 +441,7 @@
 <h1>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h1>
 <section id="datamapperinterface">
 <h2><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code><a class="headerlink" href="#datamapperinterface" title="Link to this heading">#</a></h2>
+<p>De interfaces hieronder maken intensief gebruik van de <code class="docutils literal notranslate"><span class="pre">&#64;template</span> <span class="pre">T</span></code>-notatie in de <em>DocBlock</em>. Bestudeer <a class="reference internal" href="generics.html"><span class="std std-doc">de tekst hierover</span></a> om te bekijken hoe dat exact werkt.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">Framework\Database</span><span class="p">;</span>
@@ -535,6 +538,53 @@
 </pre></div>
 </div>
 </section>
+<section id="identitymapinterface">
+<h2>IdentityMapInterface<a class="headerlink" href="#identitymapinterface" title="Link to this heading">#</a></h2>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Framework\Database</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * A data structure that stores unique objects based on their id.</span>
+<span class="sd"> * @template T</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">IdentityMapInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Checks whether an object with the given id exists in the identity map.</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     * @return bool</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Checks whether the given object exists in the identity map.</span>
+<span class="sd">     * @param T $object</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">contains</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get an object from the identity map by its id.</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     * @return T</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Add an object with a given id to the identity map.</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     * @param T $object</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Remove an object from the identity map.</span>
+<span class="sd">     * @param T $object</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -604,6 +654,7 @@
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapperinterface"><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositoryinterface"><code class="docutils literal notranslate"><span class="pre">RepositoryInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitymapinterface">IdentityMapInterface</a></li>
 </ul>
   </nav></div>
 

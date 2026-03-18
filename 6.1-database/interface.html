@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Interfaces &#8212; Webtechnologie II</title>
+    <title>Interface &#8212; Webtechnologie II</title>
   
   
   
@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=91d546e9" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=209f40b0" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '6.1-database/interface';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Intro" href="../6.2-orm/intro.html" />
+    <link rel="next" title="Generics" href="../6.2-orm/generics.html" />
     <link rel="prev" title="Opgave" href="opgave.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
@@ -264,12 +264,13 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="intro.html">Introductie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interfaces</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/paradigm-mismatch.html"><em>The Paradigm mismatch</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/generics.html">Generics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/model-klassen.html">Van modellen naar de database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.2-orm/identity-map.html">De identity map</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6.2-orm/opgave.html">Opgave</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6.2-orm/interface.html">Interfaces</a></li>
 </ul>
@@ -410,7 +411,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Interfaces</h1>
+    <h1>Interface</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -424,8 +425,8 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="interfaces">
-<h1>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="interface">
+<h1>Interface<a class="headerlink" href="#interface" title="Link to this heading">#</a></h1>
 <p>Voor het werken met een database hebben we natuurijk een connectie met die database nodig. Die connectie wordt verzorgd door de implementatie van de <code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code>. Merk op dat deze interface een verschil maakt tussen <code class="docutils literal notranslate"><span class="pre">query</span></code> en <code class="docutils literal notranslate"><span class="pre">execute</span></code>: de eerste is alleen voor het <em>bevragen</em> (<code class="docutils literal notranslate"><span class="pre">R</span></code>) van de data, terwijl de tweede de data werkelijk kan <em>aanpassen</em> (<code class="docutils literal notranslate"><span class="pre">CUD</span></code>).</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
@@ -502,11 +503,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../6.2-orm/intro.html"
+       href="../6.2-orm/generics.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">Generics</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

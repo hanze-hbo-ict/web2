@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Intro &#8212; Webtechnologie II</title>
+    <title>Van modellen naar de database &#8212; Webtechnologie II</title>
   
   
   
@@ -37,7 +37,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=91d546e9" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=209f40b0" />
   
   <!-- So that users can add custom icons -->
   <script src="../_static/scripts/fontawesome.js?digest=26a4bc78f4c0ddb94549"></script>
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '6.2-orm/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '6.2-orm/model-klassen';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="The Paradigm mismatch" href="paradigm-mismatch.html" />
-    <link rel="prev" title="Interfaces" href="../6.1-database/interface.html" />
+    <link rel="next" title="De identity map" href="identity-map.html" />
+    <link rel="prev" title="Generics" href="generics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -264,12 +264,13 @@
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Introductie</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../6.1-database/opgave.html">Opgave</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.1-database/interface.html">Interfaces</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/interface.html">Interface</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="paradigm-mismatch.html"><em>The Paradigm mismatch</em></a></li>
+<li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Van modellen naar de database</a></li>
+<li class="toctree-l1"><a class="reference internal" href="identity-map.html">De identity map</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
@@ -336,7 +337,7 @@
       
       
       
-      <li><a href="../_sources/6.2-orm/intro.md" target="_blank"
+      <li><a href="../_sources/6.2-orm/model-klassen.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -399,7 +400,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -410,11 +413,20 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Intro</h1>
+    <h1>Van modellen naar de database</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-klassen">Model-klassen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapper">DataMapper</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -424,8 +436,67 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="van-modellen-naar-de-database">
+<h1>Van modellen naar de database<a class="headerlink" href="#van-modellen-naar-de-database" title="Link to this heading">#</a></h1>
+<section id="model-klassen">
+<h2>Model-klassen<a class="headerlink" href="#model-klassen" title="Link to this heading">#</a></h2>
+<p>Zoals we hebben gezien bij <a class="reference internal" href="../4.1-templating/intro.html#model-view-controller"><span class="std std-ref">Model-View-Controller</span></a> willen we graag gebruik maken van php-klassen (objecten) die de <em>state</em> van onze applicatie bijhouden en representeren: de zogenaamde <em>model-klassen</em>. In dit specifieke voorbeeld gaan we er voor het gemak van uit dat de model-klassen eenvoudig representaties zijn van tabellen in de database (daarmee overbruggen we feitelijk de <span class="xref myst">*paradigm-mismatch</span>).</p>
+<p>Een model-klasse is een klasse die een vertaling (<em>mapping</em>) maakt tussen een tabel in de database en een object in je programmacode. De entiteit in je database wordt gepersisteerd en opgehaald en <em>in memory</em> gebruikt in je applicatie.</p>
+<p>Behalve de gegevens die in de database zijn opgeslagen, kan een model-klasse ook bepaalde functionaliteit (logica) bevatten die niet in de database gereflecteerd wordt. Het gaat er om dat een model-klasse en <em>staat</em> heeft die op enig moment gepersisteerd moet worden.</p>
+<p><img alt="model-class" src="../_images/model-class.jpeg" /></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">UserModel</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="nx">bool</span> <span class="nv">$isBlocked</span> <span class="o">=</span> <span class="k">false</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">string</span> <span class="nv">$naam</span><span class="p">,</span>
+        <span class="k">public</span> <span class="nx">readonly</span> <span class="nx">string</span> <span class="nv">$email</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="p">{}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getFullName</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="s2">&quot;</span><span class="si">$this-&gt;naam</span><span class="s2"> &lt;</span><span class="si">$this-&gt;email</span><span class="s2">&gt;&quot;</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">userIsBlocked</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">isBlocked</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="datamapper">
+<h2>DataMapper<a class="headerlink" href="#datamapper" title="Link to this heading">#</a></h2>
+<p>Om de Model-klassen te koppelen aan de database, wordt gebruik gemaakt van een <code class="docutils literal notranslate"><span class="pre">DataMapper</span></code>: een object dat verantwoordelijk is voor het persisteren van de relevante data uit de <code class="docutils literal notranslate"><span class="pre">ModelClass</span></code>. Op deze manier hoeft de modelklasse niets te weten van de manier waarop deze wordt opgeslagen.</p>
+<p><img alt="Datamapper en Modelklasse" src="../_images/datamapper.jpeg" /></p>
+<p>De <a class="reference internal" href="interface.html#datamapperinterface"><span class="std std-ref">interface van de datamapper</span></a> maakt gebruik van <a class="reference internal" href="generics.html"><span class="std std-doc">generic <code class="docutils literal notranslate"><span class="pre">T</span></code></span></a> om duidelijk te maken welk type (modelklasse) er via deze mapper wordt bijgehouden. Kijk bijvoorbeeld eens naar de definitie van <code class="docutils literal notranslate"><span class="pre">get</span></code> uit de interface, die we hieronder hebben herhaald. In de signatuur zie je dat deze methode een <code class="docutils literal notranslate"><span class="pre">object</span></code> teruggeeft, maar uit de <em>DocBlock</em> blijkt dat het hier om het type <code class="docutils literal notranslate"><span class="pre">T</span></code> gaat, dat we bovenin de interface als <code class="docutils literal notranslate"><span class="pre">&#64;template</span></code> hebben gedefinieerd.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Select a single object by its primary key.</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     * @return T</span>
+<span class="sd">     * @throws NotFoundException if the object was not found.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>Omdat de DataMapper een koppeling is tussen een (Model)Klasse en een tabel in de database, moeten instanties van deze klasse beide kanten van die verhaal kennen. Het is logisch om dat in de constructor van de klasse op te nemen:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">class</span> <span class="nc">UserMapper</span> <span class="k">implements</span> <span class="nx">DataMapperInterface</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">ConnectionInterface</span> <span class="nv">$connection</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">string</span> <span class="nv">$class_name</span><span class="p">,</span>
+        <span class="k">private</span> <span class="nx">string</span> <span class="nv">$table_name</span><span class="p">,</span>
+        <span class="c1">// rowid is de standaard primaire sleutel die door Sqlite wordt gemaakt</span>
+        <span class="k">private</span> <span class="nx">readonly</span> <span class="nx">string</span> <span class="nv">$primary_key</span> <span class="o">=</span> <span class="s1">&#39;rowid&#39;</span>
+    <span class="p">){}</span>
+    <span class="c1">///</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Meer over de DataMapper is te vinden <a class="reference external" href="https://martinfowler.com/eaaCatalog/dataMapper.html">op de website van Martin Fowler</a>.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -459,20 +530,20 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../6.1-database/interface.html"
+       href="generics.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Interfaces</p>
+        <p class="prev-next-title">Generics</p>
       </div>
     </a>
     <a class="right-next"
-       href="paradigm-mismatch.html"
+       href="identity-map.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title"><em>The Paradigm mismatch</em></p>
+        <p class="prev-next-title">De identity map</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -482,6 +553,23 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#model-klassen">Model-klassen</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapper">DataMapper</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
