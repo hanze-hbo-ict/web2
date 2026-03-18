@@ -31,6 +31,6 @@ interface KernelInterface
      * @param array $post The contents of the $_POST superglobal. 
      * @return string The response as a string.
      */
-    public function handle(array $get, array $post): string;
+    function handle(array $get, array $post): string;
 }
 ```

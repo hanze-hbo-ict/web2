@@ -51,14 +51,14 @@ interface ResponseInterface extends MessageInterface
      * @return static
      * @throws \InvalidArgumentException For invalid status code arguments.
      */
-    public function withStatusCode(int $code): static;
+    function withStatusCode(int $code): static;
 
     /**
      * Gets the body of the response.
      *
      * @return string Returns the body as a string.
      */
-    public function getBody(): string;
+    function getBody(): string;
 
     /**
      * Return an instance with the specified response body.
@@ -70,7 +70,7 @@ interface ResponseInterface extends MessageInterface
      * @param string $body Body.
      * @return static
      */
-    public function withBody(string $body): static;
+    function withBody(string $body): static;
 }
 ```
 
@@ -102,7 +102,7 @@ interface KernelInterface
      * @param RequestInterface $request The server request. 
      * @return ResponseInterface The response.
      */
-    public function handle(RequestInterface $request): ResponseInterface;
+    function handle(RequestInterface $request): ResponseInterface;
 }
 ```
 

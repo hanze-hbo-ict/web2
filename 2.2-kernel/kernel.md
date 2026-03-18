@@ -72,13 +72,11 @@ voldoen. We zullen nu een voorlopige interface
 wordt deze nog aangepast.
 
 ```php
-<?php
-
 namespace Framework\Kernel;
 
 interface KernelInterface
 {
-    public function handle(array $get, array $post): string;
+    function handle(array $get, array $post): string;
 }
 ```
 

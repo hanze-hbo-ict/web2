@@ -18,7 +18,7 @@ interface ConnectionInterface
      * @param mixed ...$params
      * @return array An associative array with the results using the column names as keys.
      */
-    public function query(string $query, mixed ...$params): array;
+    function query(string $query, mixed ...$params): array;
 
     /**
      * Execute a parametrised statement.
@@ -26,12 +26,12 @@ interface ConnectionInterface
      * @param mixed ...$params
      * @return int The number of affected rows.
      */
-    public function execute(string $query, mixed ...$params): int;
+    function execute(string $query, mixed ...$params): int;
 
     /**
      * Get the most recent automatically generated id.
      * @return int
      */
-    public function getLastInsertId(): int;
+    function getLastInsertId(): int;
 }
 ```
