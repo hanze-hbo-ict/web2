@@ -471,6 +471,47 @@ sqlite&gt;<span class="w"> </span>
 </section>
 <section id="prepared-statements">
 <h2>Prepared statements<a class="headerlink" href="#prepared-statements" title="Link to this heading">#</a></h2>
+<p>In de meeste gevallen roep je vanuit de programmeerlaag niet zonder meer een sql-statement aan – zeker niet wanneer er gebruik gemaakt wordt van gebruikersinput. Stel je voor dat je in de code de onderstaande functie hebt:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">function</span> <span class="nf">select</span><span class="p">(</span><span class="nv">$where_clause</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$conn</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PDO</span><span class="p">(</span><span class="s1">&#39;mysql:host=127.0.0.1;dbname=demo;charset=utf8mb4&#39;</span><span class="p">,</span> <span class="s1">&#39;root&#39;</span><span class="p">);</span>
+    <span class="nv">$sql</span> <span class="o">=</span> <span class="s2">&quot;select * from users where </span><span class="si">$where_clause</span><span class="s2">&quot;</span><span class="p">;</span>
+    <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$conn</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+    <span class="k">return</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Wanneer <code class="docutils literal notranslate"><span class="pre">$where_clause</span></code> gelijk is aan <code class="docutils literal notranslate"><span class="pre">aantal&gt;5</span></code>, zou dit prima werken. De variabele <code class="docutils literal notranslate"><span class="pre">$sql</span></code> wordt dan immers <code class="docutils literal notranslate"><span class="pre">select</span> <span class="pre">*</span> <span class="pre">from</span> <span class="pre">table</span> <span class="pre">where</span> <span class="pre">aantal&gt;5</span></code>, wat mogelijk is wat de bezoeker wilde weten. Maar wanneer onze bezoeker kwaad in de zin heeft, zou hij ook kunnen proberen of de variabele <code class="docutils literal notranslate"><span class="pre">$where_clause</span></code> gelijk kan worden gemaakt aan <code class="docutils literal notranslate"><span class="pre">1;</span> <span class="pre">drop</span> <span class="pre">table</span> <span class="pre">users;</span> <span class="pre">--</span></code>. Kijk maar eens wat de waarde van <code class="docutils literal notranslate"><span class="pre">$sql</span></code> in dat geval wordt…</p>
+<p><img alt="exploits of a mom, by xkcd" src="https://imgs.xkcd.com/comics/exploits_of_a_mom_2x.png" /></p>
+<p>Om dit soort <em>injecties</em> te voorkomen, moeten we alle karakters die een bepaalde betekenis hebben in sql uit de input filteren. Dat kunnen we natuurlijk met de hand doen, maar php (en de meeste andere programmeertalen) hebben hier een speciale techniek voor: <em>prepared statements</em>.</p>
+<div class="info admonition">
+<p class="admonition-title">Ook wat sneller</p>
+<p>Behalve veiliger zijn *prepared statements ook subtiel efficiënter. Het maakt het namelijk mogelijk om de sql te <em>precompilen</em>. Bekijk eventueel <a class="reference external" href="https://en.wikipedia.org/wiki/Prepared_statement">de documentatie op wikipedia</a>.</p>
+</div>
+<p>Het idee is dat je het sql-statement als string opstelt terwijl je de in te voeren waarden nog leeg houdt. Vervolgens geef die deze string mee aan de <code class="docutils literal notranslate"><span class="pre">execute</span></code>-methode, waarbij je de daadwerkelijke waarden meegeeft.</p>
+<p>Er zijn in php twee vormen van een prepared statement. De eerste is met vraagtekens. Bekijk het onderstaande voorbeeld (hierin is <code class="docutils literal notranslate"><span class="pre">$dbh</span></code> een database-handler die al eerder is opgezet):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT naam, adres woonplaat </span>
+<span class="s1">    FROM bezoekers </span>
+<span class="s1">    WHERE leeftijd &gt; ?</span>
+<span class="s1">    AND lengte &lt; ?&#39;</span><span class="p">;</span>
+<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$dbh</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="mi">30</span><span class="p">,</span> <span class="mi">190</span><span class="p">]);</span>
+<span class="nv">$geschikt</span> <span class="o">=</span> <span class="nv">$sth</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>De tweede vorm maakt gebruik van zogenaamde <em>named parameters</em>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT naam, adres woonplaat </span>
+<span class="s1">    FROM bezoekers </span>
+<span class="s1">    WHERE leeftijd &gt; :leeftijd </span>
+<span class="s1">    AND lengte &lt; :lengte&#39;</span><span class="p">;</span>
+<span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$dbh</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">([</span><span class="s1">&#39;leeftijd&#39;</span> <span class="o">=&gt;</span> <span class="mi">30</span><span class="p">,</span> <span class="s1">&#39;lengte&#39;</span> <span class="o">=&gt;</span> <span class="mi">190</span><span class="p">]);</span>
+<span class="nv">$geschikt</span> <span class="o">=</span> <span class="nv">$sth</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>Het is de bedoeling dat je in al je projecten <em>altijd</em> gebruik maakt van <em>prepared statements</em>.</p>
 </section>
 </section>
 

@@ -39,3 +39,56 @@ Omdat de instantie die de `ConnectionInterface` implementeert wel een connectie 
 
 ## Prepared statements
 
+In de meeste gevallen roep je vanuit de programmeerlaag niet zonder meer een sql-statement aan – zeker niet wanneer er gebruik gemaakt wordt van gebruikersinput. Stel je voor dat je in de code de onderstaande functie hebt:
+
+```php
+<?php
+function select($where_clause) {
+    $conn = new PDO('mysql:host=127.0.0.1;dbname=demo;charset=utf8mb4', 'root');
+    $sql = "select * from users where $where_clause";
+    $stmt = $conn->execute($sql);
+    return $stmt->fetchAll();
+}
+```
+
+Wanneer `$where_clause` gelijk is aan `aantal>5`, zou dit prima werken. De variabele `$sql` wordt dan immers `select * from table where aantal>5`, wat mogelijk is wat de bezoeker wilde weten. Maar wanneer onze bezoeker kwaad in de zin heeft, zou hij ook kunnen proberen of de variabele `$where_clause` gelijk kan worden gemaakt aan `1; drop table users; --`. Kijk maar eens wat de waarde van `$sql` in dat geval wordt...
+
+![exploits of a mom, by xkcd](https://imgs.xkcd.com/comics/exploits_of_a_mom_2x.png)
+
+Om dit soort *injecties* te voorkomen, moeten we alle karakters die een bepaalde betekenis hebben in sql uit de input filteren. Dat kunnen we natuurlijk met de hand doen, maar php (en de meeste andere programmeertalen) hebben hier een speciale techniek voor: *prepared statements*.
+
+```{admonition} Ook wat sneller
+:class: info
+Behalve veiliger zijn *prepared statements ook subtiel efficiënter. Het maakt het namelijk mogelijk om de sql te *precompilen*. Bekijk eventueel [de documentatie op wikipedia](https://en.wikipedia.org/wiki/Prepared_statement).
+```
+
+Het idee is dat je het sql-statement als string opstelt terwijl je de in te voeren waarden nog leeg houdt. Vervolgens geef die deze string mee aan de `execute`-methode, waarbij je de daadwerkelijke waarden meegeeft.
+
+Er zijn in php twee vormen van een prepared statement. De eerste is met vraagtekens. Bekijk het onderstaande voorbeeld (hierin is `$dbh` een database-handler die al eerder is opgezet):
+
+```php
+<?php
+$sql = 'SELECT naam, adres woonplaat 
+    FROM bezoekers 
+    WHERE leeftijd > ?
+    AND lengte < ?';
+$stmt = $dbh->prepare($sql);
+$stmt->execute([30, 190]);
+$geschikt = $sth->fetchAll();
+```
+
+De tweede vorm maakt gebruik van zogenaamde *named parameters*:
+
+```php
+<?php
+$sql = 'SELECT naam, adres woonplaat 
+    FROM bezoekers 
+    WHERE leeftijd > :leeftijd 
+    AND lengte < :lengte';
+$stmt = $dbh->prepare($sql);
+$stmt->execute(['leeftijd' => 30, 'lengte' => 190]);
+$geschikt = $sth->fetchAll();
+```
+
+Het is de bedoeling dat je in al je projecten *altijd* gebruik maakt van *prepared statements*.
+
