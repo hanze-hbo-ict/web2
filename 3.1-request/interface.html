@@ -276,8 +276,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7.1 Authenticatie</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/authenticatie.html">Authenticatie en autorisatie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/cookies.html">Cookies en sessies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/inloggen.html">Inloggen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/wachtwoorden.html">Wachtwoorden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7.2 Autorisatie</span></p>
 <ul class="nav bd-sidenav">
@@ -756,7 +761,7 @@ gebruiken om deze klasse te kunnen gebruiken.</p>
 <span class="sd">     * @throws \RuntimeException on any error during the move operation.</span>
 <span class="sd">     * @throws \RuntimeException on the second or subsequent call to the method.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">moveTo</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$targetPath</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">moveTo</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$targetPath</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Retrieve the file size.</span>
@@ -767,7 +772,7 @@ gebruiken om deze klasse te kunnen gebruiken.</p>
 <span class="sd">     *</span>
 <span class="sd">     * @return int|null The file size in bytes or null if unknown.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getSize</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">int</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">getSize</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">int</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Retrieve the error associated with the uploaded file.</span>
@@ -783,7 +788,7 @@ gebruiken om deze klasse te kunnen gebruiken.</p>
 <span class="sd">     * @see http://php.net/manual/en/features.file-upload.errors.php</span>
 <span class="sd">     * @return int One of PHP&#39;s UPLOAD_ERR_XXX constants.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getError</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">getError</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Retrieve the filename sent by the client.</span>
@@ -798,7 +803,7 @@ gebruiken om deze klasse te kunnen gebruiken.</p>
 <span class="sd">     * @return string|null The filename sent by the client or null if none</span>
 <span class="sd">     *     was provided.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getClientFilename</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">getClientFilename</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Retrieve the media type sent by the client.</span>
@@ -813,7 +818,7 @@ gebruiken om deze klasse te kunnen gebruiken.</p>
 <span class="sd">     * @return string|null The media type sent by the client or null if none</span>
 <span class="sd">     *     was provided.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getClientMediaType</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">getClientMediaType</span><span class="p">()</span><span class="o">:</span> <span class="o">?</span><span class="nx">string</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -846,7 +851,7 @@ geheel worden vervangen door <code class="docutils literal notranslate"><span cl
 <span class="sd">     * @param RequestInterface $request The server request. </span>
 <span class="sd">     * @return string The response as a string.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>

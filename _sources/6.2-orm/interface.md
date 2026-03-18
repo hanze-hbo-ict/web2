@@ -22,32 +22,32 @@ interface DataMapperInterface
      * @return T
      * @throws NotFoundException if the object was not found.
      */
-    public function get(int $id): object;
+    function get(int $id): object;
 
     /**
      * Select a number of objects with a query.
      * @param QueryInterface $query
      * @return array<T>
      */
-    public function select(QueryInterface $query): array;
+    function select(QueryInterface $query): array;
 
     /**
      * Insert a new object in the database.
      * @param T $object
      */
-    public function insert($object): void;
+    function insert($object): void;
 
     /**
      * Update an existing object in the database.
      * @param T $object
      */
-    public function update($object): void;
+    function update($object): void;
 
     /**
      * Delete an object from the database.
      * @param T $object
      */
-    public function delete($object): void;
+    function delete($object): void;
 }
 ```
 
@@ -70,26 +70,26 @@ interface RepositoryInterface
      * @return T
      * @throws NotFoundException if the object was not found.
      */
-    public function get(int $id): object;
+    function get(int $id): object;
 
     /**
      * Store a new or existing object in the repository.
      * @param T $object
      */
-    public function save(object $object): void;
+    function save(object $object): void;
 
     /**
      * Remove an object from the repository.
      * @param T $object
      */
-    public function remove($object): void;
+    function remove($object): void;
 
     /**
      * Find a number of objects in the repository based on a query.
      * @param QueryInterface $query
      * @return array<T>
      */
-    public function find(QueryInterface $query): array;
+    function find(QueryInterface $query): array;
 
     /**
      * Find a single object in the repository based on a query.
@@ -97,7 +97,7 @@ interface RepositoryInterface
      * @return T
      * @throws NotFoundException if no matching object was found.
      */
-    public function findOne(QueryInterface $query): object;
+    function findOne(QueryInterface $query): object;
 }
 ```
 

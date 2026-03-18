@@ -319,7 +319,7 @@ interface UploadedFileInterface
      * @throws \RuntimeException on any error during the move operation.
      * @throws \RuntimeException on the second or subsequent call to the method.
      */
-    public function moveTo(string $targetPath): void;
+    function moveTo(string $targetPath): void;
 
     /**
      * Retrieve the file size.
@@ -330,7 +330,7 @@ interface UploadedFileInterface
      *
      * @return int|null The file size in bytes or null if unknown.
      */
-    public function getSize(): ?int;
+    function getSize(): ?int;
 
     /**
      * Retrieve the error associated with the uploaded file.
@@ -346,7 +346,7 @@ interface UploadedFileInterface
      * @see http://php.net/manual/en/features.file-upload.errors.php
      * @return int One of PHP's UPLOAD_ERR_XXX constants.
      */
-    public function getError(): int;
+    function getError(): int;
 
     /**
      * Retrieve the filename sent by the client.
@@ -361,7 +361,7 @@ interface UploadedFileInterface
      * @return string|null The filename sent by the client or null if none
      *     was provided.
      */
-    public function getClientFilename(): ?string;
+    function getClientFilename(): ?string;
 
     /**
      * Retrieve the media type sent by the client.
@@ -376,7 +376,7 @@ interface UploadedFileInterface
      * @return string|null The media type sent by the client or null if none
      *     was provided.
      */
-    public function getClientMediaType(): ?string;
+    function getClientMediaType(): ?string;
 }
 ```
 
@@ -410,6 +410,6 @@ interface KernelInterface
      * @param RequestInterface $request The server request. 
      * @return string The response as a string.
      */
-    public function handle(RequestInterface $request): string;
+    function handle(RequestInterface $request): string;
 }
 ```

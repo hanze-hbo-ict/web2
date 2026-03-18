@@ -276,8 +276,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7.1 Authenticatie</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/authenticatie.html">Authenticatie en autorisatie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/cookies.html">Cookies en sessies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/inloggen.html">Inloggen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/wachtwoorden.html">Wachtwoorden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7.2 Autorisatie</span></p>
 <ul class="nav bd-sidenav">
@@ -488,14 +493,14 @@ waar nodig, aangepast.</p>
 <span class="sd">     * @return static</span>
 <span class="sd">     * @throws \InvalidArgumentException For invalid status code arguments.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">withStatusCode</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$code</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">withStatusCode</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$code</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Gets the body of the response.</span>
 <span class="sd">     *</span>
 <span class="sd">     * @return string Returns the body as a string.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getBody</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">getBody</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Return an instance with the specified response body.</span>
@@ -507,7 +512,7 @@ waar nodig, aangepast.</p>
 <span class="sd">     * @param string $body Body.</span>
 <span class="sd">     * @return static</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">withBody</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$body</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">withBody</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$body</span><span class="p">)</span><span class="o">:</span> <span class="k">static</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -538,7 +543,7 @@ waar nodig, aangepast.</p>
 <span class="sd">     * @param RequestInterface $request The server request. </span>
 <span class="sd">     * @return ResponseInterface The response.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">RequestInterface</span> <span class="nv">$request</span><span class="p">)</span><span class="o">:</span> <span class="nx">ResponseInterface</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>

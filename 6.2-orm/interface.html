@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '6.2-orm/interface';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Intro" href="../7.1-authenticatie/intro.html" />
+    <link rel="next" title="Authenticatie en autorisatie" href="../7.1-authenticatie/authenticatie.html" />
     <link rel="prev" title="Opgave" href="opgave.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
@@ -276,8 +276,13 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7.1 Authenticatie</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/intro.html">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/opgave.html">Opgave</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/authenticatie.html">Authenticatie en autorisatie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/cookies.html">Cookies en sessies</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/inloggen.html">Inloggen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/wachtwoorden.html">Wachtwoorden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/oefening.html">Oefening</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7.1-authenticatie/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7.2 Autorisatie</span></p>
 <ul class="nav bd-sidenav">
@@ -458,32 +463,32 @@
 <span class="sd">     * @return T</span>
 <span class="sd">     * @throws NotFoundException if the object was not found.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Select a number of objects with a query.</span>
 <span class="sd">     * @param QueryInterface $query</span>
 <span class="sd">     * @return array&lt;T&gt;</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">select</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">select</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Insert a new object in the database.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Update an existing object in the database.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Delete an object from the database.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -506,26 +511,26 @@
 <span class="sd">     * @return T</span>
 <span class="sd">     * @throws NotFoundException if the object was not found.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Store a new or existing object in the repository.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">object</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">object</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Remove an object from the repository.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Find a number of objects in the repository based on a query.</span>
 <span class="sd">     * @param QueryInterface $query</span>
 <span class="sd">     * @return array&lt;T&gt;</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Find a single object in the repository based on a query.</span>
@@ -533,7 +538,7 @@
 <span class="sd">     * @return T</span>
 <span class="sd">     * @throws NotFoundException if no matching object was found.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findOne</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">findOne</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -627,11 +632,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="../7.1-authenticatie/intro.html"
+       href="../7.1-authenticatie/authenticatie.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Intro</p>
+        <p class="prev-next-title">Authenticatie en autorisatie</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

@@ -21,6 +21,6 @@ interface TemplateEngineInterface
      * @param mixed ...$params The parameters to pass to the template.
      * @return string The rendered template.
      */
-    public function render(string $template, mixed ...$params): string;
+    function render(string $template, mixed ...$params): string;
 }
 ```
