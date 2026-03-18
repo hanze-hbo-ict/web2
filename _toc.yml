@@ -109,8 +109,13 @@ parts:
 
 - caption: 7.1 Authenticatie
   chapters:
-    - file: 7.1-authenticatie/intro
-    - file: 7.1-authenticatie/opgave
+    - file: 7.1-authenticatie/authenticatie
+    - file: 7.1-authenticatie/cookies
+    - file: 7.1-authenticatie/inloggen
+    - file: 7.1-authenticatie/wachtwoorden
+    - file: 7.1-authenticatie/oefening
+    - file: 7.1-authenticatie/opdracht
+    - file: 7.1-authenticatie/interface
 
 - caption: 7.2 Autorisatie
   chapters:
