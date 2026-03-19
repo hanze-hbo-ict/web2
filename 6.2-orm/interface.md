@@ -1,9 +1,46 @@
 # Interfaces
 
-## `DatamapperInterface`
-
-
 De interfaces hieronder maken intensief gebruik van de `@template T`-notatie in de *DocBlock*. Bestudeer [de tekst hierover](generics.md) om te bekijken hoe dat exact werkt.
+
+## 'QueryInterface`
+
+```php
+<?php
+
+namespace Framework\Database;
+
+/**
+ * A query that can be used to select objects in a repository.
+ */
+interface QueryInterface
+{
+    /**
+     * Get the filter to apply to the result set.
+     * @return array<string, mixed> An associative array of column names and corresponding values to filter on.
+     */
+    public function getFilter(): array;
+
+    /**
+     * Get the ordering criteria to apply to the result set.
+     * @return array<string> An array of column names, optionally suffixed with ASC or DESC as in SQL.
+     */
+    public function getOrder(): array;
+
+    /**
+     * Get the offset to apply to the result set.
+     * @return int The offset, or 0 if there is none.
+     */
+    public function getOffset(): int;
+
+    /**
+     * Get the maximum number of results in the result set.
+     * @return int The limit, or 0 if there is none.
+     */
+    public function getLimit(): int;
+}
+```
+
+## `DatamapperInterface`
 
 ```php
 <?php
@@ -22,32 +59,32 @@ interface DataMapperInterface
      * @return T
      * @throws NotFoundException if the object was not found.
      */
-    function get(int $id): object;
+    public function get(int $id): object;
 
     /**
      * Select a number of objects with a query.
      * @param QueryInterface $query
      * @return array<T>
      */
-    function select(QueryInterface $query): array;
+    public function select(QueryInterface $query): array;
 
     /**
      * Insert a new object in the database.
      * @param T $object
      */
-    function insert($object): void;
+    public function insert($object): void;
 
     /**
      * Update an existing object in the database.
      * @param T $object
      */
-    function update($object): void;
+    public function update($object): void;
 
     /**
      * Delete an object from the database.
      * @param T $object
      */
-    function delete($object): void;
+    public function delete($object): void;
 }
 ```
 
@@ -70,26 +107,26 @@ interface RepositoryInterface
      * @return T
      * @throws NotFoundException if the object was not found.
      */
-    function get(int $id): object;
+    public function get(int $id): object;
 
     /**
      * Store a new or existing object in the repository.
      * @param T $object
      */
-    function save(object $object): void;
+    public function save(object $object): void;
 
     /**
      * Remove an object from the repository.
      * @param T $object
      */
-    function remove($object): void;
+    public function remove($object): void;
 
     /**
      * Find a number of objects in the repository based on a query.
      * @param QueryInterface $query
      * @return array<T>
      */
-    function find(QueryInterface $query): array;
+    public function find(QueryInterface $query): array;
 
     /**
      * Find a single object in the repository based on a query.
@@ -97,7 +134,7 @@ interface RepositoryInterface
      * @return T
      * @throws NotFoundException if no matching object was found.
      */
-    function findOne(QueryInterface $query): object;
+    public function findOne(QueryInterface $query): object;
 }
 ```
 
