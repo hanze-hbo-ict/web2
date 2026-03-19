@@ -407,7 +407,7 @@ interface KernelInterface
      *
      * May call other collaborating code to generate the response.
      * 
-     * @param RequestInterface $request The server request. 
+     * @param RequestInterface $request The request. 
      * @return string The response as a string.
      */
     function handle(RequestInterface $request): string;
