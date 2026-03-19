@@ -429,6 +429,7 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queryinterface">‘QueryInterface`</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapperinterface"><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositoryinterface"><code class="docutils literal notranslate"><span class="pre">RepositoryInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitymapinterface">IdentityMapInterface</a></li>
@@ -445,9 +446,47 @@
                   
   <section class="tex2jax_ignore mathjax_ignore" id="interfaces">
 <h1>Interfaces<a class="headerlink" href="#interfaces" title="Link to this heading">#</a></h1>
+<p>De interfaces hieronder maken intensief gebruik van de <code class="docutils literal notranslate"><span class="pre">&#64;template</span> <span class="pre">T</span></code>-notatie in de <em>DocBlock</em>. Bestudeer <a class="reference internal" href="generics.html"><span class="std std-doc">de tekst hierover</span></a> om te bekijken hoe dat exact werkt.</p>
+<section id="queryinterface">
+<h2>‘QueryInterface`<a class="headerlink" href="#queryinterface" title="Link to this heading">#</a></h2>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">Framework\Database</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * A query that can be used to select objects in a repository.</span>
+<span class="sd"> */</span>
+<span class="k">interface</span> <span class="nx">QueryInterface</span>
+<span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Get the filter to apply to the result set.</span>
+<span class="sd">     * @return array&lt;string, mixed&gt; An associative array of column names and corresponding values to filter on.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getFilter</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get the ordering criteria to apply to the result set.</span>
+<span class="sd">     * @return array&lt;string&gt; An array of column names, optionally suffixed with ASC or DESC as in SQL.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOrder</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get the offset to apply to the result set.</span>
+<span class="sd">     * @return int The offset, or 0 if there is none.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOffset</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * Get the maximum number of results in the result set.</span>
+<span class="sd">     * @return int The limit, or 0 if there is none.</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getLimit</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
 <section id="datamapperinterface">
 <h2><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code><a class="headerlink" href="#datamapperinterface" title="Link to this heading">#</a></h2>
-<p>De interfaces hieronder maken intensief gebruik van de <code class="docutils literal notranslate"><span class="pre">&#64;template</span> <span class="pre">T</span></code>-notatie in de <em>DocBlock</em>. Bestudeer <a class="reference internal" href="generics.html"><span class="std std-doc">de tekst hierover</span></a> om te bekijken hoe dat exact werkt.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">Framework\Database</span><span class="p">;</span>
@@ -464,32 +503,32 @@
 <span class="sd">     * @return T</span>
 <span class="sd">     * @throws NotFoundException if the object was not found.</span>
 <span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Select a number of objects with a query.</span>
 <span class="sd">     * @param QueryInterface $query</span>
 <span class="sd">     * @return array&lt;T&gt;</span>
 <span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">select</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">select</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Insert a new object in the database.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Update an existing object in the database.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Delete an object from the database.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -512,26 +551,26 @@
 <span class="sd">     * @return T</span>
 <span class="sd">     * @throws NotFoundException if the object was not found.</span>
 <span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Store a new or existing object in the repository.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">object</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">object</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Remove an object from the repository.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Find a number of objects in the repository based on a query.</span>
 <span class="sd">     * @param QueryInterface $query</span>
 <span class="sd">     * @return array&lt;T&gt;</span>
 <span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Find a single object in the repository based on a query.</span>
@@ -539,7 +578,7 @@
 <span class="sd">     * @return T</span>
 <span class="sd">     * @throws NotFoundException if no matching object was found.</span>
 <span class="sd">     */</span>
-    <span class="k">function</span> <span class="nf">findOne</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findOne</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -658,6 +697,7 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queryinterface">‘QueryInterface`</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapperinterface"><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositoryinterface"><code class="docutils literal notranslate"><span class="pre">RepositoryInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitymapinterface">IdentityMapInterface</a></li>
