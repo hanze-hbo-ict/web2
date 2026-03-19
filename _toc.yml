@@ -121,3 +121,4 @@ parts:
   chapters:
     - file: 7.2-autorisatie/intro
     - file: 7.2-autorisatie/opgave
+    - file: 7.2-autorisatie/interface
