@@ -1,4 +1,4 @@
-# Opgave
+# Opdracht
 
 Voor de opdracht is het nu van belang de verschillende klassen die in hiervoor besproken zijn, concreet te implementeren. 
 
