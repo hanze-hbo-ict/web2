@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Intro &#8212; Webtechnologie II</title>
+    <title>Autorisatie &#8212; Webtechnologie II</title>
   
   
   
@@ -62,10 +62,10 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '7.2-autorisatie/intro';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '7.2-autorisatie/autorisatie';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Opgave" href="opgave.html" />
+    <link rel="next" title="Access control" href="accesscontrol.html" />
     <link rel="prev" title="Interfaces" href="../7.1-authenticatie/interface.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
@@ -286,8 +286,10 @@
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7.2 Autorisatie</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Intro</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Autorisatie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="accesscontrol.html">Access control</a></li>
+<li class="toctree-l1"><a class="reference internal" href="middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 
@@ -343,7 +345,7 @@
       
       
       
-      <li><a href="../_sources/7.2-autorisatie/intro.md" target="_blank"
+      <li><a href="../_sources/7.2-autorisatie/autorisatie.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -406,7 +408,9 @@
 <button class="btn btn-sm pst-navbar-icon search-button search-button__button pst-js-only" title="Zoeken" aria-label="Zoeken" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <i class="fa-solid fa-magnifying-glass fa-lg"></i>
 </button>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -417,11 +421,20 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Intro</h1>
+    <h1>Autorisatie</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Inhoud </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autorisatieservice">Autorisatieservice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall">Firewall</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -431,8 +444,80 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="intro">
-<h1>Intro<a class="headerlink" href="#intro" title="Link to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="autorisatie">
+<h1>Autorisatie<a class="headerlink" href="#autorisatie" title="Link to this heading">#</a></h1>
+<p>Waar authenticatie de vraag naar de identiteit van de gebruiker is, is
+autorisatie de vraag naar de rechten van een gebruiker. Dit is dus, anders
+dan authenticatie, noodzakelijkerwijs applicatiespecifiek.</p>
+<p>Bij autorisatie zijn in beginsel twee entiteiten betrokken. Aan de ene kant
+is er het <em>subject</em>, de gebruiker die een bepaalde actie wil uitvoeren of een
+bepaalde resource wil aanspreken. Aan de andere kant is er het <em>object</em>, de
+resource die de gebruiker wil aanspreken. Het autorisatiesysteem moet
+beoordelen of het subject de gewenste actie mag uitvoeren op het gevraagde
+object, en eventueel onder welke voorwaarden.</p>
+<section id="autorisatieservice">
+<h2>Autorisatieservice<a class="headerlink" href="#autorisatieservice" title="Link to this heading">#</a></h2>
+<p>Een natuurlijk punt om autorisatie uit te voeren is in de controller. Hier
+is immers bekend welke actie een gebruiker wil uitvoeren en ook wat het
+object is. De controller kan nu de autorisatieservice gebruiken, een
+instantie van <code class="docutils literal notranslate"><span class="pre">AuthorizationInterface</span></code>, die zal kijken of de gevraagde actie
+toelaatbaar is. Hierbij zijn twee varianten beschikbaar. Met <code class="docutils literal notranslate"><span class="pre">isGranted</span></code>
+krijgt de controller een boolean terug waaraan gezien kan worden of de actie
+toelaatbaar is; <code class="docutils literal notranslate"><span class="pre">denyUnlessGranted</span></code> doet niets als de actie toelaatbaar is
+maar zal een exceptie gooien als de actie niet toelaatbaar is.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">namespace Framework\AccessControl;</span>
+
+<span class="x">interface AuthorizationInterface</span>
+<span class="x">{</span>
+<span class="x">    function isGranted(UserInterface $user, string $permission, mixed ...$parameters): bool;</span>
+<span class="x">    function denyUnlessGranted(UserInterface $user, string $permission, mixed ...$parameters): void;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>In beide gevallen moet de gebruiker en de gevraagde actie, in de vorm van
+een string die meestal de gevraagde <em>permission</em> wordt genoemd, worden
+meegegeven. Eventueel kunnen extra parameters worden meegegeven waarmee het
+object kan worden beschreven; denk hierbij bijvoorbeeld aan het id van een
+blogpost.</p>
+<p>Naast de controller kan deze service bijvoorbeeld ook gebruikt worden in een
+repository in het ORM. Hiermee kan afgedwongen worden dat een gebruiker die
+geen rechten op een bepaalde tabel heeft deze tabel ook nooit kan aanspreken.
+Dit gebruik is complementair aan het gebruik in de controller, en maakt
+onderdeel uit van een strategie die
+<a class="reference external" href="https://en.wikipedia.org/wiki/Defense_in_depth_(computing)"><em>defense in depth</em></a>
+wordt genoemd.</p>
+</section>
+<section id="firewall">
+<h2>Firewall<a class="headerlink" href="#firewall" title="Link to this heading">#</a></h2>
+<p>Vaak kan al vrij vroeg in het request gezien worden dat een bepaalde
+gebruiker geen rechten heeft op de gevraagde pagina. Denk bijvoorbeeld aan
+een website waarbij alleen ingelogde gebruikers pagina’s waarvan de URL met
+<code class="docutils literal notranslate"><span class="pre">/secret</span></code> begint, mogen benaderen. Het is dan niet nodig om te wachten tot
+de controller aangeroepen wordt om de gebruiker te weigeren, dit kan dan al
+eerder.</p>
+<p>Een mogelijke oplossing hiervoor is het gebruik van een service die we hier
+een <em>firewall</em> zullen noemen, aangezien dit de eerste beveiligingsgrens is
+tussen de af te schermen onderdelen van de applicatie en de buitenwereld.</p>
+<p>De interface voor de firewallservice heeft een enkele methode <code class="docutils literal notranslate"><span class="pre">accepts</span></code> die
+een request en een gebruiker meekrijgt en beoordeelt of deze gebruiker
+toegang mag hebben tot dit request.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">namespace Framework\AccessControl;</span>
+
+<span class="x">interface FirewallInterface</span>
+<span class="x">{</span>
+<span class="x">    function accepts(RequestInterface $request, UserInterface $user): bool;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Hierbij geldt dat, als nadere informatie nodig zou zijn om deze beslissing
+te nemen, de firewall de gebruiker moet doorlaten. Later wordt immers de
+autorisatieservice nog gebruikt om te controleren of de gebruiker
+daadwerkelijk toegang heeft. Ook hier zien we dus weer de toepassing van
+<em>defense in depth</em>.</p>
+<p>Anders dan de autorisatieservice kan de firewallservice wel vanuit de kernel
+worden aangeroepen, waardoor het dus vaak al mogelijk kan zijn om een
+gebruiker te weigeren nog voordat routing wordt uitgevoerd.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -475,11 +560,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="opgave.html"
+       href="accesscontrol.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Opgave</p>
+        <p class="prev-next-title">Access control</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -489,6 +574,23 @@
             </div>
             
             
+              
+                <dialog id="pst-secondary-sidebar-modal"></dialog>
+                <div id="pst-secondary-sidebar" class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Inhoud
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#autorisatieservice">Autorisatieservice</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#firewall">Firewall</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
