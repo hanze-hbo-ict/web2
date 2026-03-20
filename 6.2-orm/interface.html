@@ -66,7 +66,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
     <link rel="next" title="Authenticatie en autorisatie" href="../7.1-authenticatie/authenticatie.html" />
-    <link rel="prev" title="Opgave" href="opgave.html" />
+    <link rel="prev" title="De identity map" href="identity-map.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -263,15 +263,13 @@
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
 <ul class="nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.1-database/opgave.html">Opgave</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.1-database/interface.html">Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../6.1-database/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model-klassen.html">Van modellen naar de database</a></li>
 <li class="toctree-l1"><a class="reference internal" href="identity-map.html">De identity map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opgave.html">Opgave</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">7.1 Authenticatie</span></p>
@@ -432,7 +430,7 @@
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queryinterface">‘QueryInterface`</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapperinterface"><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapperinterface"><code class="docutils literal notranslate"><span class="pre">DataMapperInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositoryinterface"><code class="docutils literal notranslate"><span class="pre">RepositoryInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitymapinterface">IdentityMapInterface</a></li>
 </ul>
@@ -464,31 +462,31 @@
 <span class="sd">     * Get the filter to apply to the result set.</span>
 <span class="sd">     * @return array&lt;string, mixed&gt; An associative array of column names and corresponding values to filter on.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getFilter</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">getFilter</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Get the ordering criteria to apply to the result set.</span>
 <span class="sd">     * @return array&lt;string&gt; An array of column names, optionally suffixed with ASC or DESC as in SQL.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOrder</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">getOrder</span><span class="p">()</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Get the offset to apply to the result set.</span>
 <span class="sd">     * @return int The offset, or 0 if there is none.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getOffset</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">getOffset</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Get the maximum number of results in the result set.</span>
 <span class="sd">     * @return int The limit, or 0 if there is none.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">getLimit</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">getLimit</span><span class="p">()</span><span class="o">:</span> <span class="nx">int</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
 </section>
 <section id="datamapperinterface">
-<h2><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code><a class="headerlink" href="#datamapperinterface" title="Link to this heading">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">DataMapperInterface</span></code><a class="headerlink" href="#datamapperinterface" title="Link to this heading">#</a></h2>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 
 <span class="k">namespace</span> <span class="nx">Framework\Database</span><span class="p">;</span>
@@ -505,32 +503,32 @@
 <span class="sd">     * @return T</span>
 <span class="sd">     * @throws NotFoundException if the object was not found.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Select a number of objects with a query.</span>
 <span class="sd">     * @param QueryInterface $query</span>
 <span class="sd">     * @return array&lt;T&gt;</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">select</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">select</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Insert a new object in the database.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">insert</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Update an existing object in the database.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Delete an object from the database.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -553,26 +551,26 @@
 <span class="sd">     * @return T</span>
 <span class="sd">     * @throws NotFoundException if the object was not found.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Store a new or existing object in the repository.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">object</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">save</span><span class="p">(</span><span class="nx">object</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Remove an object from the repository.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Find a number of objects in the repository based on a query.</span>
 <span class="sd">     * @param QueryInterface $query</span>
 <span class="sd">     * @return array&lt;T&gt;</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Find a single object in the repository based on a query.</span>
@@ -580,7 +578,7 @@
 <span class="sd">     * @return T</span>
 <span class="sd">     * @throws NotFoundException if no matching object was found.</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">findOne</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">findOne</span><span class="p">(</span><span class="nx">QueryInterface</span> <span class="nv">$query</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -601,33 +599,33 @@
 <span class="sd">     * @param int $id</span>
 <span class="sd">     * @return bool</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">has</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Checks whether the given object exists in the identity map.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">contains</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">contains</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Get an object from the identity map by its id.</span>
 <span class="sd">     * @param int $id</span>
 <span class="sd">     * @return T</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Add an object with a given id to the identity map.</span>
 <span class="sd">     * @param int $id</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">add</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 
     <span class="sd">/**</span>
 <span class="sd">     * Remove an object from the identity map.</span>
 <span class="sd">     * @param T $object</span>
 <span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
+    <span class="k">function</span> <span class="nf">remove</span><span class="p">(</span><span class="nv">$object</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -665,12 +663,12 @@
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="opgave.html"
+       href="identity-map.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">Opgave</p>
+        <p class="prev-next-title">De identity map</p>
       </div>
     </a>
     <a class="right-next"
@@ -700,7 +698,7 @@
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#queryinterface">‘QueryInterface`</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapperinterface"><code class="docutils literal notranslate"><span class="pre">DatamapperInterface</span></code></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#datamapperinterface"><code class="docutils literal notranslate"><span class="pre">DataMapperInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repositoryinterface"><code class="docutils literal notranslate"><span class="pre">RepositoryInterface</span></code></a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identitymapinterface">IdentityMapInterface</a></li>
 </ul>
