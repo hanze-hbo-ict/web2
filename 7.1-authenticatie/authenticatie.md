@@ -32,6 +32,14 @@ voornamelijk op het niveau van een framework of zelfs daarboven kan worden
 opgelost. Autorisatie is veel applicatie-specifieker; meer dan enkele 
 ondersteunende functionaliteiten zal een framework hier niet kunnen bieden.
 
+Authenticatie en autorisatie vereisen allebei de aanwezigheid van een 
+gebruikersobject, dat meestal gepersisteerd wordt via een ORM. Authenticatie 
+wordt normaal gesproken voor het routeren van het request uitgevoerd, 
+terwijl autorisatie vaak in een controller wordt uitgevoerd. Dit leidt tot 
+onderstaand architectuurschema.
+
+![Schema met authenticatie en autorisatie](../images/schema-auth.png)
+
 ## Authenticatie
 
 Het fundamentele probleem van authenticatie is het identificeren van een 
