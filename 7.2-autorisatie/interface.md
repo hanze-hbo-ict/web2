@@ -110,6 +110,8 @@ PSR-7 worden gebruikt, kan deze interface in zijn geheel worden vervangen door
 `Psr\Http\Server\MiddlewareInterface`.
 
 ```php
+<?php
+
 namespace Framework\Kernel;
 
 use Framework\Http\ResponseInterface;

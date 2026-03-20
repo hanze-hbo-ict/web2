@@ -119,6 +119,8 @@ parts:
 
 - caption: 7.2 Autorisatie
   chapters:
-    - file: 7.2-autorisatie/intro
-    - file: 7.2-autorisatie/opgave
+    - file: 7.2-autorisatie/autorisatie
+    - file: 7.2-autorisatie/accesscontrol
+    - file: 7.2-autorisatie/middleware
+    - file: 7.2-autorisatie/opdracht
     - file: 7.2-autorisatie/interface
