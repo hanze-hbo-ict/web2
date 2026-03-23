@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Voorbeeldcode &#8212; Webtechnologie II</title>
+    <title>Opdracht &#8212; Webtechnologie II</title>
   
   
   
@@ -62,11 +62,11 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '5.2-container/voorbeeld';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '6.1-database/opdracht';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="Reflectie" href="reflectie.html" />
-    <link rel="prev" title="IoC container" href="container.html" />
+    <link rel="next" title="Interfaces" href="interface.html" />
+    <link rel="prev" title="Introductie" href="intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
   <meta name="docsearch:version" content="" />
@@ -252,19 +252,19 @@
 <li class="toctree-l1"><a class="reference internal" href="../5.1-di/opdracht.html">Opdracht</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">5.2 IoC container</span></p>
-<ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="container.html">IoC container</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">Voorbeeldcode</a></li>
-<li class="toctree-l1"><a class="reference internal" href="reflectie.html">Reflectie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="oefening.html">Oefeningen</a></li>
-<li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
-<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/container.html">IoC container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/voorbeeld.html">Voorbeeldcode</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/reflectie.html">Reflectie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/oefening.html">Oefeningen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/opdracht.html">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../5.2-container/interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.1 Database</span></p>
-<ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../6.1-database/intro.html">Introductie</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.1-database/opdracht.html">Opdracht</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../6.1-database/interface.html">Interfaces</a></li>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="intro.html">Introductie</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Opdracht</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">6.2 ORM</span></p>
 <ul class="nav bd-sidenav">
@@ -345,7 +345,7 @@
       
       
       
-      <li><a href="../_sources/5.2-container/voorbeeld.md" target="_blank"
+      <li><a href="../_sources/6.1-database/opdracht.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -419,7 +419,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Voorbeeldcode</h1>
+    <h1>Opdracht</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -433,128 +433,9 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="voorbeeldcode">
-<h1>Voorbeeldcode<a class="headerlink" href="#voorbeeldcode" title="Link to this heading">#</a></h1>
-<p>Onderstaande code kan als implementatiegids dienen om een IoC container te
-implementeren. Hierin worden een aantal keuzes gemaakt die niet verplicht
-zijn, maar wel als inspiratie kunnen dienen.</p>
-<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-
-<span class="k">use</span> <span class="nx">Psr\Container\ContainerInterface</span><span class="p">;</span>
-
-<span class="sd">/**</span>
-<span class="sd"> * An inversion of control container.</span>
-<span class="sd"> */</span>
-<span class="k">class</span> <span class="nc">IoCContainer</span> <span class="k">implements</span> <span class="nx">ContainerInterface</span> <span class="p">{</span>
-    <span class="sd">/**</span>
-<span class="sd">     * Create an IoC container based on a configuration file.</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param string $root_dir The application root directory.</span>
-<span class="sd">     * @param string $filename The path to the configuration file.</span>
-<span class="sd">     * @return The configured container.</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">static</span> <span class="k">function</span> <span class="nf">createFromConfig</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$root_dir</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$filename</span><span class="p">)</span><span class="o">:</span> <span class="nx">self</span>
-    <span class="p">{</span>
-        <span class="c1">// TODO: Implement createFromConfig() method.</span>
-        <span class="c1">// 1. Create a new container.</span>
-        <span class="c1">// 2. Get the contents of the configuration file.</span>
-        <span class="c1">// 3. Register services in configuration file.</span>
-        <span class="c1">// 4. Register root directory as a string.</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * Register a service with the container.</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param string $id The service id.</span>
-<span class="sd">     * @param ?string $class The service class name, defaults to the service id.</span>
-<span class="sd">     * @param bool $singleton Whether the service should be a singleton.</span>
-<span class="sd">     * @param mixed ...$parameters Other service configuration values.</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerService</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span> <span class="o">?</span><span class="nx">string</span> <span class="nv">$class</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">bool</span> <span class="nv">$singleton</span> <span class="o">=</span> <span class="k">true</span><span class="p">,</span> <span class="nx">mixed</span> <span class="o">...</span><span class="nv">$parameters</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
-    <span class="p">{</span>
-        <span class="c1">// TODO: Implement registerService() method.</span>
-    <span class="p">}</span>
-
-    <span class="sd">/**</span>
-<span class="sd">     * Register a string with the container.</span>
-<span class="sd">     *</span>
-<span class="sd">     * @param string $id The string id.</span>
-<span class="sd">     * @param string $string The string value.</span>
-<span class="sd">     */</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">registerString</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$string</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span>
-    <span class="p">{</span>
-        <span class="c1">// TODO: Implement registerString() method.</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">getConfig</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
-    <span class="p">{</span>
-        <span class="c1">// TODO: Implement getConfig() method.</span>
-        <span class="c1">// 1. Get the config for the service id.</span>
-        <span class="c1">// 2. Replace missing parameters with defaults.</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">getClassNameForService</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">string</span>
-    <span class="p">{</span>
-        <span class="c1">// TODO: Implement getClassNameForService() method.</span>
-        <span class="c1">// 1. Check if the class is set explicitly in config.</span>
-        <span class="c1">// 2. Check if the service id is a class name.</span>
-        <span class="c1">// 3. Check if the service id is an interface name that ends in `Interface`</span>
-        <span class="c1">// 4. If so, try the corresponding class name without `Interface`</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">replaceServices</span><span class="p">(</span><span class="nx">mixed</span> <span class="nv">$value</span><span class="p">)</span><span class="o">:</span> <span class="nx">mixed</span>
-    <span class="p">{</span>
-        <span class="c1">// TODO: Implement replaceServices() method.</span>
-        <span class="c1">// 1. If the value is an array, call method recursively on all values.</span>
-        <span class="c1">// 2. If the value is a string and starts with an @, replace it with the corresponding service.</span>
-        <span class="c1">// 3. Otherwise, replace string placeholders in value</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">getConstructorParams</span><span class="p">(</span><span class="nx">\ReflectionClass</span> <span class="nv">$class</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$params</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span>
-    <span class="p">{</span>
-        <span class="c1">// TODO: Implement getConstructorParams() method.</span>
-        <span class="c1">// 1. Get class constructor</span>
-        <span class="c1">// 2. Iterate over constructor parameters</span>
-        <span class="c1">// 3. If the parameter is present in config, replace services in parameter value</span>
-        <span class="c1">// 4. If the parameter is not present and not optional, get a service using autowiring</span>
-        <span class="c1">// 5. If the parameter is not present and optional, use the default value</span>
-        <span class="c1">// 6. Return array containing constructor parameter values</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="k">array</span> <span class="nv">$config</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span>
-    <span class="p">{</span>
-        <span class="c1">// TODO: Implement create() method.</span>
-        <span class="c1">// 1. Create reflection class object based on class of service</span>
-        <span class="c1">// 2. Get array of constructor parameters based on configured parameters</span>
-        <span class="c1">// 3. Create new instance of class with constructor parameters</span>
-    <span class="p">}</span>
-
-    <span class="k">private</span> <span class="k">function</span> <span class="nf">cacheSingleton</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">callable</span> <span class="nv">$factory</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span>
-    <span class="p">{</span>
-        <span class="c1">// TODO: Implement cacheSingleton() method.</span>
-        <span class="c1">// 1. Call factory if service is not cached and cache result</span>
-        <span class="c1">// 2. Return cached service</span>
-    <span class="p">}</span>
-
-    <span class="p">#[</span><span class="nd">\Override</span><span class="p">]</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
-        <span class="c1">// TODO: Implement get() method.</span>
-        <span class="c1">// 1. Throw Psr\Container\NotFoundExceptionInterface if id does not exist in container</span>
-        <span class="c1">// 2. Get configuration for id</span>
-        <span class="c1">// 3. Create factory callback for service based on id</span>
-        <span class="c1">// 4. Cache service if it is a singleton</span>
-        <span class="c1">// 5. Otherwise call factory</span>
-        <span class="c1">// 5. Throw Psr\Container\ContainerExceptionInterface if an error occurs while creating service</span>
-    <span class="p">}</span>
-
-    <span class="p">#[</span><span class="nd">\Override</span><span class="p">]</span>
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">has</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">bool</span>
-    <span class="p">{</span>
-        <span class="c1">// TODO: Implement has() method.</span>
-    <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="opdracht">
+<h1>Opdracht<a class="headerlink" href="#opdracht" title="Link to this heading">#</a></h1>
+<p>Voor het project is het handig om nu op z’n minst de klasse te maken die de <code class="docutils literal notranslate"><span class="pre">ConnectionInterface</span></code> implementeert. Zorg ervoor dat je deze instantie in je <a class="reference internal" href="../5.1-di/compositionroot.html"><span class="std std-doc"><em>composition root</em></span></a> aanmaakt en dat deze bij als <em>service</em> beschikbaar wordt gesteld in de klassen die een database nodig hebben.</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -570,7 +451,7 @@ zijn, maar wel als inspiratie kunnen dienen.</p>
         },
         kernelOptions: {
             name: "python3",
-            path: "./5.2-container"
+            path: "./6.1-database"
         },
         predefinedOutput: true
     }
@@ -588,20 +469,20 @@ zijn, maar wel als inspiratie kunnen dienen.</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="container.html"
+       href="intro.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">vorige</p>
-        <p class="prev-next-title">IoC container</p>
+        <p class="prev-next-title">Introductie</p>
       </div>
     </a>
     <a class="right-next"
-       href="reflectie.html"
+       href="interface.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">Reflectie</p>
+        <p class="prev-next-title">Interfaces</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
