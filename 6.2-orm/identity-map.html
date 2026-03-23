@@ -459,13 +459,13 @@
 </div></blockquote>
 <p>De repository abstraheert dus feitelijk de daadwerkelijke persistentie. Het is voor de logica van je applicatie niet relevant of de data wordt opgeslagen in een database, in xml- of json-bestanden of via ORM. Op deze manier kan je applicatie dus de wijze van persisteren feitelijk negeren (wat het testen en onderhouden weer makkelijker maakt).</p>
 <p>De <a class="reference internal" href="interface.html"><span class="std std-doc">interface van de repository</span></a> kent ook feitelijk dezelfde soort operaties als die je bij een database zou verwachten. Het is alleen aan de instantie van de klasse die deze interface implementeert om te bepalen waar -ie de data vandaan haalt: uit het geheugen of uit de database (of iets anders). Zie het onderstaande sequentiediagram:</p>
-<p><img alt="sequentie-diagram van de identity-mapper (vrij naar Fowler)" src="../_images/identity-mapper.jpeg" /></p>
+<p><img alt="Repository pattern (naar Fowler)" src="../_images/repository.jpeg" /></p>
 <p>Het is natuurlijk van belang dat binnen deze <em>repository</em> individuele objecten maar één keer voorkomen (ze komen immers ook maar één keer voor in de database). Hiervoor gebruik je een <em>identity map</em>.</p>
 </section>
 <section id="identity-map">
 <h2>Identity Map<a class="headerlink" href="#identity-map" title="Link to this heading">#</a></h2>
 <p>De identity map houdt de interne lijst van objecten bij die de applicatie nodig heeft. Specifiek werkt de Identity Map zoals in het onderstaande sequentie-diagram wordt weergegeven (overgenomen van <a class="reference internal" href="#"><span class="xref myst">de site van Martin Fowler</span></a>):</p>
-<p><img alt="Identity mapper" src="../_images/identity-mapper.jpeg" /></p>
+<p><img alt="sequentie-diagram van de identity-mapper (vrij naar Fowler)" src="../_images/identity-mapper.jpeg" /></p>
 <p>Een klein voorbeeld van de werking hiervan zie je hieronder:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
 <span class="k">class</span> <span class="nc">IdentityMap</span> <span class="k">implements</span> <span class="nx">IdentityMapInterface</span> <span class="p">{</span>
