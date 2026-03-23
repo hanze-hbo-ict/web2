@@ -2,44 +2,6 @@
 
 De interfaces hieronder maken intensief gebruik van de `@template T`-notatie in de *DocBlock*. Bestudeer [de tekst hierover](generics.md) om te bekijken hoe dat exact werkt.
 
-## 'QueryInterface`
-
-```php
-<?php
-
-namespace Framework\Database;
-
-/**
- * A query that can be used to select objects in a repository.
- */
-interface QueryInterface
-{
-    /**
-     * Get the filter to apply to the result set.
-     * @return array<string, mixed> An associative array of column names and corresponding values to filter on.
-     */
-    function getFilter(): array;
-
-    /**
-     * Get the ordering criteria to apply to the result set.
-     * @return array<string> An array of column names, optionally suffixed with ASC or DESC as in SQL.
-     */
-    function getOrder(): array;
-
-    /**
-     * Get the offset to apply to the result set.
-     * @return int The offset, or 0 if there is none.
-     */
-    function getOffset(): int;
-
-    /**
-     * Get the maximum number of results in the result set.
-     * @return int The limit, or 0 if there is none.
-     */
-    function getLimit(): int;
-}
-```
-
 ## `DataMapperInterface`
 
 ```php
@@ -63,10 +25,11 @@ interface DataMapperInterface
 
     /**
      * Select a number of objects with a query.
-     * @param QueryInterface $query
+     * @param string $query Query with placeholders.
+     * @param mixed ...$params Parameters for the query.
      * @return array<T>
      */
-    function select(QueryInterface $query): array;
+    function select(string $query, mixed ...$params): array;
 
     /**
      * Insert a new object in the database.
@@ -120,21 +83,6 @@ interface RepositoryInterface
      * @param T $object
      */
     function remove($object): void;
-
-    /**
-     * Find a number of objects in the repository based on a query.
-     * @param QueryInterface $query
-     * @return array<T>
-     */
-    function find(QueryInterface $query): array;
-
-    /**
-     * Find a single object in the repository based on a query.
-     * @param QueryInterface $query
-     * @return T
-     * @throws NotFoundException if no matching object was found.
-     */
-    function findOne(QueryInterface $query): object;
 }
 ```
 

@@ -65,7 +65,7 @@
     <script>DOCUMENTATION_OPTIONS.pagename = '6.2-orm/model-klassen';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
-    <link rel="next" title="De identity map" href="identity-map.html" />
+    <link rel="next" title="Repository" href="repository.html" />
     <link rel="prev" title="Generics" href="generics.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="nl"/>
@@ -270,7 +270,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">Van modellen naar de database</a></li>
-<li class="toctree-l1"><a class="reference internal" href="identity-map.html">De identity map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repository.html">Repository</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
@@ -489,9 +489,13 @@
     <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">object</span><span class="p">;</span>
 </pre></div>
 </div>
-<p>Omdat de DataMapper een koppeling is tussen een (Model)Klasse en een tabel in de database, moeten instanties van deze klasse beide kanten van die verhaal kennen. Het is logisch om dat in de constructor van de klasse op te nemen:</p>
+<p>Omdat de DataMapper een koppeling is tussen een (Model)Klasse en een tabel in de database, moeten instanties van deze klasse beide kanten van die verhaal kennen.
+Hier zijn op hoofdlijnen twee manieren voor. Aan de ene kant kan je een
+generieke mapper maken die in staat is om allerlei modelklassen te mappen.
+Dan is het nodig om de informatie over de klassenaam van het model en de
+databasetabel in de mapper te configureren, bijvoorbeeld via de constructor.</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
-<span class="k">class</span> <span class="nc">UserMapper</span> <span class="k">implements</span> <span class="nx">DataMapperInterface</span> <span class="p">{</span>
+<span class="k">class</span> <span class="nc">GenericMapper</span> <span class="k">implements</span> <span class="nx">DataMapperInterface</span> <span class="p">{</span>
     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
         <span class="k">private</span> <span class="nx">ConnectionInterface</span> <span class="nv">$connection</span><span class="p">,</span>
         <span class="k">private</span> <span class="nx">string</span> <span class="nv">$class_name</span><span class="p">,</span>
@@ -503,6 +507,10 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>De andere aanpak, die eenvoudiger te implementeren is en daarom geschikter
+voor een simpel ORM, is dat elke mapping een eigen klasse heeft die
+<code class="docutils literal notranslate"><span class="pre">DataMapperInterface</span></code> implementeert. In dat geval kunnen klassenamen en
+tabelinformatie gehardcoded worden.</p>
 <p>Meer over de DataMapper is te vinden <a class="reference external" href="https://martinfowler.com/eaaCatalog/dataMapper.html">op de website van Martin Fowler</a>.</p>
 </section>
 </section>
@@ -547,11 +555,11 @@
       </div>
     </a>
     <a class="right-next"
-       href="identity-map.html"
+       href="repository.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">volgende</p>
-        <p class="prev-next-title">De identity map</p>
+        <p class="prev-next-title">Repository</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

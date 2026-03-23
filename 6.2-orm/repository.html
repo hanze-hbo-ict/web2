@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>De identity map &#8212; Webtechnologie II</title>
+    <title>Repository &#8212; Webtechnologie II</title>
   
   
   
@@ -62,7 +62,7 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>DOCUMENTATION_OPTIONS.pagename = '6.2-orm/identity-map';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '6.2-orm/repository';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Zoeken" href="../search.html" />
     <link rel="next" title="Opdracht" href="opdracht.html" />
@@ -270,7 +270,7 @@
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1"><a class="reference internal" href="generics.html">Generics</a></li>
 <li class="toctree-l1"><a class="reference internal" href="model-klassen.html">Van modellen naar de database</a></li>
-<li class="toctree-l1 current active"><a class="current reference internal" href="#">De identity map</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">Repository</a></li>
 <li class="toctree-l1"><a class="reference internal" href="opdracht.html">Opdracht</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface.html">Interfaces</a></li>
 </ul>
@@ -345,7 +345,7 @@
       
       
       
-      <li><a href="../_sources/6.2-orm/identity-map.md" target="_blank"
+      <li><a href="../_sources/6.2-orm/repository.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download het bronbestand"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -421,7 +421,7 @@
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>De identity map</h1>
+    <h1>Repository</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -431,8 +431,6 @@
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductie">Introductie</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository">Repository</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-map">Identity Map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#werking">Werking</a></li>
 </ul>
@@ -446,15 +444,10 @@
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="de-identity-map">
-<h1>De identity map<a class="headerlink" href="#de-identity-map" title="Link to this heading">#</a></h1>
-<section id="introductie">
-<h2>Introductie<a class="headerlink" href="#introductie" title="Link to this heading">#</a></h2>
+  <section class="tex2jax_ignore mathjax_ignore" id="repository">
+<h1>Repository<a class="headerlink" href="#repository" title="Link to this heading">#</a></h1>
 <p>De <a class="reference internal" href="model-klassen.html#datamapper"><span class="std std-ref">data mapper</span></a> is alleen verantwoordelijk voor het opzoeken en onderhouden van enkele objecten. Dikwijls is het echter handig om een hele <em>verzameling</em> van objecten in het geheugen van je applicatie te hebben staan. Met name wanneer je te maken krijgt met complexere transactie, veel en snelle <em>user-access sessions</em> of het doorzoeken van grote objectengrafen. Wanneer je dit allemaal via de <em>gemapte</em> model-klassen wilt doen, zul je zien dat de logica nog te sterk gekoppeld is met de data-laag.</p>
 <p>Om dit te voorkomen, introduceren we <em>nog</em> een laag van abstractie: een (<em>in memory</em>) <em>repository</em> van <em>gemapte</em> domeinobjecten die je vanuit je applicatielaag kunt bevragen en doorzoeken.</p>
-</section>
-<section id="repository">
-<h2>Repository<a class="headerlink" href="#repository" title="Link to this heading">#</a></h2>
 <p>Als je naar <a class="reference external" href="https://martinfowler.com/eaaCatalog/repository.html">de beschrijving van dit patroon door Martin Fowler kijkt</a>, lees je het volgende:</p>
 <blockquote>
 <div><p>Mediates between the domain and data mapping layers using a collection-like interface for accessing domain objects.</p>
@@ -462,10 +455,53 @@
 <p>De repository abstraheert dus feitelijk de daadwerkelijke persistentie. Het is voor de logica van je applicatie niet relevant of de data wordt opgeslagen in een database, in xml- of json-bestanden of via ORM. Op deze manier kan je applicatie dus de wijze van persisteren feitelijk negeren (wat het testen en onderhouden weer makkelijker maakt).</p>
 <p>De <a class="reference internal" href="interface.html"><span class="std std-doc">interface van de repository</span></a> kent ook feitelijk dezelfde soort operaties als die je bij een database zou verwachten. Het is alleen aan de instantie van de klasse die deze interface implementeert om te bepalen waar -ie de data vandaan haalt: uit het geheugen of uit de database (of iets anders). Zie het onderstaande sequentiediagram:</p>
 <p><img alt="Repository pattern (naar Fowler)" src="../_images/repository.jpeg" /></p>
-<p>Het is natuurlijk van belang dat binnen deze <em>repository</em> individuele objecten maar één keer voorkomen (ze komen immers ook maar één keer voor in de database). Hiervoor gebruik je een <em>identity map</em>.</p>
-</section>
+<p>De interface beschrijft alleen operaties om objecten op te halen, op te
+slaan en te verwijderen. Het is echter zeker niet zo dat dit de enige taak
+van een repository is. Integendeel, het is juist de taak van een repository
+om allerlei nuttige query’s op de collectie objecten te kunnen uitvoeren.
+Dit kan echter niet geabstraheerd worden naar een interface, aangezien de
+query’s per repository zullen verschillen. Een gebruikersrepository zou er
+bijvoorbeeld schematisch als volgt uit kunnen zien.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">class UserRepository implements RepositoryInterface</span>
+<span class="x">{</span>
+<span class="x">    public function __construct(private DataMapperInterface $mapper, private IdentityMapInterface $identity_map)</span>
+<span class="x">    {</span>
+<span class="x">    }</span>
+<span class="x">    </span>
+<span class="x">    // implementeer get, save en remove</span>
+<span class="x">    </span>
+<span class="x">    public function getUserByUsername(string $username): User</span>
+<span class="x">    {</span>
+<span class="x">        $users = $this-&gt;mapper-&gt;select(&#39;SELECT * FROM users WHERE username = ? LIMIT 1&#39;, $username);</span>
+<span class="x">        </span>
+<span class="x">        // vervang al bekende objecten door de versie uit de identity map</span>
+<span class="x">        foreach ($users as &amp;$user) {</span>
+<span class="x">            if ($this-&gt;identity_map-&gt;has($user-&gt;rowid)) {</span>
+<span class="x">                $user = $this-&gt;identity_map-&gt;get($user-&gt;rowid);</span>
+<span class="x">            } else {</span>
+<span class="x">                $this-&gt;identity_map-&gt;add($user-&gt;rowid, $user);</span>
+<span class="x">            }</span>
+<span class="x">        }</span>
+<span class="x">        </span>
+<span class="x">        // geef de eerste terug</span>
+<span class="x">        if (!$users) throw new Exception(&#39;...&#39;);</span>
+<span class="x">        return $users[0];</span>
+<span class="x">    }</span>
+<span class="x">    </span>
+<span class="x">    public function getUsersByRole(string $role): array</span>
+<span class="x">    {</span>
+<span class="x">        $users = $this-&gt;mapper-&gt;select(&#39;SELECT * FROM users JOIN roles ...&#39;);</span>
+<span class="x">        // vervang al bekende objecten door de versie uit de identity map</span>
+<span class="x">        return $users;</span>
+<span class="x">    }</span>
+
+<span class="x">    // ander nuttige query&#39;s voor users</span>
+<span class="x">}</span>
+</pre></div>
+</div>
 <section id="identity-map">
 <h2>Identity Map<a class="headerlink" href="#identity-map" title="Link to this heading">#</a></h2>
+<p>Het is natuurlijk van belang dat binnen deze <em>repository</em> individuele objecten maar één keer voorkomen (ze komen immers ook maar één keer voor in de database). Hiervoor gebruik je een <em>identity map</em>.</p>
 <p>De identity map houdt de interne lijst van objecten bij die de applicatie nodig heeft. Specifiek werkt de Identity Map zoals in het onderstaande sequentie-diagram wordt weergegeven (overgenomen van <a class="reference internal" href="#"><span class="xref myst">de site van Martin Fowler</span></a>):</p>
 <p><img alt="sequentie-diagram van de identity-mapper (vrij naar Fowler)" src="../_images/identity-mapper.jpeg" /></p>
 <p>Een klein voorbeeld van de werking hiervan zie je hieronder:</p>
@@ -487,6 +523,15 @@
 <span class="p">}</span>
 </pre></div>
 </div>
+<p>Strikt genomen zou je ook op het niveau van de data mapper een identity map
+kunnen gebruiken. Als je echter de taak van de data mapper ziet om objecten
+op te slaan in de database en ze weer daaruit te lezen, volgt hieruit dat de
+data mapper niet hoeft te garanderen dat het twee keer uitlezen van dezelfde
+rij uit de database twee keer een verwijzing naar hetzelfde object
+teruggeeft. De repository echter heeft als taak om alle rijen in de tabel
+beschikbaar te stellen via een ‘<em>collection-like interface</em>’, dus daar is
+het wel logisch dat een bepaalde rij in de database maar door een enkel
+object wordt gerepresenteerd.</p>
 </section>
 <section id="werking">
 <h2>Werking<a class="headerlink" href="#werking" title="Link to this heading">#</a></h2>
@@ -505,7 +550,7 @@
         <span class="k">throw</span> <span class="k">new</span> <span class="nx">NotFoundException</span><span class="p">(</span><span class="nb">strval</span><span class="p">(</span><span class="nv">$id</span><span class="p">));</span>
     <span class="p">}</span>
 
-    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">identity_map</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$object</span><span class="o">-&gt;</span><span class="p">{</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">primary_key</span><span class="p">},</span> <span class="nv">$object</span><span class="p">);</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">identity_map</span><span class="o">-&gt;</span><span class="na">add</span><span class="p">(</span><span class="nv">$object</span><span class="o">-&gt;</span><span class="na">rowid</span><span class="p">,</span> <span class="nv">$object</span><span class="p">);</span>
     <span class="k">return</span> <span class="nv">$object</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
@@ -580,8 +625,6 @@
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introductie">Introductie</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repository">Repository</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#identity-map">Identity Map</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#werking">Werking</a></li>
 </ul>
