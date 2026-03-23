@@ -95,7 +95,7 @@ parts:
 - caption: 6.1 Database
   chapters:
     - file: 6.1-database/intro
-    - file: 6.1-database/opgave
+    - file: 6.1-database/opdracht
     - file: 6.1-database/interface
 
 - caption: 6.2 ORM
@@ -104,7 +104,7 @@ parts:
     - file: 6.2-orm/generics
     - file: 6.2-orm/model-klassen
     - file: 6.2-orm/identity-map
-    - file: 6.2-orm/opgave
+    - file: 6.2-orm/opdracht
     - file: 6.2-orm/interface
 
 - caption: 7.1 Authenticatie
