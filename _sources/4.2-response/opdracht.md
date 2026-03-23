@@ -4,7 +4,7 @@
 
 Maak de klasse `Response` in dezelfde *namespace* als waar je `Request` hebt gemaakt. Zorg ervoor dat deze klasse de juiste interface implementeert, en geef de betreffende methoden een relevante implementatie.
 
-Als je [de RFC]() bekijkt, zie je dat een *response* altijd op z'n minst de volgende onderdelen bevat:
+Als je [de RFC](https://datatracker.ietf.org/doc/html/rfc7231) bekijkt, zie je dat een *response* altijd op z'n minst de volgende onderdelen bevat:
 
 - een *Status-Code*
 - een 'protocol version
