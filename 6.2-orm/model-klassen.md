@@ -51,11 +51,15 @@ De [interface van de datamapper](interface.md#datamapperinterface) maakt gebruik
     public function get(int $id): object;
 ```
 
-Omdat de DataMapper een koppeling is tussen een (Model)Klasse en een tabel in de database, moeten instanties van deze klasse beide kanten van die verhaal kennen. Het is logisch om dat in de constructor van de klasse op te nemen:
+Omdat de DataMapper een koppeling is tussen een (Model)Klasse en een tabel in de database, moeten instanties van deze klasse beide kanten van die verhaal kennen.
+Hier zijn op hoofdlijnen twee manieren voor. Aan de ene kant kan je een 
+generieke mapper maken die in staat is om allerlei modelklassen te mappen. 
+Dan is het nodig om de informatie over de klassenaam van het model en de 
+databasetabel in de mapper te configureren, bijvoorbeeld via de constructor.
 
 ```php
 <?php
-class UserMapper implements DataMapperInterface {
+class GenericMapper implements DataMapperInterface {
     public function __construct(
         private ConnectionInterface $connection,
         private string $class_name,
@@ -66,6 +70,11 @@ class UserMapper implements DataMapperInterface {
     ///
 }
 ```
+
+De andere aanpak, die eenvoudiger te implementeren is en daarom geschikter 
+voor een simpel ORM, is dat elke mapping een eigen klasse heeft die 
+`DataMapperInterface` implementeert. In dat geval kunnen klassenamen en 
+tabelinformatie gehardcoded worden.
 
 Meer over de DataMapper is te vinden [op de website van Martin Fowler](https://martinfowler.com/eaaCatalog/dataMapper.html).
 

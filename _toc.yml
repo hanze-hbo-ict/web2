@@ -103,7 +103,8 @@ parts:
     # - file: 6.2-orm/paradigm-mismatch
     - file: 6.2-orm/generics
     - file: 6.2-orm/model-klassen
-    - file: 6.2-orm/identity-map
+    - file: 6.2-orm/repository
+    # - file: 6.2-orm/attributen
     - file: 6.2-orm/opdracht
     - file: 6.2-orm/interface
 
