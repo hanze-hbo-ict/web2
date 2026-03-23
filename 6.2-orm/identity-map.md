@@ -16,7 +16,8 @@ De repository abstraheert dus feitelijk de daadwerkelijke persistentie. Het is v
 
 De [interface van de repository](interface.md) kent ook feitelijk dezelfde soort operaties als die je bij een database zou verwachten. Het is alleen aan de instantie van de klasse die deze interface implementeert om te bepalen waar -ie de data vandaan haalt: uit het geheugen of uit de database (of iets anders). Zie het onderstaande sequentiediagram:
 
-![sequentie-diagram van de identity-mapper (vrij naar Fowler)](../images/identity-mapper.jpeg)
+![Repository pattern (naar Fowler)](../images/repository.jpeg)
+
 
 Het is natuurlijk van belang dat binnen deze *repository* individuele objecten maar één keer voorkomen (ze komen immers ook maar één keer voor in de database). Hiervoor gebruik je een *identity map*.
 
@@ -24,7 +25,7 @@ Het is natuurlijk van belang dat binnen deze *repository* individuele objecten m
 
 De identity map houdt de interne lijst van objecten bij die de applicatie nodig heeft. Specifiek werkt de Identity Map zoals in het onderstaande sequentie-diagram wordt weergegeven (overgenomen van [de site van Martin Fowler]()):
 
-![Identity mapper](../images/identity-mapper.jpeg)
+![sequentie-diagram van de identity-mapper (vrij naar Fowler)](../images/identity-mapper.jpeg)
 
 Een klein voorbeeld van de werking hiervan zie je hieronder:
 
