@@ -56,7 +56,7 @@ class UserRepository implements RepositoryInterface
         return $users;
     }
 
-    // ander nuttige query's voor users
+    // andere nuttige query's voor users
 }
 ```
 
