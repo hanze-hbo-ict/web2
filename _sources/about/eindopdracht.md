@@ -8,8 +8,8 @@ voldoen.
 
 De opdracht moet in versiebeheer worden opgeslagen. Je gebruikt hiervoor
 [GitHub](https://github.com). Je verkrijgt de repository waarin je moet 
-werken via GitHub Classroom; een link hiervoor is te vinden bij de 
-opdrachtomschrijving op Brightspace. Om je werk in te leveren maak je een 
+werken via Classroom50; een link hiervoor is te vinden op de pagina
+Toetsinformatie in Brightspace. Om je werk in te leveren maak je een 
 [Git-*bundle*](https://git-scm.com/docs/git-bundle) met onderstaand commando;
 dit commando creeërt een bestand `web2.bundle` dat je vervolgens inlevert via 
 Brightspace. Je mag de opdracht in duo's maken, mits je hierbij pair 
